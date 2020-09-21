@@ -9,7 +9,7 @@ export default function ProjectCard({ title, icon }) {
         padding: 15,
         display: "flex",
         alignItems: "center",
-        marginBottom: 20
+        marginBottom: 20,
       }}
     >
       <div

@@ -2,4 +2,12 @@
 // https://github.com/vercel/next.js/issues/12079
 const withTM = require("next-transpile-modules")(["@vandebron/windmolen"]);
 
-module.exports = withTM();
+const withPlugins = require("next-compose-plugins");
+
+module.exports = withPlugins([
+  withTM,
+  {
+    basePath: "/",
+    assetPrefix: "/",
+  },
+]);

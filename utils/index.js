@@ -18,7 +18,7 @@ export function composePostMetaData(fileName) {
   return {
     content,
     meta: {
-      slug: `/blog/${fileName.replace(".md", "")}`,
+      slug: `blog/${fileName.replace(".md", "")}`,
       title: data.title,
       description: data.description,
       formattedDate: formattedDate || "",

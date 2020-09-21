@@ -5,7 +5,11 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About Vandebron.tech</title>
+        <title>About vandebron.tech</title>
+        <meta
+          name="Description"
+          content="Vandebron Engineering & Data. eading the renewable energy transition with innovative solutions."
+        />
       </Head>
       <Container>
         <H2>About Vandebron</H2>

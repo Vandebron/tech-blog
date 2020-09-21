@@ -20,7 +20,7 @@ export default function Markdown({ children }) {
 
           return <Heading>{children}</Heading>;
         },
-        paragraph: Paragraph
+        paragraph: Paragraph,
       }}
     />
   );

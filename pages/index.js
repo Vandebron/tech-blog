@@ -20,8 +20,13 @@ export default function Home({ posts }) {
   return (
     <>
       <Head>
-        <title>Vandebron.tech</title>
+        <title>vandebron.tech</title>
+        <meta
+          name="Description"
+          content="Vandebron Engineering & Data. eading the renewable energy transition with innovative solutions."
+        />
       </Head>
+
       <Container style={{ marginBottom: 60 }}>
         <Row alignItems="center" style={{ marginBottom: 60 }}>
           <Col col={12} sm={12} md={6} lg={6}>
@@ -32,10 +37,7 @@ export default function Home({ posts }) {
           </Col>
           <Col col={12} sm={12} md={6} lg={6}>
             <BoxShadow style={{ width: "100% " }}>
-              <Image
-                aspectRatio="2:1"
-                src="https://images.ctfassets.net/l0vbdd13d5ww/5tuHsOqIglGsi1qBh0ueVH/e6df4475e1f7e2e44895ba1243acba79/DJI_0030.jpg"
-              />
+              <Image aspectRatio="2:1" src="images/hero.jpg" alt="Solar panels" />
             </BoxShadow>
           </Col>
         </Row>
@@ -45,14 +47,16 @@ export default function Home({ posts }) {
             <Paragraph>
               <H4>Latest posts</H4>
             </Paragraph>
-
             <RouterLink href={firstPost.slug}>
               <div>
                 <BlogCard
                   key={firstPost.slug}
-                  image={firstPost.coverImage}
                   title={firstPost.title}
-                  imageProps={{ aspectRatio: "2:1" }}
+                  image={firstPost.coverImage}
+                  imageProps={{
+                    aspectRatio: "2:1",
+                    alt: firstPost.title,
+                  }}
                   description={firstPost.description}
                   date={new Date(firstPost.date)}
                 />
@@ -79,6 +83,7 @@ export default function Home({ posts }) {
                           title={title}
                           description={description}
                           date={new Date(date)}
+                          imageProps={{ alt: title }}
                         />
                       </>
                     </Col>

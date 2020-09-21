@@ -2,24 +2,29 @@
   "name": "learn-starter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vandebron.github.io/tech-blog",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export -o dist",
+    "build": "next build && next export",
     "start": "next start",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "yarn build && touch out/.nojekyll",
+    "deploy": "node gh-pages.js"
   },
   "dependencies": {
     "@vandebron/windmolen": "^15.21.0",
     "gray-matter": "^4.0.2",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.1",
     "next": "9.3.5",
     "next-transpile-modules": "^4.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-markdown": "^4.3.1"
+    "react-markdown": "^4.3.1",
+    "responsive-loader": "^2.1.1"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.6.2"
   }
 }

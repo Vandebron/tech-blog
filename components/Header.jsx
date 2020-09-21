@@ -6,9 +6,6 @@ import {
   Navigation,
   Icon,
   Flex,
-  H3,
-  H5,
-  H4,
 } from "@vandebron/windmolen";
 import { useRouter } from "next/router";
 import RouterLink from "next/link";

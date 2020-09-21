@@ -13,12 +13,13 @@ import {
 import { composePostMetaData } from "../../utils";
 
 export default function BlogPosts({ post }) {
-  const { title, coverImage } = post.meta;
+  const { title, description, coverImage } = post.meta;
 
   return (
     <>
       <Head>
         <title>{title}</title>
+        <meta name="Description" content={description} />
       </Head>
 
       <Container>
@@ -35,7 +36,7 @@ export default function BlogPosts({ post }) {
 
         <Row>
           <Col col={12}>
-            <Image aspectRatio="2:1" src={coverImage} />
+            <Image aspectRatio="2:1" src={coverImage} alt={title} />
           </Col>
         </Row>
 
