@@ -1,209 +1,114 @@
-import Head from 'next/head'
+import {
+  Container,
+  BlogCard,
+  Row,
+  Col,
+  H4,
+  Paragraph,
+  BoxShadow,
+  Image,
+} from "@vandebron/windmolen";
+import fs from "fs";
+import RouterLink from "next/link";
+import Head from "next/head";
+import { composePostMetaData } from "../utils";
+import ProjectCard from "../components/ProjectCard";
 
-export default function Home() {
+export default function Home({ posts }) {
+  const firstPost = posts[0].meta;
+
   return (
-    <div className="container">
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Vandebron.tech</title>
       </Head>
+      <Container style={{ marginBottom: 60 }}>
+        <Row alignItems="center" style={{ marginBottom: 60 }}>
+          <Col col={12} sm={12} md={6} lg={6}>
+            <H4>Vandebron Engineering & Data</H4>
+            <Paragraph>
+              Leading the renewable energy transition with innovative solutions
+            </Paragraph>
+          </Col>
+          <Col col={12} sm={12} md={6} lg={6}>
+            <BoxShadow style={{ width: "100% " }}>
+              <Image
+                aspectRatio="2:1"
+                src="https://images.ctfassets.net/l0vbdd13d5ww/5tuHsOqIglGsi1qBh0ueVH/e6df4475e1f7e2e44895ba1243acba79/DJI_0030.jpg"
+              />
+            </BoxShadow>
+          </Col>
+        </Row>
 
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Row justifyContent="between">
+          <Col col={12} sm={12} md={7} lg={7}>
+            <Paragraph>
+              <H4>Latest posts</H4>
+            </Paragraph>
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+            <RouterLink href={firstPost.slug}>
+              <div>
+                <BlogCard
+                  key={firstPost.slug}
+                  image={firstPost.coverImage}
+                  title={firstPost.title}
+                  imageProps={{ aspectRatio: "2:1" }}
+                  description={firstPost.description}
+                  date={new Date(firstPost.date)}
+                />
+              </div>
+            </RouterLink>
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+            <Row>
+              {posts.map((post) => {
+                const {
+                  title,
+                  description,
+                  date,
+                  coverImage,
+                  slug,
+                } = post.meta;
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+                return (
+                  <RouterLink href={slug}>
+                    <Col col={12} sm={12} md={6} lg={6}>
+                      <>
+                        <BlogCard
+                          key={slug}
+                          image={coverImage}
+                          title={title}
+                          description={description}
+                          date={new Date(date)}
+                        />
+                      </>
+                    </Col>
+                  </RouterLink>
+                );
+              })}
+            </Row>
+          </Col>
 
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          <Col colr={12} sm={12} md={4} lg={4}>
+            <H4 style={{ marginBottom: 20 }}>Open source</H4>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+            <ProjectCard title="Project 1" icon="external-link" />
+            <ProjectCard title="Code examples" icon="github" />
+            <ProjectCard title="Test it" icon="github" />
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
+export function getStaticProps() {
+  const files = fs.readdirSync(`${process.cwd()}/assets/posts`);
 
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
+  const posts = files.map((fileName) => composePostMetaData(fileName));
 
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
-  )
+  return {
+    props: {
+      posts,
+    },
+  };
 }

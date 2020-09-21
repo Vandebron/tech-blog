@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+## Vandebron.tech blog
+
+This blog demonstrates all the tech activities by Vandebron.

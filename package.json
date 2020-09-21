@@ -8,8 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@vandebron/windmolen": "^15.21.0",
+    "gray-matter": "^4.0.2",
     "next": "9.3.5",
+    "next-transpile-modules": "^4.1.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-markdown": "^4.3.1"
   }
 }
