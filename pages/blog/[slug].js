@@ -1,6 +1,8 @@
 import fs from "fs";
 import Head from "next/head";
+// import Markdown from "../../components/Markdown2";
 import Markdown from "../../components/Markdown";
+
 import {
   Container,
   Row,
@@ -8,7 +10,7 @@ import {
   Image,
   H2,
   Text,
-  Paragraph,
+  Paragraph, H1
 } from "@vandebron/windmolen";
 import { composePostMetaData } from "../../utils";
 
@@ -40,7 +42,7 @@ export default function BlogPosts({ post }) {
           </Col>
         </Row>
 
-        <Row>
+        <Row style={{marginBottom: 60}}>
           <Col col={12}>
             <Markdown>{post.content}</Markdown>
           </Col>
