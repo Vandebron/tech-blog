@@ -6,27 +6,3 @@ body {
 body > div {
   height: 100%;
 }
-
-.header-hero {
-  position: relative;
-  background-color: #FFF;
-}
-
-.header-hero:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    background-image: url("https://images.ctfassets.net/l0vbdd13d5ww/5tuHsOqIglGsi1qBh0ueVH/e6df4475e1f7e2e44895ba1243acba79/DJI_0030.jpg");
-    background-repeat: no-repeat;
-    background-position: 50% 0;
-    -ms-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
-}
