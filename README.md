@@ -13,7 +13,7 @@ yarn
 
 OR
 
-``bash
+```bash
 npm i
 ```
 
