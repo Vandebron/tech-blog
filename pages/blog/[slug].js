@@ -1,6 +1,5 @@
 import fs from "fs";
 import Head from "next/head";
-// import Markdown from "../../components/Markdown2";
 import Markdown from "../../components/Markdown";
 
 import {
@@ -10,12 +9,15 @@ import {
   Image,
   H2,
   Text,
-  Paragraph, H1
+  Paragraph,
+  H1,
 } from "@vandebron/windmolen";
 import { composePostMetaData } from "../../utils";
 
 export default function BlogPosts({ post }) {
-  const { title, description, coverImage } = post.meta;
+  const { title, description, coverImage, author, formattedDate } = post.meta;
+
+  const image = require(`../../public/${coverImage}`);
 
   return (
     <>
@@ -31,18 +33,23 @@ export default function BlogPosts({ post }) {
           </Col>
           <Col col={12}>
             <Paragraph>
-              <Text>{title}</Text>
+              <Text>{`By ${author} on ${formattedDate}`}</Text>
             </Paragraph>
           </Col>
         </Row>
 
         <Row>
           <Col col={12}>
-            <Image aspectRatio="2:1" src={coverImage} alt={title} />
+            <Image
+              aspectRatio="2:1"
+              src={image}
+              srcSet={image.srcSet}
+              alt={title}
+            />
           </Col>
         </Row>
 
-        <Row style={{marginBottom: 60}}>
+        <Row style={{ marginBottom: 60 }}>
           <Col col={12}>
             <Markdown>{post.content}</Markdown>
           </Col>
@@ -54,7 +61,7 @@ export default function BlogPosts({ post }) {
 
 // This function gets called at build time and generates the list of blog posts
 export async function getStaticPaths() {
-  const files = fs.readdirSync(`${process.cwd()}/assets/posts`);
+  const files = fs.readdirSync(`${process.cwd()}/public/posts`);
 
   // Get the paths we want to pre-render based on posts
   const paths = files.map((filename) => {

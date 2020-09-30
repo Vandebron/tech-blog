@@ -3,7 +3,7 @@ import matter from "gray-matter";
 
 export function composePostMetaData(fileName) {
   const markdownWithMetadata = fs
-    .readFileSync(`${process.cwd()}/assets/posts/${fileName}`)
+    .readFileSync(`${process.cwd()}/public/posts/${fileName}`)
     .toString();
 
   const { data, content } = matter(markdownWithMetadata);
@@ -24,6 +24,7 @@ export function composePostMetaData(fileName) {
       formattedDate: formattedDate || "",
       date: data.createdAt.toString(),
       coverImage: data.coverImage,
+      author: data.author,
     },
   };
 }
