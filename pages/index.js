@@ -94,11 +94,10 @@ export default function Home({ posts }) {
           </Col>
 
           <Col colr={12} sm={12} md={4} lg={4}>
-            <H4 style={{ marginBottom: 20 }}>Open source</H4>
+            <H4 style={{ marginBottom: 20 }}>Projects</H4>
 
-            <ProjectCard title="Project 1" icon="external-link" />
-            <ProjectCard title="Code examples" icon="github" />
-            <ProjectCard title="Test it" icon="github" />
+            <ProjectCard title="Vandebron on Github" icon="github" />
+            <ProjectCard title="Windmolen" icon="external-link" />
           </Col>
         </Row>
       </Container>
@@ -107,7 +106,7 @@ export default function Home({ posts }) {
 }
 
 export function getStaticProps() {
-  const files = fs.readdirSync(`${process.cwd()}/assets/posts`);
+  const files = fs.readdirSync(`${process.cwd()}/public/posts`);
 
   const posts = files.map((fileName) => composePostMetaData(fileName));
 
