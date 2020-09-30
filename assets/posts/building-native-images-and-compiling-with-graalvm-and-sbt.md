@@ -24,11 +24,13 @@ GraalVM is a high-performance JVM that supports efficient ahead-of-time (AOT) an
 Seeing the versatile features of GraalVM it is worth looking a bit under its hood.
 Actually, GraalVM is defined by three main technologies:
 
-- the Graal compiler, a high-performance JIT-compiler that can make Java applications run faster from within the JVM
+- [Graal compiler](https://www.graalvm.org/reference-manual/jvm/), a high-performance JIT-compiler that can make JVM applications run faster from within the JVM
 - [SubstrateVM](https://www.graalvm.org/reference-manual/native-image/SubstrateVM/), includes the necessary components to run a JVM-app as a native executable ( Garbage Collector, Thread Scheduler, ...)
 - [Truffle Language Implementation Framework](https://www.graalvm.org/reference-manual/truffle-framework/), the basis for the polyglot support from GraalVM
 
-Our motivation for trying out GraalVM was tackling the pain points of Scala, Java projects, and microservices.
+Our motivation for trying out GraalVM was tackling the pain points of Scala, Java projects, and microservices. Shipping microservices written in Scala as docker containers (I hope you appreciate this word play) to your production system comes with the cost that those containers can be fairly large, as the application can only be run with a JVM. See [Building Docker images](#building-docker-images)
+
+
 During the hackathon, we were most interested in the building of native images for Scala applications.
 
 ## Project setup
@@ -102,7 +104,7 @@ The next step now is to become strong and independent and learn how to run witho
 GraalVM ships with the [GraalVM Updater](https://www.graalvm.org/docs/reference-manual/native-image/) (`gu`) to install the `native-image` on your machine.
 
 ```bash
-GRAALHOME/bin/gu install native-image
+$GRAALHOME/bin/gu install native-image
 ```
 
 [sbt-native-packager](https://sbt-native-packager.readthedocs.io/en/latest/) provides functionality to build packages efficiently (e.g. building Docker images) and added to that, it also provides support for building native images.
@@ -135,7 +137,7 @@ With that setup, native images are just a stone's throw away!
 
 The next three sections are not a write-up but rather the main steps we had to take to make it work. This includes failing images and troubleshooting.
 I want to keep this in because it might be interesting for others when they have to troubleshoot.
-For the summary and happy path you can jump directly to [Summary](#summary)
+For the summary and happy path you can jump directly to [Roundup](#roundup)
 
 ---
 
@@ -223,7 +225,7 @@ cat src/main/resources/application.conf
 Hm, so everything is actually in place. But somehow GraalVM can't find them.
 It requires still some more GraalVM fine-tuning here.
 
-By default, GraalVM doesn't include any resource/configuration-files.
+By default, GraalVM doesn't include any resource or configuration-files.
 The option `-H:ResourceConfigurationFiles=path/to/resource-config.json` defines a path to a JSON configuration file:
 So inside the `resource-config.json` we can include our `application.conf` and our `logback.xml`.
 But writing those config files can be tedious and it is difficult in larger projects to find all necessary classes that need to be included.
@@ -308,18 +310,54 @@ So this explains probably why logging was only working when the server was run f
 
 With removing this and building the native-image, `logback` appears in the dependency-tree, and logging works when the native image is executed!
 
-This "bug" was interesting as it showed that dynamic class loading is not supported by GraalVM and classes and dependencies have to be present during compile time to make a fully functional application. 
+This "bug" was interesting as it emphasized what GraalVM can NOT do for you. Dynamic class loading/linking can not be supported by GraalVM as classes and dependencies have to be present during compile time to make a fully functional application. 
 
-### Building native images - Summary
+### Roundup
 
-A successful setup of sbt and GraalVM to build native-images requires to TODO
+A successful setup of sbt and GraalVM to build native-images requires to:
 
-- install GraalVM's native-image via ...
-- add sbt-native-packager to sbt
-- identify the needed files via ...
-- fine-tune GraalVM with the following options:
-- build the native image via ...
+- install GraalVM's native-image functionality via it's graal-updater 
+  ```bash
+  gu install native-image
+  ```
+- add sbt-native-packager and sbt-assembly to sbt:
+  ```java scala sbt
+  // inside project/plugins.sbt
+  addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.7.3")  
+  addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "x.y.z")
+  ```
+- enable the GraalVM-Plugin:
+  ```java scala sbt
+  // inside build.sbt
+  enablePlugins(GraalVMNativeImagePlugin)
+  ```
+- create a fat JAR and define which resource and configuration files should be intergated by intercepting look up calls during its execution:
+  ```bash
+  sbt assembly
+  mkdir configs
+  $GRAALHOME/bin/java -agentlib:native-image-agent=config-output-dir=./configs -jar target/scala-2.12/apply-at-vdb-assembly-0.1.0-SNAPSHOT.jar
+  ```
+- fine-tune GraalVM with the following options and include the files that have been created in the previous step:
+  ```java scala
+  // build.sbt
+  graalVMNativeImageOptions ++= Seq(
+    "--allow-incomplete-classpath",
+    "-H:ResourceConfigurationFiles=../../configs/resource-config.json",
+    "-H:ReflectionConfigurationFiles=../../configs/reflect-config.json",
+    "-H:JNIConfigurationFiles=../../configs/jni-config.json",
+    "-H:DynamicProxyConfigurationFiles=../../configs/proxy-config.json"
+  )
+  ```
+- build the native image with:
+  ```bash
+  sbt graalvm-native-image:packageBin
+  ```
 - run the executable file without the need of java
+  ```
+  /target/graalvm-native-image/apply-at-vdb
+  ```
+
+It is worth noting that the creation of a native image is a quite time-consuming process. For this project it took between 1 and 2 minutes. This is of course something a CI/CD-Server like Jenkins would take care of but it has to be kept in mind. 
 
 With a working native-image it is time to dockerize.
 
@@ -335,7 +373,8 @@ With the [sbt-assembly](https://github.com/sbt/sbt-assembly) plugin you can crea
 
 ```shell
  ls -lh target/scala-2.12/apply-at-vdb-assembly-0.1.0-SNAPSHOT.jar
- target/scala-2.12/apply-at-vdb-assembly-0.1.0-SNAPSHOT.jar
+
+ ...  ...   42M   target/scala-2.12/apply-at-vdb-assembly-0.1.0-SNAPSHOT.jar
 ```
 
 This application can be run locally via `java -jar target/scala-2.12/apply-at-vdb-assembly-0.1.0-SNAPSHOT.jar` with the prerequisite Java is installed on that machine.
@@ -356,9 +395,9 @@ apply-at-vdb 	0.1.0-SNAPSHOT 		f488d4c06f28 	555MB
 
 A whopping 555MB for a server exposing one endpoint which jar-file was only 42MB. But to run this jar-file in a container, this container needs to ship with a JVM, and that's where the overhead lies.
 
-With that Docker image and jar file as a reference, the native-image will be called into action.
+With that Docker image and jar file as a reference, we can now look into how the native-image operators together with Docker.
 
-GraalVM does not support cross-building, meaning an application cannot be expected to be built in a Mac environment and run in a Linux environment. It has to be built and run on the same platform. With the help of Docker, the desired built environment can be provided.
+GraalVM does not support cross-building, meaning an application cannot be expected to be built in a MacOS environment and run in a Linux environment. It has to be built and run on the same platform. With the help of Docker, the desired built environment can be provided.
 The `Dockerfile` looks as follows:
 ```docker
 FROM oracle/graalvm-ce AS builder  
@@ -380,7 +419,7 @@ This Dockerfile can be run with:
 $ docker build -t native-apply-at-vdb .
 ```
 It does the following:
-The first docker container, as the name implies, is our builder. As a base image the official [GraalVM image](https://hub.docker.com/r/oracle/graalvm-ce) is used.
+The first docker container, as the name implies, is the builder. As a base image the official [GraalVM image](https://hub.docker.com/r/oracle/graalvm-ce) is used.
  This image needs two more things, GraalVM's native-image command and sbt, and this is what the two follow-up rows are providing.
  Once that's done, the project is copied into this container and the native image is built from within sbt.
 
@@ -404,4 +443,4 @@ This Hackathon showed us that it is difficult and requires a lot of fine-tuning 
 
 All in all, GraalVM allows you to give up some Java overhead and create significant smaller Docker images. 
 Sadly this comes at the cost of giving up dynamic linking and class loading. 
-A silver lining is, that inside Scala's ecosystem this rarely a problem. Scala relies heavily on compile-time mechanisms for detecting bugs early and creating type-safe applications. (read [here](https://blog.softwaremill.com/small-fast-docker-images-using-graalvms-native-image-99c0bc92e70b) but also see e.g. [Scala's compiler phases](https://typelevel.org/scala/docs/phases.html))
+A silver lining is, that inside Scala's ecosystem this rarely a problem. Scala relies heavily on compile-time mechanisms for detecting bugs early and creating type-safe applications (read [here](https://blog.softwaremill.com/small-fast-docker-images-using-graalvms-native-image-99c0bc92e70b) but also see e.g. [Scala's compiler phases](https://typelevel.org/scala/docs/phases.html)).
