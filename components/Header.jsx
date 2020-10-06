@@ -54,8 +54,22 @@ export default function Header() {
             />
 
             <div>
-              <Link href="https://github.com/vandebron/" target="_blank">
+              <Link
+                href="https://github.com/vandebron/"
+                target="_blank"
+                style={{ marginRight: 10 }}
+              >
                 <Icon name="github" />
+              </Link>
+              <Link
+                href="https://dev.to/vandebron/"
+                target="_blank"
+                style={{ marginRight: 10 }}
+              >
+                <Icon name="devto" />
+              </Link>
+              <Link href="https://medium.com/vandebron/" target="_blank">
+                <Icon name="medium" />
               </Link>
             </div>
           </Flex>
