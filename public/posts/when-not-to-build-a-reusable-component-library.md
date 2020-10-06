@@ -2,7 +2,7 @@
 title: When (Not) To Build A Reusable Component Library
 description: You can find much information on why a reusable component library is a good investment, but most articles don't state the (obvious) disadvantages such projects can have.
 createdAt: 2020-10-05
-coverImage: /images/vandebron_thuis.jpg
+coverImage: /images/when-not-to-build-a-reusable-component-library.jpg
 imageSource: https://pixabay.com/users/stevepb-282134/
 tags: React, component library
 author: Roy Derks
@@ -24,7 +24,7 @@ Component libraries are becoming more and more popular with the rise of JavaScri
 
 Before deciding to create a component library for your team or company, you probably want to hear about the advantages such a project can lead to. The main advantages of component libraries are briefly mentioned in the first section above and are often defined as:
 
-- **Reducing code duplication**: With a component library, you can create components that can be shared across multiple websites or applications, therefore you no longer have to duplicate styling in different projects. This can seriously decrease the amount of code duplication that you have in your projects, also reducing the number of bugs or design inconsistencies.
+- **Reducing code duplication**: With a component library, you can create components that can be shared across multiple websites or applications. This way you no longer have to duplicate styling in different projects. This can seriously decrease the amount of code duplication that you have in your projects, also reducing the number of bugs or design inconsistencies.
 
 - **Preventing design inconsistencies**: By adding all your components and styled parts to the component library you're certain that these will look the same on all the places they're used. Not only will all the components look the same on every page, when designers make a change to one of these components they can be easily updated on all the places they're used.
 
