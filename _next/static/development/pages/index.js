@@ -38401,7 +38401,7 @@ function Home(_ref) {
     }
   }, "vandebron.tech"), __jsx("meta", {
     name: "Description",
-    content: "Vandebron Engineering & Data. eading the renewable energy transition with innovative solutions.",
+    content: "Vandebron Engineering & Data. Leading the renewable energy transition with innovative solutions.",
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -38667,7 +38667,7 @@ function Home(_ref) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 3:
 /*!**************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Froyderks%2Fcode%2Ftech-blog%2Fpages%2Findex.js ***!
   \**************************************************************************************************************************/
@@ -38690,5 +38690,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

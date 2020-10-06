@@ -151,6 +151,11 @@ var links = [{
 }];
 function Header() {
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
+  var selected = links.findIndex(function (_ref) {
+    var url = _ref.url;
+    return router.pathname === url;
+  });
+  console.log(selected >= 0 ? selected : 0);
   return __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Container"], {
     as: "header",
     style: {
@@ -161,7 +166,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 28,
       columnNumber: 5
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Row"], {
@@ -170,7 +175,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 36,
       columnNumber: 7
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -182,7 +187,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 37,
       columnNumber: 9
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -190,21 +195,21 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 38,
       columnNumber: 11
     }
   }, __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 39,
       columnNumber: 13
     }
   }, __jsx(_Logo__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 40,
       columnNumber: 15
     }
   })))), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -216,7 +221,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 44,
       columnNumber: 9
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Flex"], {
@@ -224,7 +229,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 45,
       columnNumber: 11
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Navigation"], {
@@ -234,7 +239,7 @@ function Header() {
           external = _links$linkId.external;
       return external ? window.open(url, "_blank") : router.push(url);
     },
-    selected: 0,
+    selected: selected >= 0 ? selected : 0,
     links: links,
     style: {
       marginRight: 25
@@ -242,14 +247,14 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 46,
       columnNumber: 13
     }
   }), __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 59,
       columnNumber: 13
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -258,7 +263,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 60,
       columnNumber: 15
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
@@ -266,7 +271,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 61,
       columnNumber: 17
     }
   })))))));
