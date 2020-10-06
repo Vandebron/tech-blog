@@ -20,8 +20,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function ProjectCard(_ref) {
   var title = _ref.title,
-      icon = _ref.icon;
-  return __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["BoxShadow"], {
+      icon = _ref.icon,
+      href = _ref.href;
+  return __jsx("a", {
+    href: href,
+    target: "_blank",
+    style: {
+      textDecoration: 'none'
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 5
+    }
+  }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["BoxShadow"], {
     style: {
       width: "100%",
       padding: 15,
@@ -32,8 +45,8 @@ function ProjectCard(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 5
+      lineNumber: 7,
+      columnNumber: 7
     }
   }, __jsx("div", {
     style: {
@@ -44,16 +57,16 @@ function ProjectCard(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 7
+      lineNumber: 16,
+      columnNumber: 9
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
     name: icon,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 9
+      lineNumber: 23,
+      columnNumber: 11
     }
   })), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["H5"], {
     style: {
@@ -62,10 +75,10 @@ function ProjectCard(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 7
+      lineNumber: 25,
+      columnNumber: 9
     }
-  }, title));
+  }, title)));
 }
 
 /***/ }),
@@ -38371,18 +38384,19 @@ function Home(_ref) {
 
   var posts = _ref.posts;
   var firstPost = posts[0].meta;
+  var otherPosts = posts.slice(1);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 23,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 24,
       columnNumber: 9
     }
   }, "vandebron.tech"), __jsx("meta", {
@@ -38391,7 +38405,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 25,
       columnNumber: 9
     }
   })), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Container"], {
@@ -38401,7 +38415,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 31,
       columnNumber: 7
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Row"], {
@@ -38412,7 +38426,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 32,
       columnNumber: 9
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -38423,21 +38437,21 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 33,
       columnNumber: 11
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["H4"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 34,
       columnNumber: 13
     }
   }, "Vandebron Engineering & Data"), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Paragraph"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 35,
       columnNumber: 13
     }
   }, "Leading the renewable energy transition with innovative solutions")), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -38448,7 +38462,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 39,
       columnNumber: 11
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["BoxShadow"], {
@@ -38458,7 +38472,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 13
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Image"], {
@@ -38468,7 +38482,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 41,
       columnNumber: 15
     }
   })))), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Row"], {
@@ -38476,7 +38490,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 50,
       columnNumber: 9
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -38487,21 +38501,21 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 51,
       columnNumber: 11
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Paragraph"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 52,
       columnNumber: 13
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["H4"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 53,
       columnNumber: 15
     }
   }, "Latest posts")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -38509,14 +38523,17 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 55,
       columnNumber: 13
     }
   }, __jsx("div", {
+    style: {
+      cursor: "pointer"
+    },
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 56,
       columnNumber: 15
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["BlogCard"], {
@@ -38532,17 +38549,17 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 57,
       columnNumber: 17
     }
   }))), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Row"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 71,
       columnNumber: 13
     }
-  }, posts.map(function (post) {
+  }, otherPosts.map(function (post) {
     var _post$meta = post.meta,
         title = _post$meta.title,
         description = _post$meta.description,
@@ -38554,7 +38571,7 @@ function Home(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 77,
+        lineNumber: 82,
         columnNumber: 19
       }
     }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -38565,10 +38582,20 @@ function Home(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 78,
+        lineNumber: 83,
         columnNumber: 21
       }
-    }, __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["BlogCard"], {
+    }, __jsx("div", {
+      style: {
+        cursor: "pointer"
+      },
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 84,
+        columnNumber: 23
+      }
+    }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["BlogCard"], {
       key: slug,
       image: coverImage,
       title: title,
@@ -38580,7 +38607,7 @@ function Home(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80,
+        lineNumber: 85,
         columnNumber: 25
       }
     }))));
@@ -38592,7 +38619,7 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96,
+      lineNumber: 101,
       columnNumber: 11
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["H4"], {
@@ -38602,25 +38629,37 @@ function Home(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
+      lineNumber: 102,
       columnNumber: 13
     }
-  }, "Projects"), __jsx(_components_ProjectCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Links"), __jsx(_components_ProjectCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
     title: "Vandebron on Github",
+    href: "https://github.com/vandebron",
     icon: "github",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 104,
       columnNumber: 13
     }
   }), __jsx(_components_ProjectCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
     title: "Windmolen",
+    href: "https://windmolen.netlify.app/",
     icon: "external-link",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 109,
+      columnNumber: 13
+    }
+  }), __jsx(_components_ProjectCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    title: "Work with us",
+    href: "https://werkenbij.vandebron.nl/",
+    icon: "friend",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 114,
       columnNumber: 13
     }
   })))));

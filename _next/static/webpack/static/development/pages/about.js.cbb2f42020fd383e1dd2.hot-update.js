@@ -1,0 +1,171 @@
+webpackHotUpdate("static/development/pages/about.js",{
+
+/***/ "./components/Markdown.jsx":
+/*!*********************************!*\
+  !*** ./components/Markdown.jsx ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Markdown; });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @vandebron/windmolen */ "./node_modules/@vandebron/windmolen/dist/index.js");
+/* harmony import */ var _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _CodeBlock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CodeBlock */ "./components/CodeBlock.jsx");
+
+
+
+var _this = undefined,
+    _jsxFileName = "/Users/royderks/code/tech-blog/components/Markdown.jsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+
+
+
+
+var BlockQuote = function BlockQuote(_ref) {
+  var children = _ref.children;
+  return __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["Paragraph"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 38
+    }
+  }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["HighlightedHeader"], {
+    style: {
+      borderLeft: '3px solid #6fd300',
+      paddingLeft: 20
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 49
+    }
+  }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["H3"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 129
+    }
+  }, children)));
+};
+
+function Markdown(_ref2) {
+  var _this2 = this;
+
+  var children = _ref2.children;
+  return __jsx(react_markdown__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    source: children,
+    renderers: {
+      thematicBreak: react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment,
+      heading: function heading(_ref3) {
+        var children = _ref3.children,
+            level = _ref3.level;
+        var levels = {
+          1: _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["H1"],
+          2: _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["H2"],
+          3: _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["H3"],
+          4: _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["H4"],
+          5: _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["H5"]
+        };
+        var Heading = levels[level];
+        return __jsx(Heading, {
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 24,
+            columnNumber: 18
+          }
+        }, children);
+      },
+      paragraph: _vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["Paragraph"],
+      list: function list(_ref4) {
+        var children = _ref4.children;
+        return __jsx("ul", {
+          style: {
+            marginBlockStart: 0,
+            marginBlockEnd: 30
+          },
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 28,
+            columnNumber: 11
+          }
+        }, children);
+      },
+      listItem: function listItem(_ref5) {
+        var children = _ref5.children;
+        return __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_4__["Paragraph"], {
+          as: "li",
+          style: {
+            marginBottom: 0
+          },
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 33,
+            columnNumber: 11
+          }
+        }, children);
+      },
+      link: function link(_ref6) {
+        var children = _ref6.children,
+            props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref6, ["children"]);
+
+        return __jsx("a", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+          style: {
+            color: "inherit"
+          },
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 38,
+            columnNumber: 11
+          }
+        }), children);
+      },
+      code: _CodeBlock__WEBPACK_IMPORTED_MODULE_5__["default"],
+      inlineCode: function inlineCode(_ref7) {
+        var children = _ref7.children;
+        return __jsx("code", {
+          style: {
+            background: "rgb(0,0,0, 0.1)",
+            padding: "2px 4px",
+            fontSize: "80%",
+            color: "#000"
+          },
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 44,
+            columnNumber: 11
+          }
+        }, children);
+      },
+      blockquote: BlockQuote
+    },
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 5
+    }
+  });
+}
+
+/***/ })
+
+})
+//# sourceMappingURL=about.js.cbb2f42020fd383e1dd2.hot-update.js.map

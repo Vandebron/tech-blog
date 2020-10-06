@@ -144,6 +144,10 @@ var links = [{
 }, {
   name: "About",
   url: "/about"
+}, {
+  name: "Main website",
+  url: "https://vandebron.nl",
+  external: true
 }];
 function Header() {
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
@@ -157,7 +161,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 24,
       columnNumber: 5
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Row"], {
@@ -166,7 +170,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 32,
       columnNumber: 7
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -178,7 +182,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 33,
       columnNumber: 9
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -186,21 +190,21 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 34,
       columnNumber: 11
     }
   }, __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 35,
       columnNumber: 13
     }
   }, __jsx(_Logo__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 36,
       columnNumber: 15
     }
   })))), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -212,7 +216,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 9
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Flex"], {
@@ -220,13 +224,15 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 41,
       columnNumber: 11
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Navigation"], {
     onSelectLink: function onSelectLink(linkId) {
-      var url = links[linkId].url;
-      return router.push(url);
+      var _links$linkId = links[linkId],
+          url = _links$linkId.url,
+          external = _links$linkId.external;
+      return external ? window.open(url, "_blank") : router.push(url);
     },
     selected: 0,
     links: links,
@@ -236,24 +242,23 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 42,
       columnNumber: 13
     }
   }), __jsx("div", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 55,
       columnNumber: 13
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    style: {
-      marginRight: 15
-    },
+    href: "https://github.com/vandebron/",
+    target: "_blank",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 56,
       columnNumber: 15
     }
   }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
@@ -261,22 +266,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 17
-    }
-  })), __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 15
-    }
-  }, __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
-    name: "twitter",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 57,
       columnNumber: 17
     }
   })))))));
