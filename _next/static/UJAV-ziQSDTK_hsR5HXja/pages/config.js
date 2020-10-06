@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{CvGF:function(n,i,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/config",function(){return o("IeYr")}])},IeYr:function(n,i,o){"use strict";o.r(i),o.d(i,"ASSET_PATH",(function(){return u}));var u="../../public"}},[["CvGF",0]]]);
