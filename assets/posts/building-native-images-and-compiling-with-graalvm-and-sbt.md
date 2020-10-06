@@ -2,7 +2,8 @@
 title: Building native images and compiling with GraalVM and sbt
 description: At Vandebron we organized a two-day long Hackathon, a colleague and I took the chance to dig into the wonderful world of GraalVM.
 createdAt: 2020-09-20
-coverImage: /images/vandebron_thuis.jpg
+coverImage: /images/building-native-images-and-compiling-with-graalvm-and-sbt.jpg
+imageSource: https://pixabay.com/users/lumix2004-3890388/
 tags: graalvm, scala
 author: Katrin Grunert
 ---
