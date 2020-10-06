@@ -19,6 +19,7 @@ const links = [
 
 export default function Header() {
   const router = useRouter();
+  const selected = links.findIndex(({ url }) => router.pathname === url);
 
   return (
     <Container
@@ -45,7 +46,7 @@ export default function Header() {
 
                 return external ? window.open(url, "_blank") : router.push(url);
               }}
-              selected={0}
+              selected={selected >= 0 ? selected : 0}
               links={links}
               style={{
                 marginRight: 25,
