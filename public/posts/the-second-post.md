@@ -2,7 +2,7 @@
 title: Second post
 description: The second post is the least memorable.
 createdAt: 2020-12-16
-coverImage: images/vandebron_elektrisch_rijden.jpg
+coverImage: /images/vandebron_elektrisch_rijden.jpg
 author: Test
 ---
 
