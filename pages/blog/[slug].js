@@ -11,11 +11,12 @@ import {
   Text,
   Paragraph,
   H1,
+  Link
 } from "@vandebron/windmolen";
 import { composePostMetaData } from "../../utils";
 
 export default function BlogPosts({ post }) {
-  const { title, description, coverImage, author, formattedDate } = post.meta;
+  const { title, description, coverImage, author, formattedDate, imageSource } = post.meta;
 
   const image = require(`../../public/${coverImage}`);
 
@@ -40,12 +41,16 @@ export default function BlogPosts({ post }) {
 
         <Row>
           <Col col={12}>
-            <Image
+          <Paragraph>
+          <Image
               aspectRatio="2:1"
               src={image}
               srcSet={image.srcSet}
               alt={title}
             />
+           
+              {imageSource && <Link href={imageSource}>Image source</Link>}
+            </Paragraph>
           </Col>
         </Row>
 

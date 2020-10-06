@@ -1,8 +1,8 @@
 ---
 title: When (Not) To Build A Reusable Component Library
-description: You can find much information on why a reusable component library is a good investment, but most articles don't state the (obvious) disadvantages such projects can have.
+description: You can find much information on why a reusable component library is a good investment, but most articles don't state the (obvious) disadvantages..
 createdAt: 2020-10-05
-coverImage: /images/when-not-to-build-a-reusable-component-library.jpg
+coverImage: images/when-not-to-build-a-reusable-component-library.jpg
 imageSource: https://pixabay.com/users/stevepb-282134/
 tags: React, component library
 author: Roy Derks

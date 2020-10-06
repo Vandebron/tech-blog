@@ -14,6 +14,7 @@ import Logo from "./Logo";
 const links = [
   { name: "Home", url: "/" },
   { name: "About", url: "/about" },
+  { name: "Main website", url: "https://vandebron.nl", external: true },
 ];
 
 export default function Header() {
@@ -40,9 +41,9 @@ export default function Header() {
           <Flex smJustifyContent="between">
             <Navigation
               onSelectLink={(linkId) => {
-                const { url } = links[linkId];
+                const { url, external } = links[linkId];
 
-                return router.push(url);
+                return external ? window.open(url, "_blank") : router.push(url);
               }}
               selected={0}
               links={links}
@@ -52,11 +53,8 @@ export default function Header() {
             />
 
             <div>
-              <Link style={{ marginRight: 15 }}>
+              <Link href="https://github.com/vandebron/" target="_blank">
                 <Icon name="github" />
-              </Link>
-              <Link>
-                <Icon name="twitter" />
               </Link>
             </div>
           </Flex>

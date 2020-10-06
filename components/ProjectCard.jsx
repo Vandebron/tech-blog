@@ -1,27 +1,29 @@
 import React from "react";
 import { BoxShadow, Icon, H5 } from "@vandebron/windmolen";
 
-export default function ProjectCard({ title, icon }) {
+export default function ProjectCard({ title, icon, href }) {
   return (
-    <BoxShadow
-      style={{
-        width: "100%",
-        padding: 15,
-        display: "flex",
-        alignItems: "center",
-        marginBottom: 20,
-      }}
-    >
-      <div
+    <a href={href} target="_blank" style={{ textDecoration: 'none' }}>
+      <BoxShadow
         style={{
-          paddingRight: 10,
-          borderRight: "1px solid #000",
-          marginRight: 20,
+          width: "100%",
+          padding: 15,
+          display: "flex",
+          alignItems: "center",
+          marginBottom: 20,
         }}
       >
-        <Icon name={icon} />
-      </div>
-      <H5 style={{ margin: 0 }}>{title}</H5>
-    </BoxShadow>
+        <div
+          style={{
+            paddingRight: 10,
+            borderRight: "1px solid #000",
+            marginRight: 20,
+          }}
+        >
+          <Icon name={icon} />
+        </div>
+        <H5 style={{ margin: 0 }}>{title}</H5>
+      </BoxShadow>
+    </a>
   );
 }

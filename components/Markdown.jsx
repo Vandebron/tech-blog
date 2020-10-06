@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { H1, H2, H3, H4, H5, Paragraph, Link } from "@vandebron/windmolen";
+import { H1, H2, H3, H4, H5, Image, Paragraph } from "@vandebron/windmolen";
 import CodeBlock from "./CodeBlock";
 
 export default function Markdown({ children }) {
@@ -50,6 +50,7 @@ export default function Markdown({ children }) {
             {children}
           </code>
         ),
+        image: ({ alt, src, children}) => <Image src={src} alt={alt}>{children}</Image>,
       }}
     />
   );

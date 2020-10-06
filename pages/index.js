@@ -16,6 +16,7 @@ import ProjectCard from "../components/ProjectCard";
 
 export default function Home({ posts }) {
   const firstPost = posts[0].meta;
+  const otherPosts = posts.slice(1);
 
   return (
     <>
@@ -37,7 +38,11 @@ export default function Home({ posts }) {
           </Col>
           <Col col={12} sm={12} md={6} lg={6}>
             <BoxShadow style={{ width: "100% " }}>
-              <Image aspectRatio="2:1" src="images/hero.jpg" alt="Solar panels" />
+              <Image
+                aspectRatio="2:1"
+                src="images/hero.jpg"
+                alt="Solar panels"
+              />
             </BoxShadow>
           </Col>
         </Row>
@@ -48,7 +53,7 @@ export default function Home({ posts }) {
               <H4>Latest posts</H4>
             </Paragraph>
             <RouterLink href={firstPost.slug}>
-              <div>
+              <div style={{ cursor: "pointer" }}>
                 <BlogCard
                   key={firstPost.slug}
                   title={firstPost.title}
@@ -64,7 +69,7 @@ export default function Home({ posts }) {
             </RouterLink>
 
             <Row>
-              {posts.map((post) => {
+              {otherPosts.map((post) => {
                 const {
                   title,
                   description,
@@ -76,7 +81,7 @@ export default function Home({ posts }) {
                 return (
                   <RouterLink href={slug}>
                     <Col col={12} sm={12} md={6} lg={6}>
-                      <>
+                      <div style={{ cursor: "pointer" }}>
                         <BlogCard
                           key={slug}
                           image={coverImage}
@@ -85,7 +90,7 @@ export default function Home({ posts }) {
                           date={new Date(date)}
                           imageProps={{ alt: title }}
                         />
-                      </>
+                      </div>
                     </Col>
                   </RouterLink>
                 );
@@ -94,10 +99,23 @@ export default function Home({ posts }) {
           </Col>
 
           <Col colr={12} sm={12} md={4} lg={4}>
-            <H4 style={{ marginBottom: 20 }}>Projects</H4>
+            <H4 style={{ marginBottom: 20 }}>Links</H4>
 
-            <ProjectCard title="Vandebron on Github" icon="github" />
-            <ProjectCard title="Windmolen" icon="external-link" />
+            <ProjectCard
+              title="Vandebron on Github"
+              href="https://github.com/vandebron"
+              icon="github"
+            />
+            <ProjectCard
+              title="Windmolen"
+              href="https://windmolen.netlify.app/"
+              icon="external-link"
+            />
+            <ProjectCard
+              title="Work with us"
+              href="https://werkenbij.vandebron.nl/"
+              icon="friend"
+            />
           </Col>
         </Row>
       </Container>
@@ -108,7 +126,9 @@ export default function Home({ posts }) {
 export function getStaticProps() {
   const files = fs.readdirSync(`${process.cwd()}/public/posts`);
 
-  const posts = files.map((fileName) => composePostMetaData(fileName));
+  const posts = files
+    .map((fileName) => composePostMetaData(fileName))
+    .sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date));
 
   return {
     props: {
