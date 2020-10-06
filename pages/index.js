@@ -24,7 +24,7 @@ export default function Home({ posts }) {
         <title>vandebron.tech</title>
         <meta
           name="Description"
-          content="Vandebron Engineering & Data. eading the renewable energy transition with innovative solutions."
+          content="Vandebron Engineering & Data. Leading the renewable energy transition with innovative solutions."
         />
       </Head>
 

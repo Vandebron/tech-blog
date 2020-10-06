@@ -8,7 +8,7 @@ tags: React, component library
 author: Roy Derks
 ---
 
-Two months ago, I started my journey at Vandebron. One of the projects I first dove into was their efforts to build a component library. Something I was already familiar with from previous companies I worked at. 
+Two months ago, I started my journey at Vandebron. One of the projects I first dove into was their efforts to build a [component library](https://windmolen.netlify.app/). Something I was already familiar with from previous companies I worked at. 
 
 On the internet, you can find many articles that describe why a reusable component library is a good investment for your development team(s). Although there's much to say about the advantages of component libraries, most articles don't state the (obvious) disadvantages such projects can have. In this post, I'll point out some of our learnings and why you might not need such a reusable component library.
 
@@ -56,4 +56,4 @@ Besides these two alternatives, you also need to have proper design guidelines s
 
 ## To summarize
 
-Component libraries are a great way to reduce the amount of code duplication in your applications, prevent design inconsistencies, and increase collaborations between developers, designers, and different teams. But this comes with increased complexity, slower development cycles, and possible code conflicts between projects. Therefore you should consider if using an existing component library or having a monorepo for your source code is a workable solution. At Vandebron we decided to build our own component library and if you'd decide the same, then be sure that your design guidelines are properly structured and mature enough.
+Component libraries are a great way to reduce the amount of code duplication in your applications, prevent design inconsistencies, and increase collaborations between developers, designers, and different teams. But this comes with increased complexity, slower development cycles, and possible code conflicts between projects. Therefore you should consider if using an existing component library or having a monorepo for your source code is a workable solution. At Vandebron we decided to build our own component library (called [windmolen](https://windmolen.netlify.app/)) and if you'd decide the same, then be sure that your design guidelines are properly structured and mature enough.
