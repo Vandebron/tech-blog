@@ -8,18 +8,18 @@ We will briefly introduce spark in the next few lines and then we will dive deep
 Spark is an ETL distributed tool. ETL are three phases which describe a general procedure for moving data from a source to a destination.
 
 
-* *Extract* is the act of retrieving data from a data source which could be a database or a file system/
-* *Transform* is the core part of an algorithm. As you may know, functional programming is all about transformation. Whenever you write a block of code in Scala you go from an initial data structure to a resulting data structure, the same goes with spark but the data structures you use are specific spark structures we will describe later.
-* *Load* is the final part. Here you need to save (load) the resulting data structure from the transformation phase to a data source. This can either be the same as the extract phase or a different one.
-* *Distributed*: Spark is meant to be run in a cluster of nodes. Each node runs its own JVM and every spark data structure can/should be distributed among all the nodes of the cluster (using serialization) in order to parallelize the computation.
+* ***Extract*** is the act of retrieving data from a data source which could be a database or a file system.
+* ***Transform*** is the core part of an algorithm. As you may know, functional programming is all about transformation. Whenever you write a block of code in Scala you go from an initial data structure to a resulting data structure, the same goes with spark but the data structures you use are specific spark structures we will describe later.
+* ***Load*** is the final part. Here you need to save (load) the resulting data structure from the transformation phase to a data source. This can either be the same as the extract phase or a different one.
+* ***Distributed***: Spark is meant to be run in a cluster of nodes. Each node runs its own JVM and every spark data structure can/should be distributed among all the nodes of the cluster (using serialization) in order to parallelize the computation.
 
 
 ### Spark data structure: RDD, DataFrame and Dataset
 
-The core of spark is its /distributed resilient dataset ( RDD )./  An RDD is a collection of elements partitioned across the nodes of the cluster that can be operated on in parallel. *Extracting* data from a source creates an RDD. Operating on the RDD allows to *transform* the data. Writing the RDD *loads* the data into the end target ( like a database for example ).
+The core of spark is its *distributed resilient dataset ( RDD ).*  An ***RDD*** is a collection of elements partitioned across the nodes of the cluster that can be operated on in parallel. *Extracting* data from a source creates an RDD. Operating on the RDD allows to *transform* the data. Writing the RDD *loads* the data into the end target ( like a database for example ).
 They are made to be distributed over the cluster in order to parallelize the computation.
-A /DataFrame/ is an abstraction on top of an RDD. It is the first attempt of spark (2013) to organize the data inside and RDD with an SQL-like structure. With dataframe you can actually make transformation in an sql fashion.  Every element in a dataframe is a Row and you can actually transform a dataframe to another by adding or removing columns.
-A /DataSet/ finally is a further abstraction on top of a dataframe to organize data in an OO fashion (2015). Every element in a dataset is a case class and you can operate transformation in a scala fashion from a case class to another.
+A ***DataFrame*** is an abstraction on top of an RDD. It is the first attempt of spark (2013) to organize the data inside and RDD with an SQL-like structure. With dataframe you can actually make transformation in an sql fashion.  Every element in a dataframe is a Row and you can actually transform a dataframe to another by adding or removing columns.
+A ***DataSet*** finally is a further abstraction on top of a dataframe to organize data in an OO fashion (2015). Every element in a dataset is a case class and you can operate transformation in a scala fashion from a case class to another.
 
 ## Spark in action
 Let’s see now some code samples from our code base to illustrate in more detail each of ETL phases.
@@ -42,7 +42,7 @@ val p4Connections = selectedConnections
 p4Connections.show()
 
 ```
-For most people the extraction phase is just the first line ( the invocation to the read method ), they are not wrong because extracting means reading data from a datasource ( in this case an SQL server database ). I decided to include in this phase also some filtering and projection operations because I think these are not really part of the algorithm, this is still the preparation phase before you actually process the data. We can ultimately say that /preparing the data/ is something in between extraction and transformation therefore it is up to you to decide which phase it belongs to.
+For most people the extraction phase is just the first line ( the invocation to the read method ), they are not wrong because extracting means reading data from a datasource ( in this case an SQL server database ). I decided to include in this phase also some filtering and projection operations because I think these are not really part of the algorithm, this is still the preparation phase before you actually process the data. We can ultimately say that *preparing the data* is something in between extraction and transformation therefore it is up to you to decide which phase it belongs to.
 
 
 ### Transform
@@ -96,10 +96,10 @@ val rdd2Count = rdd1.map(
 x => rdd2.values.count() * x //This will NEVER work!!!!
 )
 ```
-/One does not simply use RDD inside another RDD/. ( Same goes for Dataframes or Datasets).
-This is a very simple concept which leads very often to lots of questions because many people just want to use spark as a normal scala library.  But this is not possible due to the inner distributed nature of spark and its data structures. We have said that an RDD is a resilient distributed dataset, let’s focus on the word /distributed/, it means that the data inside it is spread across the nodes of the cluster. Every node has its own JVM and it is called /Executor/, except for the master node where your program starts which is called /Driver/:
+*One does not simply use RDD inside another RDD*. ( Same goes for Dataframes or Datasets).
+This is a very simple concept which leads very often to lots of questions because many people just want to use spark as a normal scala library.  But this is not possible due to the inner distributed nature of spark and its data structures. We have said that an RDD is a resilient distributed dataset, let’s focus on the word *distributed*, it means that the data inside it is spread across the nodes of the cluster. Every node has its own JVM and it is called *Executor*, except for the master node where your program starts which is called *Driver*:
 
-Your code starts from the Driver and a copy is distributed to all executors, this also means that each executor needs to have the same working environment of the Driver, for Scala it is not a problem since it just needs a JVM to run. ( but we will see that if you use /pySpark/ you need to take extra care when you distribute your application.) Every spark data structure you have defined in your code will also be distributed across the executors and every time you perform a transformation it will be performed to each chunk of data in each executor.  Now let’s go back to our example, a `map` is a transformation on `rdd1` this means that block inside will be executed at the executor level, if we need `rdd2` to perform this block spark should somehow serialize the whole `rdd2` and send it to each executor.  You can understand now that _it is really not possible to serialize the whole RDD since it is by its nature already a distributed data structure_. So what can you do to actually perform such computation we showed in the example? The solution is “simple”: /prepare your data in such a way that it will be contained in one single RDD/ . In order to do so you can take advantage of all the transformation functions Spark has to offer such `map` `join` `union` `reduce` etc.
+Your code starts from the Driver and a copy is distributed to all executors, this also means that each executor needs to have the same working environment of the Driver, for Scala it is not a problem since it just needs a JVM to run. ( but we will see that if you use *pySpark* you need to take extra care when you distribute your application.) Every spark data structure you have defined in your code will also be distributed across the executors and every time you perform a transformation it will be performed to each chunk of data in each executor.  Now let’s go back to our example, a `map` is a transformation on `rdd1` this means that block inside will be executed at the executor level, if we need `rdd2` to perform this block spark should somehow serialize the whole `rdd2` and send it to each executor.  You can understand now that _it is really not possible to serialize the whole RDD since it is by its nature already a distributed data structure_. So what can you do to actually perform such computation we showed in the example? The solution is “simple”: *prepare your data in such a way that it will be contained in one single RDD*. In order to do so you can take advantage of all the transformation functions Spark has to offer such `map` `join` `union` `reduce` etc.
 
 
 ## Next step…
