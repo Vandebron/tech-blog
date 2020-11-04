@@ -6,7 +6,7 @@ As you may have read in other articles our main backend language is Scala so the
 ## What is Spark
 We will briefly introduce spark in the next few lines and then we will dive deep into some of its key concepts.
 Spark is an ETL distributed tool. ETL are three phases which describe a general procedure for moving data from a source to a destination.
-
+![ETL Diagram](../images/etlprocess.png "ETL")
 
 * ***Extract*** is the act of retrieving data from a data source which could be a database or a file system.
 * ***Transform*** is the core part of an algorithm. As you may know, functional programming is all about transformation. Whenever you write a block of code in Scala you go from an initial data structure to a resulting data structure, the same goes with spark but the data structures you use are specific spark structures we will describe later.
@@ -15,6 +15,8 @@ Spark is an ETL distributed tool. ETL are three phases which describe a general 
 
 
 ### Spark data structure: RDD, DataFrame and Dataset
+
+![Spark api history](../images/sparkapihistory.png "Spark api history")
 
 The core of spark is its *distributed resilient dataset ( RDD ).*  An ***RDD*** is a collection of elements partitioned across the nodes of the cluster that can be operated on in parallel. *Extracting* data from a source creates an RDD. Operating on the RDD allows to *transform* the data. Writing the RDD *loads* the data into the end target ( like a database for example ).
 They are made to be distributed over the cluster in order to parallelize the computation.
@@ -85,7 +87,7 @@ dataFrame
 .mode(saveMode)
 .save()
 ```
-In this specific case we will save our dataframe into a cassandra database. In spark, methods used to achieve the load phase are called /actions/ . It is very important to distinguish spark actions from the rest because actions are the only ones which trigger spark to actually perform the whole transformation chain you have defined previously. 
+In this specific case we will save our dataframe into a cassandra database. In spark, methods used to achieve the load phase are called *actions* . It is very important to distinguish spark actions from the rest because actions are the only ones which trigger spark to actually perform the whole transformation chain you have defined previously. 
 If our transformation phase, we described above, wasn’t followed by an action ( for example `save` ) nothing would have happened, the software would have simply terminated without doing anything.
 
 ## One concept to rule them all
@@ -98,6 +100,8 @@ x => rdd2.values.count() * x //This will NEVER work!!!!
 ```
 *One does not simply use RDD inside another RDD*. ( Same goes for Dataframes or Datasets).
 This is a very simple concept which leads very often to lots of questions because many people just want to use spark as a normal scala library.  But this is not possible due to the inner distributed nature of spark and its data structures. We have said that an RDD is a resilient distributed dataset, let’s focus on the word *distributed*, it means that the data inside it is spread across the nodes of the cluster. Every node has its own JVM and it is called *Executor*, except for the master node where your program starts which is called *Driver*:
+
+![Spark cluster overview](../images/spark-cluster-overview.png "Spark cluster overview")
 
 Your code starts from the Driver and a copy is distributed to all executors, this also means that each executor needs to have the same working environment of the Driver, for Scala it is not a problem since it just needs a JVM to run. ( but we will see that if you use *pySpark* you need to take extra care when you distribute your application.) Every spark data structure you have defined in your code will also be distributed across the executors and every time you perform a transformation it will be performed to each chunk of data in each executor.  Now let’s go back to our example, a `map` is a transformation on `rdd1` this means that block inside will be executed at the executor level, if we need `rdd2` to perform this block spark should somehow serialize the whole `rdd2` and send it to each executor.  You can understand now that _it is really not possible to serialize the whole RDD since it is by its nature already a distributed data structure_. So what can you do to actually perform such computation we showed in the example? The solution is “simple”: *prepare your data in such a way that it will be contained in one single RDD*. In order to do so you can take advantage of all the transformation functions Spark has to offer such `map` `join` `union` `reduce` etc.
 
