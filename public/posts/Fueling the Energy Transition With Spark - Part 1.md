@@ -1,4 +1,4 @@
-# Spark article Part 1
+# Fueling the Energy Transition With Spark - Part 1
 Here at Vandebron, we have several projects which need to compute large amounts of data. In order to achieve acceptable results we had to choose a computing tool that should have helped us to build such algorithms.
 
 As you may have read in other articles our main backend language is Scala so the natural choice to build distributed parallel algorithms was indeed Spark.
