@@ -26,6 +26,9 @@ export default function Home({ posts }) {
           name="Description"
           content="Vandebron Engineering & Data. Leading the renewable energy transition with innovative solutions."
         />
+        <meta property="og:title" content="vandebron.tech" />
+        <meta property="og:description" content="Vandebron Engineering & Data. Leading the renewable energy transition with innovative solutions." />
+        <meta property="og:image" content={`https://www.vandebron.tech/images/hero.jpg`} key="ogimage" />
       </Head>
 
       <Container style={{ marginBottom: 60 }}>

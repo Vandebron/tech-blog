@@ -25,6 +25,9 @@ export default function BlogPosts({ post }) {
       <Head>
         <title>{title}</title>
         <meta name="Description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`https://www.vandebron.tech/${coverImage}`} key="ogimage" />
       </Head>
 
       <Container>
