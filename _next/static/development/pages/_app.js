@@ -4710,7 +4710,14 @@ module.exports = function GetIntrinsic(name, allowMissing) {
 				if (!allowMissing && !(parts[i] in value)) {
 					throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
 				}
-				value = desc ? (desc.get || desc.value) : value[parts[i]];
+				// By convention, when a data property is converted to an accessor
+				// property to emulate a data property that does not suffer from
+				// the override mistake, that accessor's getter is marked with
+				// an `originalValue` property. Here, when we detect this, we
+				// uphold the illusion by pretending to see that original data
+				// property, i.e., returning the value rather than the getter
+				// itself.
+				value = desc && 'get' in desc && !('originalValue' in desc.get) ? desc.get : value[parts[i]];
 			} else {
 				value = value[parts[i]];
 			}
@@ -4740,13 +4747,30 @@ var $apply = GetIntrinsic('%Function.prototype.apply%');
 var $call = GetIntrinsic('%Function.prototype.call%');
 var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
 
+var $defineProperty = GetIntrinsic('%Object.defineProperty%', true);
+
+if ($defineProperty) {
+	try {
+		$defineProperty({}, 'a', { value: 1 });
+	} catch (e) {
+		// IE 8 has a broken defineProperty
+		$defineProperty = null;
+	}
+}
+
 module.exports = function callBind() {
 	return $reflectApply(bind, $call, arguments);
 };
 
-module.exports.apply = function applyBind() {
+var applyBind = function applyBind() {
 	return $reflectApply(bind, $apply, arguments);
 };
+
+if ($defineProperty) {
+	$defineProperty(module.exports, 'apply', { value: applyBind });
+} else {
+	module.exports.apply = applyBind;
+}
 
 
 /***/ }),
@@ -5447,7 +5471,7 @@ module.exports = ReactPropTypesSecret;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.13.1
+/** @license React v16.14.0
  * react-dom.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -30017,7 +30041,7 @@ function injectIntoDevTools(devToolsConfig) {
     // Enables DevTools to append owner stacks to error messages in DEV mode.
     getCurrentFiber:  function () {
       return current;
-    } 
+    }
   }));
 }
 var IsSomeRendererActing$1 = ReactSharedInternals.IsSomeRendererActing;
@@ -30369,7 +30393,7 @@ implementation) {
   };
 }
 
-var ReactVersion = '16.13.1';
+var ReactVersion = '16.14.0';
 
 setAttemptUserBlockingHydration(attemptUserBlockingHydration$1);
 setAttemptContinuousHydration(attemptContinuousHydration$1);
@@ -33782,7 +33806,7 @@ exports.push([module.i, ".NotificationPopup-module__d-none {\n  display: none !i
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, "body {\n  margin: 0px;\n  min-height: 100vh;\n}\n\nbody > div {\n  height: 100%;\n}\n", "",{"version":3,"sources":["/Users/royderks/code/tech-blog/pages/styles.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,iBAAiB;AACnB;;AAEA;EACE,YAAY;AACd","file":"styles.css","sourcesContent":["body {\n  margin: 0px;\n  min-height: 100vh;\n}\n\nbody > div {\n  height: 100%;\n}\n"]}]);
+exports.push([module.i, "body {\n  margin: 0px;\n  min-height: 100vh;\n}\n\nbody > div {\n  height: 100%;\n}", "",{"version":3,"sources":["/Users/royderks/code/tech-blog/pages/styles.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,iBAAiB;AACnB;;AAEA;EACE,YAAY;AACd","file":"styles.css","sourcesContent":["body {\n  margin: 0px;\n  min-height: 100vh;\n}\n\nbody > div {\n  height: 100%;\n}"]}]);
 
 
 /***/ }),
