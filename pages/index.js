@@ -82,7 +82,7 @@ export default function Home({ posts }) {
                 } = post.meta;
 
                 return (
-                  <RouterLink href={slug}>
+                  <RouterLink key={slug} href={slug}>
                     <Col col={12} sm={12} md={6} lg={6}>
                       <div style={{ cursor: "pointer" }}>
                         <BlogCard

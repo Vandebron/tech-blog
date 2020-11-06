@@ -18,6 +18,6 @@ module.exports = withPlugins([
   ],
   withTM,
   {
-    basePath: "/",
+    basePath: "",
   },
 ]);

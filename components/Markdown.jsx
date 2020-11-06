@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
-import { H1, H2, H3, H4, H5, Image, Paragraph } from "@vandebron/windmolen";
-import CodeBlock from "./CodeBlock";
+import { H1, H2, H3, H4, H5, Paragraph } from "@vandebron/windmolen";
+import { PrismAsync as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 export default function Markdown({ children }) {
   return (
@@ -21,7 +22,7 @@ export default function Markdown({ children }) {
 
           return <Heading>{children}</Heading>;
         },
-        paragraph: Paragraph,
+        paragraph: (props) => <Paragraph {...props} />,
         list: ({ children }) => (
           <ul style={{ marginBlockStart: 0, marginBlockEnd: 30 }}>
             {children}
@@ -37,7 +38,16 @@ export default function Markdown({ children }) {
             {children}
           </a>
         ),
-        code: CodeBlock,
+        code: ({ language, value }) => (
+          <>
+            <SyntaxHighlighter
+              language={language}
+              style={okaidia}
+              children={value}
+            />
+            <br />
+          </>
+        ),
         inlineCode: ({ children }) => (
           <code
             style={{
@@ -50,7 +60,9 @@ export default function Markdown({ children }) {
             {children}
           </code>
         ),
-        image: ({ alt, src, children}) => <Image src={src} alt={alt}>{children}</Image>,
+        image: ({ alt, src }) => (
+          <img src={src} alt={alt} style={{ width: "100%" }} />
+        ),
       }}
     />
   );
