@@ -24,7 +24,7 @@ export function composePostMetaData(fileName) {
       formattedDate: formattedDate || "",
       date: data.createdAt.toString(),
       coverImage: data.coverImage,
-      imageSource: data.imageSource,
+      imageSource: data.imageSource || "",
       author: data.author,
     },
   };
