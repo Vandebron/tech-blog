@@ -42,7 +42,7 @@ You can optimize the SVG file above by following these steps:
 2. Click on `Paste markup` an paste the SVG code that you exported from Sketch (a.k.a. the SVG file above)
 3. You will see the icon rendered, now you have to either click at the `Copy as a text` or `Download` button to get the optimized SVG file
 
-With these simple steps you've optimized the SVG from over 450 bytes, which is already small, to 173 bytes (a decrease of over 38%!). If you'd open this file in the editor of your choice, you can see a lot of the useless (meta)data from the original file has been deleted. Also, the different elements of the SVG are combined in a single `path` that renders the icon:
+With these simple steps you've optimized the SVG from over 450 bytes, which is already small, to 173 bytes (a decrease of over 62%!). If you'd open this file in the editor of your choice, you can see a lot of the useless (meta)data from the original file has been deleted. Also, the different elements of the SVG are combined in a single `path` that renders the icon:
 
 ```svg
 <!-- something.svg -->
