@@ -11,7 +11,7 @@ At Vandebron we're maintaining a component library called [Windmolen](https://wi
 
 ## The problem
 
-The web is full of icons, and often these icons are rendered from SVG files to ensure you can increase (or decrease) the size of the icons depending on the use case. Designers often create these icons from design tools like Adobe Photoshop or Sketch. Although these icons might look pretty, exporting a SVG out of these tools is often difficult as [this article](https://medium.com/sketch-app-sources/the-best-way-to-export-an-svg-from-sketch-dd8c66bb6ef2) explains. Also, adda lot of code in the form of metadata is added to the SVG file. Let's have a look at what a typical SVG file exported out of Sketch looks like:
+The web is full of icons, and often these icons are rendered from SVG files to ensure you can increase (or decrease) the size of the icons depending on the use case. Designers often create these icons from design tools like Adobe Photoshop or Sketch. Although these icons might look pretty, exporting a SVG out of these tools is often difficult as [this article](https://medium.com/sketch-app-sources/the-best-way-to-export-an-svg-from-sketch-dd8c66bb6ef2) explains. Also, added lot of code in the form of metadata is added to the SVG file. Let's have a look at what a typical SVG file exported out of Sketch looks like:
 
 ```svg
 <!-- something.svg -->
