@@ -1,0 +1,126 @@
+#!/bin/bash
+# This CLI has been largely inspired by this medium article
+# https://jyeee.medium.com/kubernetes-on-your-macos-laptop-with-multipass-k3s-and-rancher-2-4-6e9cbf013f58
+
+function help() {
+    echo "Usage: wrapper [option]"
+    echo "List of options:
+    cleanup	purges the k3s machine from the system
+    install installs dependencies needed
+    start   starts the k3s machine
+    stop    stops the k3s machine"  
+}
+
+function cleanup() {
+    echo "Cleaning up multipass k3s machine..."
+    multipass stop k3s
+    multipass delete k3s
+    multipass purge
+    sudo sed -i '' "s/rancher.localdev//" /etc/hosts
+    rm k3s.yaml
+}
+
+function install() {
+    if brew list --cask multipass > /dev/null; then
+        # The package is installed
+        echo "(SKIPPING) Multipass is already installed"
+    else
+        # The package is not installed
+        echo "Installing Multipass from brew ..."
+        brew cask install multipass
+    fi
+
+
+    echo "Creating VM to use as single node cluster ..."
+    multipass launch --name k3s --cpus 2 --mem 4g --disk 20g
+
+    echo "K3S machine running infos:"
+    multipass info k3s
+    
+    K3S_IP=$(multipass info k3s | grep IPv4 | awk '{print $2}')
+    echo "New VM created at IP $K3S_IP"
+
+    if [[ $(cat /etc/hosts | grep "rancher.localdev") == "" ]]; then
+        echo "Creating rancher.localdev entry in /etc/hosts"
+        (echo "# local_rancher"; echo "$K3S_IP rancher.localdev") | sudo tee -a /etc/hosts
+    else
+        echo "Setting up local /etc/hosts file ..."
+        sudo sed -i '' "/rancher.localdev/c\\
+${K3S_IP} rancher.localdev
+" /etc/hosts
+    fi
+
+    echo "\nInstalling K3S on top of the VM"
+    multipass exec k3s -- bash -c "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v1.19.7+k3s1" sh -"
+    multipass info k3s
+    
+    if brew list kubernetes-cli; then
+        # The package is installed
+        echo "(SKIPPING) Kubernetes-cli is already installed"
+    else
+        # The package is not installed
+        echo "Installing kubernetes-cli from brew ..."
+        brew install kubernetes-cli
+    fi
+    brew upgrade kubernetes-cli
+
+    multipass exec k3s sudo cat /etc/rancher/k3s/k3s.yaml > k3s.yaml
+    cat k3s.yaml 
+    sed -i '' "s/127.0.0.1/${K3S_IP}/" k3s.yaml
+    export KUBECONFIG=${PWD}/k3s.yaml
+    
+    kubectl get nodes
+    kubectl get all
+    kubectl get pods --all-namespaces
+    
+    if brew list helm > /dev/null; then
+        # The package is installed
+        echo "(SKIPPING) Helm is already installed"
+    else
+        # The package is not installed
+        echo "Installing Helm from brew ..."
+        brew install helm@3
+    fi
+    helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+    
+    echo "Creating Rancher namespace ..."
+    kubectl create namespace cattle-system
+
+    echo "Installing cert-manager ..."
+    #kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
+    kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml
+    
+    #kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.1.0/cert-manager.yaml
+
+    kubectl create namespace cert-manager
+    helm repo add jetstack https://charts.jetstack.io
+    helm repo update
+    helm install   cert-manager jetstack/cert-manager   --namespace cert-manager   --version v1.0.4
+    kubectl get pods --namespace cert-manager
+    helm install rancher rancher-latest/rancher   --namespace cattle-system   --set hostname=rancher.localdev
+
+    echo "Rancher status:"
+    kubectl -n cattle-system rollout status deploy/rancher
+    kubectl -n cattle-system get deploy rancher
+}
+
+function start() {
+    echo "Starting up multipass k3s machine..."
+    multipass start k3s
+}
+
+function stop() {
+    echo "Stopping multipass k3s machine..."
+    multipass stop k3s
+}
+
+main() {
+    local cmd=$1
+    if [[ $cmd == "" ]]; then
+        help
+    else
+        "${cmd}"
+    fi
+}
+
+main "$@"
