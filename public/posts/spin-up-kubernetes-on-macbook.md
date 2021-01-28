@@ -37,11 +37,11 @@ My automator (aka do-it-once-never-do-it-again) spirt kicked in and i decided to
 ## How to use it
 
 #### Installation
-First thing you need to do is download [this script](https://raw.githubusercontent.com/Vandebron/tech-blog/master/public/scripts/bronernetes) and save it in a folder on your Mac (let's assume `~/bronernetes`) by executing
+First thing you need to do is download [this script](https://raw.githubusercontent.com/Vandebron/tech-blog/article/marconicotra-kubernetes-on-mac/public/scripts/bronernetes) and save it in a folder on your Mac (let's assume `~/bronernetes`) by executing
 ```bash
     mkdir ~/bronernetes
     cd ~/bronernetes
-    curl https://raw.githubusercontent.com/Vandebron/tech-blog/master/public/scripts/bronernetes > bronernetes
+    curl https://raw.githubusercontent.com/Vandebron/tech-blog/article/marconicotra-kubernetes-on-mac/public/scripts/bronernetes > bronernetes
     export PATH=$PATH:$(pwd)
 ```
 
