@@ -30,11 +30,11 @@ My automator (aka do-it-once-never-do-it-again) spirt kicked in and i decided to
 - **help**
 
 
-## What is happening under the hood
+### What is happening under the hood
 
 
 
-## How to use it
+### How to use it
 
 #### Installation
 First thing you need to do is download [this script](https://raw.githubusercontent.com/Vandebron/tech-blog/article/marconicotra-kubernetes-on-mac/public/scripts/bronernetes) and save it in a folder on your Mac (let's assume `~/bronernetes`) by executing
@@ -53,7 +53,7 @@ Next step is to run the installation process with the command `bronernetes insta
 #### Clean up
 When you are done or you just want to hard reset your environment you can just type `bronernetes cleanup` and it will take care of cleaning up the VM you just used, leaving you with a pristine machine, as nothing ever happened :)
 
-## Conclusion
+### Conclusion
 
 Having a sandbox is very useful to play around the concepts of a new setup or service and it packs up a huge amount of positive sides. No matter what is the language or the nature of the system you are trying to replicate, it can be challenging and involve a long list of instructions or manual operations and, sometimes, even dedicated hardware. Altought with some bash glue, it is possible to automate most of those processes and the investment cost can be enormously beneficial for yourself (less work the next time you do it) and for the other people working with you (they can use the tool, comment and suggest improvements). Most of all, in the case of infrastructure, it helps raising the knowledge of "what's going on here" and document for the ones interested into taking a trip down the rabbit hole.
 
