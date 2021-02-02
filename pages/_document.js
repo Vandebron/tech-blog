@@ -11,6 +11,11 @@ export default class extends Document {
             src="https://www.google-analytics.com/analytics.js"
           ></script>
 
+          <link
+            rel="stylesheet"
+            href="https://d381m57et8llfk.cloudfront.net/20210128-6054/static/css/dc7f55cf12b36887a247.fonts.css"
+          />
+
           <script
             dangerouslySetInnerHTML={{
               __html: `window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -18,6 +23,11 @@ export default class extends Document {
                 ga('send', 'pageview');`,
             }}
           />
+
+          <script
+            src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+            crossorigin
+          ></script>
         </Head>
         <body>
           <Main />

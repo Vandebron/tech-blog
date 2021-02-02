@@ -1,0 +1,228 @@
+import {
+  Container,
+  Row,
+  Col,
+  H1,
+  H2,
+  H3,
+  H4,
+  Paragraph,
+  Image,
+  Button,
+  BoxShadow,
+} from "@vandebron/windmolen";
+import Head from "next/head";
+
+import Logo from "../../components/Logo";
+import ChallengeDetail from "../../components/ChallengeDetail";
+
+import { REGISTER_LINK, challenges } from "../../public/greentech-hackathon/config";
+
+export default function GreentechHackathon({}) {
+  return (
+    <>
+      <Head>
+        <title>GreenTech Hackathon 2021 - vandebron.tech</title>
+        <meta name="Description" content="Vandebron GreenTech Hackathon" />
+        <meta
+          property="og:title"
+          content="Vandebron GreenTech Hackathon - 31 March, 1-2 April 2021"
+        />
+        <meta
+          property="og:description"
+          content="Climate change is on of the many pressing challenges our society is facing currently. At Vandebron we want continue trying to find ways to tackle this immense challenge. That’s why we’re organizing a 3-day GreenTech hackathon from March 31st to April 2nd."
+        />
+        <meta
+          property="og:image"
+          content={`https://www.vandebron.tech/images/greentech-hackathon/hero.jpg`}
+          key="ogimage"
+        />
+      </Head>
+
+      <div className="home">
+        <div className="hero">
+          <div className="hero-overlay">
+            <Container>
+              <Row
+                as="header"
+                alignItems="center"
+                justifyContent="between"
+                style={{
+                  paddingTop: 30,
+                  paddingBottom: 30,
+                  marginBottom: 30,
+                }}
+              >
+                <Col col={12} sm={12} smAuto={false} mdAuto lgAuto>
+                  <Logo inverted />
+                </Col>
+              </Row>
+
+              <Row alignItems="center" justifyContent="start">
+                <Col
+                  col={12}
+                  sm={12}
+                  md={8}
+                  lg={8}
+                  alignItems="start"
+                  style={{
+                    textAlign: "left",
+                  }}
+                >
+                  <H4
+                    style={{
+                      color: "white",
+                    }}
+                  >
+                    31 MARCH, 1-2 APRIL
+                  </H4>
+                  <H1
+                    style={{
+                      color: "white",
+                      textShadow: "2px 2px rgba(0, 0, 0, 0.3)",
+                    }}
+                  >
+                    GreenTech Hackathon 2021
+                  </H1>
+                  <Button
+                    as="a"
+                    href={REGISTER_LINK}
+                    style={{ background: "green", borderColor: "green" }}
+                  >
+                    REGISTER
+                  </Button>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </div>
+        <Container>
+          <Row
+            alignItems="center"
+            style={{
+              paddingTop: 60,
+              paddingBottom: 60,
+            }}
+          >
+            <Col
+              col={12}
+              sm={12}
+              md={12}
+              lg={6}
+              alignItems="start"
+              style={{
+                textAlign: "left",
+              }}
+            >
+              <H3>Why this hackathon?</H3>
+              <Paragraph>
+                Climate change is on of the many pressing challenges our society
+                is facing currently. At Vandebron we want continue trying to
+                find ways to tackle this immense challenge. That’s why we’re
+                organizing a 3-day GreenTech hackathon from March 31st to April
+                2nd.
+              </Paragraph>
+              <Paragraph>
+                During the hackathon we will focus on solutions in fields such
+                as wildlife protection, renewable energy, and other digital
+                solutions. Eager to contribute? This is your chance: we're
+                calling all ambitious people, from developers to marketing
+                specialists and from social media experts to designers, to join
+                us! During three days, in a hybrid format (online and
+                in-person), you'll get the chance to work on challenges from our
+                partners and have access to all their technology and knowledge.
+              </Paragraph>
+              <Paragraph>
+                We'd love to have you on board, registration is now open via the
+                button below.
+              </Paragraph>
+              <Paragraph>
+                <Button as="a" href={REGISTER_LINK}>
+                  REGISTER
+                </Button>
+              </Paragraph>
+            </Col>
+            <Col
+              col={12}
+              sm={12}
+              md={12}
+              lg={6}
+              alignItems="start"
+              style={{
+                textAlign: "left",
+              }}
+            >
+              {challenges.map(({ hero }) => (
+                <BoxShadow className="image-stack">
+                  <Image src={hero} aspectRatio="16:9" />
+                </BoxShadow>
+              ))}
+            </Col>
+          </Row>
+          <Row
+            alignItems="center"
+            style={{
+              paddingTop: 60,
+            }}
+          >
+            <H3>The Challenges</H3>
+          </Row>
+          <Row
+            alignItems="center"
+            style={{
+              paddingBottom: 60,
+            }}
+          >
+            {challenges.map((challenge) => (
+              <Col
+                col={12}
+                sm={12}
+                md={6}
+                lg={4}
+                alignItems="center"
+                justifyContent="center"
+                style={{
+                  textAlign: "left",
+                  marginBottom: 30,
+                }}
+              >
+                <ChallengeDetail {...challenge} />
+              </Col>
+            ))}
+          </Row>
+          <Row
+            alignItems="center"
+            style={{
+              paddingTop: 60,
+            }}
+          >
+            <H3>Other partners</H3>
+          </Row>
+          <Row
+            alignItems="center"
+            style={{
+              paddingBottom: 60,
+            }}
+          >
+            <Col col={4} sm={4} md={2} lg={2} alignItems="start">
+              <a href="https://klimaatroute.nl" target="_blank">
+                <Image src="/images/greentech-hackathon/logo-klimaatroute.jpg" />
+              </a>
+            </Col>
+            <Col col={4} sm={4} md={2} lg={2} alignItems="start">
+              <a href="https://felyx.com" target="_blank">
+                <Image src="/images/greentech-hackathon/logo-felyx.jpg" />
+              </a>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
+  );
+}
+
+export function getStaticProps() {
+  return {
+    props: {},
+  };
+}
