@@ -32,7 +32,40 @@ My automator (aka do-it-once-never-do-it-again) spirt kicked in and i decided to
 
 ### What is happening under the hood
 
+What the script does is substantially automating all the steps needed to:
+1. Create a new VM using Multipass (tool released by Canonical)
+2. Fetch the VM IP address and adding it to your local `/etc/hosts` file
+3. Install k3s (a lightweight distribution of Kubernetes) on top of the VM
+4. Install the Kubernetes command line tools on your laptop
+5. Install Helm (the Kubernetes package manager) on your laptop
+6. Install cert-manager (certificate manager) package on top of your k3s cluster
+7. Install Rancher (a Kubernetes control plane) package on top of your k3s cluster
 
+If you are looking for a more in-depth breakdown of the single steps you can download and inspect [the script](https://gist.githubusercontent.com/nikotrone/50b1a5f8d137411879eb2467e689bfbe/raw/090b4b4323d96ac28d96bbb346e2e657073722e6/bronernetes) (one of the many advantages of [OpenSource](https://en.wikipedia.org/wiki/Open_source) projects) or checkout and read the original [article](https://jyeee.medium.com/kubernetes-on-your-macos-laptop-with-multipass-k3s-and-rancher-2-4-6e9cbf013f58): it explains line by line what the specific commands are doing.
+
+#### 1. Multipass VM
+Multipass is a tool from Canonical (the company developing and maintaining the Ubuntu Linux distribution) that leverages Hyperkit (macOS feature to handle virtualization) in order to create and handle a Virtual Machine directly on your Mac.
+
+#### 2. Edit /etc/hosts
+Once we have our VM up and running we need to make it available with an easy url that is also gonna be used to generate the SSL certificate, in our case we picked up `rancher.localdev`.
+It is important to have a name setup in the beginning since this one will need to match with the certificate so we can use it programmatically.
+
+#### 3. Install K3S
+This step is pretty straightforward: just fetch a script that is publicly available on the [k3s official website](https://get.k3s.io) and feed it to your bash.
+K3s is a lightweight version of kubernetes with all the needed dependancies and executebale packaged in a convenient installation script. Because of its light nature, it is often used in embedded devices that have a limited amount of resources to offer.
+
+#### 4 & 5. Kubernetes and Helm cli
+**Kubernetes cli** (`kubectl`) is used to talk and interact with your kubernetes cluster. It can be used to manage multiple clusters according to the content of your KUBECONFIG environment variable. 
+The variable itself contains just a path to where your cluster configuration is stored, so you can switch from a cluster to another by simply pointing to another file that contains the configuration of another cluster.
+
+**Helm** instead is the "package manager" of Kubernetes: you can use it to add repositories to specific `charts` which are the blueprint that contains a way to install a specific tool on your cluster.
+Both of these tools have to be installed and run from your local laptop, either in the case you are managing a local VM or in the case you are interactiong with a remote cluster.
+
+#### 6 & 7. cert-manager and Rancher
+
+**Rancher** is the control plane for our cluster: it provides a GUI and an overview of our single node cluster. It offers other goodies like management of multiple clusters, deployed on different locations like AWS Azure and GCP or even on your own hardware, plus certificate deployment and some other handy functionalities.
+
+**cert-manager** is installed via Helm chart and it is the tool used by Rancher to generate and deploy a certificate across the entire cluster.
 
 ### How to use it
 
