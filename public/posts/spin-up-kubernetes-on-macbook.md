@@ -17,7 +17,7 @@ Our developers are provided with a Macbook and at the moment of writing there so
 
 - **Docker CE Kubernetes**: This is the easiest solution since there is a handy button to run your containers into a kubernetes environment.
 
-- **Vagrant and Virtualbox**: This solution is the one that can give you more control and you can easily create a cluster the size you want, but you need to be handy with VMs, Vagrant and the other tools. It's the old school way to do it but, while it's a chunk your platform engineers can bite, it can be a steep and frustrating process for people that are not used to handle VMs.
+- **Vagrant and Virtualbox**: This solution is the one that can give you more control and you can easily create a cluster the size you want, but you need to be handy with VMs, the hypervisor of choice and Vagrant. It's the old school way to do it but, while it's a chunk your platform engineers can bite, it can be a steep and frustrating process for people that are not used to handle VMs.
 
 - **Multipass + some bash magic glue**: Since Canonical created this tool for MacOS, creating an Ubuntu VM became a breeze and you can have a single, easily manageable VM with its networking up and running in less than a minute, without having to handle disks, distros and stuff. On top of it the command line interface is straight forward and it has just the basic commands we will need, so wrapping the entire process into a bash script is a piece of cake.
 
@@ -44,7 +44,7 @@ What the script does is substantially automating all the steps needed to:
 If you are looking for a more in-depth breakdown of the single steps you can download and inspect [the script](https://gist.githubusercontent.com/nikotrone/50b1a5f8d137411879eb2467e689bfbe/raw/090b4b4323d96ac28d96bbb346e2e657073722e6/bronernetes) (one of the many advantages of [OpenSource](https://en.wikipedia.org/wiki/Open_source) projects) or checkout and read the original [article](https://jyeee.medium.com/kubernetes-on-your-macos-laptop-with-multipass-k3s-and-rancher-2-4-6e9cbf013f58): it explains line by line what the specific commands are doing.
 
 #### 1. Multipass VM
-Multipass is a tool from Canonical (the company developing and maintaining the Ubuntu Linux distribution) that leverages Hyperkit (macOS feature to handle virtualization) in order to create and handle a Virtual Machine directly on your Mac.
+[Multipass](https://multipass.run/) is a tool from Canonical (the company developing and maintaining the Ubuntu Linux distribution) that leverages Hyperkit (macOS feature to handle virtualization) in order to create and handle a Virtual Machine directly on your Mac.
 
 #### 2. Edit /etc/hosts
 Once we have our VM up and running we need to make it available with an easy url that is also gonna be used to generate the SSL certificate, in our case we picked up `rancher.localdev`.
