@@ -71,7 +71,7 @@ Both of these tools have to be installed and run from your local laptop, either 
 
 All the steps will involve the use of a Terminal window
 #### Installation
-The first thing you need to do is download [this script](https://gist.githubusercontent.com/nikotrone/50b1a5f8d137411879eb2467e689bfbe/raw/090b4b4323d96ac28d96bbb346e2e657073722e6/bronernetes) and save it in a folder on your Mac (let's assume `~/bronernetes`) by executing
+The first thing you need to do is download [this script](https://gist.github.com/nikotrone/50b1a5f8d137411879eb2467e689bfbe) and save it in a folder on your Mac (let's assume `~/bronernetes`) by executing
 ```bash
     mkdir ~/bronernetes
     cd ~/bronernetes
