@@ -1,3 +1,4 @@
+import fs from "fs";
 import {
   Container,
   Row,
@@ -16,9 +17,11 @@ import Head from "next/head";
 import Logo from "../../components/Logo";
 import ChallengeDetail from "../../components/ChallengeDetail";
 
-import { REGISTER_LINK, challenges } from "../../public/greentech-hackathon/config";
+import { composePostMetaData } from "../../utils";
 
-export default function GreentechHackathon({}) {
+const REGISTER_LINK = "https://forms.gle/rigzes89tJA2dWcu7";
+
+export default function GreentechHackathon({ challenges }) {
   return (
     <>
       <Head>
@@ -152,9 +155,13 @@ export default function GreentechHackathon({}) {
                 textAlign: "left",
               }}
             >
-              {challenges.map(({ hero }) => (
+              {challenges.map(({ meta }) => (
                 <BoxShadow className="image-stack">
-                  <Image src={hero} aspectRatio="16:9" />
+                  <Image
+                    src={meta.hero}
+                    alt={meta.company}
+                    aspectRatio="16:9"
+                  />
                 </BoxShadow>
               ))}
             </Col>
@@ -186,7 +193,11 @@ export default function GreentechHackathon({}) {
                   marginBottom: 30,
                 }}
               >
-                <ChallengeDetail {...challenge} />
+                <ChallengeDetail
+                  {...challenge.meta}
+                  content={challenge.content}
+                  registerLink={REGISTER_LINK}
+                />
               </Col>
             ))}
           </Row>
@@ -222,7 +233,16 @@ export default function GreentechHackathon({}) {
 }
 
 export function getStaticProps() {
+  const directory = "/public/greentech-hackathon/";
+  const files = fs.readdirSync(`${process.cwd()}${directory}`);
+
+  const challenges = files.map((fileName) =>
+    composePostMetaData(directory, fileName)
+  );
+
   return {
-    props: {},
+    props: {
+      challenges: challenges,
+    },
   };
 }

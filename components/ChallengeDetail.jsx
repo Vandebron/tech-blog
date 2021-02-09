@@ -4,15 +4,15 @@ import { H4, Paragraph, Button, Card, Link } from "@vandebron/windmolen";
 // Import the Modal and Bootstrap
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Markdown from "./Markdown";
 
 export default function ChallengeDetail({
   logo,
   hero,
   title,
   company,
-  description,
-  technology,
-  website,
+  content,
+  registerLink,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,21 +32,12 @@ export default function ChallengeDetail({
             <img src={hero} />
           </div>
 
-          <Paragraph>{description}</Paragraph>
-          <Paragraph>
-            <strong>Technology: </strong>
-            {technology}
-          </Paragraph>
-          <Paragraph>
-            <strong>Website: </strong>
-            <Link href={website} style={{ fontSize: 20 }} target="_blank">
-              {website}
-            </Link>
-          </Paragraph>
-          <Paragraph></Paragraph>
+          <Markdown>{content}</Markdown>
         </Modal.Body>
         <Modal.Footer>
-          <Button>Register</Button>
+          <Button as="a" href={registerLink}>
+            REGISTER
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
