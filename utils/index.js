@@ -1,9 +1,9 @@
 import fs from "fs";
 import matter from "gray-matter";
 
-export function composePostMetaData(fileName) {
+export function composePostMetaData(directory, fileName) {
   const markdownWithMetadata = fs
-    .readFileSync(`${process.cwd()}/public/posts/${fileName}`)
+    .readFileSync(`${process.cwd()}${directory}${fileName}`)
     .toString();
 
   const { data, content } = matter(markdownWithMetadata);
@@ -18,14 +18,11 @@ export function composePostMetaData(fileName) {
   return {
     content,
     meta: {
+      ...data,
       slug: `blog/${fileName.replace(".md", "")}`,
-      title: data.title,
-      description: data.description,
       formattedDate: formattedDate || "",
-      date: data.createdAt.toString(),
-      coverImage: data.coverImage,
-      imageSource: data.imageSource || "",
-      author: data.author,
+      date: data?.createdAt?.toString() || "",
+      createdAt: data?.createdAt?.toString() || ""
     },
   };
 }

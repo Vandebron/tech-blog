@@ -1,0 +1,51 @@
+.home .hero {
+  position: relative;
+  text-align: center;
+  background: white;
+  background-image: url(../../public/images/greentech-hackathon/hero.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 768px) {
+  .home .hero {
+    height: 50vh;
+  }
+}
+
+.home .hero-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgb(0, 0, 0, 0.3);
+}
+
+.home .image-stack {
+  width: 75%;
+  margin-top: -5%;
+}
+
+.home .image-stack:nth-child(1) {
+  margin-top: 0%;
+}
+
+.home .image-stack:nth-child(2) {
+  margin-left: 25%;
+}
+
+.modal-hero {
+  height: 300px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.modal-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
