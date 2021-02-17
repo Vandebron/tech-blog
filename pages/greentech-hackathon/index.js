@@ -1,6 +1,7 @@
 import fs from "fs";
 import {
   Container,
+  Block,
   Row,
   Col,
   H1,
@@ -11,6 +12,7 @@ import {
   Image,
   Button,
   BoxShadow,
+  Table,
 } from "@vandebron/windmolen";
 import Head from "next/head";
 
@@ -20,6 +22,36 @@ import ChallengeDetail from "../../components/ChallengeDetail";
 import { composePostMetaData } from "../../utils";
 
 const REGISTER_LINK = "https://forms.gle/rigzes89tJA2dWcu7";
+
+const SCHEDULE = [
+  {
+    description: "Opening & hacking 🚀",
+    activities: [
+      { time: "09:00 - 10:00", description: "Opening ceremony" },
+      { time: "10:00 - 11:30", description: "Team formation (optional)" },
+      { time: "16:30 - 17:30", description: "Day closing 🍻" },
+    ],
+  },
+  {
+    description: "Full day of hacking 🚀",
+    activities: [
+      { time: "09:30 - 10:00", description: "Day start ☕ (optional)" },
+      { time: "12:00 - 12:30", description: "Lunch & energizer" },
+      { time: "16:30 - 18:00", description: "Inspiration sessions 🎤" },
+    ],
+  },
+  {
+    description: "Finishing up & presentations 🏆",
+    activities: [
+      { time: "09:30 - 10:00", description: "Day start ☕" },
+      { time: "12:00 - 12:30", description: "Lunch & energizer" },
+      {
+        time: "16:30 - 17:30",
+        description: "Presentations, prizes & closing 🍻",
+      },
+    ],
+  },
+];
 
 export default function GreentechHackathon({ challenges }) {
   return (
@@ -137,7 +169,7 @@ export default function GreentechHackathon({ challenges }) {
               </Paragraph>
               <Paragraph>
                 We'd love to have you on board, registration is now open via the
-                button below.
+                button below (deadline Friday March 19th).
               </Paragraph>
               <Paragraph>
                 <Button as="a" href={REGISTER_LINK}>
@@ -168,6 +200,7 @@ export default function GreentechHackathon({ challenges }) {
           </Row>
           <Row
             alignItems="center"
+            justifyContent="center"
             style={{
               paddingTop: 60,
             }}
@@ -198,6 +231,60 @@ export default function GreentechHackathon({ challenges }) {
                   content={challenge.content}
                   registerLink={REGISTER_LINK}
                 />
+              </Col>
+            ))}
+          </Row>
+          <Row
+            alignItems="center"
+            justifyContent="center"
+            style={{
+              paddingTop: 60,
+            }}
+          >
+            <H3>Schedule</H3>
+          </Row>
+          <Row
+            alignItems="flex-start"
+            style={{
+              paddingBottom: 60,
+            }}
+          >
+            {SCHEDULE.map(({ description, activities }, i) => (
+              <Col
+                col={12}
+                sm={12}
+                md={6}
+                lg={4}
+                alignItems="center"
+                justifyContent="center"
+                style={{
+                  textAlign: "left",
+                  marginBottom: 30,
+                }}
+              >
+                <Block
+                  withShadow
+                  small
+                  style={{ padding: 30, minHeight: 300, width: "100%" }}
+                >
+                  <H4>{`Day ${i + 1}`}</H4>
+                  <Paragraph fontSize="body-small">{description}</Paragraph>
+                  <br />
+                  <Table style={{ width: "100%", fontSize: 16 }}>
+                    <Table.Tbody style={{ borderTop: "1px solid #eaeaea" }}>
+                      {activities.map(({ time, description: activity }, i) => (
+                        <Table.Row>
+                          <Table.Cell style={{ paddingLeft: 0 }}>
+                            {time}
+                          </Table.Cell>
+                          <Table.Cell style={{ paddingRight: 0 }}>
+                            {activity}
+                          </Table.Cell>
+                        </Table.Row>
+                      ))}
+                    </Table.Tbody>
+                  </Table>
+                </Block>
               </Col>
             ))}
           </Row>
