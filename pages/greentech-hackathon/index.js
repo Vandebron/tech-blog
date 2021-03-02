@@ -151,21 +151,20 @@ export default function GreentechHackathon({ challenges }) {
             >
               <H3>Why this hackathon?</H3>
               <Paragraph>
-                Climate change is on of the many pressing challenges our society
-                is facing currently. At Vandebron we want continue trying to
-                find ways to tackle this immense challenge. That’s why we’re
-                organizing a 3-day GreenTech hackathon from March 31st to April
-                2nd.
+                Climate change is one of the many pressing challenges our
+                society is currently facing. At Vandebron we want to continue
+                trying to find ways to tackle this immense challenge. That’s why
+                we’re organizing a 3-day GreenTech hackathon from March 31st to
+                April 2nd.
               </Paragraph>
               <Paragraph>
-                During the hackathon we will focus on solutions in fields such
-                as wildlife protection, renewable energy, and other digital
-                solutions. Eager to contribute? This is your chance: we're
-                calling all ambitious people, from developers to marketing
-                specialists and from social media experts to designers, to join
-                us! During three days, in a hybrid format (online and
-                in-person), you'll get the chance to work on challenges from our
-                partners and have access to all their technology and knowledge.
+                During this free online event, we're trying to find
+                technological solutions to problems in wildlife conservation and
+                renewable energy. And you can join us! In these three days, you
+                get the opportunity to work on challenges from our partners,
+                access their technology and knowledge, and you'll get the chance
+                to win unique prizes. Besides, on April 1st (no joke) different
+                speakers will share their expertise and experiences with you.
               </Paragraph>
               <Paragraph>
                 We'd love to have you on board, registration is now open via the
