@@ -1,0 +1,13 @@
+[Service]
+Description=IPVS client to sync DCOS ipvs tables to Kubernetes
+Type=service
+ExecStartPre=/usr/bin/wget -P /usr/local/bin https://some_url.example.com
+ExecStartPre=/bin/chmod +x /usr/local/bin/ipvs-client
+ExecStart=/usr/local/bin/ipvs-client -remote-addr https://some_url.example.com -remote-path /json -remote-port 443
+StandardOutput=journal
+User=root
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

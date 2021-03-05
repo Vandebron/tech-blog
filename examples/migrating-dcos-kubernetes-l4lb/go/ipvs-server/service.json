@@ -1,0 +1,65 @@
+{
+    "labels": {
+      "traefik.frontend.entryPoints": "https,http",
+      "traefik.enable": "true",
+      "traefik.frontend.passHostHeader": "true"
+    },
+    "id": "/ipvs/server",
+    "backoffFactor": 1.15,
+    "backoffSeconds": 1,
+    "cmd": "ipvs-server -port $PORT0",
+    "container": {
+      "type": "MESOS",
+      "volumes": [],
+      "docker": {
+        "image": "anldisr/ipvs-server:0.0.1",
+        "forcePullImage": false,
+        "parameters": []
+      }
+    },
+    "cpus": 0.1,
+    "disk": 0,
+    "healthChecks": [
+      {
+        "gracePeriodSeconds": 300,
+        "intervalSeconds": 60,
+        "maxConsecutiveFailures": 3,
+        "portIndex": 0,
+        "timeoutSeconds": 20,
+        "delaySeconds": 15,
+        "protocol": "MESOS_HTTP",
+        "path": "/healthz"
+      }
+    ],
+    "instances": 1,
+    "maxLaunchDelaySeconds": 3600,
+    "mem": 128,
+    "gpus": 0,
+    "networks": [
+      {
+        "mode": "host"
+      }
+    ],
+    "portDefinitions": [
+      {
+        "labels": {
+          "VIP_0": "/ipvs/server:19000"
+        },
+        "name": "ipvs-server",
+        "protocol": "tcp",
+        "port": 10179
+      }
+    ],
+    "requirePorts": false,
+    "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 1
+    },
+    "killSelection": "YOUNGEST_FIRST",
+    "unreachableStrategy": {
+      "inactiveAfterSeconds": 0,
+      "expungeAfterSeconds": 0
+    },
+    "fetch": [],
+    "constraints": []
+  }

@@ -1,0 +1,45 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: ipvsadm
+  annotations:
+    {}
+  labels:
+    {}
+  namespace: test
+spec:
+  jobTemplate:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: batch.cronjob-test-ipvsadm
+    spec:
+      template:
+        spec:
+          affinity:
+          containers:
+            - imagePullPolicy: Always
+              image: anldisr/ipvsadm
+              stdin: false
+              stdinOnce: false
+              tty: false
+              command:
+                - ipvsadm
+                - '-L'
+                - '-n'
+              securityContext:
+                runAsRoot: true
+                readOnlyRootFilesystem: false
+                capabilities:
+                  add:
+                    - NET_ADMIN
+                privileged: false
+                allowPrivilegeEscalation: true
+              name: ipvsadm
+          dnsConfig:
+          dnsPolicy: ClusterFirstWithHostNet
+          hostAliases:
+          hostNetwork: true
+          imagePullSecrets:
+          restartPolicy: Never
+          volumes:
+  schedule: '*/5 * * * *'
