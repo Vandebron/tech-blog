@@ -4,7 +4,7 @@ This application is made fetch ipvs routes from an JSON endpoint, this will be t
 
 ## Requirements
 
-The requirement to get this application running are:
+The requirements to get this application running are:
 
 - ipvsadm
 - ipvs kernel modules (in general most Distro's already supply these)
