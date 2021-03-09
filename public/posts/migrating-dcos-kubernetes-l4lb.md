@@ -12,7 +12,7 @@ In October 2020 D2IQ [announced](https://d2iq.com/blog/d2iq-takes-the-next-step-
 
 ## L4LB
 
-The internal layer 4 load balancer DCOS provides is used in the majority of our workloads. When our data scientists schedule a spark driver, they connect to the spark dispatcher through the layer4 load balancer. Most of the DCOS frameworks use this layer4 load balancer as an internal service discovery tool, with Vandebron we use this layer 4 load balancer to communicate between services. In a default DCOS set up this load balancer responds on domain names like: `spark-dispatcher.marathon.l4lb.thisdcos.directory:7077`
+The internal layer 4 load balancer DCOS provides is used in the majority of our workloads. When our data scientists schedule a spark driver, they connect to the spark dispatcher through the Layer 4 load balancer. Most of the DCOS frameworks use this Layer 4 load balancer as an internal service discovery tool, with Vandebron we use this layer 4 load balancer to communicate between services. In a default DCOS set up this load balancer responds on domain names like: `spark-dispatcher.marathon.l4lb.thisdcos.directory:7077`
 
 When we ping the spark dispatcher we get the following:
 
