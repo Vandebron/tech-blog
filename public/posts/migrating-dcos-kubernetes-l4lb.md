@@ -8,7 +8,7 @@ tags: Kubernetes, k8s, mesos, l4lb, ipvs, ipvsadm
 author: Rogier Dikkes
 ---
 
-In October 2020 D2IQ [announced](https://d2iq.com/blog/d2iq-takes-the-next-step-forward) that they are moving onwards with their Kubernetes offering. Vandebron has been a D2IQ customer for their DCOS offering, we were just in the middle of a migration of our first workloads to DCOS Enterprise. We have evaluated the D2IQ K8s offering and decided to go for another Kubernetes product. We had a few migrations over the years, we migrated from Azure to AWS, we migrated workloads from normal instances to spot instances and all these migrations were done with nearly any downtime. We plan to reduce the downtime to a couple of minutes this migration and this is a real challenge. The first challenge that we will discuss today: We want to pair our Kubernetes clusters to the Mesos clusters, while we move a workload it should be able to connect to its dependencies in the Mesos cluster. We use Mesos for our NoSQL databases like Cassandra, internal data that we want to keep internal. Pairing Mesos and Kubernetes clusters enable us to reduce downtime, enabling us to switch back if we run into issues and move faster because it reduces complexity.
+In October 2020 D2IQ [announced](https://d2iq.com/blog/d2iq-takes-the-next-step-forward) that they are moving onwards with their Kubernetes offering. Vandebron has been a D2IQ customer for their DCOS offering, we were just in the middle of a migration of our first workloads to DCOS Enterprise. We have evaluated the D2IQ K8s offering and decided to go for another Kubernetes product. We had a few migrations over the years, we migrated from Azure to AWS, we migrated workloads from normal instances to spot instances and all these migrations were done with nearly any downtime. We plan to reduce the downtime to a couple of minutes this migration and this is a real challenge. The first challenge that we will discuss today: We want to pair our Kubernetes clusters to the DCOS/Mesos clusters, while we move a workload it should be able to connect to its dependencies in the DCOS cluster. We use DCOS for our NoSQL databases like Cassandra, internal data that we want to keep internal. Pairing DCOS and Kubernetes clusters enable us to reduce downtime, enabling us to switch back if we run into issues and move faster because it reduces complexity.
 
 ## L4LB
 
@@ -48,7 +48,7 @@ curl 1.2.3.4:80
 }
 ```
 
-This results in that the spark dispatcher now also is available on `1.2.3.4:80`. As mentioned before we wanted to connect our Mesos and Kubernetes clusters, getting hundreds of entries from ipvsadm and manually adding them one by one didn’t sound appealing to us. Especially if you consider that sometimes services fail and run on a different port or different host after recovery, maintaining this by hand would be a nightmare. We therefore decided to build a tool to sync IPVS entries from Mesos to Kubernetes.
+This results in that the spark dispatcher now also is available on `1.2.3.4:80`. As mentioned before we wanted to connect our DCOS and Kubernetes clusters, getting hundreds of entries from ipvsadm and manually adding them one by one didn’t sound appealing to us. Especially if you consider that sometimes services fail and run on a different port or different host after recovery, maintaining this by hand would be a nightmare. We therefore decided to build a tool to sync IPVS entries from DCOS to Kubernetes.
 
 ## Stack
 
@@ -247,7 +247,7 @@ In the repository, we have provided the service.json file, since it is opinionat
 
 ## ipvs-client
 
-The IPVS client is the component we use in the Kubernetes environment. The client connects to the server and gets the IPVS entries from the IPVS server inside our Mesos cluster. It then adds these IPVS entries to each node in the Kubernetes cluster. You, therefore, need to run each client per Kubernetes node.
+The IPVS client is the component we use in the Kubernetes environment. The client connects to the server and gets the IPVS entries from the IPVS server inside our DCOS cluster. It then adds these IPVS entries to each node in the Kubernetes cluster. You, therefore, need to run each client per Kubernetes node.
 
 You can find the code from the IPVS client in our repository.
 
