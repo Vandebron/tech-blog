@@ -3,7 +3,12 @@
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 
+const withTM = require('next-transpile-modules')(['@vandebron/windmolen']);
+
+
+
 module.exports = withPlugins([
+  withTM,
   [
     optimizedImages,
     {

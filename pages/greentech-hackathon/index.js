@@ -12,46 +12,14 @@ import {
   Image,
   Button,
   BoxShadow,
-  Table,
+  Table
 } from "@vandebron/windmolen";
 import Head from "next/head";
 
 import Logo from "../../components/Logo";
 import ChallengeDetail from "../../components/ChallengeDetail";
-
 import { composePostMetaData } from "../../utils";
-
-const REGISTER_LINK = "https://forms.gle/rigzes89tJA2dWcu7";
-
-const SCHEDULE = [
-  {
-    description: "Opening & hacking 🚀",
-    activities: [
-      { time: "09:00 - 10:00", description: "Opening ceremony" },
-      { time: "10:00 - 11:30", description: "Team formation (optional)" },
-      { time: "16:30 - 17:30", description: "Day closing 🍻" },
-    ],
-  },
-  {
-    description: "Full day of hacking 🚀",
-    activities: [
-      { time: "09:30 - 10:00", description: "Day start ☕ (optional)" },
-      { time: "12:00 - 12:30", description: "Lunch & energizer" },
-      { time: "16:30 - 18:00", description: "Inspiration sessions 🎤" },
-    ],
-  },
-  {
-    description: "Finishing up & presentations 🏆",
-    activities: [
-      { time: "09:30 - 10:00", description: "Day start ☕" },
-      { time: "12:00 - 12:30", description: "Lunch & energizer" },
-      {
-        time: "16:30 - 17:30",
-        description: "Presentations, prizes & closing 🍻",
-      },
-    ],
-  },
-];
+import { FAQ, SCHEDULE, REGISTER_LINK_HACKATHON, REGISTER_LINK_EVENT } from "../../public/greentech-hackathon/config/config";
 
 export default function GreentechHackathon({ challenges }) {
   return (
@@ -121,10 +89,21 @@ export default function GreentechHackathon({ challenges }) {
                   </H1>
                   <Button
                     as="a"
-                    href={REGISTER_LINK}
-                    style={{ background: "green", borderColor: "green" }}
+                    href={REGISTER_LINK_HACKATHON}
+                    style={{
+                      background: "green",
+                      borderColor: "green",
+                      marginRight: 20,
+                    }}
                   >
-                    REGISTER
+                    REGISTER HACKATHON
+                  </Button>
+                  <Button
+                    as="a"
+                    href={REGISTER_LINK_EVENT}
+                    variant="button-alternate"
+                  >
+                    REGISTER EVENT
                   </Button>
                 </Col>
               </Row>
@@ -167,12 +146,20 @@ export default function GreentechHackathon({ challenges }) {
                 speakers will share their expertise and experiences with you.
               </Paragraph>
               <Paragraph>
-                We'd love to have you on board, registration is now open via the
-                button below (deadline Friday March 19th).
+                We'd love to have you on board, registration for both the
+                hackathon and speaker event are now open via the button below
+                (deadline Friday March 19th).
               </Paragraph>
               <Paragraph>
-                <Button as="a" href={REGISTER_LINK}>
-                  REGISTER
+                <Button
+                  as="a"
+                  href={REGISTER_LINK_HACKATHON}
+                  style={{ marginRight: 20, marginBottom: 20 }}
+                >
+                  REGISTER HACKATHON
+                </Button>
+                <Button as="a" href={REGISTER_LINK_EVENT}>
+                  REGISTER EVENT
                 </Button>
               </Paragraph>
             </Col>
@@ -228,7 +215,7 @@ export default function GreentechHackathon({ challenges }) {
                 <ChallengeDetail
                   {...challenge.meta}
                   content={challenge.content}
-                  registerLink={REGISTER_LINK}
+                  registerLink={REGISTER_LINK_HACKATHON}
                 />
               </Col>
             ))}
@@ -289,6 +276,29 @@ export default function GreentechHackathon({ challenges }) {
           </Row>
           <Row
             alignItems="center"
+            justifyContent="center"
+            style={{
+              paddingTop: 60,
+            }}
+          >
+            <H3>Frequently Asked Questions</H3>
+          </Row>
+          <Row
+            alignItems="flex-start"
+            style={{
+              paddingBottom: 60,
+            }}
+          >
+            {FAQ.map(({ title, description }, i) => (
+              <Col col={12} alignItems="start">
+              <H4>{title}</H4>
+                <Paragraph>{description}</Paragraph>
+              </Col>
+            ))}
+          </Row>
+          <Row
+             alignItems="center"
+            justifyContent="center"
             style={{
               paddingTop: 60,
             }}
@@ -297,6 +307,7 @@ export default function GreentechHackathon({ challenges }) {
           </Row>
           <Row
             alignItems="center"
+            justifyContent="center"
             style={{
               paddingBottom: 60,
             }}
@@ -304,6 +315,11 @@ export default function GreentechHackathon({ challenges }) {
             <Col col={4} sm={4} md={2} lg={2} alignItems="start">
               <a href="https://klimaatroute.nl" target="_blank">
                 <Image src="/images/greentech-hackathon/logo-klimaatroute.jpg" />
+              </a>
+            </Col>
+            <Col col={4} sm={4} md={2} lg={2} alignItems="start">
+              <a href="https://evexperience.nl/" target="_blank">
+                <Image src="/images/greentech-hackathon/logo-ev-experience.jpg" />
               </a>
             </Col>
             <Col col={4} sm={4} md={2} lg={2} alignItems="start">
@@ -322,9 +338,9 @@ export function getStaticProps() {
   const directory = "/public/greentech-hackathon/";
   const files = fs.readdirSync(`${process.cwd()}${directory}`);
 
-  const challenges = files.map((fileName) =>
-    composePostMetaData(directory, fileName)
-  );
+  const challenges = files
+    .filter((file) => file.endsWith(".md"))
+    .map((fileName) => composePostMetaData(directory, fileName));
 
   return {
     props: {
