@@ -12,7 +12,7 @@ The requirements to get this application running are:
 
 ## Go build
 
-We build our Golang applications with the git sha, if you do not pass this flag then the build should continue.
+We build our Golang applications with the `git sha`, if you do not pass this flag then the build should continue.
 You can build this application with:
 
 ```bash
