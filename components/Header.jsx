@@ -6,6 +6,7 @@ import {
   Navigation,
   Icon,
   Flex,
+  Span,
 } from "@vandebron/windmolen";
 import { useRouter } from "next/router";
 import RouterLink from "next/link";
@@ -22,59 +23,90 @@ export default function Header() {
   const selected = links.findIndex(({ url }) => router.pathname === url);
 
   return (
-    <Container
-      as="header"
-      style={{
-        paddingTop: 30,
-        paddingBottom: 30,
-        marginBottom: 30,
-      }}
-    >
-      <Row alignItems="center" justifyContent="between">
-        <Col col={12} sm={12} smAuto={false} mdAuto lgAuto>
-          <RouterLink href="/">
-            <div>
-              <Logo />
-            </div>
-          </RouterLink>
-        </Col>
-        <Col col={12} sm={12} smAuto={false} mdAuto lgAuto>
-          <Flex smJustifyContent="between">
-            <Navigation
-              onSelectLink={(linkId) => {
-                const { url, external } = links[linkId];
-
-                return external ? window.open(url, "_blank") : router.push(url);
-              }}
-              selected={selected >= 0 ? selected : 0}
-              links={links}
+    <>
+      <div
+        style={{
+          background: "#6fd300",
+          color: "white",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Span fontSize="body-small" style={{ color: "white", margin: 0 }}>
+          We're organizing a remote GreenTech hackathon to hack the climate!
+          Find{" "}
+          <RouterLink href="/greentech-hackathon">
+            <span
               style={{
-                marginRight: 25,
+                color: "white",
+                textDecoration: "underline",
+                cursor: "pointer",
               }}
-            />
+            >
+              out more
+            </span>
+          </RouterLink>{" "}
+          🚀
+        </Span>
+      </div>
 
-            <div>
-              <Link
-                href="https://github.com/vandebron/"
-                target="_blank"
-                style={{ marginRight: 10 }}
-              >
-                <Icon name="github" />
-              </Link>
-              <Link
-                href="https://dev.to/vandebron/"
-                target="_blank"
-                style={{ marginRight: 10 }}
-              >
-                <Icon name="devto" />
-              </Link>
-              <Link href="https://medium.com/vandebron/" target="_blank">
-                <Icon name="medium" />
-              </Link>
-            </div>
-          </Flex>
-        </Col>
-      </Row>
-    </Container>
+      <Container
+        as="header"
+        style={{
+          paddingTop: 30,
+          paddingBottom: 30,
+          marginBottom: 30,
+        }}
+      >
+        <Row alignItems="center" justifyContent="between">
+          <Col col={12} sm={12} smAuto={false} mdAuto lgAuto>
+            <RouterLink href="/">
+              <div>
+                <Logo />
+              </div>
+            </RouterLink>
+          </Col>
+          <Col col={12} sm={12} smAuto={false} mdAuto lgAuto>
+            <Flex smJustifyContent="between">
+              <Navigation
+                onSelectLink={(linkId) => {
+                  const { url, external } = links[linkId];
+
+                  return external
+                    ? window.open(url, "_blank")
+                    : router.push(url);
+                }}
+                selected={selected >= 0 ? selected : 0}
+                links={links}
+                style={{
+                  marginRight: 25,
+                }}
+              />
+
+              <div>
+                <Link
+                  href="https://github.com/vandebron/"
+                  target="_blank"
+                  style={{ marginRight: 10 }}
+                >
+                  <Icon name="github" />
+                </Link>
+                <Link
+                  href="https://dev.to/vandebron/"
+                  target="_blank"
+                  style={{ marginRight: 10 }}
+                >
+                  <Icon name="devto" />
+                </Link>
+                <Link href="https://medium.com/vandebron/" target="_blank">
+                  <Icon name="medium" />
+                </Link>
+              </div>
+            </Flex>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }

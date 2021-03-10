@@ -12,14 +12,19 @@ import {
   Image,
   Button,
   BoxShadow,
-  Table
+  Table,
 } from "@vandebron/windmolen";
 import Head from "next/head";
 
 import Logo from "../../components/Logo";
 import ChallengeDetail from "../../components/ChallengeDetail";
 import { composePostMetaData } from "../../utils";
-import { FAQ, SCHEDULE, REGISTER_LINK_HACKATHON, REGISTER_LINK_EVENT } from "../../public/greentech-hackathon/config/config";
+import {
+  FAQ,
+  SCHEDULE,
+  REGISTER_LINK_HACKATHON,
+  REGISTER_LINK_EVENT,
+} from "../../public/greentech-hackathon/config/config";
 
 export default function GreentechHackathon({ challenges }) {
   return (
@@ -94,6 +99,7 @@ export default function GreentechHackathon({ challenges }) {
                       background: "green",
                       borderColor: "green",
                       marginRight: 20,
+                      marginBottom: 20,
                     }}
                   >
                     REGISTER HACKATHON
@@ -291,13 +297,13 @@ export default function GreentechHackathon({ challenges }) {
           >
             {FAQ.map(({ title, description }, i) => (
               <Col col={12} alignItems="start">
-              <H4>{title}</H4>
+                <H4>{title}</H4>
                 <Paragraph>{description}</Paragraph>
               </Col>
             ))}
           </Row>
           <Row
-             alignItems="center"
+            alignItems="center"
             justifyContent="center"
             style={{
               paddingTop: 60,
