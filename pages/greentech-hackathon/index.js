@@ -154,7 +154,7 @@ export default function GreentechHackathon({ challenges }) {
               <Paragraph>
                 We'd love to have you on board, registration for both the
                 hackathon and speaker event are now open via the button below
-                (deadline Friday March 19th).
+                (deadline Wednesday March 24th).
               </Paragraph>
               <Paragraph>
                 <Button
