@@ -9,11 +9,30 @@ Vandebron is a greentech innovator leading the renewable energy transition with 
 
 With more than 250 local sustainable energy sources spread throughout the Netherlands and with more than 200,000 connected households, we are well on the way to achieve our mission. At Vandebron we do things different. It is not just about dreams: we really want to bring change. We want to bring change by making the world more sustainable and we are all working hard to achieve that.
 
-In this challenge you get the unique opportunity to use our weather and energy production forecast to create innovative solutions. Using our (public) APIs you can create for example dashboards with current energy production figures, smart solutions to handle overproduction of green energy and even more!
+In this challenge you will help to develop our Electric Vehicles (EV) pool management. 
+
+Given a sample of EV charging sessions, the objective is to model when and for how long the EVs in our portfolio charge from the grid. 
 
 **Technology:**
 
-An extensive API with actual weather and energy forecasts will be made available
+You will use data from 480K of our sessions, in the format:
+
+```
+## # A tibble: 480,000 x 3
+##    timestamp_start timestamp_end kwh_charged
+##              <int>         <int>       <dbl>
+##  1      1556810759    1556871505       16.2 
+##  2      1558384073    1558424769        5.98
+##  3      1556819294    1556869701       15.9 
+##  4      1557690414    1557728057        7.65
+##  5      1558284907    1558292351        5.08
+##  6      1557625723    1557669341        8.09
+##  7      1558434015    1558439977        2.46
+##  8      1558379303    1558413870       54.8 
+##  9      1557310543    1557329550       17.8 
+## 10      1557485279    1557671652        7.74
+## # … with 479,990 more rows
+```
 
 **Website:**
 
