@@ -21,15 +21,15 @@ export const FAQ = [
   },
 ];
 
-export const REGISTER_LINK_HACKATHON = "https://forms.gle/rigzes89tJA2dWcu7";
+export const REGISTER_LINK_HACKATHON = "https://hopin.com/events/greentech-hackathon";
 export const REGISTER_LINK_EVENT =
-  "https://www.linkedin.com/events/greentechhackathon20216773262111981219840/";
+  "https://hopin.com/events/greentech-hackathon";
 
 export const SCHEDULE = [
   {
     description: "Opening & hacking 🚀",
     activities: [
-      { time: "09:00 - 10:00", description: "Opening ceremony" },
+      { time: "09:30 - 10:00", description: "Opening ceremony" },
       { time: "10:00 - 11:30", description: "Team formation (optional)" },
       { time: "16:30 - 17:30", description: "Day closing 🍻" },
     ],
