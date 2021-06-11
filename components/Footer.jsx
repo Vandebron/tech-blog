@@ -23,7 +23,7 @@ export default function Footer() {
         </Row>
         <Row alignItems="center">
           <Col>
-            <Text inverted>&copy; Vandebron</Text>
+            <Text style={{ color: 'white '}}>&copy; Vandebron</Text>
           </Col>
         </Row>
       </Container>

@@ -61,19 +61,28 @@ export default function Header() {
                 <Link
                   href="https://github.com/vandebron/"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ marginRight: 10 }}
                 >
                   <Icon name="github" />
+                  <span class="visually-hidden">Vandebron on Github</span>
                 </Link>
                 <Link
                   href="https://dev.to/vandebron/"
                   target="_blank"
+                  rel="noreferrer"
                   style={{ marginRight: 10 }}
                 >
                   <Icon name="devto" />
+                  <span class="visually-hidden">Vandebron on Dev.to</span>
                 </Link>
-                <Link href="https://medium.com/vandebron/" target="_blank">
+                <Link
+                  href="https://medium.com/vandebron/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Icon name="medium" />
+                  <span class="visually-hidden">Vandebron on Medium</span>
                 </Link>
               </div>
             </Flex>

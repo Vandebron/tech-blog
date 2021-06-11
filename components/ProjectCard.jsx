@@ -3,7 +3,7 @@ import { BoxShadow, Icon, H5 } from "@vandebron/windmolen";
 
 export default function ProjectCard({ title, icon, href }) {
   return (
-    <a href={href} target="_blank" style={{ textDecoration: 'none' }}>
+    <a href={href} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
       <BoxShadow
         style={{
           width: "100%",
