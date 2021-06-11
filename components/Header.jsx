@@ -24,33 +24,6 @@ export default function Header() {
 
   return (
     <>
-      <div
-        style={{
-          background: "#6fd300",
-          color: "white",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Span fontSize="body-small" style={{ color: "white", margin: 0 }}>
-          We're organizing a remote GreenTech hackathon to hack the climate!
-          Find{" "}
-          <RouterLink href="/greentech-hackathon">
-            <span
-              style={{
-                color: "white",
-                textDecoration: "underline",
-                cursor: "pointer",
-              }}
-            >
-              out more
-            </span>
-          </RouterLink>{" "}
-          🚀
-        </Span>
-      </div>
-
       <Container
         as="header"
         style={{
