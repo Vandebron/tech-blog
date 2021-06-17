@@ -1,5 +1,5 @@
 ---
-title: How to sign SOAP messages and signature verification
+title: Signing and verfiying SOAP-messages with wss4j and Scala
 description: 
 createdAt: 2021-06-17
 coverImage: images/soap.jpg
