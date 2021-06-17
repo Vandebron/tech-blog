@@ -1,6 +1,6 @@
 ---
 title: Signing and verfiying SOAP-messages with wss4j and Scala
-description: 
+description: This blogpost will explain with code examples how we at Vandebron are signing and verifying SOAP messages for our latest SOAP-client implementation. 
 createdAt: 2021-06-17
 coverImage: images/soap.jpg
 imageSource: https://cdn.pixabay.com/photo/2020/03/15/18/36/wash-4934590_960_720.jpg
