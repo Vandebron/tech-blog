@@ -1,23 +1,23 @@
 ---
-title: Signing and verfiying SOAP-messages with wss4j and Scala
-description: This blogpost will explain with code examples how we at Vandebron are signing and verifying SOAP messages for our latest SOAP-client implementation. 
+title: Signing and verifying SOAP messages with wss4j and Scala
+description: This blogpost will explain with code examples how we at Vandebron are signing and verifying SOAP messages for our latest SOAP client implementation. 
 createdAt: 2021-06-17
 coverImage: images/soap.jpg
 imageSource: https://cdn.pixabay.com/photo/2020/03/15/18/36/wash-4934590_960_720.jpg
 tags: SOAP, xml, scala, wss4j, signature, verification
 author: Katrin Grunert
 ---
-# Signing and verfiying SOAP-messages with wss4j and Scala
+# Signing and verfiying SOAP messages with wss4j and Scala
 
 SOAP is not dead. It is an established, XML-based and mature messaging protocol that comes with built-in security mechanisms, integrity checks, content validation and much more. A lot of enterprises and corporations are using it ~~sadly~~ still.
 Just recently, Vandebron had to implement a SOAP client to communicate with an external party. 
-This blogpost will explain with code examples how we at Vandebron are signing and verifying SOAP messages for our latest SOAP-client implementation. 
+This blog post will explain with code examples how we at Vandebron are signing and verifying SOAP messages for our latest SOAP client implementation. 
 
-For this process we are using Apache's Web Service Security Library [wss4j](https://ws.apache.org/wss4j/) as it is a proven tool in the WSS context and provides, as a Java library, great interoperability with the programming language Scala.
+For this process, we are using Apache's Web Service Security Library [wss4j](https://ws.apache.org/wss4j/) as it is a proven tool in the WSS context and provides, as a Java library, great interoperability with the programming language Scala.
 
 ## Signing SOAP messages
 
-Here we will take a look at the necessary steps to sign a SOAP-message like this one:
+Here we will take a look at the necessary steps to sign a SOAP message like this one:
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
   <soapenv:Header/>
@@ -71,7 +71,7 @@ To look after signing like this:
 ```
 
 For implementing the steps of the blog post you will need:
-- a SOAP-service you want to send messages to
+- a SOAP service you want to send messages to
 - documentation of that SOAP service that describes:
     - signature algorithm
     - canonicalization method
@@ -88,7 +88,7 @@ First we have to setup the necessary dependencies:
 
 ```scala
    // in your build.sbt or project/Dependencies.scala
-  // enabling signing and signature verification for SOAP-messages
+  // enabling signing and signature verification for SOAP messages
   lazy val webServiceSecurity = Seq(
     "org.apache.wss4j" % "wss4j"                    % "2.3.1" pomOnly (),
     "org.apache.wss4j" % "wss4j-ws-security-dom"    % "2.3.1",
@@ -98,7 +98,7 @@ First we have to setup the necessary dependencies:
   libraryDependencies ++= webServiceSecurity
 ```
 
-Then we continue with a scala representation of our certificate we are using for signing:
+Next, we continue with a scala representation of our certificate we are using for signing:
 
 ```scala
   import org.apache.wss4j.dom.WSConstants
@@ -121,13 +121,13 @@ Then we continue with a scala representation of our certificate we are using for
     override def toString: String = s"SigningCertificate(alias=$alias)"
   }
 ```
-In the documentation of the SOAP-service that you want to call should stand some information regarding the canonicalization method, signature algorithm, digest algorithm, and the key identifier type. Those are algorithms and information that define the signing process and we explained roughly now.
+In the documentation of the SOAP service that you want to call should stand some information regarding the canonicalization method, signature algorithm, digest algorithm, and the key identifier type. Those are algorithms and information that define the signing process and we explained roughly now.
 
-Before signing a message it has to be canonicalized. "Canonicalization is a method for generating a physical representation, the canonical form, of an XML document that accounts for syntactic changes permitted by the XML specification" (from [here](https://www.di-mgt.com.au/xmldsig-c14n.html)). In our case the Exclusive XML Canonicalization is used.
+Before signing a message it has to be canonicalized. "Canonicalization is a method for generating a physical representation, the canonical form, of an XML document that accounts for syntactic changes permitted by the XML specification" (from [here](https://www.di-mgt.com.au/xmldsig-c14n.html)). In our case, the Exclusive XML Canonicalization is used.
 
-The digest algorithm is used to ensure the integrity of the message during the verification of a signature. The algorithm is used to calculated a hash of the signed message. It should be documented in the SOAP-service documentation. Here we will use SHA256 as a hashing algorithm.
+The digest algorithm is used to ensure the integrity of the message during the verification of a signature. The algorithm is used to calculate a hash of the signed message. It should be documented in the SOAP service documentation. Here we will use SHA256 as a hashing algorithm.
 
-The signature algorithm describes how the message will be signed. It can be defined in the SOAP-service documentation but in the worst case you can read this algorithm from the certificate itself by using [`keytool`](https://docs.oracle.com/en/java/javase/12/tools/keytool.html):
+The signature algorithm describes how the message will be signed. It can be defined in the SOAP service documentation but in the worst case you can read this algorithm from the certificate itself by using [`keytool`](https://docs.oracle.com/en/java/javase/12/tools/keytool.html):
 ```
 $ keytool -list -v -keystore signature.p12
 Enter keystore password: ...
@@ -140,7 +140,7 @@ Signature algorithm name: SHA256withRSA # thats what we are after!
 ```
 According to the keytool inspection we will use SHA256withRSA (http://www.w3.org/2001/04/xmldsig-more#rsa-sha256) for signing.
 
-Last but not least, in our signature a `<KeyInfo>` element is included. This element contains information about the public key of the sender (us) and is needed for the signature verification once the message is received (read more [here](https://www.xml.com/pub/a/2001/08/08/xmldsig.html)). Since we have our public key provided we don't need to do much here. The `KeyIdentifierType` describes which form of key identifier is used to present the public key information.
+Last but not least, in our signature, a `<KeyInfo>` element is included. This element contains information about the public key of the sender (us) and is needed for the signature verification once the message is received (read more [here](https://www.xml.com/pub/a/2001/08/08/xmldsig.html)). Since we have our public key provided we don't need to do much here. The `KeyIdentifierType` describes which form of key identifier is used to present the public key information.
 
 Having all this information about our certificate in place, we build the mechanism to load in our signing certificate. For this, we create the object `KeyStoreBuilder`.
 
@@ -157,7 +157,7 @@ object KeyStoreBuilder {
   } 
 }
 ```
-Bear in mind, that you probably **don't** want to version any sensitive information like private keys and passwords hard-coded or in any enironment variables, so a safe mechanism for storing/fetching passwords and certificates (like [Vault](https://www.hashicorp.com/products/vault)) should be in place.
+Bear in mind, that you probably **don't** want to version any sensitive information like private keys and passwords hard-coded or in any environment variables, so a safe mechanism for storing/fetching passwords and certificates (like [Vault](https://www.hashicorp.com/products/vault)) should be in place.
 
 With the signing certificate in place, we can actually start signing a message. The next code example contains quite some Java boilerplate from wss4j that is required to make the signing mechanism work.
 
@@ -186,7 +186,7 @@ To restrict the usage of Java classes to a small portion of our code we will fir
     }
   }
 ```
-With that, we can convert any `Document` SOAP-message representation back to the `scala.xml`-supported  `Elem` format.
+With that, we can convert any `Document` SOAP message representation back to the `scala.xml` supported  `Elem` format.
 
 ```scala
 class SigningService(signingCertificate: SigningCertificate) {
@@ -247,9 +247,9 @@ class SigningService(signingCertificate: SigningCertificate) {
 Wss4j is a library that maintains an internal state during a signing process, but to avoid confusion it can be summarized as:
 1. `WSSecHeader` wraps around the document to be signed
 2. the WSSecHeader instance `header` will be used as part of the `WSSecSignature`-Builder
-3. the WSSecSignature instance `builder` gets configured with all necessary information, which algorithms are used for signing, digesting, canonicalization, which keyidentifier should be included. Those settings an vary from webservice to webservice.
+3. the WSSecSignature instance `builder` gets configured with all necessary information, which algorithms are used for signing, digesting, canonicalization, which key identifier should be included. Those settings an vary from webservice to webservice.
 
-The actual signing the document, that is now nested like a babashka, is happening with the help of an instance of `Crypto`. `Crypto` will contain either a keystore or a truststore or even both. It needs to be specified in the `crypto.properties` file or a runtime which class of Crypto will be used.
+The actual signing of the document, which is now nested like a matryoshka doll, is happening with the help of an instance of `Crypto`. `Crypto` will contain either a keystore or a truststore or even both. It needs to be specified in the `crypto.properties` file or a runtime which class of Crypto will be used.
  The most common one is [`Merlin`](https://ws.apache.org/wss4j/apidocs/org/apache/wss4j/common/crypto/Merlin.html).
 We have decided to specify its configuration during runtime, since it is more visible than a properties file. Nevertheless, the `crypto.properties`-file needs to exist in your `resources` folder neverthless otherwise you will get a following `WSSecurityException`:
 ```java
@@ -258,16 +258,16 @@ We have decided to specify its configuration during runtime, since it is more vi
   Cause: java.nio.file.NoSuchFileException: crypto.properties
 ```
 
-And that's it! The `KeyStoreBuilder` helps us to load a `SigningCertificate` and the `SigningService` uses this loaded certificate to sign SOAP-messages. 
-A receiver of our SOAP-message has all the necessary information in our signature to verify that this message has not been tempered with and we are the original sender.
+And that's it! The `KeyStoreBuilder` helps us to load a `SigningCertificate` and the `SigningService` uses this loaded certificate to sign SOAP messages. 
+A receiver of our SOAP message has all the necessary information in our signature to verify that this message has not been tampered with and we are the original sender.
 
-This verification is something we should also do on our side for incoming messages. So let's take a look on how we can verify the signature of received messages.
+This verification is something we should also do on our side for incoming messages. So let's take a look at how we can verify the signature of received messages.
 
 ## Verification of SOAP messages
 
-Verifiying the signature of incoming messages is equally important to ensure that the connection is secure. A verification process will tell you if the message is coming from a trusted source and has not been tampered with.
+Verifying the signature of incoming messages is equally important to ensure that the connection is secure. A verification process will tell you if the message is coming from a trusted source and has not been tampered with.
 
-As previously mentioned we need our source of truth, a pool of trusted public keys from all parties which will receive our SOAP-messages. These build the basis of the trust store.
+As previously mentioned we need our source of truth, a pool of trusted public keys from all parties which will receive our SOAP messages. These build the basis of the trust store.
 
 We will create a `TrustedCertificates` wrapper class in which we will load in the trust store and add this method to the `KeyStoreBuilder`.
 ```scala
@@ -339,9 +339,9 @@ class SigningService(signingCertificate: SigningCertificate, trustedCertificates
 }
 ```
 
-And with that we have completed the process of signing and verifying SOAP-messages!
+And with that, we have completed our roundtrip of signing and verifying SOAP messages!
 
-Here are gists, articles and documentation that inspired and helped us to figure out the signing and verification process for our SOAP-client. Feel free to check them out!
+Here are gists, articles, and documentation that inspired and helped us to figure out the signing and verification process for our SOAP client. Feel free to check them out!
 
 * * *
 
