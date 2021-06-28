@@ -121,7 +121,7 @@ Next, we continue with a scala representation of our certificate we are using fo
     override def toString: String = s"SigningCertificate(alias=$alias)"
   }
 ```
-In the documentation of the SOAP service that you want to call should stand some information regarding the canonicalization method, signature algorithm, digest algorithm, and the key identifier type. Those are algorithms and information that define the signing process and we explained roughly now.
+In the documentation of the SOAP service that you want to call should stand some information regarding the canonicalization method, signature algorithm, digest algorithm, and the key identifier type. Those are algorithms and information that define the signing process and we explain roughly now.
 
 Before signing a message it has to be canonicalized. "Canonicalization is a method for generating a physical representation, the canonical form, of an XML document that accounts for syntactic changes permitted by the XML specification" (from [here](https://www.di-mgt.com.au/xmldsig-c14n.html)). In our case, the Exclusive XML Canonicalization is used.
 
