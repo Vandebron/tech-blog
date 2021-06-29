@@ -7,9 +7,10 @@ imageSource: https://cdn.pixabay.com/photo/2020/03/15/18/36/wash-4934590_960_720
 tags: SOAP, xml, scala, wss4j, signature, verification
 author: Katrin Grunert
 ---
+
 # Signing and verfiying SOAP messages with wss4j and Scala
 
-SOAP is not dead. It is an established, XML-based and mature messaging protocol that comes with built-in security mechanisms, integrity checks, content validation and much more. A lot of enterprises and corporations are using it ~~sadly~~ still.
+SOAP is not dead. It is an established, XML-based and mature messaging protocol that comes with built-in security mechanisms, integrity checks, content validation and much more. A lot of enterprises and corporations are using it (sadly) still.
 Just recently, Vandebron had to implement a SOAP client to communicate with an external party. 
 This blog post will explain with code examples how we at Vandebron are signing and verifying SOAP messages for our latest SOAP client implementation. 
 
