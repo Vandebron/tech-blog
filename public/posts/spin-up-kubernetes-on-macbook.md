@@ -1,6 +1,6 @@
 ---
 title: How to Spin Up A Kubernetes Cluster On Your Macbook
-description: It is can be useful to create a disposable Kubernetes sandbox to play with when you are exploring a new application and how it could work.
+description: It can be useful to create a disposable Kubernetes sandbox to play with when you are exploring a new application and how it could work.
 createdAt: 2021-01-25
 coverImage: images/spin-up-kubernetes-on-macbook.jpg
 imageSource: https://pixabay.com/it/users/mari_sparrow-13090456/
