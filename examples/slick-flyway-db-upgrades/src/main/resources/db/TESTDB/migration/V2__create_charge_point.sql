@@ -1,0 +1,1 @@
+ALTER TABLE "charge_point" RENAME COLUMN "power" TO "power_in_kwh"
