@@ -6,8 +6,11 @@ import java.time.LocalDate
 import slick.jdbc.H2Profile.api._
 
 case class ChargePoint(
-                        id: Long,
-                        brand: String, powerInKwh: Double, installationDate: Option[LocalDate])
+    id: Long,
+    brand: String,
+    powerInKwh: Double,
+    installationDate: Option[LocalDate]
+)
 
 class ChargePointTable(tag: Tag) extends Table[ChargePoint](tag, None, "charge_point") {
   override def * = (id, brand, powerInKwh, installationDate) <> (ChargePoint.tupled, ChargePoint.unapply)
