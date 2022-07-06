@@ -6,40 +6,41 @@ coverImage: images/WindmolenCover.jpg
 imageSource:
 tags: product, design, design system, component library
 author: Petter Andersson
+role: Product Designer
 ---
 
 **A while back, our former technology manager Roy Derks covered the subject of component libraries here on the blog. From a technical perspective, he spoke about when you need one (and when you don’t need one) and what to consider when building one. Since then, obviously a lot has happened at Vandebron. But one of the more interesting things to happen is that design became an integrated part of the digital department, as opposed to previously being attached to marketing. In this new setup, one of the first major projects the design team was involved in was the alignment of our component libraries. And no that’s not a typo, that’s libraries as in the plural form of library. Confusing? I thought so too. In this blog I’ll try to explain further why that was the case, how the work actually helped us bridge the gap between design and development, and dissect the work of unifying those component libraries into one single source of truth and ultimately what’s to become our design system.**
 
 ### A bit of a mess
-Before we get into it, some background as to where we started out might be useful. As previously mentioned, the design team had just become a part of the digital department and one of the first tasks at hand was the creation of a design system. In the design team, we had previously worked with a certain set of brand guidelines, a style guide if you will, which had not necessarily been translated or aligned to the requirements of a digital product or development environment. Development had also created a set of stylesheets and libraries with reusable components which they used to reduce development time. Having it all separately might sound a bit counter-intuitive, but not very surprising if you consider designers and developers not being in the same department, working on a different timeline, different priorities and so forth. However, this only highlighted the importance of designers and developers working together and the need for a proper design system to help prevent creating a fence between the teams causing unnecessary and ineffective work on both sides. The result of this previous “unsynciness”, a rebrand in 2017, and a re-aligned techstack, was the existence of 3 different libraries and subsequently 3 different sources of truth within the development environment. To add to this, we also had separate design guidelines geared more towards brand/marketing purposes in the design team. Now came the rather massive task of unifying these and eventually, rather than having just a library, _having a system_. 
+Before we get into it, some background as to where we started out might be useful. As previously mentioned, the design team had just become a part of the digital department and one of the first tasks at hand was the creation of a design system. In the design team, we had previously worked with a certain set of brand guidelines, a style guide if you will, which had not necessarily been translated or aligned to the requirements of a digital product or development environment. Development had also created a set of stylesheets and libraries with reusable components which they used to reduce development time. Having it all separately might sound a bit counter-intuitive, but not very surprising if you consider designers and developers not being in the same department, working on a different timeline, different priorities and so forth. However, this only highlighted the importance of designers and developers working together and the need for a proper design system to help prevent creating a fence between the teams causing unnecessary and ineffective work on both sides. The result of this previous “unsynciness”, a rebrand in 2017, and a re-aligned techstack, was the existence of 3 different libraries and subsequently 3 different sources of truth within the development environment. To add to this, we also had separate design guidelines geared more towards brand/marketing purposes in the design team. Now came the rather massive task of unifying these and eventually, rather than having just a library, _having a system_.
 
 ### Component library ≠ design system
 Now, there’s a lot of terminology here that might be difficult to grasp if you’re new to the subject. So I thought I’d clarify what we mean when referring to these, how they fit into the context of our situation, and how many of them we had!
 
 - #### Brand guidelines / style guide (design)
-  A set of guidelines and examples outlining all the visual elements of a brand such as logos, color, typography, imagery etc. and subsequently in what - - manner they should be applied. It can also be expanded to include more things brand related such as tone of voice, brand values and so forth. Often with brand guidelines, they are created from a marketing perspective and the digital experience(or product) aspect of how the brand should be applied/represented is usually thought about in the second hand, or not included at all. 
+  A set of guidelines and examples outlining all the visual elements of a brand such as logos, color, typography, imagery etc. and subsequently in what - - manner they should be applied. It can also be expanded to include more things brand related such as tone of voice, brand values and so forth. Often with brand guidelines, they are created from a marketing perspective and the digital experience(or product) aspect of how the brand should be applied/represented is usually thought about in the second hand, or not included at all.
 
   _Amount: 1_
-    
+
 - #### Design kit/library (design)
-  A designer resource file with all the available building blocks that make up the digital design language of a brand and/or the user interface of a product. This is usually only visual(no code) and lives in the design software of the designer's choosing. For us this used to be Sketch, but we recently moved to Figma. Can also include documentation and examples of how the different building blocks should be applied and utilized. 
+  A designer resource file with all the available building blocks that make up the digital design language of a brand and/or the user interface of a product. This is usually only visual(no code) and lives in the design software of the designer's choosing. For us this used to be Sketch, but we recently moved to Figma. Can also include documentation and examples of how the different building blocks should be applied and utilized.
 
   _Amount: 1_
-  
+
 - #### Style sheet (front-end)
   A set of styling properties to be applied when rendering a web page, usually in the format of CSS. This can include things related to the brand guidelines such as font size, colors, etc. but also things related to web layout such as the margins and paddings of different web elements.
 
   _Amount: 1_
 
 - #### Component library (front-end)
-  A set of dynamic web components that can be used in a development environment in order to quickly build user interfaces. This helps to ensure consistency, to avoid rebuilding the same component more than once and to avoid changing said component in more places than one, and subsequently help reduce development time. 
+  A set of dynamic web components that can be used in a development environment in order to quickly build user interfaces. This helps to ensure consistency, to avoid rebuilding the same component more than once and to avoid changing said component in more places than one, and subsequently help reduce development time.
 
   _Amount: 3_
-  
+
 All of the above mentioned things, together with rigorous documentation, amount to what’s called a design system. Having it all combined in a structured way is key to getting the most out of such a system. In our case, most of these things were separate and not necessarily connected to each other. But what stands out most of the things above is probably the fact that we, over time, had amounted to 3 different component libraries. I mentioned earlier how that scenario had transpired so I won’t go into too much detail as to how that happened, but if you’re a developer in a small to medium-sized company and I mention “rebrand” and “new techstack” you can probably figure out how. However complex, this also proved to be an excellent opportunity for our developers and for us in the design team. We finally get to unify our component libraries into one, while simultaneously aligning it with our design kit and expanding the guidelines with new and updated documentation. Thus ensuring that designers and developers speak the same language and share the same single source of truth.
 
 ### A guild forms
-To kickstart this process we formed a project group(or ‘guild’) composed of 2 designers and 2 developers, each designer and developer from the two consumer-facing scrum teams. The idea was to let the developers work on the migration and unification of the component libraries in collaboration with us designers in the same project, making it easier to align and to create co-ownership of the product. Our first step was to decide on the structure of our component library, this way the developers could slot all the existing, reworked and new components into the right place in the new library. Easy enough right? Well, here comes our first challenge. We initially wanted to take an atomic approach and build our components from the well known and widely used atomic design principles. We also needed to consider the 3 different “product groups” which the library should apply to, all still utilizing the same style properties. 
+To kickstart this process we formed a project group(or ‘guild’) composed of 2 designers and 2 developers, each designer and developer from the two consumer-facing scrum teams. The idea was to let the developers work on the migration and unification of the component libraries in collaboration with us designers in the same project, making it easier to align and to create co-ownership of the product. Our first step was to decide on the structure of our component library, this way the developers could slot all the existing, reworked and new components into the right place in the new library. Easy enough right? Well, here comes our first challenge. We initially wanted to take an atomic approach and build our components from the well known and widely used atomic design principles. We also needed to consider the 3 different “product groups” which the library should apply to, all still utilizing the same style properties.
 
 Vandebron has a wide range of products serving different platforms, with the visual language remaining the same but where the user interface might differ. This requires the top elements of the system(such as colors and typography) to be shared across all products, whereas the lower you get the more product-specific an element becomes. This is the reason why we wanted to structure the system according to the principles of Atomic Design first, in order to assign the components to a hierarchical structure.
 
@@ -63,13 +64,3 @@ As all the alignment on the design side and the migration neared completion, we 
 
 ### What’s next
 In the newly formed designer+developer guild, the work of defining requirements and improvements on the design system continues. From the design side we’re also looking to constantly improve on the documentation and the presentation of our system. This is something we imagine we’ll keep on doing continuously and iteratively for as long as it’s needed, if not even forever. After all, “design is never done” and a design system can and should be a living thing constantly evolving along with the products and the brand it serves, and in extension even the promise the brand and it’s products. In our case, that’s to aid in **accelerating the energy transition towards 100% renewable energy**. More on how we exactly do that, and how we always aim to design for impact, in the next blog post. Thanks for reading and stay tuned!
-<br>
-<br>
-<br>
-**Petter Andersson** <br>
-Product Designer at Vandebron 
-<br>
-<br>
-<br>
-<br>
-_If the type of work mentioned in this blog post sounds interesting to you, [take a look at our job openings here](https://werkenbij.vandebron.nl/l/en/)._ 

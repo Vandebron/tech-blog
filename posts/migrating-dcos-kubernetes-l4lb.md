@@ -391,6 +391,3 @@ We provided a deployment.yml file that runs a Ubuntu docker container with ipvsa
 ## Vacancy at Vandebron
 
 We are looking for a platform engineer in Vandebron. As you can understand this is not a typical scenario we daily run across, but it is part of the workloads that we will support when working on our platform. Within Vandebron we try to use the best technology available, when it is not available we build it. Due to this as platform engineers, we have many interesting challenges and offer engineers to support further than only a strict domain. We support all components of our entire platform, regardless if it is a Linux kernel issue like this, involves setting up and maintaining a NoSQL cluster, or helping the business with something like requesting a certificate.
-
-If you are interested in learning more about this position, take a look at our Vacancy and get in contact with us.
-<https://werkenbij.vandebron.nl/>
