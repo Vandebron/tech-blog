@@ -63,13 +63,11 @@ As all the alignment on the design side and the migration neared completion, we 
 
 ### What’s next
 In the newly formed designer+developer guild, the work of defining requirements and improvements on the design system continues. From the design side we’re also looking to constantly improve on the documentation and the presentation of our system. This is something we imagine we’ll keep on doing continuously and iteratively for as long as it’s needed, if not even forever. After all, “design is never done” and a design system can and should be a living thing constantly evolving along with the products and the brand it serves, and in extension even the promise the brand and it’s products. In our case, that’s to aid in **accelerating the energy transition towards 100% renewable energy**. More on how we exactly do that, and how we always aim to design for impact, in the next blog post. Thanks for reading and stay tuned!
-<br>
-<br>
-<br>
+
+
 **Petter Andersson** <br>
 Product Designer at Vandebron 
-<br>
-<br>
-<br>
-<br>
+
+
+
 _If the type of work mentioned in this blog post sounds interesting to you, [take a look at our job openings here](https://werkenbij.vandebron.nl/l/en/)._ 
