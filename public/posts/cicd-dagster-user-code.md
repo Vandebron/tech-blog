@@ -1,47 +1,62 @@
 ---
-title: Automate Dagster repository deployment
-description: If you frequently deploy new Dagster repositories, you'll discover that automating it is not so straightforward.
+title: Automate Dagster user code repository deployment
+description: If you frequently deploy new Dagster repositories, you want to automate this process. However, this is not so straightforward as it may seem at first. This post explains what we did at Vandebron.
 createdAt: 2022-07-08
 coverImage: images/cypress-component-design-technique-for-react-applications.png
 tags: Dagster, CICD, Orchestration
 author: Pieter Custers
 ---
 
+This post assumes the following:
+* You (plan to) host Dagster on Kubernetes and manage its deployment with Helm
+* You (plan to) automate the Dagster system deployment
+* You _want to_ automate the deployment of new Dagster user code repositories
+* In case of emergency, you want to be able to spin up the whole Dagster system and user code from scratch within a few seconds
+
 ## TL;DR
 
 If you frequently deploy new Dagster repositories, you want to automate this process. However, this is not so straightforward as it may seem at first. This post explains what we did at Vandebron.
 
-## Outline
+## The problem
 
-### Intro
+Dagster separates the system deployment - the Dagit UI server and the daemons that coordinate the runs - from the user code deployment - the actual data pipeline. In other words: the user code (gRPC) servers run in complete isolation from the system and each other. This is a great feature of which the advantages are obvious: user code repositories have their own Python environment, teams can manage these separately, and if a user code server breaks down the system is not impacted. In fact, it even doesn't require a restart when user code is updated!
 
-Dagster is cool
+So far, so good. But what if... 
 
-But separation of core and user code not well done
+_I want to add a __new__ user code repository?_
 
-They say: *teams* can work in their own repo with own requirements, but in reality every *project* might have its own requirements
+You need to:
 
-Formerly the process should be: create PR in platform; build container based on user code in other repo; deploy PRs; subsequent changes: restart user code container
+1. add the user code server to the system's `values.yaml`
+2. add the user code repository to the user-code's `values.yaml`
+3. do a helm upgrade of the system and user-code deployment
 
-If you are fine with this: do it. It's curretly the most clean solution. But if you:
+Or in short: you need to bother your platform team. Formerly this is the process to go through. If you are fine with this, stop reading here. It's the cleanest solution anyway.
 
-- Don't want analysts have to create PRs in the platfom repo and redeploy all of dagster everytime (in the end that was the point of separation)
-- Create many many repo's, per project and pr env
-- Want to cicd it
+_But what if I want to do this multiple times a day?_
 
-Then read on
+If you are in a situation in which new repositories get added multiple times a day - for instance because you are in the middle of a migration to Dagster, or you want a staging environment for every single PR - then read on.
 
-### Reasoning
+### The problem in more detail
 
-- No changes in deployment, no interference of platform team
-- Changing parts versioned so complete redeploy can always happen (s3 not git, easier to implement)
-- Fully automated cicd
-- Temporary solution, hopefully!
+Alright, so for every new repository Dagster spins up a (gRPC) server to host the user code. The separation is clear here. But the Dagster system also needs to know about these user code servers, and it does so through a workspace yaml-file. If you run Dagit locally it relies on a `workspace.yaml` file, in the cluster it relies on a `dagster-workspace-yaml` ConfigMap. 
 
-Mention dagster prs that improve this potentially
+This workspace-yaml is the connection between the system and the user code, and it is the reason we need to redeploy the whole system for every new respository. To my knowledge, [it is not on their roadmap to improve this, however they seem to consider it](https://github.com/dagster-io/dagster/discussions/3851).
 
-### Steps cicd
+## Our solution
 
-Principle: the user code servers are mentioned in the workspace yaml, that's it. 
-So we only update that configmap and trigger restarts. 
-We prevent conflicts by saving user code in configmap as well.
+_Disclaimer: what we present here is a workaround that we'll keep in place until the moment Dagster releases a version in which the Dagster user code deployment is **actually completely separated** from the system deployment. So far we did not run into any issues with this slightly hacky workaround, it works like a charm._
+
+First of all, we added an extra ConfigMap that contains the `values.yaml` for the user code deployment (`dagster-user-code-values-yaml`). The notes below the steps make clear why we need this.
+
+Then, whenever a new respository gets added, these are the steps (that we automated through ci/cd):
+1. get the `dagster-user-code-values-yaml` Configmap, add the repository, upload the editted ConfigMap, and helm-upgrade the user code deployment
+2. get the `dagster-workspace-yaml` ConfigMap, add the server, and upload the editted ConfigMap
+3. do a rolling restart of the `dagster-dagit` and `dagster-daemon` deployment to pull the latest workspace
+
+Notes:
+* When two new repositories get deployed at the same time, you run into the fact that the user-code ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the _latest applied configuration_ when doing an update. If it doesn't match, the upload fails. This is perfect, we do not want to overwrite an earlier deployment. You can optionally build in a retry that starts over with pulling the ConfigMap again.
+* The process, unfortunately, still requires a restart of the system. This is unavoidable. The daemon terminates, then restarts, and it might cause a short interuption. Note that this will also happen if you add a respository "manually".
+
+## Conclusion
+
