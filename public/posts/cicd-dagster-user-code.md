@@ -3,7 +3,7 @@ title: Automate Dagster user code repository deployment
 description: If you frequently deploy new Dagster repositories, you want to automate this process. However, this is not so straightforward as it may seem at first. This post explains what we did at Vandebron.
 createdAt: 2022-07-08
 coverImage: images/cypress-component-design-technique-for-react-applications.png
-tags: Dagster, CICD, Orchestration
+tags: dagster, cicd, orchestration, data pipeline, kubernetes
 author: Pieter Custers
 ---
 
@@ -11,7 +11,7 @@ This post assumes the following:
 * You (plan to) host Dagster on Kubernetes and manage its deployment with Helm
 * You (plan to) automate the Dagster system deployment
 * You _want to_ automate the deployment of new Dagster user code repositories
-* In case of emergency, you want to be able to spin up the whole Dagster system and user code from scratch within a few seconds
+* You want to be able to spin up the whole Dagster system and user code from scratch within a few seconds
 
 ## TL;DR
 
@@ -58,5 +58,18 @@ Notes:
 * When two new repositories get deployed at the same time, you run into the fact that the user-code ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the _latest applied configuration_ when doing an update. If it doesn't match, the upload fails. This is perfect, we do not want to overwrite an earlier deployment. You can optionally build in a retry that starts over with pulling the ConfigMap again.
 * The process, unfortunately, still requires a restart of the system. This is unavoidable. The daemon terminates, then restarts, and it might cause a short interuption. Note that this will also happen if you add a respository "manually".
 
+### How to deploy from scratch
+
+The above does not yet cover how we are able to deploy the Dagster system _and user code_ completely from scratch (for in case somebody accidently deletes the `dagster` namespace - it actually happened).
+
+The key to this is that we version both the `dagster-user-code-values-yaml` and `dagster-workspace-yaml` as a final step to the flow described above. Whenever we redeploy Dagster we pull the latest versions and use them to compile both the `values.yaml` files from it.
+
+Note that the Dagster state and run logs are saved in a Postgres database. By default Dagster manages this for you, but I'd recommend managing this yourself so it's separated from the Dagster deployment itself.
+
+### Clean up old repositories
+
+The steps are the same. We have a script in place that removes at least the staging environments for closed or stale PRs. The same script can delete a repository based on a given repository name.
+
 ## Conclusion
 
+Dagster is an incredibly powerful tool that enabled us to build complex data pipelines with much ease. Having streamlined the CI/CD pipeline for user code respositories enabled us to migrate to very quickly and saves us loads of time on a daily basis. Still we are very much looking forward to the moment Dagster releases a version which makes this article obsolete.
