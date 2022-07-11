@@ -24,7 +24,7 @@ However, deployment of new [user code respositories](https://docs.dagster.io/con
 
 Dagster separates the system deployment - the Dagit UI server and the daemons that coordinate the runs - from the user code deployment - the actual data pipeline. In other words: the user code (gRPC) servers run in complete isolation from the system and each other. This is a great feature of which the advantages are obvious: user code repositories have their own Python environment, teams can manage these separately, and if a user code server breaks down the system is not impacted. In fact, it even doesn't require a restart when user code is updated!
 
-In helm terms: there is 2 charts, namely the _system_: `dagster/dagster` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/values.yaml)), and the _user code_: `dagster/dagster-user-deployments` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/charts/dagster-user-deployments/values.yaml)). Note that you have to set `dagster-user-deployments.enabled: true` in the `dagster/dagster` values yaml to enable this).
+In Helm terms: there are 2 charts, namely the _system_: `dagster/dagster` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/values.yaml)), and the _user code_: `dagster/dagster-user-deployments` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/charts/dagster-user-deployments/values.yaml)). Note that you have to set `dagster-user-deployments.enabled: true` in the `dagster/dagster` values yaml to enable this.
 
 ![Dagster architecture. The _Company Repositories_ can be deployed separately from the _Dagit Web Server_ and _Daemon_. Source: https://docs.dagster.io/deployment/guides/kubernetes/deploying-with-helm.](images/dagster-architecture.png)
 
@@ -41,14 +41,17 @@ workspace:
         name: "user-code-example"
 ```
 
-**This means system and user code are not actually completely separated.**
+**This means system and user code are not actually completely separated!**
 
-So, if I want to add a __new__ user code repository, I need to:
+This implies that, if I want to add a __new__ user code repository, I not only need to:
 
-1. add the user code server to the system's `values.yaml` (via a PR in the Git repo of your company's platform team, probably)
-1. do a helm-upgrade of the corresponding `dagster/dagster` chart
-1. add the user code repository to the user code's `values.yaml` (via that same PR)
-1. do a helm-upgrade of the corresponding `dagster/dagster-user-deployments` chart
+1. add the user code repository to the user code's `values.yaml` (via that same PR);
+1. do a helm-upgrade of the corresponding `dagster/dagster-user-deployments` chart;
+
+but because of the not-so-separation, I still need to:
+
+1. add the user code server to the system's `values.yaml` (via a PR in the Git repo of your company's platform team, probably);
+1. and do a helm-upgrade of the corresponding `dagster/dagster` chart.
 
 Formerly this is the process to go through. If you are fine with this, stop reading here. It's the cleanest solution anyway. But it is quite cumbersome, so...
 
@@ -76,14 +79,14 @@ Then, whenever a new respository gets added, these are the steps:
 **Refresh the workspace in the UI and there it is, your new repository!**
 
 Notes:
-* The steps above are completely automatable through your favorite CI/CD pipeline automation tool
+* The steps above are completely automatable through your favorite CI/CD pipeline automation tool.
 * There is no interaction with a (platform team) Git repository.
-* The process, unfortunately, still requires a restart of the system. This is unavoidable. The daemon terminates, then restarts, and it might cause a short interuption. Note that this will also happen if you add a respository "manually".
+* The process, unfortunately, still requires a restart of the system. This is unavoidable. The daemon terminates, then restarts, and it might cause a short interruption. Note that this will also happen if you add a respository "manually".
 * If you want to make changes to an existing repository (no user code changes but server setting changes), you only have to do the first step (and _edit_ instead of _add_).
 
 #### How to prevent conflicts
 
-With many of your team members adding new Dagster repositories through an automated CI/CD pipeline, you might face the situation that 2 people try to add a new respository at around the same time. When this happens, you run into the fact that the `dagster-user-deployments-values-yaml` ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the latest applied configuration when doing an update. If it doesn't match, the upload fails. This is perfect, we do not want to overwrite the changes of the conflicting flow that beat us by a few seconds. You can optionally build in a retry that starts over with pulling the ConfigMap again.
+With many of your team members adding new Dagster repositories through an automated CI/CD pipeline, you might face the situation that 2 people are adding a new respository at around the same time. When this happens, the algoritm runs into the fact that the `dagster-user-deployments-values-yaml` ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the latest applied configuration when doing an update. If it doesn't match, the upload fails. This is perfect, we do not want to overwrite the changes of the conflicting flow. You can optionally build in a retry-mechanism that starts over with pulling the ConfigMap again.
 
 #### How to deploy from scratch
 
@@ -93,7 +96,7 @@ The key to this is that we version both the `dagster-user-deployments-values-yam
 
 #### How to clean up old repositories
 
-The above described automation _adds_ new repository, but doesn't take care of the cleanup. The steps for removing a repo are the same for adding one. The exact implementation depends on your situation. You might want to automatically remove PR staging respositories after closing a PR. We also have a script in place that removes a repository based on a given repository name.
+The above described automation _adds_ new repository, but doesn't take care of old obsolete repos. The steps for removing a repo are the same for adding one. The exact implementation depends on your situation. You might want to automatically remove PR staging repos after closing a PR. We also have a script in place that removes a repo based on a given name.
 
 ### Conclusion
 
