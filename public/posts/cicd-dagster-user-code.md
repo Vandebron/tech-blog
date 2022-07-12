@@ -9,14 +9,14 @@ author: Pieter Custers
 
 _If you frequently deploy new user code in Dagster, you want to automate this process. However, this is not as straightforward as you may expect. This post explains what we did at Vandebron._
 
-Before you read on, I expect the following:
+This article assumes that:
 * You (plan to) host Dagster on Kubernetes and manage/automate its deployment (e.g. with Ansible and Helm)
 * You _want to_ automate the deployment of new Dagster user code repositories
 * You want to be able to (re)deploy the whole Dagster system and user code from scratch within a few seconds
 
 ### Why Dagster?
 
-In short Dagster is a tool to orchestrate complex data pipelines, and it does so incredibly well. Equally true is that Dagster is a Python library to build data applications. For us, in the end, Dagster improved the development cycle for things like simple cron jobs as well as complex ML pipelines. Testing the flows locally was never so easy, for instance. And with features like [asset materialization](https://docs.dagster.io/concepts/assets/asset-materializations) and [sensors](https://docs.dagster.io/concepts/partitions-schedules-sensors/sensors), we can trigger downstream jobs based on the change of an external state that an upstream job caused, without having these jobs to know of each others existence.
+In short Dagster is a tool to orchestrate complex data pipelines, and it does so incredibly well. Equally true is that Dagster is a Python library to build data applications. For us, in the end, Dagster improved the development cycle for things like simple cron jobs as well as complex ML pipelines. Testing the flows locally was never so easy, for instance. And with features like [asset materialization](https://docs.dagster.io/concepts/assets/asset-materializations) and [sensors](https://docs.dagster.io/concepts/partitions-schedules-sensors/sensors), we can trigger downstream jobs based on the change of an external state that an upstream job caused, without these jobs having to know of each other's existence.
 
 However, deployment of new [user code respositories](https://docs.dagster.io/concepts/repositories-workspaces/repositories) caused some kinks in the CI/CD-cable...
 
@@ -41,9 +41,9 @@ workspace:
         name: "user-code-example"
 ```
 
-**This means system and user code are not actually completely separated!**
+**This means system and user deployments are not actually completely separated!**
 
-This implies that, if I want to add a __new__ user code repository, I not only need to:
+This implies that, if I want to add a __new__ user code repository, not only do I need to:
 
 1. add the user code repo to the user code's `values.yaml` (via that same PR);
 1. do a helm-upgrade of the corresponding `dagster/dagster-user-deployments` chart;
@@ -55,7 +55,7 @@ but because of the not-so-separation, I still need to:
 
 Officialy this is the process to go through. If you are fine with this, stop reading here. It's the cleanest solution anyway. But it is quite cumbersome, so...
 
-If you are in a situation in which new repositories get added multiple times a day - for instance because you are in the middle of a migration to Dagster, or you want a staging environment for every single PR - then read on.
+If you are in a situation in which new repositories can get added multiple times a day - for instance because you are in the middle of a migration to Dagster, or you want a staging environment for every single PR - then read on.
 
 #### Give me more details
 
@@ -73,7 +73,7 @@ First of all, we added an extra ConfigMap in Kubernetes that contains the `value
 
 Then, whenever a new repo gets added, these are the steps:
 1. (a) get the `dagster-user-deployments-values-yaml` Configmap, (b) add the new repo, (c) upload the editted ConfigMap, and (d) helm-upgrade the `dagster/dagster-user-deployments` chart with it
-2. (a) get the `dagster-workspace-yaml` ConfigMap, (b) add the server, and (c) upload the editted ConfigMap
+2. (a) get the `dagster-workspace-yaml` ConfigMap, (b) add the server, and (c) upload the modified ConfigMap
 3. do a rolling restart of the `dagster-dagit` and `dagster-daemon` deployment to pull the latest workspace to these services
 
 **Refresh the workspace in the UI and there it is, your new repo!**
