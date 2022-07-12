@@ -10,9 +10,9 @@ author: Pieter Custers
 _If you frequently deploy new user code in Dagster, you want to automate this process. However, this is not as straightforward as you may expect. Here we explain what we did at Vandebron._
 
 This article assumes that:
-* You (plan to) host Dagster on Kubernetes and manage its deployment with Helm and Ansible
-* You want to automate the deployment of new Dagster user code repositories with a CI/CD pipeline automation tool of choice
-* You want to be able to (re)deploy the whole Dagster system and user code from scratch
+* you (plan to) host Dagster on Kubernetes and manage its deployment with Helm and Ansible;
+* you want to automate the deployment of new Dagster user code repositories with a CI/CD pipeline automation tool of choice;
+* and you want to be able to (re)deploy the whole Dagster system and user code from scratch.
 
 ### Why Dagster?
 
@@ -43,14 +43,14 @@ workspace:
 
 **This means system and user deployments are not actually completely separated!**
 
-This implies that, if I want to add a __new__ user code repository, not only do I need to:
+This implies that, if you want to add a __new__ user code repository, not only do you need to:
 
-1. add the user code repo to the user code's `values.yaml` (via that same PR);
+1. add the user code repo to the user code's `values.yaml` (via a PR in the Git repo of your company's platform team, probably);
 1. do a helm-upgrade of the corresponding `dagster/dagster-user-deployments` chart;
 
-but because of the not-so-separation, I still need to:
+but because of the not-so-separation, you still need to:
 
-1. add the user code server to the system's `values.yaml` (via a PR in the Git repo of your company's platform team, probably);
+1. add the user code server to the system's `values.yaml` (via that same PR);
 1. and do a helm-upgrade of the corresponding `dagster/dagster` chart.
 
 Formally this is the process to go through. If you are fine with this, stop reading here. It's the cleanest solution anyway. But it is quite cumbersome, so...
@@ -59,24 +59,25 @@ If you are in a situation in which new repositories can get added multiple times
 
 #### Give me more details
 
-How it works is that [for every new repo Dagster spins up a (gRPC) server to host the user code](https://docs.dagster.io/deployment/guides/kubernetes/deploying-with-helm#user-code-deployment). The separation is clear here. But the Dagster _system_ also needs to know about these user code servers, and it does so through a workspace yaml-file. If you run Dagit locally it relies on a `workspace.yaml` file, on Kubernetes it relies on a ConfigMap they named `dagster-workspace-yaml`
+How it works is that [for every new repo Dagster spins up a (gRPC) server to host the user code](https://docs.dagster.io/deployment/guides/kubernetes/deploying-with-helm#user-code-deployment). The separation is clear here. But the Dagster _system_ also needs to know about these user code servers, and it does so through a workspace-yaml file. If you run Dagit locally it relies on a `workspace.yaml` file; on Kubernetes it relies on a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) - a Kubernetes object used to store non-confidential data in key-value pairs, e.g. the content of a file - which they named `dagster-workspace-yaml`.
 
-This workspace-yaml is the connection between the system and the user code, and it is the reason we need to redeploy the whole system for every new repo. To my knowledge, [it is not on their roadmap to improve this, however they seem to consider it](https://github.com/dagster-io/dagster/discussions/3851).
+This workspace-yaml is the connection between the system and the user code. The fact that the charts are designed as such that this workspace-yaml is created and modified through the system deployment rather than the user code deployment is the reason we need to redeploy the system. 
 
-_\*a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) is an object used to store non-confidential data in key-value pairs in Kubernetes._
+**But what if we could modify this workspace-yaml file ourselves? Can we make the system redeployment obsolete? Short answer: we can.**
 
 ### Our solution
 
-_Disclaimer: what we present here is a workaround that we'll keep in place until the moment Dagster releases a version in which the Dagster user code deployment is **actually completely separated** from the system deployment. It works like a charm though._
+_Disclaimer: what we present here is a workaround that we'll keep in place until the moment Dagster releases a version in which the Dagster user code deployment is **actually completely separated** from the system deployment. And it works like a charm._
 
 **Remember: the desired situation is that we do not have to edit the values yaml files (through a PR) and redeploy all of Dagster for every new repo.**
 
-First of all, we added an extra ConfigMap in Kubernetes that contains the `values.yaml` for the `dagster/dagster-user-deployments` chart. We named it `dagster-user-deployments-values-yaml`. (The fact that this is a ConfigMap is crucial to prevent conflicts, see below.)
+First of all, we added an extra ConfigMap in Kubernetes that contains the `values.yaml` for the `dagster/dagster-user-deployments` chart. We named it `dagster-user-deployments-values-yaml`. The fact that this is a ConfigMap is crucial to prevent conflicts, see below.
 
-Then, whenever a new repo gets added, these are the steps:
-1. (a) get the `dagster-user-deployments-values-yaml` Configmap, (b) add the new repo, (c) upload the editted ConfigMap, and (d) helm-upgrade the `dagster/dagster-user-deployments` chart with it
-2. (a) get the `dagster-workspace-yaml` ConfigMap, (b) add the server, and (c) upload the modified ConfigMap
-3. do a rolling restart of the `dagster-dagit` and `dagster-daemon` deployment to pull the latest workspace to these services
+With the extra ConfigMap in place, these are the steps when a repo gets added:
+1. Add the new repo to the `dagster-user-deployments-values-yaml` Configmap.
+2. Helm-upgrade the `dagster/dagster-user-deployments` chart with the content of that ConfigMap.
+3. Add the server to the `dagster-workspace-yaml` ConfigMap.
+4. Do a rolling restart of the `dagster-dagit` and `dagster-daemon` deployment to pull the latest workspace to these services.
 
 **Refresh the workspace in the UI and there it is, your new repo!**
 
@@ -84,7 +85,7 @@ Notes:
 * The steps above are completely automatable through your favorite CI/CD pipeline automation tool.
 * There is no interaction with a (platform team) Git repo.
 * The process, unfortunately, still requires a restart of the system. This is unavoidable. The daemon terminates, then restarts, and it might cause a short interruption. Note that this will also happen if you add a repo "manually".
-* If you want to make changes to an existing repo (no user code changes but server setting changes), you only have to do the first step (and _edit_ instead of _add_).
+* If you want to make changes to an existing repo (no user code changes but server setting changes), you only have to do the first step (and _modify_ instead of _add_).
 
 #### How to prevent conflicts
 
