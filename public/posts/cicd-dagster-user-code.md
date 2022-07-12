@@ -7,18 +7,18 @@ tags: dagster, cicd, ci-cd, orchestration, data pipeline, kubernetes, migration,
 author: Pieter Custers
 ---
 
-_If you frequently deploy new user code in Dagster, you want to automate this process. However, this is not as straightforward as you may expect. This post explains what we did at Vandebron._
+_If you frequently deploy new user code in Dagster, you want to automate this process. However, this is not as straightforward as you may expect. Here we explain what we did at Vandebron._
 
 This article assumes that:
-* You (plan to) host Dagster on Kubernetes and manage/automate its deployment (e.g. with Ansible and Helm)
-* You _want to_ automate the deployment of new Dagster user code repositories
-* You want to be able to (re)deploy the whole Dagster system and user code from scratch within a few seconds
+* You (plan to) host Dagster on Kubernetes and manage its deployment with Helm and Ansible
+* You want to automate the deployment of new Dagster user code repositories with a CI/CD pipeline automation tool of choice
+* You want to be able to (re)deploy the whole Dagster system and user code from scratch
 
 ### Why Dagster?
 
 In short Dagster is a tool to orchestrate complex data pipelines, and it does so incredibly well. Equally true is that Dagster is a Python library to build data applications. For us, in the end, Dagster improved the development cycle for things like simple cron jobs as well as complex ML pipelines. Testing the flows locally was never so easy, for instance. And with features like [asset materialization](https://docs.dagster.io/concepts/assets/asset-materializations) and [sensors](https://docs.dagster.io/concepts/partitions-schedules-sensors/sensors), we can trigger downstream jobs based on the change of an external state that an upstream job caused, without these jobs having to know of each other's existence.
 
-However, deployment of new [user code respositories](https://docs.dagster.io/concepts/repositories-workspaces/repositories) caused some kinks in the CI/CD-cable...
+However, deployment of new [user code respositories](https://docs.dagster.io/concepts/repositories-workspaces/repositories) caused us some CI/CD related headaches...
 
 ### System and user code are separated
 
@@ -53,23 +53,25 @@ but because of the not-so-separation, I still need to:
 1. add the user code server to the system's `values.yaml` (via a PR in the Git repo of your company's platform team, probably);
 1. and do a helm-upgrade of the corresponding `dagster/dagster` chart.
 
-Officialy this is the process to go through. If you are fine with this, stop reading here. It's the cleanest solution anyway. But it is quite cumbersome, so...
+Formally this is the process to go through. If you are fine with this, stop reading here. It's the cleanest solution anyway. But it is quite cumbersome, so...
 
 If you are in a situation in which new repositories can get added multiple times a day - for instance because you are in the middle of a migration to Dagster, or you want a staging environment for every single PR - then read on.
 
 #### Give me more details
 
-How it works is that [for every new repo Dagster spins up a (gRPC) server to host the user code](https://docs.dagster.io/deployment/guides/kubernetes/deploying-with-helm#user-code-deployment). The separation is clear here. But the Dagster _system_ also needs to know about these user code servers, and it does so through a workspace yaml-file. If you run Dagit locally it relies on a `workspace.yaml` file, in the cluster it relies on a ConfigMap they named `dagster-workspace-yaml`. 
+How it works is that [for every new repo Dagster spins up a (gRPC) server to host the user code](https://docs.dagster.io/deployment/guides/kubernetes/deploying-with-helm#user-code-deployment). The separation is clear here. But the Dagster _system_ also needs to know about these user code servers, and it does so through a workspace yaml-file. If you run Dagit locally it relies on a `workspace.yaml` file, on Kubernetes it relies on a ConfigMap they named `dagster-workspace-yaml`
 
 This workspace-yaml is the connection between the system and the user code, and it is the reason we need to redeploy the whole system for every new repo. To my knowledge, [it is not on their roadmap to improve this, however they seem to consider it](https://github.com/dagster-io/dagster/discussions/3851).
 
+_\*a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) is an object used to store non-confidential data in key-value pairs in Kubernetes._
+
 ### Our solution
 
-_Disclaimer: what we present here is a workaround that we'll keep in place until the moment Dagster releases a version in which the Dagster user code deployment is **actually completely separated** from the system deployment. So far we did not run into any issues with this slightly hacky workaround, it works like a charm._
+_Disclaimer: what we present here is a workaround that we'll keep in place until the moment Dagster releases a version in which the Dagster user code deployment is **actually completely separated** from the system deployment. It works like a charm though._
 
 **Remember: the desired situation is that we do not have to edit the values yaml files (through a PR) and redeploy all of Dagster for every new repo.**
 
-First of all, we added an extra ConfigMap in Kubernetes that contains the `values.yaml` for the `dagster/dagster-user-deployments` chart. We named it `dagster-user-deployments-values-yaml`.
+First of all, we added an extra ConfigMap in Kubernetes that contains the `values.yaml` for the `dagster/dagster-user-deployments` chart. We named it `dagster-user-deployments-values-yaml`. (The fact that this is a ConfigMap is crucial to prevent conflicts, see below.)
 
 Then, whenever a new repo gets added, these are the steps:
 1. (a) get the `dagster-user-deployments-values-yaml` Configmap, (b) add the new repo, (c) upload the editted ConfigMap, and (d) helm-upgrade the `dagster/dagster-user-deployments` chart with it
@@ -86,18 +88,18 @@ Notes:
 
 #### How to prevent conflicts
 
-With many of your team members adding new Dagster repositories through an automated CI/CD pipeline, you might face the situation that 2 people are adding a new repo at around the same time. When this happens, the algoritm runs into the fact that the `dagster-user-deployments-values-yaml` ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the latest applied configuration when doing an update. If it doesn't match, the upload fails. This is perfect, we do not want to overwrite the changes of the conflicting flow. You can optionally build in a retry-mechanism that starts over with pulling the ConfigMap again.
+With many of your team members adding new Dagster repositories through an automated CI/CD pipeline, you might face the situation that 2 people are adding a new repo at around the same time. When this happens, the `dagster-user-deployments-values-yaml` ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the _last-applied-configuration_ when doing an update. If it doesn't match, the upload fails. This is perfect as we do not want to overwrite the changes of the conflicting flow. You can optionally build in a retry-mechanism that starts over with pulling the ConfigMap again.
 
 #### How to deploy from scratch
 
-The above does not yet cover how we are able to deploy the Dagster system _and user code_ completely from scratch. Why do we want this? Well, for in case somebody accidently deletes the `dagster` namespace for instance. Or hell breaks loose in any other physical or non-physical form. Or when we simply want to bump the Dagster version, actually.
+The above does not yet cover how we are able to deploy the Dagster system _and user code_ completely from scratch. Why do we want this? Well, for instance when somebody accidently deletes the `dagster` namespace for instance. Or hell breaks loose in any other physical or non-physical form. Or when we simply want to bump the Dagster version, actually.
 
 The key to this is that we version both the `dagster-user-deployments-values-yaml` and `dagster-workspace-yaml` as a final step to the flow described above (we do it on S3, in a versioned bucket). Whenever we redeploy Dagster (with Ansible) we pull the latest versions and use them to compile both the `values.yaml` files from it. 
 
 #### How to clean up old repositories
 
-The above described automation _adds_ new repo, but doesn't take care of old obsolete repos. The steps for removing a repo are the same for adding one. The exact implementation depends on your situation. You might want to automatically remove PR staging repos after closing a PR. We also have a script in place that removes a repo based on a given name.
+The above described automation _adds_ new repo, but doesn't take care of old obsolete repos. The steps for removing a repo are the same for adding one. The exact implementation depends on your situation. You might want to automatically remove PR staging repos after closing a PR, for instance.
 
 ### Conclusion
 
-Dagster is an incredibly powerful tool that enabled us to build complex data pipelines with much ease. Having streamlined the CI/CD pipeline for user code respositories enabled us to migrate to Dagster very quickly and saves us lots of time on a daily basis. Still we are very much looking forward to the moment Dagster releases a version which makes this article obsolete.
+Dagster is an incredibly powerful tool that enabled us to build complex data pipelines with ease. Having streamlined the CI/CD pipeline for user code respositories enabled us to migrate to Dagster very quickly and saves us lots of time on a daily basis. Still we are very much looking forward to the moment Dagster releases a version which makes this article obsolete.
