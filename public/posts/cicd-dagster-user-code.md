@@ -7,7 +7,7 @@ tags: dagster, cicd, orchestration, data pipeline, kubernetes
 author: Pieter Custers
 ---
 
-_If you frequently deploy new user code in Dagster, you want to automate this process. However, this is not so straightforward as you may expect. This post explains what we did at Vandebron._
+_If you frequently deploy new user code in Dagster, you want to automate this process. However, this is not as straightforward as you may expect. This post explains what we did at Vandebron._
 
 Before you read on, I expect the following:
 * You (plan to) host Dagster on Kubernetes and manage/automate its deployment (e.g. with Ansible and Helm)
