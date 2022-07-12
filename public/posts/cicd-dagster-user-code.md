@@ -1,5 +1,5 @@
 ---
-title: The Why and How of Dagster User Code Deployment Automation in order to migrate fast
+title: The Why and How of Dagster User Code Deployment Automation
 description: If you frequently deploy new Dagster repositories, you want to automate this process. However, this is not so straightforward as it may seem at first. This post explains what we did at Vandebron.
 createdAt: 2022-07-08
 coverImage: images/dagster-cicd.png
