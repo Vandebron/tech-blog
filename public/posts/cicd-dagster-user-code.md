@@ -28,7 +28,7 @@ In Helm terms: there are 2 charts, namely the _system_: `dagster/dagster` ([valu
 
 ![Dagster architecture. The _Company Repositories_ can be deployed separately from the _Dagit Web Server_ and _Daemon_. Source: https://docs.dagster.io/deployment/guides/kubernetes/deploying-with-helm.](images/dagster-architecture.png)
 
-#### Or aren't they?
+#### Or are they?
 
 You might find it peculiar that in the values file of the system deployment, _you need to specify the user code servers_. That looks like this:
 
