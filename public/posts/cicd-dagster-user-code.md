@@ -1,9 +1,9 @@
 ---
-title: The Why and How of Dagster User Code Deployment Automation
+title: The Why and How of Dagster User Code Deployment Automation in order to migrate fast
 description: If you frequently deploy new Dagster repositories, you want to automate this process. However, this is not so straightforward as it may seem at first. This post explains what we did at Vandebron.
 createdAt: 2022-07-08
 coverImage: images/dagster-cicd.png
-tags: dagster, cicd, orchestration, data pipeline, kubernetes
+tags: dagster, cicd, ci-cd, orchestration, data pipeline, kubernetes, migration, helm, ansible
 author: Pieter Custers
 ---
 
