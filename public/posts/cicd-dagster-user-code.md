@@ -43,7 +43,7 @@ workspace:
 
 This implies that, if you want to add a _new_ user code repository, not only do you need to:
 
-1. add the user code repo to the user code's `values.yaml` (via a PR in the Git repo of your company's platform team, probably);
+1. add the repo to the user code's `values.yaml` (via a PR in the Git repo of your company's platform team, probably);
 2. do a helm-upgrade of the corresponding `dagster/dagster-user-deployments` chart;
 
 but because of the not-so-separation, you still need to:
@@ -67,7 +67,7 @@ This workspace-yaml is the connection between the system and the user code. The 
 
 _Disclaimer: what we present here is a workaround that we'll keep in place until the moment Dagster releases a version in which the Dagster user code deployment is **actually completely separated** from the system deployment. And it works like a charm._
 
-**Remember: the desired situation is that we do not have to edit the values yaml files (through a PR) and redeploy all of Dagster for every new repo.**
+**Remember: the desired situation is that we do not have to edit the values-yaml files (through a PR) and redeploy all of Dagster for every new repo.**
 
 First of all, we added an extra ConfigMap in Kubernetes that contains the `values.yaml` for the `dagster/dagster-user-deployments` chart. We named it `dagster-user-deployments-values-yaml`. The fact that this is a ConfigMap is crucial to prevent conflicts (see next section).
 
