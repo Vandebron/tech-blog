@@ -7,6 +7,9 @@ tags: dagster, cicd, ci-cd, orchestration, data pipeline, kubernetes, migration,
 author: Pieter Custers
 ---
 
+### TL;DR
+If you want to deploy new Dagster user code respositories, you need to modify and redeploy the whole Dagster system (while they are [presented as separate](https://docs.dagster.io/deployment/guides/kubernetes/customizing-your-deployment#separately-deploying-dagster-infrastructure-and-user-code) in the docs). This is undesirable for many reasons, most notably because it slows down a migration or the regular development process. This post presents a way to avoid this and build a fully automated CI/CD-pipeline for (new) user code.
+
 This article assumes that:
 * you (plan to) host Dagster on Kubernetes and manage its deployment with Helm and Ansible;
 * you want to automate the deployment of new Dagster user code repositories with a CI/CD pipeline automation tool of choice;
@@ -20,11 +23,13 @@ However, deployment of new [user code respositories](https://docs.dagster.io/con
 
 ### System and user code are separated
 
-Dagster separates the system deployment - the Dagit (UI) web server and the daemons that coordinate the runs - from the user code deployment - the actual data pipeline. In other words: the user code servers run in complete isolation from the system and each other. This is a great feature of which the advantages are obvious: user code repositories have their own Python environment, teams can manage these separately, and if a user code server breaks down the system is not impacted. In fact, it even doesn't require a restart when user code is updated!
+Dagster separates the system deployment - the Dagit (UI) web server and the daemons that coordinate the runs - from the user code deployment - the actual data pipeline. In other words: the user code servers run in complete isolation from the system and each other. 
+
+This is a great feature of which the advantages are obvious: user code repositories have their own Python environment, teams can manage these separately, and if a user code server breaks down the system is not impacted. In fact, it even doesn't require a restart when user code is updated!
+
+![Schematic of the Dagster architecture. The user code repositories (green) are separate from the rest of the system (yellow and blue). The right side — irrelevant for now — shows the job runs. Source: https://docs.dagster.io/deployment/overview.](images/dagster-architecture.png)
 
 In Helm terms: there are 2 charts, namely the _system_: `dagster/dagster` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/values.yaml)), and the _user code_: `dagster/dagster-user-deployments` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/charts/dagster-user-deployments/values.yaml)). Note that you have to set `dagster-user-deployments.enabled: true` in the `dagster/dagster` values-yaml to enable this.
-
-![Dagster architecture. The _Company Repositories_ can be deployed separately from the _Dagit Web Server_ and _Daemon_. Source: https://docs.dagster.io/deployment/guides/kubernetes/deploying-with-helm.](images/dagster-architecture.png)
 
 #### Or are they?
 
@@ -82,12 +87,16 @@ With the extra ConfigMap in place, these are the steps when a repo gets added:
 Notes:
 * The steps above are completely automatable through your favorite CI/CD pipeline automation tool.
 * There is no interaction with a (platform team) Git repo.
-* The process, unfortunately, still requires a restart of the system in order to pull the latest workspace-yaml to the system services. The daemon terminates, then restarts, and it might cause a short interruption. Note that this is unavoidable if you add a new repo, no matter how you add it.
+* The process, unfortunately, still requires a restart of the system in order to pull the latest workspace-yaml to the system services. The daemon terminates, then restarts, and it might cause a short interruption. Note that this is unavoidable if you add a new repo, no matter how you add it. This could be avoided if a reload of the ConfigMap would be triggered upon a change, [which is possible](https://kubernetes.io/docs/concepts/configuration/configmap/#mounted-configmaps-are-updated-automatically) but not enabled.
 * If you want to make changes to an existing repo (not code changes but server setting changes), you only have to do the first step (and _modify_ instead of _add_).
 
 #### How to prevent conflicts
 
-With many of your team members adding new Dagster repositories through an automated CI/CD pipeline, you might face the situation that 2 people are adding a new repo at around the same time. When this happens, the `dagster-user-deployments-values-yaml` ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the _last-applied-configuration_ when doing an update. If it doesn't match, the upload fails. This is perfect as we do not want to overwrite the changes of the conflicting flow. You can optionally build in a retry-mechanism that starts over with pulling the ConfigMap again.
+With many of your team members adding new Dagster repositories through an automated CI/CD pipeline, you might face the situation that 2 people are adding a new repo at around the same time. 
+
+When this happens, the `dagster-user-deployments-values-yaml` ConfigMap cannot be uploaded in the first step because Kubernetes demands that you provide the _last-applied-configuration_ when doing an update. If it doesn't match, the upload fails. 
+
+This is perfect as we do not want to overwrite the changes of the conflicting flow. You can optionally build in a retry-mechanism that starts over with pulling the ConfigMap again.
 
 #### How to deploy from scratch
 
@@ -101,4 +110,4 @@ The above described automation _adds_ new repos but doesn't take care of old obs
 
 ### Conclusion
 
-Dagster is an incredibly powerful tool that enabled us to build complex data pipelines with ease. Having streamlined the CI/CD pipeline for user code respositories enabled us to migrate to Dagster very quickly and saves us lots of time on a daily basis. 
+Dagster is an incredibly powerful tool that enabled us to build complex data pipelines with ease. This posts explains how we **streamlined the CI/CD pipeline for user code respositories**, which enabled us to migrate to Dagster very quickly and saves us lots of time on a daily basis.
