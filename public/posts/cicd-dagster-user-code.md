@@ -10,14 +10,10 @@ author: Pieter Custers
 ### TL;DR
 If you want to deploy new Dagster user code respositories, you need to modify and redeploy the whole Dagster system (while they are [presented as separate](https://docs.dagster.io/deployment/guides/kubernetes/customizing-your-deployment#separately-deploying-dagster-infrastructure-and-user-code) in the docs). This is undesirable for many reasons, most notably because it slows down a migration or the regular development process. This post presents a way to avoid this and build a fully automated CI/CD-pipeline for (new) user code.
 
----
-
 This article assumes that:
 * you (plan to) host Dagster on Kubernetes and manage its deployment with Helm and Ansible;
 * you want to automate the deployment of new Dagster user code repositories with a CI/CD pipeline automation tool of choice;
 * and you want to be able to (re)deploy the whole Dagster system and user code from scratch.
-
----
 
 ### Why Dagster?
 
