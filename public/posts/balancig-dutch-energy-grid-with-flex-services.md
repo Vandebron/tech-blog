@@ -1,5 +1,5 @@
 ---
-title: How Vandebron is balancing the Dutch energy grid together with OnLogic & Talos Linux
+title: How Vandebron helps balancing the Dutch energy grid together with OnLogic & Talos Linux
 description: Our journey to find the best fitting hardware and operating system to use for our flex services
 createdAt: 2023-01-11
 coverImage: images/flex-wallpaper.webp
@@ -9,7 +9,7 @@ author: Sietse Bruinsma & Tim van Druenen
 
 Vandebron is a Dutch green-tech energy company on a mission to accelerate the transition to 100% renewable energy, 100% of the time. As part of [our mission and strategy](https://vandebron.nl/100procentgroen), we are constantly innovating and looking for ways to optimize energy operations and reduce negative impacts when it comes to energy production.
 
-[Our new mission: 100% renewable energy, 100% of the time](https://youtu.be/_Yf8jk4gZbI)
+Our new mission: [100% renewable energy, 100% of the time](https://youtu.be/_Yf8jk4gZbI)
 
 ### The importance of curtailment and flexibility services
 
@@ -27,7 +27,7 @@ While gathering our hardware requirements, we concluded there was really only on
 
 To ensure our gateway devices are secure and agile (like us, developers, 😛) we needed them to integrate well into our existing technology landscape based on Kubernetes. After struggling for some time to harden several (lightweight) operating systems and bootstrapping lightweight Kubernetes clusters our eyes fell on a new kid in town: ‘Talos Linux, the Kubernetes Operating system’ built by [Sidero Labs](https://www.siderolabs.com/). Again our predetermined wishlist was covered (even more), and what we got is a minimal OS tailored for Kubernetes, hardened, immutable and ephemeral out-of-the-box. Can you survive even more buzzwords than that? 
 
-Until the present day though, they have fulfilled every promise made on [their website](https://www.talos.dev/). It initially didn’t work on our ARM CM4-based device from OnLogic. But after testing a lot together with their team (thank you!) the [latest release (v1.3.0)](https://www.talos.dev/v1.3/introduction/what-is-new/#raspberry-generic-images) officially supports our ARM devices. Ready for action! Right after the stable release the first batches were shipped and installed at the installations of our producers on the platform.
+Until the present day though, they have fulfilled every promise made on [their website](https://www.talos.dev/). It initially didn’t work on our ARM CM4-based device from OnLogic. But after testing a lot together with their team (thank you!) the [latest release (v1.3.0)](https://www.talos.dev/v1.3/introduction/what-is-new/#raspberry-generic-images) officially supports our ARM devices. Ready for action! Right after the stable release the first batches were shipped and connected to the installations of our producers on the platform.
 
-Overall, Vandebron's use of OnLogic's fabricated IoT devices running Talos Linux demonstrates the potential of edge & IoT computing to drive innovation and sustainability in the renewable energy industry. By leveraging the power of these technologies combined, we are one step closer to achieving our goal of 100% renewable energy, 100% of the time. Care to join our mission? Look for [open positions](https://werkenbij.vandebron.nl/).
+Overall, Vandebron's use of OnLogic's fabricated gateway devices running Talos Linux demonstrates the potential of IoT computing to drive innovation and sustainability in the renewable energy industry. By leveraging the power of these technologies combined, we are one step closer to achieving our goal of 100% renewable energy, 100% of the time. Care to join our mission? Look for [open positions](https://werkenbij.vandebron.nl/).
 
