@@ -1,9 +1,0 @@
-module.exports = {
-          srcSet: "/_next/static/images/hero-1200-1aeab994e63426ba021b2c810511a2ce.jpg"+" 1200w"+","+"/_next/static/images/hero-800-6220db5af94e3d5b41bbb3239b630daf.jpg"+" 800w"+","+"/_next/static/images/hero-400-8b8930cd207fbb8003b4e45b752c8eb2.jpg"+" 400w",
-          images:[ {path: "/_next/static/images/hero-1200-1aeab994e63426ba021b2c810511a2ce.jpg",width: 1200,height: 668},{path: "/_next/static/images/hero-800-6220db5af94e3d5b41bbb3239b630daf.jpg",width: 800,height: 445},{path: "/_next/static/images/hero-400-8b8930cd207fbb8003b4e45b752c8eb2.jpg",width: 400,height: 223}],
-          src: "/_next/static/images/hero-1200-1aeab994e63426ba021b2c810511a2ce.jpg",
-          toString:function(){return "/_next/static/images/hero-1200-1aeab994e63426ba021b2c810511a2ce.jpg"},
-          
-          width: 1200,
-          height: 668
-        }
