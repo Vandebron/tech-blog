@@ -26,3 +26,5 @@ export function composePostMetaData(directory, fileName) {
     },
   };
 }
+
+export default composePostMetaData;
