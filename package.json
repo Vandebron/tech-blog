@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "predeploy": "yarn build && touch out/.nojekyll && touch out/CNAME && echo \"www.vandebron.tech\" > out/CNAME",
-    "deploy": "node gh-pages.js"
+    "predeploy": "NODE_OPTIONS=--openssl-legacy-provider yarn generate-rss && yarn build && touch out/.nojekyll && touch out/CNAME && echo \"www.vandebron.tech\" > out/CNAME",
+    "deploy": "node gh-pages.js",
+    "generate-rss": "node ./generate-rss.mjs"
   },
   "dependencies": {
     "@vandebron/windmolen": "17.10.1",
@@ -16,6 +17,7 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.1",
+    "markdown-it": "^13.0.1",
     "next": "^10.0.1",
     "next-transpile-modules": "^4.1.0",
     "react": "16.8",
@@ -24,7 +26,7 @@
     "react-markdown": "^5.0.2",
     "react-syntax-highlighter": "^13.5.3",
     "responsive-loader": "^2.1.1",
-    "sharp": "^0.30.7"
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
