@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "predeploy": "NODE_OPTIONS=--openssl-legacy-provider yarn generate-rss && yarn build && touch out/.nojekyll && touch out/CNAME && echo \"www.vandebron.tech\" > out/CNAME",
+    "predeploy": " yarn generate-rss && yarn build && touch out/.nojekyll && touch out/CNAME && echo \"www.vandebron.tech\" > out/CNAME",
     "deploy": "node gh-pages.js",
     "generate-rss": "node ./generate-rss.mjs"
   },
