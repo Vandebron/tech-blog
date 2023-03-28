@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0fb37727-0ce9-4027-8617-72a6ad853c3e" name="Changes" comment="#  (If applied, this commit will...) &lt;subject&gt; (Max 60 char)&#10;# |&lt;----       Using a Maximum Of 60 Characters       ----&gt;|&#10;&#10;&#10;# Explain why this change is being made&#10;# |&lt;----   Try To Limit Each Line to a Maximum Of 72 Characters   ----&gt;|&#10;&#10;# Provide links or keys to any relevant tickets, articles or other resources&#10;# Example: branch: &lt;type&gt;/BIGD-281-consistent-commit-messages&#10;&#10;branch:&#10;# --- COMMIT END ---&#10;# Type can be&#10;#    feature  (new feature)&#10;#    fix      (bug fix)&#10;#    refactor (refactoring production code)&#10;#    style    (formatting, missing semi colons, etc; no code change)&#10;#    docs     (changes to documentation)&#10;#    test     (adding or refactoring tests; no production code change)&#10;#    chore    (updating grunt tasks etc; no production code change)&#10;# --------------------&#10;# Remember to&#10;#    Capitalize the subject line&#10;#    Use the imperative mood in the subject line&#10;#    Do not end the subject line with a period&#10;#    Separate subject from body with a blank line&#10;#    Use the body to explain what and why vs. how&#10;#    Can use multiple lines with &quot;-&quot; for bullet points in body&#10;# --------------------" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="28pU3E237BosUd37pHJlGpROd1J" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "/Users/samtheisens/IdeaProjects/tmp/tech-blog/public/posts",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/posts" />
+      <recent name="$PROJECT_DIR$/examples/slick-flyway-db-upgrades" />
+      <recent name="$PROJECT_DIR$/examples/slick-flyway-db-upgrades/project" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0fb37727-0ce9-4027-8617-72a6ad853c3e" name="Changes" comment="" />
+      <created>1651912822103</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651912822103</updated>
+      <workItem from="1651912822105" duration="4616000" />
+      <workItem from="1654934829809" duration="1032000" />
+      <workItem from="1655539843791" duration="2444000" />
+      <workItem from="1662124253824" duration="4202000" />
+      <workItem from="1679993300097" duration="1434000" />
+    </task>
+    <task id="LOCAL-00001" summary="#  (If applied, this commit will...) &lt;subject&gt; (Max 60 char)&#10;# |&lt;----       Using a Maximum Of 60 Characters       ----&gt;|&#10;Update sharp and windmolen&#10;&#10;# Explain why this change is being made&#10;# |&lt;----   Try To Limit Each Line to a Maximum Of 72 Characters   ----&gt;|&#10;&#10;# Provide links or keys to any relevant tickets, articles or other resources&#10;# Example: branch: &lt;type&gt;/BIGD-281-consistent-commit-messages&#10;&#10;branch:&#10;# --- COMMIT END ---&#10;# Type can be&#10;#    feature  (new feature)&#10;#    fix      (bug fix)&#10;#    refactor (refactoring production code)&#10;#    style    (formatting, missing semi colons, etc; no code change)&#10;#    docs     (changes to documentation)&#10;#    test     (adding or refactoring tests; no production code change)&#10;#    chore    (updating grunt tasks etc; no production code change)&#10;# --------------------&#10;# Remember to&#10;#    Capitalize the subject line&#10;#    Use the imperative mood in the subject line&#10;#    Do not end the subject line with a period&#10;#    Separate subject from body with a blank line&#10;#    Use the body to explain what and why vs. how&#10;#    Can use multiple lines with &quot;-&quot; for bullet points in body&#10;# --------------------">
+      <created>1662127962044</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662127962044</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/swagger-akka-http" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="#  (If applied, this commit will...) &lt;subject&gt; (Max 60 char)&#10;# |&lt;----       Using a Maximum Of 60 Characters       ----&gt;|&#10;Update sharp and windmolen&#10;&#10;# Explain why this change is being made&#10;# |&lt;----   Try To Limit Each Line to a Maximum Of 72 Characters   ----&gt;|&#10;&#10;# Provide links or keys to any relevant tickets, articles or other resources&#10;# Example: branch: &lt;type&gt;/BIGD-281-consistent-commit-messages&#10;&#10;branch:&#10;# --- COMMIT END ---&#10;# Type can be&#10;#    feature  (new feature)&#10;#    fix      (bug fix)&#10;#    refactor (refactoring production code)&#10;#    style    (formatting, missing semi colons, etc; no code change)&#10;#    docs     (changes to documentation)&#10;#    test     (adding or refactoring tests; no production code change)&#10;#    chore    (updating grunt tasks etc; no production code change)&#10;# --------------------&#10;# Remember to&#10;#    Capitalize the subject line&#10;#    Use the imperative mood in the subject line&#10;#    Do not end the subject line with a period&#10;#    Separate subject from body with a blank line&#10;#    Use the body to explain what and why vs. how&#10;#    Can use multiple lines with &quot;-&quot; for bullet points in body&#10;# --------------------" />
+    <option name="LAST_COMMIT_MESSAGE" value="#  (If applied, this commit will...) &lt;subject&gt; (Max 60 char)&#10;# |&lt;----       Using a Maximum Of 60 Characters       ----&gt;|&#10;Update sharp and windmolen&#10;&#10;# Explain why this change is being made&#10;# |&lt;----   Try To Limit Each Line to a Maximum Of 72 Characters   ----&gt;|&#10;&#10;# Provide links or keys to any relevant tickets, articles or other resources&#10;# Example: branch: &lt;type&gt;/BIGD-281-consistent-commit-messages&#10;&#10;branch:&#10;# --- COMMIT END ---&#10;# Type can be&#10;#    feature  (new feature)&#10;#    fix      (bug fix)&#10;#    refactor (refactoring production code)&#10;#    style    (formatting, missing semi colons, etc; no code change)&#10;#    docs     (changes to documentation)&#10;#    test     (adding or refactoring tests; no production code change)&#10;#    chore    (updating grunt tasks etc; no production code change)&#10;# --------------------&#10;# Remember to&#10;#    Capitalize the subject line&#10;#    Use the imperative mood in the subject line&#10;#    Do not end the subject line with a period&#10;#    Separate subject from body with a blank line&#10;#    Use the body to explain what and why vs. how&#10;#    Can use multiple lines with &quot;-&quot; for bullet points in body&#10;# --------------------" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
