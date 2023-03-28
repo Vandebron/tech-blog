@@ -16,8 +16,8 @@ const blogPostsRssXml = () => {
         .map((fileName) => composePostMetaData(directory, fileName))
         .sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date))
 
-    posts.forEach(({ content, meta }) => {
-        const { title, description, date, slug } = meta;
+    posts.forEach(({content, meta}) => {
+        const {title, description, date, slug} = meta;
         const postDate = new Date(date).toISOString();
 
         const postHref = `https://vandebron.tech/${slug}`;
@@ -47,9 +47,8 @@ const blogPostsRssXml = () => {
 };
 
 const getRssXml = () => {
-    const { rssItemsXml, latestPostDate } = blogPostsRssXml();
+    const {rssItemsXml, latestPostDate} = blogPostsRssXml();
 
-    // Edit the '<link>' and '<description>' data here to reflect your own website details!
     return `<?xml version="1.0" ?>
   <rss
     xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -75,11 +74,12 @@ async function generateRSS() {
 
     const staticOutputPath = path.join(process.cwd(), 'public');
 
-    fs.writeFile(`${staticOutputPath}/rss.xml`, processedXml, (err) => {
+    let filePath = `${staticOutputPath}/rss.xml`;
+    fs.writeFile(filePath, processedXml, (err) => {
         if (err) {
             console.log(err);
         } else {
-            console.log('File written successfully');
+            console.log(`File ${filePath} written successfully`);
         }
     });
 }
