@@ -17,7 +17,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install and Build
+      - name: Downgrade Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Yarn install and Build
         run: |
           yarn install
           yarn predeploy
