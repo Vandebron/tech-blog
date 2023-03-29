@@ -7,7 +7,7 @@
     "build": "next build && next export",
     "start": "next start",
     "predeploy": "yarn generate-rss && yarn build && touch out/.nojekyll && touch out/CNAME && echo \"www.vandebron.tech\" > out/CNAME",
-    "predeploy-pr": "yarn generate-rss && yarn build && touch out/.nojekyll && rm -f out/CNAME || true",
+    "predeploy-pr": "yarn generate-rss && yarn build && touch out/.nojekyll && rm -f out/CNAME || true && cp -r .next/ out/.next",
     "deploy": "node gh-pages.js",
     "generate-rss": "node ./generate-rss.mjs"
   },
