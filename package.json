@@ -11,7 +11,7 @@
     "generate-rss": "node ./generate-rss.mjs"
   },
   "dependencies": {
-    "@vandebron/windmolen": "17.10.1",
+    "@vandebron/windmolen": "^15.28.1-alpha.1",
     "bootstrap": "^4.6.0",
     "gray-matter": "^4.0.2",
     "imagemin-mozjpeg": "^9.0.0",
