@@ -218,10 +218,10 @@
   resolved "https://registry.yarnpkg.com/@types/warning/-/warning-3.0.0.tgz#0d2501268ad8f9962b740d387c4654f5f8e23e52"
   integrity sha512-t/Tvs5qR47OLOr+4E9ckN8AmP2Tf16gWq+/qA4iUGS/OOyHVO8wv2vjJuX8SNOUTJyWb+2t7wJm6cXILFnOROA==
 
-"@vandebron/windmolen@^15.28.1-alpha.1":
-  version "15.38.0"
-  resolved "https://registry.yarnpkg.com/@vandebron/windmolen/-/windmolen-15.38.0.tgz#ca738289c7a00b8b32a305fe30db950476d5f9c4"
-  integrity sha512-HaHImMPPglqTWwpRwd3F7Iz6SdctN2cPx57JiBavEKWYWWKDhws+XeZyZoHQjI3QST4CLc57HVxAOLniWrgfvg==
+"@vandebron/windmolen@17.10.1":
+  version "17.10.1"
+  resolved "https://registry.yarnpkg.com/@vandebron/windmolen/-/windmolen-17.10.1.tgz#6f7d5c75b97fe7b18754dd3bd9122b1956051135"
+  integrity sha512-isFrHrP1eO5JRlItlOxUh1ougWqZgdMPWUsdTREsxrvbKXRSIj75aMwCIRkGoMnvR3ScgNbvJ35/2FmuG+eVuw==
   dependencies:
     bootstrap "^4.6.1"
     es-abstract "^1.17.6"
