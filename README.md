@@ -13,7 +13,7 @@ yarn
 
 Or the npm equivalent `npm i`
 
-To install the project's dependencies. After installing you can run the project locally with the command:
+To install the project's dependencies. After installing, you can run the project locally with the command:
 
 ```bash
 yarn dev
