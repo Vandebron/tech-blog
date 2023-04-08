@@ -6,17 +6,20 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "predeploy": "yarn build && touch out/.nojekyll && touch out/CNAME && echo \"www.vandebron.tech\" > out/CNAME",
-    "deploy": "node gh-pages.js"
+    "predeploy": "yarn generate-rss && yarn build && touch out/.nojekyll && touch out/CNAME && echo \"www.vandebron.tech\" > out/CNAME",
+    "predeploy-pr": "yarn generate-rss && yarn build && touch out/.nojekyll && rm -f out/CNAME || true && cp -r .next/ out/.next",
+    "deploy": "node gh-pages.js",
+    "generate-rss": "node ./generate-rss.mjs"
   },
   "dependencies": {
-    "@vandebron/windmolen": "^17.4.0",
+    "@vandebron/windmolen": "^15.28.1-alpha.1",
     "bootstrap": "^4.6.0",
     "gray-matter": "^4.0.2",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.1",
     "webp-loader": "0.6.0",
+    "markdown-it": "^13.0.1",
     "next": "^10.0.1",
     "next-transpile-modules": "^4.1.0",
     "react": "16.8",
@@ -25,10 +28,10 @@
     "react-markdown": "^5.0.2",
     "react-syntax-highlighter": "^13.5.3",
     "responsive-loader": "^2.1.1",
-    "sharp": "^0.30.2"
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
-    "@types/sharp": "^0.30.2",
+    "@types/sharp": "^0.32.0",
     "gh-pages": "^3.1.0",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2"

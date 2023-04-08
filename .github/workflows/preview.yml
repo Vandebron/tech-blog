@@ -1,0 +1,42 @@
+name: Deploy PR previews
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Downgrade Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Find PR number
+        uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        if: github.ref_name != 'master'
+        with:
+          state: open
+
+      - name: Yarn install and Build
+        env:
+          TECH_BLOG_BASE_PATH: "/pr-preview/pr-${{ steps.findPr.outputs.pr }}"
+        run: |
+          yarn install
+          yarn predeploy-pr
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./out/

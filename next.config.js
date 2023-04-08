@@ -21,6 +21,6 @@ module.exports = withPlugins([
     },
   ],
   {
-    basePath: "",
+    basePath: process.env.TECH_BLOG_BASE_PATH,
   },
 ]);
