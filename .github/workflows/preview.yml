@@ -22,7 +22,16 @@ jobs:
         with:
           node-version: 14
 
+      - name: Find PR number
+        uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        if: github.ref_name != 'master'
+        with:
+          state: open
+
       - name: Yarn install and Build
+        env:
+          TECH_BLOG_BASE_PATH: "/pr-preview/pr-${{ steps.findPr.outputs.pr }}"
         run: |
           yarn install
           yarn predeploy-pr
