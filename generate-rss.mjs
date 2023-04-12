@@ -31,16 +31,11 @@ const blogPostsRssXml = () => {
         rssItemsXml += `
       <item>
         <title><![CDATA[${title}]]></title>
-        <image>
-            <url>${coverImageUrl}</url>
-            <title>${meta.coverImage}</title>
-            <link>${postHref}</link>
-        </image>
         <link>${postHref}</link>
         <pubDate>${postDate}</pubDate>
         <guid isPermaLink="false">${postHref}</guid>
         <description>
-        <![CDATA[${description}]]>
+        <![CDATA[<img src="${coverImageUrl}" alt="${title}"/>${description}]]>
         </description>
         <content:encoded>
         <![CDATA[${md.render(content)}]]>
