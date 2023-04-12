@@ -31,10 +31,14 @@ const blogPostsRssXml = () => {
         rssItemsXml += `
       <item>
         <title><![CDATA[${title}]]></title>
+        <image>
+            <url>${coverImageUrl}</url>
+            <title>${meta.coverImage}</title>
+            <link>${postHref}</link>
+        </image>
         <link>${postHref}</link>
         <pubDate>${postDate}</pubDate>
         <guid isPermaLink="false">${postHref}</guid>
-        <media:content url="${coverImageUrl}" medium="image" />
         <description>
         <![CDATA[${description}]]>
         </description>
@@ -57,7 +61,6 @@ const getRssXml = () => {
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlns:media="http://search.yahoo.com/mrss/"
     version="2.0"
   >   
     <channel>
