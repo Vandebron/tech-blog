@@ -3,7 +3,6 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlns:media="http://search.yahoo.com/mrss/"
     version="2.0"
   >   
     <channel>
@@ -17,10 +16,14 @@
         
       <item>
         <title><![CDATA[How Vandebron helps balancing the Dutch energy grid together with OnLogic & Talos Linux]]></title>
+        <image>
+            <url>https://vandebron.tech/images/flex-wallpaper.webp</url>
+            <title>images/flex-wallpaper.webp</title>
+            <link>https://vandebron.tech/blog/balancing-dutch-energy-grid-with-flex-services</link>
+        </image>
         <link>https://vandebron.tech/blog/balancing-dutch-energy-grid-with-flex-services</link>
         <pubDate>2023-01-11T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/balancing-dutch-energy-grid-with-flex-services</guid>
-        <media:content url="https://vandebron.tech/images/flex-wallpaper.webp" medium="image" />
         <description>
         <![CDATA[Our journey to find the best fitting hardware and operating system to use for our flex services]]>
         </description>
@@ -42,10 +45,14 @@
     </item>
       <item>
         <title><![CDATA[The Why and How of Dagster User Code Deployment Automation]]></title>
+        <image>
+            <url>https://vandebron.tech/images/dagster-cicd.png</url>
+            <title>images/dagster-cicd.png</title>
+            <link>https://vandebron.tech/blog/cicd-dagster-user-code</link>
+        </image>
         <link>https://vandebron.tech/blog/cicd-dagster-user-code</link>
         <pubDate>2022-07-08T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/cicd-dagster-user-code</guid>
-        <media:content url="https://vandebron.tech/images/dagster-cicd.png" medium="image" />
         <description>
         <![CDATA[If you frequently deploy new user code repositories in Dagster, you want to automate this process. However, this is not so straightforward as it may seem at first. This post explains what we did at Vandebron.]]>
         </description>
@@ -127,10 +134,14 @@
     </item>
       <item>
         <title><![CDATA[The difference between a component library and a design system, and how they can help bridge the gap between design and development]]></title>
+        <image>
+            <url>https://vandebron.tech/images/WindmolenCover.jpg</url>
+            <title>images/WindmolenCover.jpg</title>
+            <link>https://vandebron.tech/blog/the-difference-between-a-component-library-and-a-design-system</link>
+        </image>
         <link>https://vandebron.tech/blog/the-difference-between-a-component-library-and-a-design-system</link>
         <pubDate>2022-07-06T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/the-difference-between-a-component-library-and-a-design-system</guid>
-        <media:content url="https://vandebron.tech/images/WindmolenCover.jpg" medium="image" />
         <description>
         <![CDATA[A while back we started a rather extensive project of migrating and unifying our component library, these are some of the learnings we made during the project.]]>
         </description>
@@ -185,10 +196,14 @@
     </item>
       <item>
         <title><![CDATA[Signing and verifying SOAP messages with wss4j and Scala]]></title>
+        <image>
+            <url>https://vandebron.tech/images/soap.jpg</url>
+            <title>images/soap.jpg</title>
+            <link>https://vandebron.tech/blog/how-to-sign-soap-messages</link>
+        </image>
         <link>https://vandebron.tech/blog/how-to-sign-soap-messages</link>
         <pubDate>2021-06-28T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/how-to-sign-soap-messages</guid>
-        <media:content url="https://vandebron.tech/images/soap.jpg" medium="image" />
         <description>
         <![CDATA[This blogpost will explain with code examples how we at Vandebron are signing and verifying SOAP messages for our latest SOAP client implementation.]]>
         </description>
@@ -504,10 +519,14 @@ class SigningService(signingCertificate: SigningCertificate, trustedCertificates
     </item>
       <item>
         <title><![CDATA[Looking back at the Vandebron GreenTech Hackathon 2021]]></title>
+        <image>
+            <url>https://vandebron.tech/images/looking-back-at-vandebron-greentech-hackathon-2021.png</url>
+            <title>images/looking-back-at-vandebron-greentech-hackathon-2021.png</title>
+            <link>https://vandebron.tech/blog/looking-back-at-vandebron-greentech-hackathon-2021</link>
+        </image>
         <link>https://vandebron.tech/blog/looking-back-at-vandebron-greentech-hackathon-2021</link>
         <pubDate>2021-04-05T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/looking-back-at-vandebron-greentech-hackathon-2021</guid>
-        <media:content url="https://vandebron.tech/images/looking-back-at-vandebron-greentech-hackathon-2021.png" medium="image" />
         <description>
         <![CDATA[At the end of March, we organized a public hackathon to create solutions to tackle climate challenges. After having done internal hackathons, we thought it was time to share our technologies with other innovative people and companies.]]>
         </description>
@@ -527,10 +546,14 @@ class SigningService(signingCertificate: SigningCertificate, trustedCertificates
     </item>
       <item>
         <title><![CDATA[The power of regular hackathons]]></title>
+        <image>
+            <url>https://vandebron.tech/images/power-regular-hackathons.png</url>
+            <title>images/power-regular-hackathons.png</title>
+            <link>https://vandebron.tech/blog/power-regular-hackathons</link>
+        </image>
         <link>https://vandebron.tech/blog/power-regular-hackathons</link>
         <pubDate>2021-03-19T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/power-regular-hackathons</guid>
-        <media:content url="https://vandebron.tech/images/power-regular-hackathons.png" medium="image" />
         <description>
         <![CDATA[At Vandebron we have been organizing a regular hackathon for the last four years. Every three months we organize a two-day event. At first glance this seems quite an investment. Eight days a year, almost losing two working-weeks of productivity for your teams!]]>
         </description>
@@ -560,10 +583,14 @@ class SigningService(signingCertificate: SigningCertificate, trustedCertificates
     </item>
       <item>
         <title><![CDATA[Migrating from DCOS to Kubernetes, dealing with the l4lb loadbalancer]]></title>
+        <image>
+            <url>https://vandebron.tech/images/migrating-dcos-kubernetes-l4lb.jpg</url>
+            <title>images/migrating-dcos-kubernetes-l4lb.jpg</title>
+            <link>https://vandebron.tech/blog/migrating-dcos-kubernetes-l4lb</link>
+        </image>
         <link>https://vandebron.tech/blog/migrating-dcos-kubernetes-l4lb</link>
         <pubDate>2021-03-05T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/migrating-dcos-kubernetes-l4lb</guid>
-        <media:content url="https://vandebron.tech/images/migrating-dcos-kubernetes-l4lb.jpg" medium="image" />
         <description>
         <![CDATA[When you want minimal downtime, you need to build your own tools]]>
         </description>
@@ -888,10 +915,14 @@ env GOOS=${GOOS} GOARCH=${GOARCH} go build -v -ldflags &quot;-X main.gitCommit=$
     </item>
       <item>
         <title><![CDATA[Cypress.io Component Design Technique for React Applications]]></title>
+        <image>
+            <url>https://vandebron.tech/images/cypress-component-design-technique-for-react-applications.png</url>
+            <title>images/cypress-component-design-technique-for-react-applications.png</title>
+            <link>https://vandebron.tech/blog/cypress-component-design-technique-for-react-applications</link>
+        </image>
         <link>https://vandebron.tech/blog/cypress-component-design-technique-for-react-applications</link>
         <pubDate>2021-02-05T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/cypress-component-design-technique-for-react-applications</guid>
-        <media:content url="https://vandebron.tech/images/cypress-component-design-technique-for-react-applications.png" medium="image" />
         <description>
         <![CDATA[Cypress is a game-changer in the automation testing world, the way that Cypress was built and its architecture allows us as testers to cover more scenarios.]]>
         </description>
@@ -979,10 +1010,14 @@ describe(&quot;Test Login Page&quot;, () =&gt; {
     </item>
       <item>
         <title><![CDATA[How to Spin Up A Kubernetes Cluster On Your Macbook]]></title>
+        <image>
+            <url>https://vandebron.tech/images/spin-up-kubernetes-on-macbook.jpg</url>
+            <title>images/spin-up-kubernetes-on-macbook.jpg</title>
+            <link>https://vandebron.tech/blog/spin-up-kubernetes-on-macbook</link>
+        </image>
         <link>https://vandebron.tech/blog/spin-up-kubernetes-on-macbook</link>
         <pubDate>2021-01-25T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/spin-up-kubernetes-on-macbook</guid>
-        <media:content url="https://vandebron.tech/images/spin-up-kubernetes-on-macbook.jpg" medium="image" />
         <description>
         <![CDATA[It is can be useful to create a disposable Kubernetes sandbox to play with when you are exploring a new application and how it could work.]]>
         </description>
@@ -1059,10 +1094,14 @@ Both of these tools have to be installed and run from your local laptop, either 
     </item>
       <item>
         <title><![CDATA[Optimizing, Converting And Exporting SVG Icons In React]]></title>
+        <image>
+            <url>https://vandebron.tech/images/optimizing-converting-and-exporting-svg-icons-in-react.jpg</url>
+            <title>images/optimizing-converting-and-exporting-svg-icons-in-react.jpg</title>
+            <link>https://vandebron.tech/blog/optimizing-converting-and-exporting-svg-icons-in-react</link>
+        </image>
         <link>https://vandebron.tech/blog/optimizing-converting-and-exporting-svg-icons-in-react</link>
         <pubDate>2020-12-10T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/optimizing-converting-and-exporting-svg-icons-in-react</guid>
-        <media:content url="https://vandebron.tech/images/optimizing-converting-and-exporting-svg-icons-in-react.jpg" medium="image" />
         <description>
         <![CDATA[If you've ever build a component library, you probably dealt with optimizing and converting icons before. With SVGO and SVGR you can do this at scale.]]>
         </description>
@@ -1214,10 +1253,14 @@ export default MyComponent;
     </item>
       <item>
         <title><![CDATA[Fueling the Energy Transition With Spark - Part 1]]></title>
+        <image>
+            <url>https://vandebron.tech/images/fueling-the-energy-transition-with-spark-part-1.jpg</url>
+            <title>images/fueling-the-energy-transition-with-spark-part-1.jpg</title>
+            <link>https://vandebron.tech/blog/fueling-the-energy-transition-with-spark-part-1</link>
+        </image>
         <link>https://vandebron.tech/blog/fueling-the-energy-transition-with-spark-part-1</link>
         <pubDate>2020-11-04T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/fueling-the-energy-transition-with-spark-part-1</guid>
-        <media:content url="https://vandebron.tech/images/fueling-the-energy-transition-with-spark-part-1.jpg" medium="image" />
         <description>
         <![CDATA[Our main backend language is Scala, and by using Spark we build distributed parallel algorithms to fuel the Energy Transition. But why is Spark the best choice for that job?]]>
         </description>
@@ -1317,10 +1360,14 @@ x =&gt; rdd2.values.count() * x //This will NEVER work!!!!
     </item>
       <item>
         <title><![CDATA[Building native images and compiling with GraalVM and sbt]]></title>
+        <image>
+            <url>https://vandebron.tech/images/building-native-images-and-compiling-with-graalvm-and-sbt.jpg</url>
+            <title>images/building-native-images-and-compiling-with-graalvm-and-sbt.jpg</title>
+            <link>https://vandebron.tech/blog/building-native-images-and-compiling-with-graalvm-and-sbt</link>
+        </image>
         <link>https://vandebron.tech/blog/building-native-images-and-compiling-with-graalvm-and-sbt</link>
         <pubDate>2020-10-06T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/building-native-images-and-compiling-with-graalvm-and-sbt</guid>
-        <media:content url="https://vandebron.tech/images/building-native-images-and-compiling-with-graalvm-and-sbt.jpg" medium="image" />
         <description>
         <![CDATA[At Vandebron we organized a two-day long Hackathon, a colleague and I took the chance to dig into the wonderful world of GraalVM.]]>
         </description>
@@ -1635,10 +1682,14 @@ Christian Wimmer</li>
     </item>
       <item>
         <title><![CDATA[When (Not) To Build A Reusable Component Library]]></title>
+        <image>
+            <url>https://vandebron.tech/images/when-not-to-build-a-reusable-component-library.jpg</url>
+            <title>images/when-not-to-build-a-reusable-component-library.jpg</title>
+            <link>https://vandebron.tech/blog/when-not-to-build-a-reusable-component-library</link>
+        </image>
         <link>https://vandebron.tech/blog/when-not-to-build-a-reusable-component-library</link>
         <pubDate>2020-10-05T00:00:00.000Z</pubDate>
         <guid isPermaLink="false">https://vandebron.tech/blog/when-not-to-build-a-reusable-component-library</guid>
-        <media:content url="https://vandebron.tech/images/when-not-to-build-a-reusable-component-library.jpg" medium="image" />
         <description>
         <![CDATA[You can find much information on why a reusable component library is a good investment, but most articles don't state the (obvious) disadvantages..]]>
         </description>
