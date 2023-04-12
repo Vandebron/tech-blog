@@ -18,6 +18,8 @@ const blogPostsRssXml = () => {
 
     posts.forEach(({content, meta}) => {
         const {title, description, date, slug} = meta;
+        const coverImageUrl = `https://vandebron.tech/${meta.coverImage}`;
+
         const postDate = new Date(date).toISOString();
 
         const postHref = `https://vandebron.tech/${slug}`;
@@ -33,7 +35,7 @@ const blogPostsRssXml = () => {
         <pubDate>${postDate}</pubDate>
         <guid isPermaLink="false">${postHref}</guid>
         <description>
-        <![CDATA[${description}]]>
+        <![CDATA[<img src="${coverImageUrl}" alt="${title}"/>${description}]]>
         </description>
         <content:encoded>
         <![CDATA[${md.render(content)}]]>
@@ -55,7 +57,7 @@ const getRssXml = () => {
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:atom="http://www.w3.org/2005/Atom"
     version="2.0"
-  >
+  >   
     <channel>
         <title><![CDATA[Vandebron Engineering & Data]]></title>
         <link>https://vandebron.tech</link>
