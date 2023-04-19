@@ -1,10 +1,11 @@
 <?xml version="1.0" ?>
-  <rss
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:content="http://purl.org/rss/1.0/modules/content/"
-    xmlns:atom="http://www.w3.org/2005/Atom"
+<rss 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:media="http://search.yahoo.com/mrss/" 
     version="2.0"
-  >
+>
     <channel>
         <title><![CDATA[Vandebron Engineering & Data]]></title>
         <link>https://vandebron.tech</link>
@@ -37,6 +38,9 @@
 <p>Overall, Vandebron's use of OnLogic's fabricated gateway devices running Talos Linux demonstrates the potential of IoT computing to drive innovation and sustainability in the renewable energy industry. By leveraging the power of these technologies combined, we are one step closer to achieving our goal of 100% renewable energy, 100% of the time. Care to join our mission? Look for <a href="https://werkenbij.vandebron.nl/">open positions</a>.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/flex-wallpaper.webp"
+        />
     </item>
       <item>
         <title><![CDATA[The Why and How of Dagster User Code Deployment Automation]]></title>
@@ -121,6 +125,9 @@
 <p>Dagster is an incredibly powerful tool that enabled us to build complex data pipelines with ease. This posts explains how we <strong>streamlined the CI/CD pipeline for user code respositories</strong>, which enabled us to migrate to Dagster very quickly and saves us lots of time on a daily basis.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/dagster-cicd.png"
+        />
     </item>
       <item>
         <title><![CDATA[The difference between a component library and a design system, and how they can help bridge the gap between design and development]]></title>
@@ -178,6 +185,9 @@
 <p><em>If the type of work mentioned in this blog post sounds interesting to you, <a href="https://werkenbij.vandebron.nl/l/en/">take a look at our job openings here</a>.</em></p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/WindmolenCover.jpg"
+        />
     </item>
       <item>
         <title><![CDATA[Signing and verifying SOAP messages with wss4j and Scala]]></title>
@@ -496,6 +506,9 @@ class SigningService(signingCertificate: SigningCertificate, trustedCertificates
 <p><a href="https://stackify.com/soap-vs-rest/">SOAP vs. REST</a></p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/soap.jpg"
+        />
     </item>
       <item>
         <title><![CDATA[Looking back at the Vandebron GreenTech Hackathon 2021]]></title>
@@ -518,6 +531,9 @@ class SigningService(signingCertificate: SigningCertificate, trustedCertificates
 <p>I'd like to thank all the participants, prize/challenge partners, and speakers for their efforts during these days. The GreenTech Hackathon 2021 was a huge success thanks to everyone that has been involved. Keep following the <a href="https://vandebron.tech">vandebron.tech</a> to be updated on future hackathons and events.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/looking-back-at-vandebron-greentech-hackathon-2021.png"
+        />
     </item>
       <item>
         <title><![CDATA[The power of regular hackathons]]></title>
@@ -550,6 +566,9 @@ class SigningService(signingCertificate: SigningCertificate, trustedCertificates
 <p>For our next hackathon we are opening our (virtual) doors also for guests, as we are organizing a GreenTech hackathon with other sustainability minded companies (‘Hack the Planet’ and ‘Top Dutch Solar Racing’). You can find more information and sign up via <a href="https://www.vandebron.tech/greentech-hackathon">this link</a>. It is the first time we do it like this, and we sure will learn another thing or two!</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/power-regular-hackathons.png"
+        />
     </item>
       <item>
         <title><![CDATA[Migrating from DCOS to Kubernetes, dealing with the l4lb loadbalancer]]></title>
@@ -877,6 +896,9 @@ env GOOS=${GOOS} GOARCH=${GOARCH} go build -v -ldflags &quot;-X main.gitCommit=$
 <a href="https://werkenbij.vandebron.nl/">https://werkenbij.vandebron.nl/</a></p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/migrating-dcos-kubernetes-l4lb.jpg"
+        />
     </item>
       <item>
         <title><![CDATA[Cypress.io Component Design Technique for React Applications]]></title>
@@ -967,6 +989,9 @@ describe(&quot;Test Login Page&quot;, () =&gt; {
 <p>In the next article, I will talk about how we use Cypress in our manual testing during the sprint and how it saves us tons of time and effort.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/cypress-component-design-technique-for-react-applications.png"
+        />
     </item>
       <item>
         <title><![CDATA[How to Spin Up A Kubernetes Cluster On Your Macbook]]></title>
@@ -1046,6 +1071,9 @@ Both of these tools have to be installed and run from your local laptop, either 
 <p>Having a sandbox is very useful to play around with the concepts of a new setup or service and it packs up a huge amount of positive sides. No matter what is the language or the nature of the system you are trying to replicate, it can be challenging and involve a long list of instructions or manual operations and, sometimes, even dedicated hardware. Although with some bash glue, it is possible to automate most of those processes and the investment cost can be enormously beneficial for yourself (less work the next time you do it) and for the other people working with you (they can use the tool, comment and suggest improvements). Most of all, in the case of infrastructure, it helps raise the knowledge of &quot;what's going on here&quot; and documents for the ones interested in taking a trip down the rabbit hole.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/spin-up-kubernetes-on-macbook.jpg"
+        />
     </item>
       <item>
         <title><![CDATA[Optimizing, Converting And Exporting SVG Icons In React]]></title>
@@ -1200,6 +1228,9 @@ export default MyComponent;
 <p>The examples in this post are the tip of the metaphorical iceberg on what problems SVGO and SVGR can solve. There are many other features you can enable, such as using them as Node.js modules or enabling TypeScript support. To read further make sure to have a look at the SVGR <a href="https://react-svgr.com/playground/">playground</a> or <a href="https://react-svgr.com/docs/getting-started/">documentation</a>.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/optimizing-converting-and-exporting-svg-icons-in-react.jpg"
+        />
     </item>
       <item>
         <title><![CDATA[Fueling the Energy Transition With Spark - Part 1]]></title>
@@ -1302,6 +1333,9 @@ x =&gt; rdd2.values.count() * x //This will NEVER work!!!!
 <p>We have explained all the main concepts of Spark and we have shown some real snippets of our codebase. In the next article, I would like to show you a real-life problem we have solved in our company using <a href="https://spark.apache.org/docs/latest/api/python/index.html"><em>pySpark</em></a>. I will show you how to customize Spark infrastructure to correctly parallelize the ETL algorithm you have built.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/fueling-the-energy-transition-with-spark-part-1.jpg"
+        />
     </item>
       <item>
         <title><![CDATA[Building native images and compiling with GraalVM and sbt]]></title>
@@ -1619,6 +1653,9 @@ Christian Wimmer</li>
 </ul>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/building-native-images-and-compiling-with-graalvm-and-sbt.jpg"
+        />
     </item>
       <item>
         <title><![CDATA[When (Not) To Build A Reusable Component Library]]></title>
@@ -1678,6 +1715,9 @@ Christian Wimmer</li>
 <p>Component libraries are a great way to reduce the amount of code duplication in your applications, prevent design inconsistencies, and increase collaborations between developers, designers, and different teams. But this comes with increased complexity, slower development cycles, and possible code conflicts between projects. Therefore you should consider if using an existing component library or having a monorepo for your source code is a workable solution. At Vandebron we decided to build our own component library (called <a href="https://windmolen.netlify.app/">windmolen</a>) and if you'd decide the same, then be sure that your design guidelines are properly structured and mature enough.</p>
 ]]>
         </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/when-not-to-build-a-reusable-component-library.jpg"
+        />
     </item>
     </channel>
   </rss>
