@@ -16,11 +16,13 @@ const blogPostsRssXml = () => {
         .map((fileName) => composePostMetaData(directory, fileName))
         .sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date))
 
-    posts.forEach(({content, meta}) => {
-        const {title, description, date, slug} = meta;
+    posts.forEach(({ content, meta }) => {
+        const { title, description, date, slug, coverImage } = meta;
+        const blogDomain = 'https://vandebron.tech';
+
         const postDate = new Date(date).toISOString();
 
-        const postHref = `https://vandebron.tech/${slug}`;
+        const postHref = `${blogDomain}/${slug}`;
 
         if (!latestPostDate || postDate > Date.parse(latestPostDate)) {
             latestPostDate = postDate;
@@ -38,6 +40,9 @@ const blogPostsRssXml = () => {
         <content:encoded>
         <![CDATA[${md.render(content)}]]>
         </content:encoded>
+        <media:content
+            url="${blogDomain}/${coverImage}"
+        />
     </item>`;
     });
     return {
@@ -47,15 +52,16 @@ const blogPostsRssXml = () => {
 };
 
 const getRssXml = () => {
-    const {rssItemsXml, latestPostDate} = blogPostsRssXml();
+    const { rssItemsXml, latestPostDate } = blogPostsRssXml();
 
     return `<?xml version="1.0" ?>
-  <rss
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:content="http://purl.org/rss/1.0/modules/content/"
-    xmlns:atom="http://www.w3.org/2005/Atom"
+<rss 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:media="http://search.yahoo.com/mrss/" 
     version="2.0"
-  >
+>
     <channel>
         <title><![CDATA[Vandebron Engineering & Data]]></title>
         <link>https://vandebron.tech</link>
