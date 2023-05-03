@@ -24,16 +24,16 @@ export default function Home({ posts }) {
         <title>vandebron.tech</title>
         <meta
           name="Description"
-          content="Vandebron Engineering & Data. Leading the renewable energy transition with innovative solutions."
+          content="Vandebron Technology. Leading the renewable energy transition with innovative solutions."
         />
         <meta property="og:title" content="vandebron.tech" />
         <meta
           property="og:description"
-          content="Vandebron Engineering & Data. Leading the renewable energy transition with innovative solutions."
+          content="Vandebron Technology. Leading the renewable energy transition with innovative solutions."
         />
         <meta
           property="og:image"
-          content={`https://www.vandebron.tech/images/hero.jpg`}
+          content={`https://www.vandebron.tech/images/technology.png`}
           key="ogimage"
         />
       </Head>
@@ -41,17 +41,18 @@ export default function Home({ posts }) {
       <Container style={{ marginBottom: 60 }}>
         <Row alignItems="center" style={{ marginBottom: 60 }}>
           <Col col={12} sm={12} md={6} lg={6}>
-            <H4>Vandebron Engineering & Data</H4>
+            <H4>Vandebron Technology</H4>
             <Paragraph>
-              Leading the renewable energy transition with innovative solutions
+              Leading the renewable energy transition with innovative solutions. This blog demonstrates some highlights of tech activities that we would like to share with you!
+
             </Paragraph>
           </Col>
           <Col col={12} sm={12} md={6} lg={6}>
             <BoxShadow style={{ width: "100% " }}>
               <Image
                 aspectRatio="2:1"
-                src="images/hero.jpg"
-                alt="Solar panels"
+                src="images/technology-black-2.png"
+                alt="technology at Vandebron"
               />
             </BoxShadow>
           </Col>
@@ -117,13 +118,13 @@ export default function Home({ posts }) {
               icon="github"
             />
             <ProjectCard
-              title="Windmolen"
-              href="https://windmolen.netlify.app/"
-              icon="external-link"
+              title="Windmolen styleguide"
+              href="https://windmolen.netlify.app/?path=/docs/docs-introduction--page"
+              icon="wind-small"
             />
             <ProjectCard
               title="Work with us"
-              href="https://werkenbij.vandebron.nl/"
+              href="https://werkenbij.vandebron.nl/l/en/"
               icon="friend"
             />
           </Col>

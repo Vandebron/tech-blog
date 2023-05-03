@@ -1,6 +1,6 @@
 ## Vandebron.tech blog
 
-This blog demonstrates all the tech activities by Vandebron.
+Leading the renewable energy transition with innovative solutions. This blog demonstrates some highlights of tech activities that we would like to share with you!
 
 
 ### Getting started

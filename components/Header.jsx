@@ -15,7 +15,7 @@ import Logo from "./Logo";
 const links = [
   { name: "Home", url: "/" },
   { name: "About", url: "/about" },
-  { name: "Main website", url: "https://vandebron.nl", external: true },
+  { name: "vandebron.nl", url: "https://vandebron.nl", external: true },
 ];
 
 export default function Header() {
