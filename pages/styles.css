@@ -15,3 +15,7 @@ body > div {
   height: 1px;
   overflow: hidden;
 }
+
+.Card-module__Card .Card-module__content {
+  padding: 30px 0;
+}
