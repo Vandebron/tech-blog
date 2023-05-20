@@ -59,9 +59,7 @@ export default function Markdown({children}) {
                         </code>
                     )
                 },
-                img: ({alt, src}) => (
-                    <img src={src} alt={alt} style={{width: "100%"}}/>
-                ),
+                img: ({src, alt, ...props}) => (<img src={src} alt={alt} style={{width: "100%"}} {...props}/>),
 
             }}
         />
