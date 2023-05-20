@@ -1,0 +1,1 @@
+ALTER TABLE "charge_point" ADD COLUMN "power_in_kwh" DOUBLE PRECISION NOT NULL;
