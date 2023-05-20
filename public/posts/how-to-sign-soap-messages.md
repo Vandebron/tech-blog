@@ -129,7 +129,7 @@ Before signing a message it has to be canonicalized. "Canonicalization is a meth
 The digest algorithm is used to ensure the integrity of the message during the verification of a signature. The algorithm is used to calculate a hash of the signed message. It should be documented in the SOAP service documentation. Here we will use SHA256 as a hashing algorithm.
 
 The signature algorithm describes how the message will be signed. It can be defined in the SOAP service documentation but in the worst case you can read this algorithm from the certificate itself by using [`keytool`](https://docs.oracle.com/en/java/javase/12/tools/keytool.html):
-```
+```bash
 $ keytool -list -v -keystore signature.p12
 Enter keystore password: ...
 

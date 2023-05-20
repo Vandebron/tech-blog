@@ -2,11 +2,13 @@ import ReactMarkdown from "react-markdown";
 import { H1, H2, H3, H4, H5, Paragraph } from "@vandebron/windmolen";
 import { PrismAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import rehypeRaw from 'rehype-raw'
 
 export default function Markdown({children}) {
     return (
         <ReactMarkdown
             children={children}
+            rehypePlugins={[rehypeRaw]}
             components={{
                 hr: React.Fragment,
                 h1: ({children}) => {
