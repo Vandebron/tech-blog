@@ -1670,7 +1670,7 @@
   "../node_modules/react-syntax-highlighter/dist/esm/prism-async.js -> refractor": {
     "id": "a8JZ",
     "files": [
-      "static/chunks/react-syntax-highlighter/refractor-import.be1695f2e17de9f48414.js"
+      "static/chunks/react-syntax-highlighter/refractor-import.ad21dd95134cc6d0e650.js"
     ]
   }
 }

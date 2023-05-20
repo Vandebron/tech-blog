@@ -307,7 +307,7 @@ The pool of trusted certificates are in the <a href="https://www.ssl.com/guide/p
 <p>Before signing a message it has to be canonicalized. &quot;Canonicalization is a method for generating a physical representation, the canonical form, of an XML document that accounts for syntactic changes permitted by the XML specification&quot; (from <a href="https://www.di-mgt.com.au/xmldsig-c14n.html">here</a>). In our case, the Exclusive XML Canonicalization is used.</p>
 <p>The digest algorithm is used to ensure the integrity of the message during the verification of a signature. The algorithm is used to calculate a hash of the signed message. It should be documented in the SOAP service documentation. Here we will use SHA256 as a hashing algorithm.</p>
 <p>The signature algorithm describes how the message will be signed. It can be defined in the SOAP service documentation but in the worst case you can read this algorithm from the certificate itself by using <a href="https://docs.oracle.com/en/java/javase/12/tools/keytool.html"><code>keytool</code></a>:</p>
-<pre><code>$ keytool -list -v -keystore signature.p12
+<pre><code class="language-bash">$ keytool -list -v -keystore signature.p12
 Enter keystore password: ...
 
 [...] # more information about the certificates

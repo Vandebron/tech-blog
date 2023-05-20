@@ -218,6 +218,8 @@ module.exports = {
 /* harmony import */ var react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_syntax_highlighter_dist_cjs_styles_prism__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("88KH");
 /* harmony import */ var react_syntax_highlighter_dist_cjs_styles_prism__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_syntax_highlighter_dist_cjs_styles_prism__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var rehype_raw__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("RwYs");
+/* harmony import */ var rehype_raw__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rehype_raw__WEBPACK_IMPORTED_MODULE_5__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -231,11 +233,13 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 function Markdown({
   children
 }) {
   return __jsx(react_markdown__WEBPACK_IMPORTED_MODULE_1___default.a, {
     children: children,
+    rehypePlugins: [rehype_raw__WEBPACK_IMPORTED_MODULE_5___default.a],
     components: {
       hr: react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
       h1: ({
@@ -866,6 +870,13 @@ module.exports = {
           width: 1200,
           height: 701
         }
+
+/***/ }),
+
+/***/ "RwYs":
+/***/ (function(module, exports) {
+
+module.exports = require("rehype-raw");
 
 /***/ }),
 
