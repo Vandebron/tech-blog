@@ -24,7 +24,7 @@
     "react": "16.8",
     "react-bootstrap": "^1.4.3",
     "react-dom": "16.8",
-    "react-markdown": "^5.0.2",
+    "react-markdown": "^6.0.3",
     "react-syntax-highlighter": "^13.5.3",
     "responsive-loader": "^2.1.1",
     "sharp": "^0.32.0"
