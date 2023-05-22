@@ -28,9 +28,14 @@ export default function Markdown({children}) {
                 },
                 p: (props) => <Paragraph {...props} />,
                 ol: ({children}) => (
-                    <ul style={{marginBlockStart: 0, marginBlockEnd: 30}}>
+                    <ol style={{marginBlockStart: 0, marginBlockEnd: 30}}>
                         {children}
-                    </ul>
+                    </ol>
+                ),
+                ul: ({children}) => (
+                    <ol style={{marginBlockStart: 0, marginBlockEnd: 30}}>
+                        {children}
+                    </ol>
                 ),
                 li: ({children}) => (
                     <Paragraph as="li" style={{marginBottom: 0}}>
