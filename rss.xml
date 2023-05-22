@@ -65,11 +65,11 @@
 <h3>System and user code are separated</h3>
 <p>Dagster separates the system deployment - the Dagit (UI) web server and the daemons that coordinate the runs - from the user code deployment - the actual data pipeline. In other words: the user code servers run in complete isolation from the system and each other.</p>
 <p>This is a great feature of which the advantages are obvious: user code repositories have their own Python environment, teams can manage these separately, and if a user code server breaks down the system is not impacted. In fact, it even doesn't require a restart when user code is updated!</p>
-<p><img src="images/dagster-architecture.png" alt="Schematic of the Dagster architecture. The user code repositories (green) are separate from the rest of the system (yellow and blue). The right side — irrelevant for now — shows the job runs. Source: https://docs.dagster.io/deployment/overview."></p>
+<p><img src="/images/dagster-architecture.png" alt="Schematic of the Dagster architecture. The user code repositories (green) are separate from the rest of the system (yellow and blue). The right side — irrelevant for now — shows the job runs. Source: https://docs.dagster.io/deployment/overview."></p>
 <p>In Helm terms: there are 2 charts, namely the <em>system</em>: <code>dagster/dagster</code> (<a href="https://github.com/dagster-io/dagster/blob/master/helm/dagster/values.yaml">values.yaml</a>), and the <em>user code</em>: <code>dagster/dagster-user-deployments</code> (<a href="https://github.com/dagster-io/dagster/blob/master/helm/dagster/charts/dagster-user-deployments/values.yaml">values.yaml</a>). Note that you have to set <code>dagster-user-deployments.enabled: true</code> in the <code>dagster/dagster</code> values-yaml to enable this.</p>
 <h4>Or are they?</h4>
 <p>That having said, you might find it peculiar that in the values-yaml of the system deployment, <em>you need to specify the user code servers</em>. That looks like this:</p>
-<pre><code>workspace:
+<pre><code class="language-yaml">workspace:
     enabled: true
     servers:
       - host: &quot;k8s-example-user-code-1&quot;
@@ -307,7 +307,7 @@ The pool of trusted certificates are in the <a href="https://www.ssl.com/guide/p
 <p>Before signing a message it has to be canonicalized. &quot;Canonicalization is a method for generating a physical representation, the canonical form, of an XML document that accounts for syntactic changes permitted by the XML specification&quot; (from <a href="https://www.di-mgt.com.au/xmldsig-c14n.html">here</a>). In our case, the Exclusive XML Canonicalization is used.</p>
 <p>The digest algorithm is used to ensure the integrity of the message during the verification of a signature. The algorithm is used to calculate a hash of the signed message. It should be documented in the SOAP service documentation. Here we will use SHA256 as a hashing algorithm.</p>
 <p>The signature algorithm describes how the message will be signed. It can be defined in the SOAP service documentation but in the worst case you can read this algorithm from the certificate itself by using <a href="https://docs.oracle.com/en/java/javase/12/tools/keytool.html"><code>keytool</code></a>:</p>
-<pre><code>$ keytool -list -v -keystore signature.p12
+<pre><code class="language-bash">$ keytool -list -v -keystore signature.p12
 Enter keystore password: ...
 
 [...] # more information about the certificates

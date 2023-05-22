@@ -27,7 +27,7 @@ Dagster separates the system deployment - the Dagit (UI) web server and the daem
 
 This is a great feature of which the advantages are obvious: user code repositories have their own Python environment, teams can manage these separately, and if a user code server breaks down the system is not impacted. In fact, it even doesn't require a restart when user code is updated!
 
-![Schematic of the Dagster architecture. The user code repositories (green) are separate from the rest of the system (yellow and blue). The right side — irrelevant for now — shows the job runs. Source: https://docs.dagster.io/deployment/overview.](images/dagster-architecture.png)
+![Schematic of the Dagster architecture. The user code repositories (green) are separate from the rest of the system (yellow and blue). The right side — irrelevant for now — shows the job runs. Source: https://docs.dagster.io/deployment/overview.](/images/dagster-architecture.png)
 
 In Helm terms: there are 2 charts, namely the _system_: `dagster/dagster` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/values.yaml)), and the _user code_: `dagster/dagster-user-deployments` ([values.yaml](https://github.com/dagster-io/dagster/blob/master/helm/dagster/charts/dagster-user-deployments/values.yaml)). Note that you have to set `dagster-user-deployments.enabled: true` in the `dagster/dagster` values-yaml to enable this.
 
@@ -35,7 +35,7 @@ In Helm terms: there are 2 charts, namely the _system_: `dagster/dagster` ([valu
 
 That having said, you might find it peculiar that in the values-yaml of the system deployment, _you need to specify the user code servers_. That looks like this:
 
-```
+```yaml
 workspace:
     enabled: true
     servers:
