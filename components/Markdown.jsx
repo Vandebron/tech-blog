@@ -42,11 +42,11 @@ export default function Markdown({children}) {
                         {children}
                     </Paragraph>
                 ),
-                a: ({children, ...props}) => (
-                    <a {...props} style={{color: "inherit"}}>
+                a: ({children, ...props}) =>
+                    (<a {...props} style={{color: "inherit"}}
+                        target={'target' in props || props['href'].includes('#') ? undefined : '_blank'}>
                         {children}
-                    </a>
-                ),
+                    </a>),
 
                 code: ({node, inline, className, children, ...props}) => {
                     const match = /language-(\w+)/.exec(className || '')
@@ -54,7 +54,7 @@ export default function Markdown({children}) {
                         <SyntaxHighlighter style={okaidia} language={match[1]} PreTag="div"
                                            children={String(children).replace(/\n$/, '')} {...props} />
                     ) : (
-                        <code className={className} {...props}  style={{
+                        <code className={className} {...props} style={{
                             background: "rgb(0,0,0, 0.1)",
                             padding: "2px 4px",
                             fontSize: "80%",
