@@ -29,10 +29,15 @@ Nevertheless, there _are_ other compelling reasons to consider microservices: th
 and _allow_ you to scale your organization. Of course, all this comes at considerable costs. There's no [free lunch 👇](#presentation).
 2.  <iframe width="320" height="200" src="https://www.youtube.com/embed/HysU3E7Ilm8" frameborder="0" style="float: right; padding: 5px;"></iframe> <b>Don't underestimate the power of a single CPU in 2023</b>. To judge whether a process is unreasonably slow or not, I tend to think of the fact that already in the 1990s, screens showed 65K pixels at any given time. Back then, multiple arithmetic calculations (additions, subtractions) could be performed for each pixel, a hundred times per second. Nowadays, your screen probably displays more than 5 Million pixels at once. So, if the amount of datapoints you are dealing with in the order of millions, you should generally be able to process them in a matter of seconds on a single machine. If you can't, you're likely doing something <i>very</i> inefficient.
 3.  **Software engineering is hard**. Mistakes are made all the time, everywhere. Even at the big 4 tech companies. Kudos to Amazon 👏 for openly sharing their mistake they made so that we may all learn.
-Speaking of which, here's an example from our own experience:
+In the next section we will share one of our own experiences, not entirely different from the Amazon example.
 
-### The cost of distribution: a case in point
+### The 90% cost reduction case at Vandebron
 
+#### Distributed computing
+Considering that all the functionality used in the Amazon case all belongs to the same domain, it's arguably not even 
+a case against improper use of microservices, but instead an example of misuse of *distributed computing*.
+
+#### Predicting the production of electricity
 For utility companies, accurately predicting both electricity consumption and production is crucial.
 Failing to do so can result in blackouts or overproduction, both of which are [very costly](https://vandebron.nl/blog/hoe-houdt-onze-technologie-het-energienet-in-balans).
 Vandebron is a unique utility company in that the electricity that our customers consume is produced by a [very large
@@ -53,12 +58,13 @@ Upon closer inspection, we found an extreme inefficiency in our code. It turned 
 into memory, for _every_ single "pixel". After removing this performance bug, the entire analysis could _easily_ be done
 on a single machine. 
 
-### What else?
+### How are microservices used at Vandebron?
 
 <a id="presentation"> </a>
 
-At [Vandebron](https://vandebron.nl/), we jumped onto the Microservice bandwagon circa 2019. Even though this decision wasn't made on a whim, 
-we've still ended up making many mistakes / learning a lot. In this presentation to students of
+At [Vandebron](https://vandebron.nl/), we jumped onto the Microservice bandwagon circa 2019. Even though this decision wasn't made on a whim
+and we had read the [literature](https://samnewman.io/books/building_microservices_2nd_edition/), we've still ended 
+up making many mistakes / learning a lot. In this presentation to students of
 [VU University Amsterdam](https://vu.nl/) I share some of our most important learnings.
 [![Presentation about micro services to students of VU Amsterdam](/images/play_presentation.webp)](https://youtu.be/HDs-pCsEzKM)
 
