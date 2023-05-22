@@ -270,7 +270,15 @@ function Markdown({
       p: props => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Paragraph"], props),
       ol: ({
         children
-      }) => __jsx("ul", {
+      }) => __jsx("ol", {
+        style: {
+          marginBlockStart: 0,
+          marginBlockEnd: 30
+        }
+      }, children),
+      ul: ({
+        children
+      }) => __jsx("ol", {
         style: {
           marginBlockStart: 0,
           marginBlockEnd: 30
@@ -888,7 +896,7 @@ module.exports = {
 /***/ "R3Wk":
 /***/ (function(module, exports) {
 
-module.exports = "/_next/static/images/play_presentation-b1c739f11ea2fea17c3f1c27c8979d55.webp";
+module.exports = "/_next/static/images/play_presentation-46d913e5289d7643f325b6999e18bc31.webp";
 
 /***/ }),
 
@@ -1013,6 +1021,7 @@ var map = {
 	"./images/spark-cluster-overview.png": "LWlL",
 	"./images/sparkapihistory.png": "ywSF",
 	"./images/spin-up-kubernetes-on-macbook.jpg": "zU01",
+	"./images/step-functions.webp": "XIt9",
 	"./images/technology-black-1.png": "LFmm",
 	"./images/technology-black-2.png": "haXq",
 	"./images/technology-black-3.png": "lVg9",
@@ -1062,6 +1071,13 @@ webpackContext.id = "W4lD";
 /***/ (function(module, exports) {
 
 throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Cypress.io Component Design Technique for React Applications\n| description: Cypress is a game-changer in the automation testing world, the way that Cypress was built and its architecture allows us as testers to cover more scenarios.");
+
+/***/ }),
+
+/***/ "XIt9":
+/***/ (function(module, exports) {
+
+module.exports = "/_next/static/images/step-functions-767473464660f055ce1c84816e33fd46.webp";
 
 /***/ }),
 

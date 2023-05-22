@@ -211,7 +211,15 @@ function Markdown({
       p: props => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Paragraph"], props),
       ol: ({
         children
-      }) => __jsx("ul", {
+      }) => __jsx("ol", {
+        style: {
+          marginBlockStart: 0,
+          marginBlockEnd: 30
+        }
+      }, children),
+      ul: ({
+        children
+      }) => __jsx("ol", {
         style: {
           marginBlockStart: 0,
           marginBlockEnd: 30
