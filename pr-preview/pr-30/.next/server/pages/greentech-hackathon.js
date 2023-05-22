@@ -242,7 +242,8 @@ function Markdown({
         return __jsx("a", _extends({}, props, {
           style: {
             color: "inherit"
-          }
+          },
+          target: 'target' in props || props['href'].includes('#') ? undefined : '_blank'
         }), children);
       },
       code: (_ref2) => {

@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/RkdcoU0D5HpuSnfUkuFbe/_buildManifest.js",
-    "static/RkdcoU0D5HpuSnfUkuFbe/_ssgManifest.js"
+    "static/-iV316jgPm3VATf7oyy52/_buildManifest.js",
+    "static/-iV316jgPm3VATf7oyy52/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -44,7 +44,7 @@
       "static/chunks/main-419ac17f185f95278b96.js",
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
       "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.82a1d309a47c7be2abe4.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.dcdf95040b2bb83a6a44.js",
       "static/chunks/pages/about-bdbe81c7bca98932c589.js"
     ],
     "/blog/[slug]": [
@@ -54,7 +54,7 @@
       "static/chunks/main-419ac17f185f95278b96.js",
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
       "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.82a1d309a47c7be2abe4.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.dcdf95040b2bb83a6a44.js",
       "static/chunks/pages/blog/[slug]-e5f9206458063589351f.js"
     ],
     "/greentech-hackathon": [
@@ -66,7 +66,7 @@
       "static/css/7335de542e4b4f02a25b.css",
       "static/chunks/d637bb0c.a83a6a4548b93404854d.js",
       "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.82a1d309a47c7be2abe4.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.dcdf95040b2bb83a6a44.js",
       "static/chunks/pages/greentech-hackathon-8cf48b451878413b07d1.js"
     ]
   },
