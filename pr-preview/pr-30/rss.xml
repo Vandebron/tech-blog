@@ -78,7 +78,8 @@ These are some of the dangers we saw and what we did to mitigate them:</p>
 <li><strong>Team siloization</strong>: a single repository (AKA monorepo) for all microservices and a discussion platform for cross-domain and cross-team concerns</li>
 <li><strong>Duplication of code</strong>: shared in house libraries for common functionality</li>
 </ul>
-<p>All this is explained in more detail in this presentation to students of <a href="https://vu.nl/">VU University, Amsterdam</a>.</p>
+<p>The following presentation to the students of <a href="https://vu.nl/">VU University, Amsterdam</a> explains how we implemented
+these decisions and what we learned from them.</p>
 <p><a href="https://youtu.be/HDs-pCsEzKM"><img src="/images/play_presentation.webp" alt="Presentation about micro services to students of VU Amsterdam"></a></p>
 ]]>
         </content:encoded>

@@ -72,6 +72,7 @@ These are some of the dangers we saw and what we did to mitigate them:
  * **Duplication of code**: shared in house libraries for common functionality
 
 
-All this is explained in more detail in this presentation to students of [VU University, Amsterdam](https://vu.nl/).
+The following presentation to the students of [VU University, Amsterdam](https://vu.nl/) explains how we implemented
+these decisions and what we learned from them.
 
 [![Presentation about micro services to students of VU Amsterdam](/images/play_presentation.webp)](https://youtu.be/HDs-pCsEzKM)
