@@ -68,10 +68,10 @@ into memory, for <em>every</em> single &quot;pixel&quot;. After removing this pe
 on a single machine.</p>
 <h3>How are microservices used at Vandebron?</h3>
 <p><a id="presentation"> </a></p>
-<p>At <a href="https://vandebron.nl/">Vandebron</a>, we jumped onto the Microservice bandwagon circa 2019.
+<p>At <a href="https://vandebron.nl/">Vandebron</a>, we jumped onto the &quot;microservice bandwagon&quot; circa 2019.
 We had read the <a href="https://samnewman.io/books/building_microservices_2nd_edition/">literature</a> and this wasn't a decision
 made on a whim.
-These are some of the dangers we saw and what we did to mitigate them:</p>
+These are some of the dangers we identified and what we did to mitigate them:</p>
 <ul>
 <li><strong>A stagnating architecture</strong>: compile and unit-test time detection of breaking changes</li>
 <li><strong>Complicated and error prone deployments</strong>: modular CI/CD <a href="https://github.com/Vandebron/mpyl">pipelines</a></li>

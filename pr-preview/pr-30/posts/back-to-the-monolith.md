@@ -62,10 +62,10 @@ on a single machine.
 
 <a id="presentation"> </a>
 
-At [Vandebron](https://vandebron.nl/), we jumped onto the Microservice bandwagon circa 2019. 
+At [Vandebron](https://vandebron.nl/), we jumped onto the "microservice bandwagon" circa 2019. 
 We had read the [literature](https://samnewman.io/books/building_microservices_2nd_edition/) and this wasn't a decision
 made on a whim.
-These are some of the dangers we saw and what we did to mitigate them:
+These are some of the dangers we identified and what we did to mitigate them:
  * **A stagnating architecture**: compile and unit-test time detection of breaking changes
  * **Complicated and error prone deployments**: modular CI/CD [pipelines](https://github.com/Vandebron/mpyl)
  * **Team siloization**: a single repository (AKA monorepo) for all microservices and a discussion platform for cross-domain and cross-team concerns
