@@ -1121,7 +1121,7 @@ module.exports = {
 /***/ "aou2":
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: So, back to the monolith it is then?\n| description: Amazon recently ");
+throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: So, back to the monolith it is then?\n| description: A recent Amazon article explaining how they managed to save costs by merging some of their services has lead some to question the value of microservices. What is our take?");
 
 /***/ }),
 

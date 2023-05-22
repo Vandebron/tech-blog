@@ -1,6 +1,6 @@
 ---
 title: So, back to the monolith it is then?
-description: Amazon recently 
+description: A recent Amazon article explaining how they managed to save costs by merging some of their services has lead some to question the value of microservices. What is our take?
 createdAt: 2023-05-20
 coverImage: images/monolith.webp
 tags: dagster, cicd, ci-cd, orchestration, data pipeline, kubernetes, migration, helm, ansible
