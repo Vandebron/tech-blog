@@ -2,68 +2,68 @@ import ReactMarkdown from "react-markdown";
 import { H1, H2, H3, H4, H5, Paragraph } from "@vandebron/windmolen";
 import { PrismAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import rehypeRaw from 'rehype-raw'
 
-export default function Markdown({ children }) {
-  return (
-    <ReactMarkdown
-      source={children}
-      renderers={{
-        thematicBreak: React.Fragment,
-        heading: ({ children, level }) => {
-          const levels = {
-            1: H1,
-            2: H2,
-            3: H3,
-            4: H4,
-            5: H5,
-          };
+export default function Markdown({children}) {
+    return (
+        <ReactMarkdown
+            children={children}
+            rehypePlugins={[rehypeRaw]}
+            components={{
+                hr: React.Fragment,
+                h1: ({children}) => {
+                    return <H1>{children}</H1>;
+                },
+                h2: ({children}) => {
+                    return <H2>{children}</H2>;
+                },
+                h3: ({children}) => {
+                    return <H3>{children}</H3>;
+                },
+                h4: ({children}) => {
+                    return <H4>{children}</H4>;
+                },
+                h5: ({children}) => {
+                    return <H5>{children}</H5>;
+                },
+                p: (props) => <Paragraph {...props} />,
+                ol: ({children}) => (
+                    <ul style={{marginBlockStart: 0, marginBlockEnd: 30}}>
+                        {children}
+                    </ul>
+                ),
+                li: ({children}) => (
+                    <Paragraph as="li" style={{marginBottom: 0}}>
+                        {children}
+                    </Paragraph>
+                ),
+                a: ({children, ...props}) => (
+                    <a {...props} style={{color: "inherit"}}>
+                        {children}
+                    </a>
+                ),
 
-          const Heading = levels[level];
+                code: ({node, inline, className, children, ...props}) => {
+                    const match = /language-(\w+)/.exec(className || '')
+                    return !inline && match ? (
+                        <SyntaxHighlighter style={okaidia} language={match[1]} PreTag="div"
+                                           children={String(children).replace(/\n$/, '')} {...props} />
+                    ) : (
+                        <code className={className} {...props}  style={{
+                            background: "rgb(0,0,0, 0.1)",
+                            padding: "2px 4px",
+                            fontSize: "80%",
+                            color: "#000",
+                        }}>
+                            {children}
+                        </code>
+                    )
+                },
+                img: ({alt, src}) => (
+                    <img src={src} alt={alt} style={{width: "100%"}}/>
+                ),
 
-          return <Heading>{children}</Heading>;
-        },
-        paragraph: (props) => <Paragraph {...props} />,
-        list: ({ children }) => (
-          <ul style={{ marginBlockStart: 0, marginBlockEnd: 30 }}>
-            {children}
-          </ul>
-        ),
-        listItem: ({ children }) => (
-          <Paragraph as="li" style={{ marginBottom: 0 }}>
-            {children}
-          </Paragraph>
-        ),
-        link: ({ children, ...props }) => (
-          <a {...props} style={{ color: "inherit" }}>
-            {children}
-          </a>
-        ),
-        code: ({ language, value }) => (
-          <>
-            <SyntaxHighlighter
-              language={language}
-              style={okaidia}
-              children={value}
-            />
-            <br />
-          </>
-        ),
-        inlineCode: ({ children }) => (
-          <code
-            style={{
-              background: "rgb(0,0,0, 0.1)",
-              padding: "2px 4px",
-              fontSize: "80%",
-              color: "#000",
             }}
-          >
-            {children}
-          </code>
-        ),
-        image: ({ alt, src }) => (
-          <img src={src} alt={alt} style={{ width: "100%" }} />
-        ),
-      }}
-    />
-  );
+        />
+    );
 }

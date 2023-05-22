@@ -4,6 +4,7 @@ import MarkdownIt from 'markdown-it';
 import composePostMetaData from "./utils/index.mjs";
 
 const md = new MarkdownIt();
+md.set({ html: true });
 
 const blogPostsRssXml = () => {
     const directory = "/public/posts/";
