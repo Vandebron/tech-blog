@@ -1,14 +1,15 @@
 import ReactMarkdown from "react-markdown";
-import { H1, H2, H3, H4, H5, Paragraph } from "@vandebron/windmolen";
+import { H1, H2, H3, H4, H5, Table, Paragraph } from "@vandebron/windmolen";
 import { PrismAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 export default function Markdown({children}) {
     return (
         <ReactMarkdown
             children={children}
-            rehypePlugins={[rehypeRaw]}
+            rehypePlugins={[rehypeRaw, remarkGfm]}
             components={{
                 hr: React.Fragment,
                 h1: ({children}) => {
@@ -65,6 +66,20 @@ export default function Markdown({children}) {
                     )
                 },
                 img: ({src, alt, ...props}) => (<img src={src} alt={alt} style={{width: "100%"}} {...props}/>),
+                table: ({children}) => (<Table tableStyle='solid-borders'
+                                               style={{
+                                                   'borderCollapse': 'collapse',
+                                                   'marginBottom': '5%',
+                                                   'marginLeft': '5%',
+                                                   'marginRight': '5%',
+                                                   'fontSize': '18px'
+                                               }}
+                                               align='center'>{children}</Table>),
+                thead: ({children}) => (<Table.Thead style={{'color': 'black'}}>{children}</Table.Thead>),
+                tbody: ({children}) => (<Table.Tbody>{children}</Table.Tbody>),
+                tr: ({children}) => (<Table.Row style={{'borderBottom': '1px solid #000'}}>{children}</Table.Row>),
+                td: ({children}) => (<Table.Cell>{children}</Table.Cell>),
+                th: ({children}) => (<Table.Cell>{children}</Table.Cell>),
 
             }}
         />
