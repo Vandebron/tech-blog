@@ -40,13 +40,13 @@ The blog post went viral, prompting some software industry celebrities to
 <iframe width="372" height="208" src="https://www.youtube.com/embed/RC_FHNRI8Lg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="float: right; padding: 5px;"></iframe> <b>Don't underestimate the power of a single CPU in 2023</b>. To judge whether a process is unreasonably slow or not, I tend to think of the fact that already in the 1990s, screens showed 65K pixels at any given time. Back then, multiple arithmetic calculations (additions, subtractions) could be performed for each pixel, fifty times per second. Nowadays, your screen probably displays more than 5 Million pixels at once. So, if the amount of datapoints you are dealing with in the order of millions, you should generally be able to process them in a matter of seconds on a single machine. If you can't, you may be doing something <i>very</i> inefficient.
 </li>
 <li><strong>Software engineering is hard</strong>. Mistakes are made all the time, everywhere. Even at the big 4 tech companies. Kudos to Amazon 👏 for openly sharing the mistake they made so that we may all learn.
-In the next section we will share one of our own experiences, not entirely different from the Amazon example.</li>
+In the next section I will share one of our own experiences, not entirely different from the Amazon example.</li>
 </ol>
 <h3>The 90% cost reduction case at Vandebron</h3>
 <h4>Microservices or just distributed computing?</h4>
-<p>Considering that all the functionality used in the Amazon case all belongs to the same <em>domain</em>, it's arguably not even
-a case against improper use of microservices, but instead an example of misuse of <em>distributed computing</em>. <br/>
-At Vandebron we've had a similar experience, which I will share below.</p>
+<p>Considering that all the functionality used in the Amazon case belongs to the same <em>domain</em>, it arguably does not even serve as
+a case against improper use of microservices, but instead a case against misuse <em>distributed computing</em>. <br/>
+Let's look into an example of misuse of distributed computing at Vandebron now.</p>
 <h4>Predicting the production of electricity</h4>
 <p>For utility companies, accurately predicting both electricity consumption and production is crucial.
 Failing to do so can result in blackouts or overproduction, both of which are <a href="https://vandebron.nl/blog/hoe-houdt-onze-technologie-het-energienet-in-balans">very costly</a>.
