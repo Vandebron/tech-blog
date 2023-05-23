@@ -36,19 +36,20 @@ The blog post went viral, prompting some software industry celebrities to
 <em>No</em> and <em>definitely no</em> I would say. Instead, my takeaways from this article are:</p>
 <ol>
 <li><strong>Microservices aren't about scaling for performance.</strong> At least not primarily. Although horizontally scalability for
-computationally intensive operations <em>can</em> be very useful or even essential in some cases, it tends to be a rare benefit. Very often, performance bottlenecks are IO bound caused by external systems beyond your control.
+computationally intensive operations <em>can</em> be very useful or even essential in some cases, it tends to be a rare benefit. Very often, performance bottlenecks are IO bound and caused by external systems beyond your control.
 Nevertheless, there <em>are</em> other compelling reasons to consider microservices: they <em>force</em> you to communicate via contracts, <em>encourage</em> you to organize your functionality around domains,
 and <em>allow</em> you to scale your organization. Of course, all this comes at considerable costs. There's no <a href="#presentation">free lunch 👇</a>.</li>
 <li>
-<iframe width="372" height="208" src="https://www.youtube.com/embed/RC_FHNRI8Lg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="float: right; padding: 5px;"></iframe> <b>Don't underestimate the power of a single CPU in 2023</b>. To judge whether a process is unreasonably slow or not, I tend to think of the fact that already in the 1990s, screens showed 65K pixels at any given time. Back then, multiple arithmetic calculations (additions, subtractions) could be performed for each pixel, a hundred times per second. Nowadays, your screen probably displays more than 5 Million pixels at once. So, if the amount of datapoints you are dealing with in the order of millions, you should generally be able to process them in a matter of seconds on a single machine. If you can't, you're likely doing something <i>very</i> inefficient.
+<iframe width="372" height="208" src="https://www.youtube.com/embed/RC_FHNRI8Lg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="float: right; padding: 5px;"></iframe> <b>Don't underestimate the power of a single CPU in 2023</b>. To judge whether a process is unreasonably slow or not, I tend to think of the fact that already in the 1990s, screens showed 65K pixels at any given time. Back then, multiple arithmetic calculations (additions, subtractions) could be performed for each pixel, fifty times per second. Nowadays, your screen probably displays more than 5 Million pixels at once. So, if the amount of datapoints you are dealing with in the order of millions, you should generally be able to process them in a matter of seconds on a single machine. If you can't, you may be doing something <i>very</i> inefficient.
 </li>
-<li><strong>Software engineering is hard</strong>. Mistakes are made all the time, everywhere. Even at the big 4 tech companies. Kudos to Amazon 👏 for openly sharing their mistake they made so that we may all learn.
+<li><strong>Software engineering is hard</strong>. Mistakes are made all the time, everywhere. Even at the big 4 tech companies. Kudos to Amazon 👏 for openly sharing the mistake they made so that we may all learn.
 In the next section we will share one of our own experiences, not entirely different from the Amazon example.</li>
 </ol>
 <h3>The 90% cost reduction case at Vandebron</h3>
-<h4>Distributed computing</h4>
-<p>Considering that all the functionality used in the Amazon case all belongs to the same domain, it's arguably not even
-a case against improper use of microservices, but instead an example of misuse of <em>distributed computing</em>.</p>
+<h4>Microservices or just distributed computing?</h4>
+<p>Considering that all the functionality used in the Amazon case all belongs to the same <em>domain</em>, it's arguably not even
+a case against improper use of microservices, but instead an example of misuse of <em>distributed computing</em>. <br/>
+At Vandebron we've had a similar experience, which I will share below.</p>
 <h4>Predicting the production of electricity</h4>
 <p>For utility companies, accurately predicting both electricity consumption and production is crucial.
 Failing to do so can result in blackouts or overproduction, both of which are <a href="https://vandebron.nl/blog/hoe-houdt-onze-technologie-het-energienet-in-balans">very costly</a>.
@@ -66,12 +67,18 @@ This worked, but it made our software more complex and Jeff Bezos even richer th
 <p>Upon closer inspection, we found an extreme inefficiency in our code. It turned out that we were repeatedly reading the entire weather dataset
 into memory, for <em>every</em> single &quot;pixel&quot;. After removing this performance bug, the entire analysis could <em>easily</em> be done
 on a single machine.</p>
-<h3>How are microservices used at Vandebron?</h3>
-<p><a id="presentation"> </a></p>
-<p>At <a href="https://vandebron.nl/">Vandebron</a>, we jumped onto the &quot;microservice bandwagon&quot; circa 2019.
-We had read the <a href="https://samnewman.io/books/building_microservices_2nd_edition/">literature</a> and this wasn't a decision
-made on a whim.
-These are some of the dangers we identified and what we did to mitigate them:</p>
+<h3>What more is there to say? <a id="presentation"> </a></h3>
+<p>So if microservices aren't about performance, what <em>are</em> they about? If I had to sum it up in one sentence It would be:</p>
+<blockquote>
+<p><em>Microservices are a way to scale your organization</em>.</p>
+</blockquote>
+<p>There is a lot of detail hiding in that sentence, which I can't unpack in the scope of this article. If you're interested
+what microservices have meant for us, I would recommend you watch the presentation below.</p>
+<h4>Microservices at Vandebron</h4>
+<p>At <a href="https://vandebron.nl/">Vandebron</a>, we jumped onto the &quot;microservice bandwagon&quot; circa 2019. This wasn't a decision
+made on a whim. We had seen a few industry trends come and go, so we first <a href="https://samnewman.io/books/building_microservices_2nd_edition/">read up</a>
+and did our own analysis. We found that the concept of microservices held promise, but also knew that they would come at a cost.</p>
+<p>These are some of the dangers we identified and what we did to mitigate them:</p>
 <ul>
 <li><strong>A stagnating architecture</strong>: compile and unit-test time detection of breaking changes</li>
 <li><strong>Complicated and error prone deployments</strong>: modular CI/CD <a href="https://github.com/Vandebron/mpyl">pipelines</a></li>
@@ -79,7 +86,7 @@ These are some of the dangers we identified and what we did to mitigate them:</p
 <li><strong>Duplication of code</strong>: shared in house libraries for common functionality</li>
 </ul>
 <p>The following presentation to the students of <a href="https://vu.nl/">VU University, Amsterdam</a> explains how we implemented
-these decisions and what we learned from them.</p>
+some of these mitigations and what we learned from them.</p>
 <p><a href="https://youtu.be/HDs-pCsEzKM"><img src="/images/play_presentation.webp" alt="Presentation about micro services to students of VU Amsterdam"></a></p>
 ]]>
         </content:encoded>
