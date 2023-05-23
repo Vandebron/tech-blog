@@ -63,7 +63,7 @@ on a single machine.
 
 
 So if microservices aren't about performance, what _are_ they about? If I had to sum it up in one sentence It would be:
-> _Microservices are a way to scale your organization_.
+> _Microservices are a way to scale your organization_
 
 There is a lot of detail hiding in that sentence, which I can't unpack in the scope of this article. If you're interested
 what microservices have meant for us, I would recommend you watch the presentation below.
@@ -74,11 +74,15 @@ At [Vandebron](https://vandebron.nl/), we jumped onto the "microservice bandwago
 made on a whim. We had seen a few industry trends come and go, so we first [read up](https://samnewman.io/books/building_microservices_2nd_edition/)
 and did our own analysis. We found that the concept of microservices held promise, but also knew that they would come at a cost.
 
-These are some of the dangers we identified and what we did to mitigate them:
- * **A stagnating architecture**: compile and unit-test time detection of breaking changes
- * **Complicated and error prone deployments**: modular CI/CD [pipelines](https://github.com/Vandebron/mpyl)
- * **Team siloization**: a single repository (AKA monorepo) for all microservices and a discussion platform for cross-domain and cross-team concerns
- * **Duplication of code**: shared in house libraries for common functionality
+These are some of the dangers we identified and what we did to mitigate them.
+
+| **Danger**                                | **Mitigation**                                                                                                              |
+|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| _A stagnating architecture_               | Compile and unit-test time detection of breaking changes                                                                    |
+| _Complicated and error prone deployments_ | Modular CI/CD [pipelines](https://github.com/Vandebron/mpyl)                                                                |
+| _Team siloization_                        | A single repository (AKA monorepo) for all microservices and a discussion platform for cross-domain and cross-team concerns |
+| _Duplication of code_                     | Shared in house libraries for common functionality                                                                          |
+
 
 
 The following presentation to the students of [VU University, Amsterdam](https://vu.nl/) explains how we implemented

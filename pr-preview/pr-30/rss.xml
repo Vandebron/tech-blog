@@ -70,7 +70,7 @@ on a single machine.</p>
 <h3>What more is there to say? <a id="presentation"> </a></h3>
 <p>So if microservices aren't about performance, what <em>are</em> they about? If I had to sum it up in one sentence It would be:</p>
 <blockquote>
-<p><em>Microservices are a way to scale your organization</em>.</p>
+<p><em>Microservices are a way to scale your organization</em></p>
 </blockquote>
 <p>There is a lot of detail hiding in that sentence, which I can't unpack in the scope of this article. If you're interested
 what microservices have meant for us, I would recommend you watch the presentation below.</p>
@@ -78,13 +78,33 @@ what microservices have meant for us, I would recommend you watch the presentati
 <p>At <a href="https://vandebron.nl/">Vandebron</a>, we jumped onto the &quot;microservice bandwagon&quot; circa 2019. This wasn't a decision
 made on a whim. We had seen a few industry trends come and go, so we first <a href="https://samnewman.io/books/building_microservices_2nd_edition/">read up</a>
 and did our own analysis. We found that the concept of microservices held promise, but also knew that they would come at a cost.</p>
-<p>These are some of the dangers we identified and what we did to mitigate them:</p>
-<ul>
-<li><strong>A stagnating architecture</strong>: compile and unit-test time detection of breaking changes</li>
-<li><strong>Complicated and error prone deployments</strong>: modular CI/CD <a href="https://github.com/Vandebron/mpyl">pipelines</a></li>
-<li><strong>Team siloization</strong>: a single repository (AKA monorepo) for all microservices and a discussion platform for cross-domain and cross-team concerns</li>
-<li><strong>Duplication of code</strong>: shared in house libraries for common functionality</li>
-</ul>
+<p>These are some of the dangers we identified and what we did to mitigate them.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Danger</strong></th>
+<th><strong>Mitigation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>A stagnating architecture</em></td>
+<td>Compile and unit-test time detection of breaking changes</td>
+</tr>
+<tr>
+<td><em>Complicated and error prone deployments</em></td>
+<td>Modular CI/CD <a href="https://github.com/Vandebron/mpyl">pipelines</a></td>
+</tr>
+<tr>
+<td><em>Team siloization</em></td>
+<td>A single repository (AKA monorepo) for all microservices and a discussion platform for cross-domain and cross-team concerns</td>
+</tr>
+<tr>
+<td><em>Duplication of code</em></td>
+<td>Shared in house libraries for common functionality</td>
+</tr>
+</tbody>
+</table>
 <p>The following presentation to the students of <a href="https://vu.nl/">VU University, Amsterdam</a> explains how we implemented
 some of these mitigations and what we learned from them.</p>
 <p><a href="https://youtu.be/HDs-pCsEzKM"><img src="/images/play_presentation.webp" alt="Presentation about micro services to students of VU Amsterdam"></a></p>

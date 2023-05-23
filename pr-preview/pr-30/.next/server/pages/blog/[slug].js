@@ -100,6 +100,13 @@ throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an
 
 /***/ }),
 
+/***/ "0QCG":
+/***/ (function(module, exports) {
+
+module.exports = require("remark-gfm");
+
+/***/ }),
+
 /***/ "0vGS":
 /***/ (function(module, exports) {
 
@@ -220,6 +227,8 @@ module.exports = {
 /* harmony import */ var react_syntax_highlighter_dist_cjs_styles_prism__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_syntax_highlighter_dist_cjs_styles_prism__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var rehype_raw__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("RwYs");
 /* harmony import */ var rehype_raw__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rehype_raw__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var remark_gfm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("0QCG");
+/* harmony import */ var remark_gfm__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(remark_gfm__WEBPACK_IMPORTED_MODULE_6__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -234,12 +243,13 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 function Markdown({
   children
 }) {
   return __jsx(react_markdown__WEBPACK_IMPORTED_MODULE_1___default.a, {
     children: children,
-    rehypePlugins: [rehype_raw__WEBPACK_IMPORTED_MODULE_5___default.a],
+    rehypePlugins: [rehype_raw__WEBPACK_IMPORTED_MODULE_5___default.a, remark_gfm__WEBPACK_IMPORTED_MODULE_6___default.a],
     components: {
       hr: react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
       h1: ({
@@ -345,7 +355,43 @@ function Markdown({
             width: "100%"
           }
         }, props));
-      }
+      },
+      table: ({
+        children
+      }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"], {
+        tableStyle: "solid-borders",
+        style: {
+          'borderCollapse': 'collapse',
+          'marginBottom': '5%',
+          'marginLeft': '5%',
+          'marginRight': '5%',
+          'fontSize': '18px'
+        },
+        align: "center"
+      }, children),
+      thead: ({
+        children
+      }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Thead, {
+        style: {
+          'color': 'black'
+        }
+      }, children),
+      tbody: ({
+        children
+      }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Tbody, null, children),
+      tr: ({
+        children
+      }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Row, {
+        style: {
+          'borderBottom': '1px solid #000'
+        }
+      }, children),
+      td: ({
+        children
+      }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Cell, null, children),
+      th: ({
+        children
+      }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Cell, null, children)
     }
   });
 }

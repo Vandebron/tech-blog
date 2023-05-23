@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/Ona3jc09UfFTROXorr6Xg/_buildManifest.js",
-    "static/Ona3jc09UfFTROXorr6Xg/_ssgManifest.js"
+    "static/lU9l1jQ2v8w-9FvfxDzL2/_buildManifest.js",
+    "static/lU9l1jQ2v8w-9FvfxDzL2/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -15,7 +15,7 @@
       "static/chunks/3ef630e34cd10ba68f9d468ac363ff81c534e1e9.3098269200646f6c5d45.js",
       "static/chunks/main-419ac17f185f95278b96.js",
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
-      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
+      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
       "static/chunks/pages/index-efbf6465fb1e2b7d8d9f.js"
     ],
     "/_app": [
@@ -26,7 +26,7 @@
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
       "static/css/be65e30d453789d6e800.css",
       "static/chunks/ed4455b7.ddce25b62cf34b951439.js",
-      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
+      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
       "static/css/8cd8614857c6ce727a17.css",
       "static/chunks/pages/_app-a8c7f8b880945c3ab441.js"
     ],
@@ -43,8 +43,8 @@
       "static/chunks/3ef630e34cd10ba68f9d468ac363ff81c534e1e9.3098269200646f6c5d45.js",
       "static/chunks/main-419ac17f185f95278b96.js",
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
-      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.dcdf95040b2bb83a6a44.js",
+      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.0c099ecf2acefc71ba39.js",
       "static/chunks/pages/about-bdbe81c7bca98932c589.js"
     ],
     "/blog/[slug]": [
@@ -53,8 +53,8 @@
       "static/chunks/3ef630e34cd10ba68f9d468ac363ff81c534e1e9.3098269200646f6c5d45.js",
       "static/chunks/main-419ac17f185f95278b96.js",
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
-      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.dcdf95040b2bb83a6a44.js",
+      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.0c099ecf2acefc71ba39.js",
       "static/chunks/pages/blog/[slug]-e5f9206458063589351f.js"
     ],
     "/greentech-hackathon": [
@@ -65,8 +65,8 @@
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
       "static/css/7335de542e4b4f02a25b.css",
       "static/chunks/d637bb0c.a83a6a4548b93404854d.js",
-      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.dd6fe6fed48b9fcea959.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.dcdf95040b2bb83a6a44.js",
+      "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.0c099ecf2acefc71ba39.js",
       "static/chunks/pages/greentech-hackathon-8cf48b451878413b07d1.js"
     ]
   },
