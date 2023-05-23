@@ -13,8 +13,107 @@
           <![CDATA[Leading the renewable energy transition with innovative solutions]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-01-11T00:00:00.000Z</lastBuildDate>
+        <lastBuildDate>2023-05-20T00:00:00.000Z</lastBuildDate>
         
+      <item>
+        <title><![CDATA[So, back to the monolith it is then?]]></title>
+        <link>https://vandebron.tech/blog/back-to-the-monolith</link>
+        <pubDate>2023-05-20T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/back-to-the-monolith</guid>
+        <description>
+        <![CDATA[A recent Amazon article explaining how they managed to save costs by merging some of their services has lead some to question the value of microservices. What is our take?]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<h3>Amazon embraces the mighty monolith</h3>
+<img src="/images/step-functions.webp" alt="image alt text" style="width: 50%; float: left; padding: 5px;" />
+<p>In March 2023, Amazon published a <a href="https://www.primevideotech.com/video-streaming/scaling-up-the-prime-video-audio-video-monitoring-service-and-reducing-costs-by-90">blog post</a>
+, detailing how they had managed to reduce the cost of their audio-video monitoring service by 90%.
+The <em>key</em> to this reduction was migrating from a distributed, microservice architecture to a <em>monolith</em>.
+The blog post went viral, prompting some software industry celebrities to
+<a href="https://world.hey.com/dhh/even-amazon-can-t-make-sense-of-serverless-or-microservices-59625580">question</a> the entire concept of microservices.</p>
+<h3>What should we learn from this?</h3>
+<p>So, does this mean microservices are fundamentally flawed? Should we all migrate back to monoliths?
+<em>No</em> and <em>definitely no</em> I would say. Instead, my takeaways from this article are:</p>
+<ol>
+<li><strong>Microservices aren't about scaling for performance.</strong> At least not primarily. Although horizontally scalability for
+computationally intensive operations <em>can</em> be very useful or even essential in some cases, it tends to be a rare benefit. Very often, performance bottlenecks are IO bound and caused by external systems beyond your control.
+Nevertheless, there <em>are</em> other compelling reasons to consider microservices: they <em>force</em> you to communicate via contracts, <em>encourage</em> you to organize your functionality around domains,
+and <em>allow</em> you to scale your organization. Of course, all this comes at considerable costs. There's no <a href="#presentation">free lunch 👇</a>.</li>
+<li>
+<iframe width="372" height="208" src="https://www.youtube.com/embed/RC_FHNRI8Lg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="float: right; padding: 5px;"></iframe> <b>Don't underestimate the power of a single CPU in 2023</b>. To judge whether a process is unreasonably slow or not, I tend to think of the fact that already in the 1990s, screens showed 65K pixels at any given time. Back then, multiple arithmetic calculations (additions, subtractions) could be performed for each pixel, fifty times per second. Nowadays, your screen probably displays more than 5 Million pixels at once. So, if the amount of datapoints you are dealing with in the order of millions, you should generally be able to process them in a matter of seconds on a single machine. If you can't, you may be doing something <i>very</i> inefficient.
+</li>
+<li><strong>Software engineering is hard</strong>. Mistakes are made all the time, everywhere. Even at the big 4 tech companies. Kudos to Amazon 👏 for openly sharing the mistake they made so that we may all learn.
+In the next section we will share one of our own experiences, not entirely different from the Amazon example.</li>
+</ol>
+<h3>The 90% cost reduction case at Vandebron</h3>
+<h4>Microservices or just distributed computing?</h4>
+<p>Considering that all the functionality used in the Amazon case all belongs to the same <em>domain</em>, it's arguably not even
+a case against improper use of microservices, but instead an example of misuse of <em>distributed computing</em>. <br/>
+At Vandebron we've had a similar experience, which I will share below.</p>
+<h4>Predicting the production of electricity</h4>
+<p>For utility companies, accurately predicting both electricity consumption and production is crucial.
+Failing to do so can result in blackouts or overproduction, both of which are <a href="https://vandebron.nl/blog/hoe-houdt-onze-technologie-het-energienet-in-balans">very costly</a>.
+Vandebron is a unique utility company in that the electricity that our customers consume is produced by a <a href="https://vandebron.nl/energiebronnen">very large
+amount</a> of relatively small scale producers, who produce electricity using windmills or solar panels.
+The large number and the weather dependent nature of these producers make it very hard to predict electricity generation accurately.</p>
+<p>To do this, we use a machine learning model that is trained on historical production data
+and predictions from the national weather <a href="https://www.knmi.nl/">institute</a>. As you can imagine, this is a computationally intensive task, involving large amounts of data.
+Fortunately, we have <a href="https://www.vandebron.tech/blog/fueling-the-energy-transition-with-spark-part-1">tooling in place</a> that
+allows us to distribute computations of a cluster of machines if the task is too large for a single machine to handle.</p>
+<p>However, here's the catch: the fact that we <em>can</em> distribute computations does not mean that we should. Initially it seemed that
+we couldn't analyze the weather data quick enough for the estimation of our production to still be a <em>prediction</em>
+rather than a <em>postdiction</em>. We decided to distribute the computation of the weather data over a cluster of machines.
+This worked, but it made our software more complex and Jeff Bezos even richer than he already was.</p>
+<p>Upon closer inspection, we found an extreme inefficiency in our code. It turned out that we were repeatedly reading the entire weather dataset
+into memory, for <em>every</em> single &quot;pixel&quot;. After removing this performance bug, the entire analysis could <em>easily</em> be done
+on a single machine.</p>
+<h3>What more is there to say? <a id="presentation"> </a></h3>
+<p>So if microservices aren't about performance, what <em>are</em> they about? If I had to sum it up in one sentence It would be:</p>
+<blockquote>
+<p><em>Microservices are a way to scale your organization</em></p>
+</blockquote>
+<p>There is a lot of detail hiding in that sentence, which I can't unpack in the scope of this article. If you're interested
+what microservices have meant for us, I would recommend you watch the presentation below.</p>
+<h4>Microservices at Vandebron</h4>
+<p>At <a href="https://vandebron.nl/">Vandebron</a>, we jumped onto the &quot;microservice bandwagon&quot; circa 2019. This wasn't a decision
+made on a whim. We had seen a few industry trends come and go, so we first <a href="https://samnewman.io/books/building_microservices_2nd_edition/">read up</a>
+and did our own analysis. We found that the concept of microservices held promise, but also knew that they would come at a cost.</p>
+<p>These are some of the dangers we identified and what we did to mitigate them.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Danger</strong></th>
+<th><strong>Mitigation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>A stagnating architecture</em></td>
+<td>Compile and unit-test time detection of breaking changes</td>
+</tr>
+<tr>
+<td><em>Complicated and error prone deployments</em></td>
+<td>Modular CI/CD <a href="https://github.com/Vandebron/mpyl">pipelines</a></td>
+</tr>
+<tr>
+<td><em>Team siloization</em></td>
+<td>A single repository (AKA monorepo) for all microservices and a discussion platform for cross-domain and cross-team concerns</td>
+</tr>
+<tr>
+<td><em>Duplication of code</em></td>
+<td>Shared in house libraries for common functionality</td>
+</tr>
+</tbody>
+</table>
+<p>The following presentation to the students of <a href="https://vu.nl/">VU University, Amsterdam</a> explains how we implemented
+some of these mitigations and what we learned from them.</p>
+<p><a href="https://youtu.be/HDs-pCsEzKM"><img src="/images/play_presentation.webp" alt="Presentation about micro services to students of VU Amsterdam"></a></p>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/monolith.webp"
+        />
+    </item>
       <item>
         <title><![CDATA[How Vandebron helps balancing the Dutch energy grid together with OnLogic & Talos Linux]]></title>
         <link>https://vandebron.tech/blog/balancing-dutch-energy-grid-with-flex-services</link>
@@ -65,11 +164,11 @@
 <h3>System and user code are separated</h3>
 <p>Dagster separates the system deployment - the Dagit (UI) web server and the daemons that coordinate the runs - from the user code deployment - the actual data pipeline. In other words: the user code servers run in complete isolation from the system and each other.</p>
 <p>This is a great feature of which the advantages are obvious: user code repositories have their own Python environment, teams can manage these separately, and if a user code server breaks down the system is not impacted. In fact, it even doesn't require a restart when user code is updated!</p>
-<p><img src="images/dagster-architecture.png" alt="Schematic of the Dagster architecture. The user code repositories (green) are separate from the rest of the system (yellow and blue). The right side — irrelevant for now — shows the job runs. Source: https://docs.dagster.io/deployment/overview."></p>
+<p><img src="/images/dagster-architecture.png" alt="Schematic of the Dagster architecture. The user code repositories (green) are separate from the rest of the system (yellow and blue). The right side — irrelevant for now — shows the job runs. Source: https://docs.dagster.io/deployment/overview."></p>
 <p>In Helm terms: there are 2 charts, namely the <em>system</em>: <code>dagster/dagster</code> (<a href="https://github.com/dagster-io/dagster/blob/master/helm/dagster/values.yaml">values.yaml</a>), and the <em>user code</em>: <code>dagster/dagster-user-deployments</code> (<a href="https://github.com/dagster-io/dagster/blob/master/helm/dagster/charts/dagster-user-deployments/values.yaml">values.yaml</a>). Note that you have to set <code>dagster-user-deployments.enabled: true</code> in the <code>dagster/dagster</code> values-yaml to enable this.</p>
 <h4>Or are they?</h4>
 <p>That having said, you might find it peculiar that in the values-yaml of the system deployment, <em>you need to specify the user code servers</em>. That looks like this:</p>
-<pre><code>workspace:
+<pre><code class="language-yaml">workspace:
     enabled: true
     servers:
       - host: &quot;k8s-example-user-code-1&quot;
@@ -307,7 +406,7 @@ The pool of trusted certificates are in the <a href="https://www.ssl.com/guide/p
 <p>Before signing a message it has to be canonicalized. &quot;Canonicalization is a method for generating a physical representation, the canonical form, of an XML document that accounts for syntactic changes permitted by the XML specification&quot; (from <a href="https://www.di-mgt.com.au/xmldsig-c14n.html">here</a>). In our case, the Exclusive XML Canonicalization is used.</p>
 <p>The digest algorithm is used to ensure the integrity of the message during the verification of a signature. The algorithm is used to calculate a hash of the signed message. It should be documented in the SOAP service documentation. Here we will use SHA256 as a hashing algorithm.</p>
 <p>The signature algorithm describes how the message will be signed. It can be defined in the SOAP service documentation but in the worst case you can read this algorithm from the certificate itself by using <a href="https://docs.oracle.com/en/java/javase/12/tools/keytool.html"><code>keytool</code></a>:</p>
-<pre><code>$ keytool -list -v -keystore signature.p12
+<pre><code class="language-bash">$ keytool -list -v -keystore signature.p12
 Enter keystore password: ...
 
 [...] # more information about the certificates
