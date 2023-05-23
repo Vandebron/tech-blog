@@ -26,14 +26,14 @@ _No_ and _definitely no_ I would say. Instead, my takeaways from this article ar
 1.  **Microservices aren't about scaling for performance.** At least not primarily. Although horizontally scalability for computationally intensive operations _can_ be very useful or even essential in some cases, it tends to be a rare benefit. Very often, performance bottlenecks are IO bound and caused by external systems beyond your control. Nevertheless, there _are_ other compelling reasons to consider microservices: they _force_ you to communicate via contracts, _encourage_ you to organize your functionality around domains, and _allow_ you to scale your organization. Of course, all this comes at considerable costs. There's no [free lunch 👇](#presentation).
 2.  <iframe width="372" height="208" src="https://www.youtube.com/embed/RC_FHNRI8Lg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="float: right; padding: 5px;"></iframe> <b>Don't underestimate the power of a single CPU in 2023</b>. To judge whether a process is unreasonably slow or not, I tend to think of the fact that already in the 1990s, screens showed 65K pixels at any given time. Back then, multiple arithmetic calculations (additions, subtractions) could be performed for each pixel, fifty times per second. Nowadays, your screen probably displays more than 5 Million pixels at once. So, if the amount of datapoints you are dealing with in the order of millions, you should generally be able to process them in a matter of seconds on a single machine. If you can't, you may be doing something <i>very</i> inefficient.
 3.  **Software engineering is hard**. Mistakes are made all the time, everywhere. Even at the big 4 tech companies. Kudos to Amazon 👏 for openly sharing the mistake they made so that we may all learn.
-In the next section we will share one of our own experiences, not entirely different from the Amazon example.
+In the next section I will share one of our own experiences, not entirely different from the Amazon example.
 
 ### The 90% cost reduction case at Vandebron
 
 #### Microservices or just distributed computing?
-Considering that all the functionality used in the Amazon case all belongs to the same _domain_, it's arguably not even 
-a case against improper use of microservices, but instead an example of misuse of *distributed computing*. <br/>
-At Vandebron we've had a similar experience, which I will share below.
+Considering that all the functionality used in the Amazon case belongs to the same _domain_, it arguably does not even serve as 
+a case against improper use of microservices, but instead a case against misuse *distributed computing*. <br/>
+Let's look into an example of misuse of distributed computing at Vandebron now.
 
 #### Predicting the production of electricity
 For utility companies, accurately predicting both electricity consumption and production is crucial.
