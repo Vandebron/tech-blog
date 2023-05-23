@@ -33,7 +33,7 @@ When your post is ready and reviewed, you can merge it with master and simply:
 yarn deploy
 ```
 
-Your post will appear at https://www.vandebron.tech/.
+Your post will appear at [https://vandebron.tech/](https://vandebron.tech/).
 
 ### Questions?
 
