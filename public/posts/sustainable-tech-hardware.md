@@ -2,7 +2,7 @@
 title: Sustainable Tech-Hardware - Introducing the 'FlexMac' 
 description: enhanced security, sustainability, and regained speed at Customer Contact while being sustainable and circular
 createdAt: 2023-07-03
-coverImage: images/monolith.webp
+coverImage: images/circular.jpeg
 tags: sustainable-tech, flexmac, circularity
 author: Gehdrio Lake & Sietse Bruinsma
 ---
