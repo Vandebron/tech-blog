@@ -893,7 +893,7 @@ throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an
 /***/ "PHDN":
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Sustainable Tech-Hardware - Introducing the 'FlexMac' \n| description: enhanced security, sustainability, and regained speed at Customer Contact while being sustainable and circular");
+throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Sustainable Tech-Hardware - Introducing the 'flexMac' \n| description: Enhanced security, sustainability, and regained speed at Customer Contact revitalizing our old iMacs.");
 
 /***/ }),
 
