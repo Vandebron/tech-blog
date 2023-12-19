@@ -31,7 +31,7 @@ Snowflake is designed to handle and analyze large volumes of data with speed and
 <h2>Accessing Snowflake data via Rest API</h2>
 <p>There are several ways to access data in Snowflake one of these are the Snowflake rest api, they are a comprehensive set of REST APIs for managing and interacting with various aspects of the Snowflake Data Cloud, including account management, data loading, querying, and more.
 These REST APIs allow developers to programmatically perform tasks such as executing SQL queries, managing virtual warehouses, and administering user roles. They are designed to enable automation and integration with other applications and services.</p>
-<h2>Why Via Rest Api?</h2>
+<h2>Why via Rest Api?</h2>
 <p>The Snowflake SQL API is a REST API that you can use to access and update data in a Snowflake database. You can use this API to develop custom applications and integrations that can perform most of the queries you need. More info here: https://docs.snowflake.com/en/developer-guide/sql-api/index</p>
 <p>We decided to connect our microservices to snowflake via rest api mainly because we consider this mechanism the best way to decouple database processing with backend processing in fact the queries issued via the endpoint are processed inside Snowflake ecosystem asynchronously.</p>
 <p>The service can poll snowflake to monitor the request until it is completed. See https://docs.snowflake.com/en/developer-guide/sql-api/handling-responses .</p>
@@ -109,14 +109,14 @@ Next, you need to set the login name for the user you want associate with the in
 <pre><code>SELECT SYSTEM$VERIFY_EXTERNAL_OAUTH_TOKEN( '&lt;token&gt;' )
 </code></pre>
 <p>Use it in the snowflake statement endpoint. For example:</p>
-<pre><code>curl --location --request POST 'https://lm84095.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
+<pre><code>curl --location --request POST 'https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
 --header 'Authorization: Bearer &lt;yourtoken&gt; \
 --header 'Content-Type: application/json' \
 --data-raw '{
 &quot;statement&quot;: &quot;select \&quot;data\&quot; as prediction, to_number(\&quot;lats\&quot;, 10, 4) as lats, to_number(\&quot;lons\&quot;, 10, 4) as lons, \&quot;scaledValueOfFirstFixedSurface\&quot; as scaled_value_of_first_fixed_surface, to_timestamp_tz( concat(\&quot;dataDate\&quot;, lpad(\&quot;dataTime\&quot;, 4, 0)) || '\''+0'\'', '\''yyyymmddhh24mi+tzh'\'') as model_datetime, to_timestamp_tz( concat(\&quot;validityDate\&quot;, lpad(\&quot;validityTime\&quot;, 4, 0)) || '\''+0'\'', '\''yyyymmddhh24mi+tzh'\'') as predicted_datetime, insert_date_snowflake, current_timestamp()::timestamp_tz(9) as insert_date_staging from raw.icon_eu.alhfl_s;&quot;
 }'
 </code></pre>
-<p>NB: It is important to use the proper snowflake base url. In my case I am using https://lm84095.eu-central-1.snowflakecomputing.com/ where lm84095 is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.</p>
+<p>NB: It is important to use the proper snowflake base url. In my case I am using https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/ where &lt;my_snowflake_identifier&gt; is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.</p>
 <p>You should get a response such as:</p>
 <pre><code>{
 &quot;code&quot;: &quot;333334&quot;,
@@ -126,7 +126,7 @@ Next, you need to set the login name for the user you want associate with the in
 }
 </code></pre>
 <p>Now you can follow the async operation to the following get endpoint:</p>
-<pre><code>https://lm84095.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
+<pre><code>https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
 </code></pre>
 <p>It will return 202 if the processing is still ongoing. It will return 200 and the actual result when processing ends.</p>
 <p>Happy coding!</p>

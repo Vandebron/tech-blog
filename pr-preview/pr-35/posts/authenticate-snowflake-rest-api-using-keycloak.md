@@ -19,7 +19,7 @@ Snowflake is designed to handle and analyze large volumes of data with speed and
 There are several ways to access data in Snowflake one of these are the Snowflake rest api, they are a comprehensive set of REST APIs for managing and interacting with various aspects of the Snowflake Data Cloud, including account management, data loading, querying, and more.
 These REST APIs allow developers to programmatically perform tasks such as executing SQL queries, managing virtual warehouses, and administering user roles. They are designed to enable automation and integration with other applications and services.
 
-## Why Via Rest Api?
+## Why via Rest Api?
 
 The Snowflake SQL API is a REST API that you can use to access and update data in a Snowflake database. You can use this API to develop custom applications and integrations that can perform most of the queries you need. More info here: https://docs.snowflake.com/en/developer-guide/sql-api/index
 
@@ -140,7 +140,7 @@ SELECT SYSTEM$VERIFY_EXTERNAL_OAUTH_TOKEN( '<token>' )
 Use it in the snowflake statement endpoint. For example:
 
 ```
-curl --location --request POST 'https://lm84095.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
+curl --location --request POST 'https://<my_snowflake_identifier>.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
 --header 'Authorization: Bearer <yourtoken> \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -148,7 +148,7 @@ curl --location --request POST 'https://lm84095.eu-central-1.snowflakecomputing.
 }'
 ```
 
-NB: It is important to use the proper snowflake base url. In my case I am using https://lm84095.eu-central-1.snowflakecomputing.com/ where lm84095 is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.
+NB: It is important to use the proper snowflake base url. In my case I am using https://<my_snowflake_identifier>.eu-central-1.snowflakecomputing.com/ where <my_snowflake_identifier> is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.
 
 You should get a response such as:
 
@@ -164,7 +164,7 @@ You should get a response such as:
 Now you can follow the async operation to the following get endpoint:
 
 ```
-https://lm84095.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
+https://<my_snowflake_identifier>.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
 ```
 
 It will return 202 if the processing is still ongoing. It will return 200 and the actual result when processing ends.
