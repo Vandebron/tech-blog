@@ -2,7 +2,7 @@
 title: Authenticate Snowflake via Keycloak
 description: How to use Keycloak to authenticate against Snowflake rest api
 createdAt: 2023-12-19
-coverImage: ../images/snowflake_keycloak.jpeg
+coverImage: ../images/snowflake_keycloak.jpg
 tags: [keycloak, snowflake, rest, oauth, bearer token, authentication, security]
 author: Rosario Renga
 ---
