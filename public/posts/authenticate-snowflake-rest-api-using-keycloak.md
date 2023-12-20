@@ -45,13 +45,13 @@ You need to configure your client to return in the JWT access token the followin
 
 ```
 {
-"aud": "<audience_url>",
-"iat": 1576705500,
-"exp": 1576709100,
-"iss": "<issuer_url>",
-"scope": [
-"session:role-any"
-]
+    "aud": "<audience_url>",
+    "iat": 1576705500,
+    "exp": 1576709100,
+    "iss": "<issuer_url>",
+    "scope": [
+        "session:role-any"
+    ]
 }
 ```
 
@@ -67,11 +67,11 @@ Finally you can check that your token is correct:
 
 ```
 {
-.....
-"iss": "https://test.vdbinfra.nl/auth/realms/vandebron",
-"scope": "session:role-any",
-"aud": "energy-trading-test",
-....
+    .....
+    "iss": "https://test.vdbinfra.nl/auth/realms/vandebron",
+    "scope": "session:role-any",
+    "aud": "energy-trading-test",
+    ....
 }
 ```
 
@@ -137,10 +137,10 @@ You should get a response such as:
 
 ```
 {
-"code": "333334",
-"message": "Asynchronous execution in progress. Use provided query id to perform query monitoring and management.",
-"statementHandle": "01aafc80-3201-abed-0001-4a0e00e52816",
-"statementStatusUrl": "/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816"
+    "code": "333334",
+    "message": "Asynchronous execution in progress. Use provided query id to perform query monitoring and management.",
+    "statementHandle": "01aafc80-3201-abed-0001-4a0e00e52816",
+    "statementStatusUrl": "/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816"
 }
 ```
 
