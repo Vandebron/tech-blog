@@ -107,6 +107,21 @@ module.exports = require("remark-gfm");
 
 /***/ }),
 
+/***/ "0Zg3":
+/***/ (function(module, exports) {
+
+module.exports = {
+          srcSet: "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg"+" 1024w"+","+"/_next/static/images/snowflake_keycloak-800-90bae3fae5b20417f6deaf88c9efd35d.jpeg"+" 800w"+","+"/_next/static/images/snowflake_keycloak-400-5fce4deab7946110036783495888bf7d.jpeg"+" 400w",
+          images:[ {path: "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg",width: 1024,height: 1024},{path: "/_next/static/images/snowflake_keycloak-800-90bae3fae5b20417f6deaf88c9efd35d.jpeg",width: 800,height: 800},{path: "/_next/static/images/snowflake_keycloak-400-5fce4deab7946110036783495888bf7d.jpeg",width: 400,height: 400}],
+          src: "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg",
+          toString:function(){return "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg"},
+          
+          width: 1024,
+          height: 1024
+        }
+
+/***/ }),
+
 /***/ "0vGS":
 /***/ (function(module, exports) {
 
@@ -198,7 +213,7 @@ module.exports = __webpack_require__("KTQB");
 /***/ "4Swk":
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Authenticate Snowflake rest api via Keycloak\n| description: How to use Keycloak to authenticate against Snowflake rest api");
+throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Authenticate Snowflake via Keycloak\n| description: How to use Keycloak to authenticate against Snowflake rest api");
 
 /***/ }),
 
@@ -1096,6 +1111,7 @@ var map = {
 	"./images/play_presentation.webp": "R3Wk",
 	"./images/power-regular-hackathons.png": "ljk2",
 	"./images/snowflake_auth_conf.png": "YPit",
+	"./images/snowflake_keycloak.jpeg": "0Zg3",
 	"./images/soap.jpg": "SzPj",
 	"./images/spark-cluster-overview.png": "LWlL",
 	"./images/sparkapihistory.png": "ywSF",
