@@ -23,7 +23,18 @@ Or the npm equivalent `npm run dev`.
 
 ### Contributing
 
-To create a post yourself you can create a new `.md` file in the directory `public/posts`, the filename will be the slug that's used to navigate to the article on the website. Image assets can be added to the directory `public/images`. 
+To create a post yourself you can create a new `.md` file in the directory `public/posts`, the filename will be the slug that's used to navigate to the article on the website. Image assets can be added to the directory `public/images`.
+
+### Testing
+
+Before you deploy please run your post in your local env to check if the appearance is good enough to be published.
+In order to run the blog locally just do the following:
+
+```bash
+yarn next build
+yarn start
+```
+NB: Remember to rebuild everytime you change something on your post
 
 ### Publishing
 
