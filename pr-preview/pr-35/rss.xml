@@ -46,14 +46,14 @@ These REST APIs allow developers to programmatically perform tasks such as execu
 Resources to this topic can be found here <a href="https://docs.snowflake.com/en/user-guide/oauth-ext-overview">auth-ext-overview </a>  and here: <a href="https://docs.snowflake.com/en/user-guide/oauth-ext-custom">oauth-ext-custom</a></p>
 <h2>Keycloak side</h2>
 <p>You need to configure your client to return in the JWT access token the following claims:</p>
-<pre><code>{
-&quot;aud&quot;: &quot;&lt;audience_url&gt;&quot;,
-&quot;iat&quot;: 1576705500,
-&quot;exp&quot;: 1576709100,
-&quot;iss&quot;: &quot;&lt;issuer_url&gt;&quot;,
-&quot;scope&quot;: [
-&quot;session:role-any&quot;
-]
+<pre><code class="language-json">{
+    &quot;aud&quot;: &quot;&lt;audience_url&gt;&quot;,
+    &quot;iat&quot;: 1576705500,
+    &quot;exp&quot;: 1576709100,
+    &quot;iss&quot;: &quot;&lt;issuer_url&gt;&quot;,
+    &quot;scope&quot;: [
+        &quot;session:role-any&quot;
+    ]
 }
 </code></pre>
 <p>most of them are returned by default. Aud claims is the only one you should add
@@ -62,12 +62,12 @@ To add <code>aud</code> claim you can add a new mapper to your client with type 
 <p><strong>Note</strong>: You need to add a custom audience with the value <strong>equal</strong> to the login_name attribute value in snowflake. The audience value will be used to look up to the right user in snowflake integration</p>
 <p>Then you need to add the snowflake scope to your scope list: session:role-any
 Finally you can check that your token is correct:</p>
-<pre><code>{
-.....
-&quot;iss&quot;: &quot;https://test.vdbinfra.nl/auth/realms/vandebron&quot;,
-&quot;scope&quot;: &quot;session:role-any&quot;,
-&quot;aud&quot;: &quot;energy-trading-test&quot;,
-....
+<pre><code class="language-json">{
+    .....
+    &quot;iss&quot;: &quot;https://test.vdbinfra.nl/auth/realms/vandebron&quot;,
+    &quot;scope&quot;: &quot;session:role-any&quot;,
+    &quot;aud&quot;: &quot;energy-trading-test&quot;,
+    ....
 }
 </code></pre>
 <p>The <code>aud</code> must contain only the snowflake login_name. For instance, a token such as the following will not work (multiple audiences):&quot;aud&quot;: [     &quot;batterypack-services-test&quot;,     &quot;account&quot;   ],</p>
@@ -75,7 +75,7 @@ Finally you can check that your token is correct:</p>
 <p>How to find keycloak public key: <a href="https://stackoverflow.com/a/57457227">stackoverflow</a>
 Required: <code>ACCOUNTADMIN</code> rights in Snowflake.
 Example integration command:</p>
-<pre><code>create or replace security integration external_oauth_keycloak_test
+<pre><code class="language-sql">create or replace security integration external_oauth_keycloak_test
 type = external_oauth
 enabled = true
 external_oauth_type = custom
@@ -93,17 +93,17 @@ Next, you need to set the login name for the user you want associate with the in
 <p><img src="../images/snowflake_auth_conf.png" alt="snowflake_auth_conf.png" title="Snowflake auth configuration"></p>
 <h3>Example</h3>
 <p>Let’s authenticate with keycloak as we do normally:</p>
-<pre><code>curl --location --request POST 'https://keycloak.test-backend.vdbinfra.nl/auth/realms/vandebron/protocol/openid-connect/token/' \
+<pre><code class="language-curl">curl --location --request POST 'https://keycloak.test-backend.vdbinfra.nl/auth/realms/vandebron/protocol/openid-connect/token/' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=client_credentials' \
 --data-urlencode 'client_id=energy-trading' \
 --data-urlencode 'client_secret=&lt;secret&gt;'
 </code></pre>
 <p>Now you should get the token. Optional: van verify the token directly in snowflake with SQL:</p>
-<pre><code>SELECT SYSTEM$VERIFY_EXTERNAL_OAUTH_TOKEN( '&lt;token&gt;' )
+<pre><code class="language-sql">SELECT SYSTEM$VERIFY_EXTERNAL_OAUTH_TOKEN( '&lt;token&gt;' )
 </code></pre>
 <p>Use it in the snowflake statement endpoint. For example:</p>
-<pre><code>curl --location --request POST 'https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
+<pre><code class="language-curl">curl --location --request POST 'https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
 --header 'Authorization: Bearer &lt;yourtoken&gt; \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -112,22 +112,22 @@ Next, you need to set the login name for the user you want associate with the in
 </code></pre>
 <p>NB: It is important to use the proper snowflake base url. In my case I am using https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/ where &lt;my_snowflake_identifier&gt; is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.
 You should get a response such as:</p>
-<pre><code>{
-&quot;code&quot;: &quot;333334&quot;,
-&quot;message&quot;: &quot;Asynchronous execution in progress. Use provided query id to perform query monitoring and management.&quot;,
-&quot;statementHandle&quot;: &quot;01aafc80-3201-abed-0001-4a0e00e52816&quot;,
-&quot;statementStatusUrl&quot;: &quot;/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816&quot;
+<pre><code class="language-json">{
+    &quot;code&quot;: &quot;333334&quot;,
+    &quot;message&quot;: &quot;Asynchronous execution in progress. Use provided query id to perform query monitoring and management.&quot;,
+    &quot;statementHandle&quot;: &quot;01aafc80-3201-abed-0001-4a0e00e52816&quot;,
+    &quot;statementStatusUrl&quot;: &quot;/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816&quot;
 }
 </code></pre>
 <p>Now you can follow the async operation to the following get endpoint:</p>
-<pre><code>https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
+<pre><code class="language-http">https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
 </code></pre>
 <p>It will return 202 if the processing is still ongoing. It will return 200 and the actual result when processing ends.</p>
 <p>Happy coding!</p>
 ]]>
         </content:encoded>
         <media:content
-            url="https://vandebron.tech/images/snowflake_keycloak.jpeg"
+            url="https://vandebron.tech/images/snowflake_keycloak.jpg"
         />
     </item>
       <item>

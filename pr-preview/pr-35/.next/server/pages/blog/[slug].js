@@ -107,21 +107,6 @@ module.exports = require("remark-gfm");
 
 /***/ }),
 
-/***/ "0Zg3":
-/***/ (function(module, exports) {
-
-module.exports = {
-          srcSet: "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg"+" 1024w"+","+"/_next/static/images/snowflake_keycloak-800-90bae3fae5b20417f6deaf88c9efd35d.jpeg"+" 800w"+","+"/_next/static/images/snowflake_keycloak-400-5fce4deab7946110036783495888bf7d.jpeg"+" 400w",
-          images:[ {path: "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg",width: 1024,height: 1024},{path: "/_next/static/images/snowflake_keycloak-800-90bae3fae5b20417f6deaf88c9efd35d.jpeg",width: 800,height: 800},{path: "/_next/static/images/snowflake_keycloak-400-5fce4deab7946110036783495888bf7d.jpeg",width: 400,height: 400}],
-          src: "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg",
-          toString:function(){return "/_next/static/images/snowflake_keycloak-1024-d4a80fc5f7bd74bfe2e7503e2715db1e.jpeg"},
-          
-          width: 1024,
-          height: 1024
-        }
-
-/***/ }),
-
 /***/ "0vGS":
 /***/ (function(module, exports) {
 
@@ -927,6 +912,21 @@ throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an
 
 /***/ }),
 
+/***/ "OtCv":
+/***/ (function(module, exports) {
+
+module.exports = {
+          srcSet: "/_next/static/images/snowflake_keycloak-1016-723629f0fb275ef860dd8dd0aacd35b3.jpg"+" 1016w"+","+"/_next/static/images/snowflake_keycloak-800-7a03ff5fb29dba8a09ddf61b749e2892.jpg"+" 800w"+","+"/_next/static/images/snowflake_keycloak-400-a89f0ee2ead90c2de0a782039ecc1d7f.jpg"+" 400w",
+          images:[ {path: "/_next/static/images/snowflake_keycloak-1016-723629f0fb275ef860dd8dd0aacd35b3.jpg",width: 1016,height: 457},{path: "/_next/static/images/snowflake_keycloak-800-7a03ff5fb29dba8a09ddf61b749e2892.jpg",width: 800,height: 360},{path: "/_next/static/images/snowflake_keycloak-400-a89f0ee2ead90c2de0a782039ecc1d7f.jpg",width: 400,height: 180}],
+          src: "/_next/static/images/snowflake_keycloak-1016-723629f0fb275ef860dd8dd0aacd35b3.jpg",
+          toString:function(){return "/_next/static/images/snowflake_keycloak-1016-723629f0fb275ef860dd8dd0aacd35b3.jpg"},
+          
+          width: 1016,
+          height: 457
+        }
+
+/***/ }),
+
 /***/ "PHDN":
 /***/ (function(module, exports) {
 
@@ -1111,7 +1111,7 @@ var map = {
 	"./images/play_presentation.webp": "R3Wk",
 	"./images/power-regular-hackathons.png": "ljk2",
 	"./images/snowflake_auth_conf.png": "YPit",
-	"./images/snowflake_keycloak.jpeg": "0Zg3",
+	"./images/snowflake_keycloak.jpg": "OtCv",
 	"./images/soap.jpg": "SzPj",
 	"./images/spark-cluster-overview.png": "LWlL",
 	"./images/sparkapihistory.png": "ywSF",

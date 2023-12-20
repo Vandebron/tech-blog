@@ -2,7 +2,7 @@
 title: Authenticate Snowflake via Keycloak
 description: How to use Keycloak to authenticate against Snowflake rest api
 createdAt: 2023-12-19
-coverImage: images/snowflake_keycloak.jpeg
+coverImage: images/snowflake_keycloak.jpg
 tags: [keycloak, snowflake, rest, oauth, bearer token, authentication, security]
 author: Rosario Renga
 ---
@@ -43,15 +43,15 @@ Resources to this topic can be found here [auth-ext-overview ](https://docs.snow
 
 You need to configure your client to return in the JWT access token the following claims:
 
-```
+```json
 {
-"aud": "<audience_url>",
-"iat": 1576705500,
-"exp": 1576709100,
-"iss": "<issuer_url>",
-"scope": [
-"session:role-any"
-]
+    "aud": "<audience_url>",
+    "iat": 1576705500,
+    "exp": 1576709100,
+    "iss": "<issuer_url>",
+    "scope": [
+        "session:role-any"
+    ]
 }
 ```
 
@@ -65,13 +65,13 @@ To add `aud` claim you can add a new mapper to your client with type Audience se
 Then you need to add the snowflake scope to your scope list: session:role-any
 Finally you can check that your token is correct:
 
-```
+```json
 {
-.....
-"iss": "https://test.vdbinfra.nl/auth/realms/vandebron",
-"scope": "session:role-any",
-"aud": "energy-trading-test",
-....
+    .....
+    "iss": "https://test.vdbinfra.nl/auth/realms/vandebron",
+    "scope": "session:role-any",
+    "aud": "energy-trading-test",
+    ....
 }
 ```
 
@@ -83,7 +83,7 @@ How to find keycloak public key: [stackoverflow](https://stackoverflow.com/a/574
 Required: `ACCOUNTADMIN` rights in Snowflake.
 Example integration command:
 
-```
+```sql
 create or replace security integration external_oauth_keycloak_test
 type = external_oauth
 enabled = true
@@ -107,7 +107,7 @@ Next, you need to set the login name for the user you want associate with the in
 
 Let’s authenticate with keycloak as we do normally:
 
-```
+```curl
 curl --location --request POST 'https://keycloak.test-backend.vdbinfra.nl/auth/realms/vandebron/protocol/openid-connect/token/' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=client_credentials' \
@@ -117,13 +117,13 @@ curl --location --request POST 'https://keycloak.test-backend.vdbinfra.nl/auth/r
 
 Now you should get the token. Optional: van verify the token directly in snowflake with SQL:
 
-```
+```sql
 SELECT SYSTEM$VERIFY_EXTERNAL_OAUTH_TOKEN( '<token>' )
 ```
 
 Use it in the snowflake statement endpoint. For example:
 
-```
+```curl
 curl --location --request POST 'https://<my_snowflake_identifier>.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
 --header 'Authorization: Bearer <yourtoken> \
 --header 'Content-Type: application/json' \
@@ -135,18 +135,18 @@ curl --location --request POST 'https://<my_snowflake_identifier>.eu-central-1.s
 NB: It is important to use the proper snowflake base url. In my case I am using https://<my_snowflake_identifier>.eu-central-1.snowflakecomputing.com/ where <my_snowflake_identifier> is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.
 You should get a response such as:
 
-```
+```json
 {
-"code": "333334",
-"message": "Asynchronous execution in progress. Use provided query id to perform query monitoring and management.",
-"statementHandle": "01aafc80-3201-abed-0001-4a0e00e52816",
-"statementStatusUrl": "/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816"
+    "code": "333334",
+    "message": "Asynchronous execution in progress. Use provided query id to perform query monitoring and management.",
+    "statementHandle": "01aafc80-3201-abed-0001-4a0e00e52816",
+    "statementStatusUrl": "/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816"
 }
 ```
 
 Now you can follow the async operation to the following get endpoint:
 
-```
+```http
 https://<my_snowflake_identifier>.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
 ```
 
