@@ -1,9 +1,9 @@
 ---
-title: Authenticate Snowflake rest api via Keycloak
+title: Authenticate Snowflake via Keycloak
 description: How to use Keycloak to authenticate against Snowflake rest api
 createdAt: 2023-12-19
-coverImage: images/monolith.webp
-tags: keycloak, snowflake, rest, oauth, bearer token, authentication, security
+coverImage: images/snowflake_keycloak.jpeg
+tags: [keycloak, snowflake, rest, oauth, bearer token, authentication, security]
 author: Rosario Renga
 ---
 
@@ -21,36 +21,27 @@ These REST APIs allow developers to programmatically perform tasks such as execu
 
 ## Why via Rest Api?
 
-The Snowflake SQL API is a REST API that you can use to access and update data in a Snowflake database. You can use this API to develop custom applications and integrations that can perform most of the queries you need. More info here: https://docs.snowflake.com/en/developer-guide/sql-api/index
+The Snowflake SQL API is a REST API that you can use to access and update data in a Snowflake database. You can use this API to develop custom applications and integrations that can perform most of the queries you need. More info here: [Snowflake rest api](https://docs.snowflake.com/en/developer-guide/sql-api/index)
 
 We decided to connect our microservices to snowflake via rest api mainly because we consider this mechanism the best way to decouple database processing with backend processing in fact the queries issued via the endpoint are processed inside Snowflake ecosystem asynchronously.
 
-The service can poll snowflake to monitor the request until it is completed. See https://docs.snowflake.com/en/developer-guide/sql-api/handling-responses .
+The service can poll snowflake to monitor the request until it is completed. See [Sql api response](https://docs.snowflake.com/en/developer-guide/sql-api/handling-responses) .
 
 Using api communication has other very good benefits:
 
-
-
 - No additional library dependency
-
 - No Additional spark connectors
-
 - Since there is no way to run snowflake on a local machine unit test a snowflake connection would have been very hard ( impossible ). With Rest api communication we can unit test snowflake api client using contract test. ( one way contract test is better than nothing )
-
-
 
 ## Snowflake Authentication
 
 Snowflake provides a convenient way to authenticate to it using “any” OAuth authentication server. Our authentication server is Keycloak so in the following sections you will learn how to integrate Keycloak with Snowflake.
-
-Resources to this topic can be found here https://docs.snowflake.com/en/user-guide/oauth-ext-overview  and here: https://docs.snowflake.com/en/user-guide/oauth-ext-custom
-
+Resources to this topic can be found here [auth-ext-overview ](https://docs.snowflake.com/en/user-guide/oauth-ext-overview)  and here: [oauth-ext-custom](https://docs.snowflake.com/en/user-guide/oauth-ext-custom)
 
 
 ## Keycloak side
 
 You need to configure your client to return in the JWT access token the following claims:
-
 
 ```
 {
@@ -65,15 +56,13 @@ You need to configure your client to return in the JWT access token the followin
 ```
 
 most of them are returned by default. Aud claims is the only one you should add
-
 To add `aud` claim you can add a new mapper to your client with type Audience see image:
 
-![Keycloak aud](/images/keycloak_aud.png "Keycloak aud mapper")
+![keycloak_aud.png](../images/keycloak_aud.png "Keycloak aud mapper")
 
 **Note**: You need to add a custom audience with the value **equal** to the login_name attribute value in snowflake. The audience value will be used to look up to the right user in snowflake integration
 
 Then you need to add the snowflake scope to your scope list: session:role-any
-
 Finally you can check that your token is correct:
 
 ```
@@ -86,16 +75,12 @@ Finally you can check that your token is correct:
 }
 ```
 
-
 The `aud` must contain only the snowflake login_name. For instance, a token such as the following will not work (multiple audiences):"aud": [     "batterypack-services-test",     "account"   ],
-
 
 ## Snowflake side
 
-How to find keycloak public key: https://stackoverflow.com/a/57457227
-
+How to find keycloak public key: [stackoverflow](https://stackoverflow.com/a/57457227)
 Required: `ACCOUNTADMIN` rights in Snowflake.
-
 Example integration command:
 
 ```
@@ -116,7 +101,7 @@ external_oauth_snowflake_user_mapping_attribute = 'login_name';
 Note: the external_oauth_scope_delimiter setting must be enabled separately by Snowflake support.
 Next, you need to set the login name for the user you want associate with the integration:
 
-![Snowflake auth configuration](/images/keycloak_aud.png "Snowflake auth configuration")
+![snowflake_auth_conf.png](../images/snowflake_auth_conf.png "Snowflake auth configuration")
 
 ### Example
 
@@ -129,7 +114,6 @@ curl --location --request POST 'https://keycloak.test-backend.vdbinfra.nl/auth/r
 --data-urlencode 'client_id=energy-trading' \
 --data-urlencode 'client_secret=<secret>'
 ```
-
 
 Now you should get the token. Optional: van verify the token directly in snowflake with SQL:
 
@@ -149,7 +133,6 @@ curl --location --request POST 'https://<my_snowflake_identifier>.eu-central-1.s
 ```
 
 NB: It is important to use the proper snowflake base url. In my case I am using https://<my_snowflake_identifier>.eu-central-1.snowflakecomputing.com/ where <my_snowflake_identifier> is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.
-
 You should get a response such as:
 
 ```
