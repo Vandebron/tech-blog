@@ -1,3 +1,11 @@
+---
+title: Creating a Self-Service Data Model
+description: How we migrated to a modern data stack to enable self-servicing across the business
+createdAt: 2024-02-07
+coverImage: images/schematic_data_product.jpg
+tags: [dbt, snowflake, lightdash, datamodel, self-service]
+author: Mats Stijlaart
+---
 
 # Creating a Self-Service Data Model
 
