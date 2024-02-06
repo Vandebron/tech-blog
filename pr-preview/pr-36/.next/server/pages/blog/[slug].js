@@ -1119,6 +1119,7 @@ var map = {
 	"./images/power-regular-hackathons.png": "ljk2",
 	"./images/schematic_data_layers.jpg": "mHzK",
 	"./images/schematic_data_product.jpg": "z13h",
+	"./images/self_service.jpg": "cHyl",
 	"./images/snowflake_auth_conf.png": "YPit",
 	"./images/snowflake_keycloak.jpg": "OtCv",
 	"./images/soap.jpg": "SzPj",
@@ -1289,6 +1290,21 @@ function _typeof(obj) {
   }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
 }
 module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "cHyl":
+/***/ (function(module, exports) {
+
+module.exports = {
+          srcSet: "/_next/static/images/self_service-626-02771dbe9e057440979ba5548c47d455.jpg"+" 626w"+","+"/_next/static/images/self_service-400-987d2ec117e3943b4d864caf76eb1388.jpg"+" 400w",
+          images:[ {path: "/_next/static/images/self_service-626-02771dbe9e057440979ba5548c47d455.jpg",width: 626,height: 626},{path: "/_next/static/images/self_service-400-987d2ec117e3943b4d864caf76eb1388.jpg",width: 400,height: 400}],
+          src: "/_next/static/images/self_service-626-02771dbe9e057440979ba5548c47d455.jpg",
+          toString:function(){return "/_next/static/images/self_service-626-02771dbe9e057440979ba5548c47d455.jpg"},
+          
+          width: 626,
+          height: 626
+        }
 
 /***/ }),
 
