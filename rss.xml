@@ -13,8 +13,76 @@
           <![CDATA[Leading the renewable energy transition with innovative solutions]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2024-02-07T00:00:00.000Z</lastBuildDate>
+        <lastBuildDate>2024-02-16T00:00:00.000Z</lastBuildDate>
         
+      <item>
+        <title><![CDATA[Cassandra, it’s not you, it’s us]]></title>
+        <link>https://vandebron.tech/blog/cassandra-its-not-you-its-us</link>
+        <pubDate>2024-02-16T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/cassandra-its-not-you-its-us</guid>
+        <description>
+        <![CDATA[Our Journey to find the perfect data storage solution for us]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<h1>Cassandra, it’s not you, it’s us</h1>
+<p>I want you to know that you are probably an amazing product that has so much to offer to the world. However, it sadly just isn’t working out for us anymore.</p>
+<p>We've encountered challenges such as escalating costs, inconsistent write and read performances, and setup misalignments that have constrained our growth. Of course, this is not entirely your fault, we set you up to fail with our infrastructure and use cases.</p>
+<p>I hope we can part on good terms, with mutual respect and appreciation for the time we shared.<br>
+I wish you all the happiness, success, and fulfilment in the world, and I hope you find a company that complements your life in the way you deserve.</p>
+<p>Thank you for understanding, and I truly wish you the best.</p>
+<p>Yours truly, Vandebron</p>
+<h2>Our Data Storage Prince Charming</h2>
+<p><img src="../images/data-prince-charming.jpg" alt="data-prince-charming.jpg" title="Data Prince"></p>
+<p>A list of some of the qualities we are looking for:</p>
+<ul>
+<li>Kindness and compassion.</li>
+<li>High availability.</li>
+<li>Low Maintenance.</li>
+<li>Ability to store large volumes of data (currently around 10TB), though not everything has to be queried fast.</li>
+<li>Capable of ingesting real-time energy usage data (every 15 minutes per customer, possibly higher frequency in the future).</li>
+<li>Ideally, we can use our current tech stack as much as possible (flyway migrations, roundtrip tests, spark).</li>
+<li>Ideally, use as few different database technologies as possible.</li>
+<li>It does not need to be horizontally scalable, due to moving from 1 central data storage to a separate data storage per service.</li>
+</ul>
+<p>With enough work, time and commitment, Cassandra could have fulfilled most of these requirements. However, love is a two-way street, and we didn't put in the time and effort to make it work.</p>
+<h2>Speed Dating Round</h2>
+<p>Some potential suitors we considered for replacing Cassandra:</p>
+<h4>ScyllaDB</h4>
+<p>ScyllaDB is very similar to Cassandra. It should have better performance but still have (almost) all the same functionality as Cassandra.</p>
+<h4>PostgreSQL</h4>
+<p>PostgreSQL is a relational database. We already use it extensively in our services.</p>
+<h4>Cockroach</h4>
+<p>It is similar to PostgreSQL but with some limitations: <a href="https://www.cockroachlabs.com/docs/stable/known-limitations.html">Known Limitations in CockroachDB v23.2</a></p>
+<p>It is horizontally scalable, which is an advantage over PostgreSQL when it comes to high availability and fault tolerance. We are also currently using it in some of our services.</p>
+<h4>Timescale</h4>
+<p>Timescale is a PostgreSQL extension that uses the same query layer, but a different storage layer, to have efficient time series-related features.</p>
+<p>It can also distribute data, but this is still in early access and is not recommended.</p>
+<h4>Yugabyte</h4>
+<p>Yugabyte is a PostgreSQL extension to make PostgreSQL into a distributed database.</p>
+<h2>Comparisons</h2>
+<p>To determine the most suitable match, we did some quick performance tests. One where we inserted 2 million + weather data records as fast as possible via recurring inserts, to see how easy it would be to migrate over to. And another test to determine general query speed.</p>
+<h3>Write Speed Results</h3>
+<p><img src="../images/insert-perf-database.jpg" alt="insert-perf-database.jpg" title="Insert Graph"></p>
+<p>Note that the test results are not 100% fair, because Timescale and Postgres don’t have to distribute the data over multiple nodes (though Timescale does have 2 replicas), and Cassandra already contained a lot of data (though with some testing timescale didn’t seem to become slower when it already had more data). For Yugabyte and Cockroach, we gave up after 1 hour. Also, the tests were done with the existing setup for Cassandra.</p>
+<h3>Query Speed Results</h3>
+<p><img src="../images/query-perf-database.jpg" alt="query-perf-database.jpg" title="Query Graph"></p>
+<p>We also did some tests to query aggregated data from streaming data.</p>
+<ul>
+<li>For this, we copied over 2.6M rows to each database.</li>
+<li>For this data we need to aggregate (sum) some values per 15-minute time block).</li>
+<li>For Cassandra/Scylla, this is done via spark.</li>
+<li>For timescale use buckets based on timestamps.</li>
+<li>For Postgres by grouping on floor(extract(epoch from timestamp) / 60 / 15)</li>
+</ul>
+<h2>Our Happily Ever After</h2>
+<p>Timescale emerged as the clear winner here, not just for its performance in the above tests, but also for its seamless integration with our existing PostgreSQL setup. This compatibility allows us to maintain our current libraries and reduce code complexity, making Timescale an ideal choice for our time series data. At the same time, we continue to rely on Postgres for our other needs.</p>
+<p>Cassandra, you won’t be missed.</p>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/heart-breaking.jpg"
+        />
+    </item>
       <item>
         <title><![CDATA[Creating a Self-Service Data Model]]></title>
         <link>https://vandebron.tech/blog/creating_a_self-service_data_model</link>
