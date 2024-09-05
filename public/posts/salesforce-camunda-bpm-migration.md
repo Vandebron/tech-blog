@@ -77,7 +77,7 @@ Before we could begin migrating our processes from Salesforce to Camunda, it was
 - BPM app (React): Certain processes require input from users, particularly agents working within Salesforce. To facilitate this, we built the BPM app, which includes a set of forms necessary for running specific processes. This application ensures that agents can interact with and influence the workflow directly from their workspace, maintaining the user experience they are accustomed to.
 
 
-![A schematic overview of the camunda infrastructure](/images/camunda_infrastructure.png "A schematic overview of the camunda infrastructure")
+![A schematic overview of the camunda infrastructure](../images/camunda_infrastructure.png "A schematic overview of the camunda infrastructure")
 
 As of September 2024, we have successfully implemented the basic infrastructure needed for Camunda integration, and three customer-related processes have been migrated from Salesforce to Camunda, with several more in progress. 
 It's important to highlight that the migration process involved a comprehensive analysis of the existing process, including the removal of legacy components, identification of common errors, and targeted optimization efforts. As a result, we achieved a substantial reduction in errors. Specifically, the Flow_Renewal process, which previously had a 2% failure rate, now experiences only a 0.62% dropout rate post-migration, reflecting a 69% decrease in errors.
