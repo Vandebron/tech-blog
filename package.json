@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@vandebron/windmolen": "^15.28.1-alpha.1",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.0.0",
     "gray-matter": "^4.0.2",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
