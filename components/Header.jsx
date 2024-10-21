@@ -65,7 +65,7 @@ export default function Header() {
                   style={{ marginRight: 10 }}
                 >
                   <Icon name="github" />
-                  <span class="visually-hidden">Vandebron on Github</span>
+                  <span className="visually-hidden">Vandebron on Github</span>
                 </Link>
                 <Link
                   href="https://dev.to/vandebron/"
@@ -74,7 +74,7 @@ export default function Header() {
                   style={{ marginRight: 10 }}
                 >
                   <Icon name="devto" />
-                  <span class="visually-hidden">Vandebron on Dev.to</span>
+                  <span className="visually-hidden">Vandebron on Dev.to</span>
                 </Link>
                 <Link
                   href="https://medium.com/vandebron/"
@@ -82,7 +82,7 @@ export default function Header() {
                   rel="noreferrer"
                 >
                   <Icon name="medium" />
-                  <span class="visually-hidden">Vandebron on Medium</span>
+                  <span className="visually-hidden">Vandebron on Medium</span>
                 </Link>
               </div>
             </Flex>
