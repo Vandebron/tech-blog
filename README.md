@@ -37,6 +37,9 @@ yarn start
 ```
 NB: Remember to rebuild everytime you change something on your post
 
+The PR environment has an issue rendering the header image. This is a known issue and doesn't exist when publishing to the actual site (see below).
+![PR Environment](PR-environment.png)
+
 ### Publishing
 
 When your post is ready and reviewed, you can merge it with master and simply:
