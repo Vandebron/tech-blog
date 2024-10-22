@@ -1333,13 +1333,13 @@ module.exports = "/_next/static/images/step-functions-767473464660f055ce1c84816e
 /***/ (function(module, exports) {
 
 module.exports = {
-          srcSet: "/_next/static/images/remix-migration-remix-vs-nextjs-1200-472f8f608dba56540b572729055466fa.png"+" 1200w"+","+"/_next/static/images/remix-migration-remix-vs-nextjs-800-6e53b9bbf1f1562b5f5bf5b8432dc95f.png"+" 800w"+","+"/_next/static/images/remix-migration-remix-vs-nextjs-400-bd51c98e49754f1582621b5cffea2c87.png"+" 400w",
-          images:[ {path: "/_next/static/images/remix-migration-remix-vs-nextjs-1200-472f8f608dba56540b572729055466fa.png",width: 1200,height: 624},{path: "/_next/static/images/remix-migration-remix-vs-nextjs-800-6e53b9bbf1f1562b5f5bf5b8432dc95f.png",width: 800,height: 416},{path: "/_next/static/images/remix-migration-remix-vs-nextjs-400-bd51c98e49754f1582621b5cffea2c87.png",width: 400,height: 208}],
-          src: "/_next/static/images/remix-migration-remix-vs-nextjs-1200-472f8f608dba56540b572729055466fa.png",
-          toString:function(){return "/_next/static/images/remix-migration-remix-vs-nextjs-1200-472f8f608dba56540b572729055466fa.png"},
+          srcSet: "/_next/static/images/remix-migration-remix-vs-nextjs-960-0c5f32f6867392750abedf8103c5db78.png"+" 960w"+","+"/_next/static/images/remix-migration-remix-vs-nextjs-800-102efa867d191cdc0b1cdc0bc616e3de.png"+" 800w"+","+"/_next/static/images/remix-migration-remix-vs-nextjs-400-2a78243ec93e82cb4a796ee7badfe83d.png"+" 400w",
+          images:[ {path: "/_next/static/images/remix-migration-remix-vs-nextjs-960-0c5f32f6867392750abedf8103c5db78.png",width: 960,height: 514},{path: "/_next/static/images/remix-migration-remix-vs-nextjs-800-102efa867d191cdc0b1cdc0bc616e3de.png",width: 800,height: 428},{path: "/_next/static/images/remix-migration-remix-vs-nextjs-400-2a78243ec93e82cb4a796ee7badfe83d.png",width: 400,height: 214}],
+          src: "/_next/static/images/remix-migration-remix-vs-nextjs-960-0c5f32f6867392750abedf8103c5db78.png",
+          toString:function(){return "/_next/static/images/remix-migration-remix-vs-nextjs-960-0c5f32f6867392750abedf8103c5db78.png"},
           
-          width: 1200,
-          height: 624
+          width: 960,
+          height: 514
         }
 
 /***/ }),
