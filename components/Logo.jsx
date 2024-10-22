@@ -5,7 +5,7 @@ export default function Logo({ inverted = false }) {
     <div
       style={{
         cursor: "pointer",
-        ["user-select"]: "none",
+        ["userSelect"]: "none",
         display: "flex",
         alignItems: "baseline",
       }}

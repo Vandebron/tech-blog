@@ -26,7 +26,7 @@ export default class extends Document {
 
           <script
             src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-            crossorigin
+            crossOrigin="anonymous"
           ></script>
         </Head>
         <body>
