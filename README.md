@@ -24,6 +24,7 @@ Or the npm equivalent `npm run dev`.
 ### Contributing
 
 To create a post yourself you can create a new `.md` file in the directory `public/posts`, the filename will be the slug that's used to navigate to the article on the website. Image assets can be added to the directory `public/images`.
+Once you're done with your post, it seems like you also need to run `node ./generate-rss.mjs` to update the RSS feed.
 
 ### Testing
 
