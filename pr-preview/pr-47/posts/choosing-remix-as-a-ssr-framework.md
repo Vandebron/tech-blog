@@ -15,7 +15,7 @@ We at Vandebron have a mission to get the news out about [our good work](https:/
 
 The year was 2017, Covid was still a word that sounded more like a bird than anything else... The world was heating up and Vandebron was 4 years into it's mission to bring 100% renewable energy throughout all of the Netherlands.
 
-As far as web technologies are concnered, 4 years was ages ago. It was a time when NextJS was less than a year old, and Remix was still several years from coming out. But we needed a way to deliver that high-quality content to all of you. So, the inovators that we were, we decided to build out own SSR framework. In short, we wanted pizza, but there were no pizza shops in town... So we made our own!
+As far as web technologies are concerned, 4 years was ages ago. It was a time when NextJS was less than a year old, and Remix was still several years from coming out. But we needed a way to deliver that high-quality content to all of you. So, the innovators that we were, we decided to build out own SSR framework. In short, we wanted pizza, but there were no pizza shops in town... So we made our own!
 
 It's been great but not without issue...
 ![remix-migration-ugly-window-mock.png](../images/remix-migration-ugly-window-mock.png)
@@ -23,13 +23,13 @@ It's been great but not without issue...
 
 ## A Short Note: Why Server Side Rendering
 
-You might not be satisifed with the short explanation of why we picked an SSR framework in the first place. This article isn't really about that - if you're interested in more analysis on when and where to choose an SSR framework, check out these excellent articles from Splunk:
+You might not be satisfied with the short explanation of why we picked an SSR framework in the first place. This article isn't really about that - if you're interested in more analysis on when and where to choose an SSR framework, check out these excellent articles from Splunk:
 * [The User Experience (UX) Benefits of SSR](https://www.splunk.com/en_us/blog/learn/server-side-rendering-ssr.html)
 * [The SEO Benefits of SSR](https://www.splunk.com/en_us/blog/learn/server-side-rendering-ssr.html)
 
 ## Decisions Made the Right Way - A Comparison
 
-Nowdays, there are better, industry standard technologies available! I.e. pizza shops have opened nearby!! Let's find a good one. Of course, you don't want to just go to any spot. Especially if there's more than one shop in town - you'd be silly not to check which one is closest, and look at the menu. Which one has better reviews, is that one very angry customer just upset that there wasn't any anchovies in the vegan pizza shop? What were the expecting anyway?
+Nowadays, there are better, industry standard technologies available! I.e. pizza shops have opened nearby!! Let's find a good one. Of course, you don't want to just go to any spot. Especially if there's more than one shop in town - you'd be silly not to check which one is closest, and look at the menu. Which one has better reviews, is that one very angry customer just upset that there wasn't any anchovies in the vegan pizza shop? What were the expecting anyway?
 <img src="../images/remix-migration-vegan-pizza-shop.png" alt="vegan-pizza-shop" width="600"/>
 
 At Vandebron we're a React shop so for this reason we limited ourselves to just SSR frameworks supporting React. The choice of one framework over another is of crucial importance, so, as part of our analysis, we built a small part of our [vandebron.nl/blog](https://vandebron.nl/blog) page twice. Two of our engineers then presented these prototypes to our Front End Guild, and this discussion fed heavily into the Architecture Decision Record that we wrote comparing the results.
