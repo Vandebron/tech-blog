@@ -29,7 +29,7 @@ You might not be satisfied with the short explanation of why we picked an SSR fr
 
 ## Decisions Made the Right Way - A Comparison
 
-Nowadays, there are better, industry standard technologies available! I.e. pizza shops have opened nearby!! Let's find a good one. Of course, you don't want to just go to any spot. Especially if there's more than one shop in town - you'd be silly not to check which one is closest, and look at the menu. Which one has better reviews, is that one very angry customer just upset that there wasn't any anchovies in the vegan pizza shop? What were the expecting anyway?
+Nowadays, there are better, industry standard technologies available! I.e. pizza shops have opened nearby!! Let's find a good one. Of course, you don't want to just go to any spot. Especially if there's more than one shop in town - you'd be silly not to check which one is closest, and look at the menu. Which one has better reviews, is that one very angry customer just upset that there wasn't any anchovies in the vegan pizza shop? What were they expecting anyway?
 <img src="../images/remix-migration-vegan-pizza-shop.png" alt="vegan-pizza-shop" width="600"/>
 
 At Vandebron we're a React shop so for this reason we limited ourselves to just SSR frameworks supporting React. The choice of one framework over another is of crucial importance, so, as part of our analysis, we built a small part of our [vandebron.nl/blog](https://vandebron.nl/blog) page twice. Two of our engineers then presented these prototypes to our Front End Guild, and this discussion fed heavily into the Architecture Decision Record that we wrote comparing the results.
