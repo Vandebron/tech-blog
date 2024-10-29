@@ -13,7 +13,7 @@ We at Vandebron have a mission to get the news out about [our good work](https:/
 
 ## We rolled our own
 
-The year was 2017, Covid was still a word that sounded more like a bird than anything else... The world was heating up and Vandebron was 4 years into it's mission to bring 100% renewable energy throughout all of the Netherlands.
+The year was 2017, Covid was still a word that sounded more like a bird than anything else... The world was heating up and Vandebron was 4 years into its mission to bring 100% renewable energy throughout all of the Netherlands.
 
 As far as web technologies are concerned, 4 years was ages ago. It was a time when NextJS was less than a year old, and Remix was still several years from coming out. But we needed a way to deliver that high-quality content to all of you. So, the innovators that we were, we decided to build out own SSR framework. In short, we wanted pizza, but there were no pizza shops in town... So we made our own!
 
