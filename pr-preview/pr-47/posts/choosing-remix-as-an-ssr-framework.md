@@ -36,7 +36,7 @@ At Vandebron we're a React shop so for this reason we limited ourselves to just 
 
 The Background for the decision record states this:
 
-> _"Our Frontend currently uses a custom-built, hard to maintain SSR solution, which we like to replace with a modern and standard library. Possible candidates are NextJS and Remix. The goal is to investigate which one suits our needs best."_
+> _"Our Frontend currently uses a custom-built, hard to maintain SSR solution, which we'd like to replace with a modern and standard library. Possible candidates are NextJS and Remix. The goal is to investigate which one suits our needs best."_
 
 Yes, there are other options we could have considered but we wanted to stay with a tried-and-tested framework and one that was compatible with our existing React setup.
 ![remix-migration-adr-options-considered.png](../images/remix-migration-adr-options-considered.png)

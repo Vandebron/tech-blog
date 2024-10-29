@@ -43,7 +43,7 @@
 <p>At Vandebron we're a React shop so for this reason we limited ourselves to just SSR frameworks supporting React. The choice of one framework over another is of crucial importance, so, as part of our analysis, we built a small part of our <a href="https://vandebron.nl/blog">vandebron.nl/blog</a> page twice. Two of our engineers then presented these prototypes to our Front End Guild, and this discussion fed heavily into the Architecture Decision Record that we wrote comparing the results.</p>
 <p>The Background for the decision record states this:</p>
 <blockquote>
-<p><em>&quot;Our Frontend currently uses a custom-built, hard to maintain SSR solution, which we like to replace with a modern and standard library. Possible candidates are NextJS and Remix. The goal is to investigate which one suits our needs best.&quot;</em></p>
+<p><em>&quot;Our Frontend currently uses a custom-built, hard to maintain SSR solution, which we'd like to replace with a modern and standard library. Possible candidates are NextJS and Remix. The goal is to investigate which one suits our needs best.&quot;</em></p>
 </blockquote>
 <p>Yes, there are other options we could have considered but we wanted to stay with a tried-and-tested framework and one that was compatible with our existing React setup.
 <img src="../images/remix-migration-adr-options-considered.png" alt="remix-migration-adr-options-considered.png"></p>
