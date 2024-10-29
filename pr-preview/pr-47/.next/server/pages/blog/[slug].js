@@ -1080,6 +1080,21 @@ module.exports = {
 
 /***/ }),
 
+/***/ "QqYO":
+/***/ (function(module, exports) {
+
+module.exports = {
+          srcSet: "/_next/static/images/remix-migration-mocking-a-window-1200-640e9a966b789e08f4c012c853dba65b.png"+" 1200w"+","+"/_next/static/images/remix-migration-mocking-a-window-800-90f6b5a0ac85daac94064d2ce5306725.png"+" 800w"+","+"/_next/static/images/remix-migration-mocking-a-window-400-10ebff0f48b9e7ea2a089e1f11614c6b.png"+" 400w",
+          images:[ {path: "/_next/static/images/remix-migration-mocking-a-window-1200-640e9a966b789e08f4c012c853dba65b.png",width: 1200,height: 1642},{path: "/_next/static/images/remix-migration-mocking-a-window-800-90f6b5a0ac85daac94064d2ce5306725.png",width: 800,height: 1094},{path: "/_next/static/images/remix-migration-mocking-a-window-400-10ebff0f48b9e7ea2a089e1f11614c6b.png",width: 400,height: 547}],
+          src: "/_next/static/images/remix-migration-mocking-a-window-1200-640e9a966b789e08f4c012c853dba65b.png",
+          toString:function(){return "/_next/static/images/remix-migration-mocking-a-window-1200-640e9a966b789e08f4c012c853dba65b.png"},
+          
+          width: 1200,
+          height: 1642
+        }
+
+/***/ }),
+
 /***/ "R3Wk":
 /***/ (function(module, exports) {
 
@@ -1243,6 +1258,7 @@ var map = {
 	"./images/power-regular-hackathons.png": "ljk2",
 	"./images/query-perf-database.jpg": "LSdC",
 	"./images/remix-migration-adr-options-considered.png": "FhIN",
+	"./images/remix-migration-mocking-a-window.png": "QqYO",
 	"./images/remix-migration-remix-vs-nextjs.png": "Xq78",
 	"./images/remix-migration-sojs-framework-positivity.png": "z6pZ",
 	"./images/remix-migration-ugly-window-mock.png": "HYq6",
