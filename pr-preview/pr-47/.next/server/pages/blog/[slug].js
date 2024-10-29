@@ -107,13 +107,6 @@ module.exports = require("remark-gfm");
 
 /***/ }),
 
-/***/ "0j85":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Server-Side-Rendering - An Example Where It's Appropriate\n| description: We had our own custom SSR framework. It was time to move on. Find out why we picked Remix over NextJS as the replacement!");
-
-/***/ }),
-
 /***/ "0vGS":
 /***/ (function(module, exports) {
 
@@ -1275,7 +1268,7 @@ var map = {
 	"./posts/balancing-dutch-energy-grid-with-flex-services.md": "8rh+",
 	"./posts/building-native-images-and-compiling-with-graalvm-and-sbt.md": "Or0Y",
 	"./posts/cassandra-its-not-you-its-us.md": "JYqE",
-	"./posts/choosing-remix-as-a-ssr-framework.md": "0j85",
+	"./posts/choosing-remix-as-an-ssr-framework.md": "wVlU",
 	"./posts/cicd-dagster-user-code.md": "ygPh",
 	"./posts/creating_a_self-service_data_model.md": "LMrg",
 	"./posts/cypress-component-design-technique-for-react-applications.md": "WZxd",
@@ -5627,6 +5620,13 @@ module.exports = {
           width: 1024,
           height: 683
         }
+
+/***/ }),
+
+/***/ "wVlU":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Choosing Remix as a Server-Side Rendering (SSR) Framework\n| description: We had our own custom SSR framework. It was time to move on. Find out why we picked Remix over NextJS as the replacement!");
 
 /***/ }),
 

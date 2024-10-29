@@ -1,5 +1,5 @@
 ---
-title: Server-Side-Rendering - An Example Where It's Appropriate
+title: Choosing Remix as a Server-Side Rendering (SSR) Framework
 description: We had our own custom SSR framework. It was time to move on. Find out why we picked Remix over NextJS as the replacement!
 createdAt: 2024-10-18
 coverImage: images/remix-migration-remix-vs-nextjs.png
@@ -50,10 +50,10 @@ Outcome
 
 ## So, How's it Going?
 
-The migration effort is still underway but already we can report that it's going quite well - developers are excited to work on the new tech stack because it's seen as a developer-friendly platform and one of the two leading frameworks in the industry. There are some rather interesting points:
-
-### Styling
-
-### Monitoring & Observibility
-Sentry seems like it's giving us goofy results
-
+The migration effort is still underway but already we can report that it's going quite well - developers are excited to work on the new tech stack because it's seen as a developer-friendly platform and one of the two leading frameworks in the industry. In the words of one engineer: "Dev experience has improved massively, it's fun, it's easy to work with"
+Here are some of the things we still need to work on:
+- Our Docker image is quite large as it includes all the `node_modules`. We think we can clean this up a bit by using Yarn's Plug'n'Play (PnP) feature which should lead to faster image-build times and faster container startup times.
+- We feel the application we're migrating from is doing too much - it includes our marketing pages like the _Blog_ and _Mission_ pages we've been working on for the initial release, as well as the pages for our our signup and renewal process (become a Vandebron customer [here](https://vandebron.nl)!!!) This is a separate conversation, and ultimately one for the FE Guild, but the existing app's size and purpose is making the migration take longer than it should, and forcing us to put some routing rules in place to make sure the right parts of our old site are getting swapped out for the new.
+- Previously, many of the images and PDFs we used on our website were checked directly into the repo. Part of our migration to Remix made us realize we should be using a CMS for this. We are already integrated with a CMS, we just need to be making better use of it in some cases.
+- We haven't explored the Remix-specific linting rules yet. While we're confident in the existing React and TS lint rules we already have, it seems like configs like [@remix-run/eslint-config](https://www.npmjs.com/package/@remix-run/eslint-config) could be quite handy.
+- Our component library is still very much under development, which sometimes prolongs development on pages. It's nice that we were able to use our existing React components in Remix but we did need to make some minor tweaks like ensuring we have access to the `window` object before using it.
