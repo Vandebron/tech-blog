@@ -16,34 +16,40 @@
         <lastBuildDate>2024-10-18T00:00:00.000Z</lastBuildDate>
         
       <item>
-        <title><![CDATA[Server-Side-Rendering - An Example Where It's Appropriate]]></title>
-        <link>https://vandebron.tech/blog/choosing-remix-as-a-ssr-framework</link>
+        <title><![CDATA[Choosing Remix as a Server-Side Rendering (SSR) Framework]]></title>
+        <link>https://vandebron.tech/blog/choosing-remix-as-an-ssr-framework</link>
         <pubDate>2024-10-18T00:00:00.000Z</pubDate>
-        <guid isPermaLink="false">https://vandebron.tech/blog/choosing-remix-as-a-ssr-framework</guid>
+        <guid isPermaLink="false">https://vandebron.tech/blog/choosing-remix-as-an-ssr-framework</guid>
         <description>
         <![CDATA[We had our own custom SSR framework. It was time to move on. Find out why we picked Remix over NextJS as the replacement!]]>
         </description>
         <content:encoded>
         <![CDATA[<h2>The Background</h2>
-<p>We at Vandebron have a mission to get the news out about <a href="https://vandebron.nl/missie">our good work</a>, and we understand that <a href="https://web.dev/articles/rendering-on-the-web#server-side">Server Side Rendering (SSR)</a> can really help with that. Among other things, it provides an easy way for search engines to discover our pages, so you, our (future?!) customer, can find them easier. That means more people choosing green energy, and ultimately, a cleaner environment!  🎉</p>
+<p>We at Vandebron have a mission to get the news out about <a href="https://vandebron.nl/missie">our good work</a>, and we understand that <a href="https://web.dev/articles/rendering-on-the-web#server-side">Server Side Rendering (SSR)</a> can really help with that. Among other things, it provides an easy way for search engines to discover our pages, so you, our (future?!) customer, can find them more easily. That means more people choosing green energy, and ultimately, a cleaner environment!  🎉</p>
 <h2>We rolled our own</h2>
-<p>The year was 2017, Covid was still a word that sounded more like a bird than anything else... The world was heating up and Vandebron was 4 years into it's mission to bring 100% renewable energy throughout all of the Netherlands.</p>
-<p>As far as web technologies are concnered, 4 years was ages ago. It was a time when NextJS was less than a year old, and Remix was still several years from coming out. But we needed a way to deliver that high-quality content to all of you. So, the inovators that we were, we decided to build out own SSR framework. In short, we wanted pizza, but there were no pizza shops in town... So we made our own!</p>
-<p>It's been great but not without issue...
-<img src="../images/remix-migration-ugly-window-mock.png" alt="remix-migration-ugly-window-mock.png"></p>
+<p>The year was 2017, Covid was still a word that sounded more like a bird than anything else... The world was heating up and Vandebron was 4 years into its mission to bring 100% renewable energy throughout all of the Netherlands.</p>
+<p>As far as web technologies are concerned, 4 years was ages ago. It was a time when NextJS was less than a year old, and Remix was still several years from coming out. But we needed a way to deliver that high-quality content to all of you. So, the innovators that we were, we decided to build our own SSR framework. In short, we wanted pizza, but there were no pizza shops in town... So we made our own!</p>
+<p>It's been great but not without issue...</p>
+<table>
+  <tr style="border: none;">
+    <td><img src="../images/remix-migration-ugly-window-mock.png" alt="ugly-window-mock" width="500"/></td>
+    <td><img src="../images/remix-migration-mocking-a-window.png" alt="remix-migration-mocking-a-window" width="500"/></td>
+  </tr>
+</table>
 <h2>A Short Note: Why Server Side Rendering</h2>
-<p>You might not be satisifed with the short explanation of why we picked an SSR framework in the first place. This article isn't really about that - if you're interested in more analysis on when and where to choose an SSR framework, check out these excellent articles from Splunk:</p>
+<p>You might not be satisfied with the short explanation of why we picked an SSR framework in the first place. This article isn't really about that - if you're interested in more analysis on when and where to choose an SSR framework, check out these excellent articles from Splunk:</p>
 <ul>
 <li><a href="https://www.splunk.com/en_us/blog/learn/server-side-rendering-ssr.html">The User Experience (UX) Benefits of SSR</a></li>
 <li><a href="https://www.splunk.com/en_us/blog/learn/server-side-rendering-ssr.html">The SEO Benefits of SSR</a></li>
 </ul>
 <h2>Decisions Made the Right Way - A Comparison</h2>
-<p>Nowdays, there are better, industry standard technologies available! I.e. pizza shops have opened nearby!! Let's find a good one. Of course, you don't want to just go to any spot. Especially if there's more than one shop in town - you'd be silly not to check which one is closest, and look at the menu. Which one has better reviews, is that one very angry customer just upset that there wasn't any anchovies in the vegan pizza shop? What were the expecting anyway?
+<p>Nowadays, there are better, industry standard technologies available! I.e. pizza shops have opened nearby!! Let's find a good one. Of course, you don't want to just go to any spot. Especially if there's more than one shop in town - you'd be silly not to check which one is closest, and look at the menu. Which one has better reviews, is that one very angry customer just upset that there wasn't any anchovies in the vegan pizza shop? What were they expecting anyway?
 <img src="../images/remix-migration-vegan-pizza-shop.png" alt="vegan-pizza-shop" width="600"/></p>
-<p>At Vandebron we're a React shop so for this reason we limited ourselves to just SSR frameworks supporting React. The choice of one framework over another is of crucial importance, so, as part of our analysis, we built a small part of our <a href="https://vandebron.nl/blog">vandebron.nl/blog</a> page twice. Two of our engineers then presented these prototypes to our Front End Guild, and this discussion fed heavily into the Architecture Decision Record that we wrote comparing the results.</p>
+<p>At Vandebron we're a React shop, so we limited ourselves to just SSR frameworks supporting React. The choice of one framework over another is of crucial importance, so, as part of our analysis, we built a small part of our <a href="https://vandebron.nl/blog">vandebron.nl/blog</a> page twice. Two of our engineers then presented these prototypes to our Front End Guild, and this discussion fed heavily into the Architecture Decision Record that we wrote comparing the results.</p>
+<p>* At Vandebron, Guilds are groups of engineers from disparate teams that are interested in a single domain: i.e. Backend, Frontend, IAM and Auth, etc.</p>
 <p>The Background for the decision record states this:</p>
 <blockquote>
-<p><em>&quot;Our Frontend currently uses a custom-built, hard to maintain SSR solution, which we like to replace with a modern and standard library. Possible candidates are NextJS and Remix. The goal is to investigate which one suits our needs best.&quot;</em></p>
+<p><em>&quot;Our Frontend currently uses a custom-built, hard to maintain SSR solution, which we'd like to replace with a modern and standard library. Possible candidates are NextJS and Remix. The goal is to investigate which one suits our needs best.&quot;</em></p>
 </blockquote>
 <p>Yes, there are other options we could have considered but we wanted to stay with a tried-and-tested framework and one that was compatible with our existing React setup.
 <img src="../images/remix-migration-adr-options-considered.png" alt="remix-migration-adr-options-considered.png"></p>
@@ -55,10 +61,15 @@ Finally, we noted that NextJS is tightly coupled with Vercel. At Vandebron we va
 <p><em>&quot;Most members favoured Remix’s focus on web standards and usage of standard libraries and were put off (a little) by NextJS’s uncertainty in development direction.&quot;</em></p>
 </blockquote>
 <h2>So, How's it Going?</h2>
-<p>The migration effort is still underway but already we can report that it's going quite well - developers are excited to work on the new tech stack because it's seen as a developer-friendly platform and one of the two leading frameworks in the industry. There are some rather interesting points:</p>
-<h3>Styling</h3>
-<h3>Monitoring &amp; Observibility</h3>
-<p>Sentry seems like it's giving us goofy results</p>
+<p>The migration effort is still underway but already we can report that it's going quite well - developers are excited to work on the new tech stack because it's seen as a developer-friendly platform and one of the two leading frameworks in the industry. In the words of one engineer: &quot;Dev experience has improved massively, it's fun, it's easy to work with&quot;
+Here are some of the things we still need to work on:</p>
+<ul>
+<li>Our Docker image is quite large as it includes all the <code>node_modules</code>. We think we can clean this up a bit by using Yarn's Plug'n'Play (PnP) feature which should lead to faster image-build times and faster container startup times.</li>
+<li>With our custom SSR solution, we use Redux Toolkit (RTK) and RTKQuery on the server... This is of course an anti pattern on the server, since server-side logic should be stateless. The Remix framework does already tries to be smart with it's loaders, so the benefits we might have gotten from RTK aren't needed there.</li>
+<li>We feel the application we're migrating from is doing too much - it includes our marketing pages like the <em>Blog</em> and <em>Mission</em> pages we've been working on for the initial release, as well as the pages for our our signup and renewal process (become a Vandebron customer <a href="https://vandebron.nl">here</a>!!!) This is a separate conversation, and ultimately one for the FE Guild, but the existing app's size and purpose is making the migration take longer than it should, and forcing us to put some routing rules in place to make sure the right parts of our old site are getting swapped out for the new.</li>
+<li>Previously, many of the images and PDFs we used on our website were checked directly into the repo. Part of our migration to Remix made us realize we should be using a CMS for this. We are already integrated with a CMS, we just need to be making better use of it in some cases.</li>
+<li>We haven't explored the Remix-specific linting rules yet. While we're confident in the existing React and TS lint rules we already have, it seems like configs like <a href="https://www.npmjs.com/package/@remix-run/eslint-config">@remix-run/eslint-config</a> could be quite handy.</li>
+</ul>
 ]]>
         </content:encoded>
         <media:content
