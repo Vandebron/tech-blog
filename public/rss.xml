@@ -13,8 +13,405 @@
           <![CDATA[Leading the renewable energy transition with innovative solutions]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-05-20T00:00:00.000Z</lastBuildDate>
+        <lastBuildDate>2024-10-18T00:00:00.000Z</lastBuildDate>
         
+      <item>
+        <title><![CDATA[Choosing Remix as a Server-Side Rendering (SSR) Framework]]></title>
+        <link>https://vandebron.tech/blog/choosing-remix-as-an-ssr-framework</link>
+        <pubDate>2024-10-18T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/choosing-remix-as-an-ssr-framework</guid>
+        <description>
+        <![CDATA[We had our own custom SSR framework. It was time to move on. Find out why we picked Remix over NextJS as the replacement!]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<h2>The Background</h2>
+<p>We at Vandebron have a mission to get the news out about <a href="https://vandebron.nl/missie">our good work</a>, and we understand that <a href="https://web.dev/articles/rendering-on-the-web#server-side">Server Side Rendering (SSR)</a> can really help with that. Among other things, it provides an easy way for search engines to discover our pages, so you, our (future?!) customer, can find them more easily. That means more people choosing green energy, and ultimately, a cleaner environment!  🎉</p>
+<h2>We rolled our own</h2>
+<p>The year was 2017, Covid was still a word that sounded more like a bird than anything else... The world was heating up and Vandebron was 4 years into its mission to bring 100% renewable energy throughout all of the Netherlands.</p>
+<p>As far as web technologies are concerned, 4 years was ages ago. It was a time when NextJS was less than a year old, and Remix was still several years from coming out. But we needed a way to deliver that high-quality content to all of you. So, the innovators that we were, we decided to build our own SSR framework. In short, we wanted pizza, but there were no pizza shops in town... So we made our own!</p>
+<p>It's been great but not without issue...</p>
+<table>
+  <tr style="border: none;">
+    <td><img src="../images/remix-migration-ugly-window-mock.png" alt="ugly-window-mock" width="500"/></td>
+    <td><img src="../images/remix-migration-mocking-a-window.png" alt="remix-migration-mocking-a-window" width="500"/></td>
+  </tr>
+</table>
+<h2>A Short Note: Why Server Side Rendering</h2>
+<p>You might not be satisfied with the short explanation of why we picked an SSR framework in the first place. This article isn't really about that - if you're interested in more analysis on when and where to choose an SSR framework, check out these excellent articles from Splunk:</p>
+<ul>
+<li><a href="https://www.splunk.com/en_us/blog/learn/server-side-rendering-ssr.html">The User Experience (UX) Benefits of SSR</a></li>
+<li><a href="https://www.splunk.com/en_us/blog/learn/server-side-rendering-ssr.html">The SEO Benefits of SSR</a></li>
+</ul>
+<h2>Decisions Made the Right Way - A Comparison</h2>
+<p>Nowadays, there are better, industry standard technologies available! I.e. pizza shops have opened nearby!! Let's find a good one. Of course, you don't want to just go to any spot. Especially if there's more than one shop in town - you'd be silly not to check which one is closest, and look at the menu. Which one has better reviews, is that one very angry customer just upset that there wasn't any anchovies in the vegan pizza shop? What were they expecting anyway?
+<img src="../images/remix-migration-vegan-pizza-shop.png" alt="vegan-pizza-shop" width="600"/></p>
+<p>At Vandebron we're a React shop, so we limited ourselves to just SSR frameworks supporting React. The choice of one framework over another is of crucial importance, so, as part of our analysis, we built a small part of our <a href="https://vandebron.nl/blog">vandebron.nl/blog</a> page twice. Two of our engineers then presented these prototypes to our Front End Guild, and this discussion fed heavily into the Architecture Decision Record that we wrote comparing the results.</p>
+<p>* At Vandebron, Guilds are groups of engineers from disparate teams that are interested in a single domain: i.e. Backend, Frontend, IAM and Auth, etc.</p>
+<p>The Background for the decision record states this:</p>
+<blockquote>
+<p><em>&quot;Our Frontend currently uses a custom-built, hard to maintain SSR solution, which we'd like to replace with a modern and standard library. Possible candidates are NextJS and Remix. The goal is to investigate which one suits our needs best.&quot;</em></p>
+</blockquote>
+<p>Yes, there are other options we could have considered but we wanted to stay with a tried-and-tested framework and one that was compatible with our existing React setup.
+<img src="../images/remix-migration-adr-options-considered.png" alt="remix-migration-adr-options-considered.png"></p>
+<p>As you can see, the comparison between the two frameworks was very similar. In the end we favoured the simple, opinionated direction of Remix over that of the more full-featured but potentially complex setup of NextJS. Even though Remix has a smaller community, we attributed this mostly to the age of the framework and not the quality  of the framework itself. Though the Positivity has gone down a bit (as listed in <a href="https://2023.stateofjs.com/en-US/libraries/meta-frameworks/">the 2023 StateOfJS survey</a>,) the decrease has been relatively minor and in line with most-other frameworks (notable exceptions for Astro and SvelteKit which have both seen big upticks in both Usage and Positivity)
+<img src="../images/remix-migration-sojs-framework-positivity.png" alt="State of JS Positivity">
+Finally, we noted that NextJS is tightly coupled with Vercel. At Vandebron we value platform independence and not getting tied to specific hosting providers or platforms. Remix gives us the independence we're looking for by providing a SSR framework without a potential to be tied into other solutions/platforms in the future.</p>
+<p>Outcome</p>
+<blockquote>
+<p><em>&quot;Most members favoured Remix’s focus on web standards and usage of standard libraries and were put off (a little) by NextJS’s uncertainty in development direction.&quot;</em></p>
+</blockquote>
+<h2>So, How's it Going?</h2>
+<p>The migration effort is still underway but already we can report that it's going quite well - developers are excited to work on the new tech stack because it's seen as a developer-friendly platform and one of the two leading frameworks in the industry. In the words of one engineer: &quot;Dev experience has improved massively, it's fun, it's easy to work with&quot;
+Here are some of the things we still need to work on:</p>
+<ul>
+<li>Our Docker image is quite large as it includes all the <code>node_modules</code>. We think we can clean this up a bit by using Yarn's Plug'n'Play (PnP) feature which should lead to faster image-build times and faster container startup times.</li>
+<li>With our custom SSR solution, we use Redux Toolkit (RTK) and RTKQuery on the server... This is of course an anti pattern on the server, since server-side logic should be stateless. The Remix framework does already tries to be smart with it's loaders, so the benefits we might have gotten from RTK aren't needed there.</li>
+<li>We feel the application we're migrating from is doing too much - it includes our marketing pages like the <em>Blog</em> and <em>Mission</em> pages we've been working on for the initial release, as well as the pages for our our signup and renewal process (become a Vandebron customer <a href="https://vandebron.nl">here</a>!!!) This is a separate conversation, and ultimately one for the FE Guild, but the existing app's size and purpose is making the migration take longer than it should, and forcing us to put some routing rules in place to make sure the right parts of our old site are getting swapped out for the new.</li>
+<li>Previously, many of the images and PDFs we used on our website were checked directly into the repo. Part of our migration to Remix made us realize we should be using a CMS for this. We are already integrated with a CMS, we just need to be making better use of it in some cases.</li>
+<li>We haven't explored the Remix-specific linting rules yet. While we're confident in the existing React and TS lint rules we already have, it seems like configs like <a href="https://www.npmjs.com/package/@remix-run/eslint-config">@remix-run/eslint-config</a> could be quite handy.</li>
+</ul>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/remix-migration-remix-vs-nextjs.png"
+        />
+    </item>
+      <item>
+        <title><![CDATA[Camunda BPM migration]]></title>
+        <link>https://vandebron.tech/blog/salesforce-camunda-bpm-migration</link>
+        <pubDate>2024-09-04T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/salesforce-camunda-bpm-migration</guid>
+        <description>
+        <![CDATA[Migration from Salesforce Flow_Runner to Camunda BPM]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<h2>Salesforce + FlowRunner golden age</h2>
+<p>Since 2015, Vandebron has been using Salesforce. At the time, Salesforce for Vandebron, was like a Swiss Army knife - versatile, multifunctional, and seemingly capable of addressing most of the business requirements. It quickly became the central hub for various operations - it became a workspace for agents, a CTI platform, a platform to send service emails and much more. Over time, Salesforce evolved beyond just a customer relationship management tool for Vandebron. It became a full-fledged platform that managed customer-related processes, such as the Signup process, Renewal process, Meter Reading process, etc.
+To support this transition, Vandebron developed a custom mechanism known as FlowRunner, which was designed to automate and execute these processes within Salesforce.
+Initially, FlowRunner seemed like the perfect solution. It was tailor-made to handle the increasingly complex workflows that Vandebron needed to manage. While it successfully managed to support Vandebron’s operations for several years, this system was not without its flaws. These issues, which will be discussed in detail later, eventually led to the need for a more robust and scalable solution. But for a time, FlowRunner did its job, enabling Vandebron to leverage Salesforce far beyond its original purpose.</p>
+<h2>Salesforce + FlowRunner solution problems</h2>
+<p>Broadly, the problems can be divided into two categories: technical and organizational.</p>
+<p>Technical Problems:</p>
+<ul>
+<li>Async Transactions Daily Limit. 250000 async transactions per 24 hours. For bulk processes, it is often not enough. We need to watch it carefully and adjust settings to avoid disaster.</li>
+<li>Number of concurrent async jobs. Up to 5 async jobs simultaneously.</li>
+<li>The FlowRunner mechanism in Salesforce creates lots of data. It uses ~ 25% of our storage. Data is expensive in Salesforce.</li>
+<li>The Salesforce platform is not equipped for a custom BPM solution.This makes the Vandebron Salesforce codebase too large to be used with Salesforce DX (Salesforce CI/CD product). Furthermore, it forces us to maintain a lot of custom code that is available on the market.</li>
+</ul>
+<p>Organizational Problems:</p>
+<ul>
+<li>Centralization of Customer-Related Processes: With most customer-related processes embedded in Salesforce, any changes to these processes require intervention from the Salesforce team. This centralization creates a bottleneck, as all modifications, updates, and optimizations must pass through a single team, slowing down the overall pace of innovation and response.</li>
+<li>Domain Overlap and Knowledge Dilution: The Salesforce team at Vandebron is responsible for managing approximately 50 different processes, each belonging to various business domains. This wide scope of responsibility leads to a dilution of expertise, as the team cannot maintain deep knowledge of every process. The result is a lower overall level of understanding and efficiency, making it difficult to ensure the smooth operation and timely updates of all processes.</li>
+</ul>
+<h2>Point of no return</h2>
+<p>At the beginning of 2022, Europe was hit by an unprecedented energy crisis. Gas and electricity prices skyrocketed, fluctuating unpredictably, and placing immense pressure on energy providers like Vandebron to adapt swiftly. In response, Vandebron introduced a solution designed to navigate this volatile market: the Flexible Variable Tariffs proposition.
+From a technical standpoint, implementing this new offering required the execution of a relatively complex process - Flow_VariableTariff  for approximately 50% of our customer base. However, it soon became clear that the FlowRunner mechanism and Salesforce in general were not sufficient to handle the demands of this new process. The total execution time for Flow_VariableTariff was projected to be enormous, spanning over 20 days, which was far too long for a business that needed to respond rapidly to market changes.
+Recognizing the urgency of the situation, we immediately sought ways to optimize the process. While we succeeded in significantly simplifying Flow_VariableTariff, these improvements alone were insufficient to meet our needs. It was at this critical juncture that we realized Salesforce and the FlowRunner were no longer adequate for Vandebron’s evolving requirements. The limitations of these tools became glaringly apparent, signaling the need for a more powerful and flexible solution to support our operations in the face of such a dynamic and challenging environment.</p>
+<h2>Why Camunda?</h2>
+<p>Choosing the right process orchestration tool is a critical decision, especially for a company like Vandebron, where efficient workflow management is essential for operational success. To ensure we made the best choice, we began by establishing a set of criteria that the new tool needed to meet. These criteria were designed to address our current challenges and future-proof our operations. Here are some of the most crucial criteria:</p>
+<ul>
+<li>Compliance with BPMN 2.0 Standard: We prioritized tools that adhered to the BPMN 2.0  standard. This would make any future migration to another tool less painful, ensuring a smoother transition if needed.</li>
+<li>CI/CD Integration: The ability to seamlessly integrate the tool with Vandebron's CI/CD pipeline was crucial. This integration would allow us to automate deployments, streamline updates, and maintain a high level of consistency across our development processes.</li>
+<li>Support for Multiple Programming Languages: Given our diverse technology stack, we needed a tool that allowed us to implement flowstep logic in multiple programming languages, with a particular emphasis on supporting Scala, which is heavily used within our systems.</li>
+<li>Unit Testing: The tool had to enable us to unit-test individual steps and parts of flows. This capability was essential for ensuring the reliability and accuracy of our processes before they were deployed to production.</li>
+</ul>
+<p>Our market analysis of process orchestration tools led us to evaluate five potential solutions:</p>
+<ul>
+<li>Camunda 8</li>
+<li>IBM Business Automation Workflow (BAW)</li>
+<li>Bonita</li>
+<li>Kogito</li>
+<li>Flowable</li>
+</ul>
+<p>Each vendor provided us with a demo and/or a trial version of their product. During this evaluation process, we rigorously tested each tool against our criteria. Although all five options met our hard requirements, it quickly became evident that Camunda is the true leader in the market.</p>
+<p>Several factors contributed to our decision to choose Camunda:</p>
+<ul>
+<li>SaaS Offering: Camunda's SaaS version provided us with the flexibility and scalability we needed, reducing the burden on our infrastructure and allowing us to focus on process management rather than platform maintenance.</li>
+<li>Comprehensive Documentation: Camunda's clear and well-organized documentation made it easier for our teams to learn and implement the tool effectively, reducing the learning curve and speeding up the integration process.</li>
+<li>Out-of-the-Box Connectors: Camunda offers a wide range of connectors right out of the box, enabling quick integration with various systems and services. This saved us time and effort, allowing us to implement new workflows faster.</li>
+<li>User-Friendly Interface: The tool's intuitive and clean UI made it accessible to both technical and non-technical users, facilitating collaboration across teams and improving overall efficiency.</li>
+<li>Responsive Support: Camunda's quick and helpful support was another decisive factor. Their team was readily available to assist us with any issues or questions, ensuring a smooth onboarding experience.</li>
+</ul>
+<p>In the end, Camunda stood out as the optimal choice for Vandebron’s process orchestration needs, offering the perfect balance of functionality, usability, and support.</p>
+<h2>First steps with Camunda</h2>
+<p>Before we could begin migrating our processes from Salesforce to Camunda, it was essential to establish a robust infrastructure that would allow Camunda to seamlessly integrate with the rest of Vandebron’s ecosystem, particularly Salesforce. Since Salesforce would continue to serve as the primary workspace for our agents, we needed to ensure smooth communication and data flow between the two platforms. To achieve this, we developed several key infrastructural applications:</p>
+<ul>
+<li>CamundaGateway: Camunda API (Zeebe API) operates using the gRPC protocol, which is not natively supported by Salesforce. To bridge this gap, we created the CamundaGateway, a proxy application that translates HTTP calls into a format that Zeebe API can understand. This application acts as an intermediary, enabling effective communication between Salesforce and Camunda.</li>
+<li>CamundaSync: Each Camunda process instance has a corresponding representation in Salesforce. To keep the status of these instances up to date across both platforms, we implemented CamundaSync. This job regularly pulls the status of process instances from Camunda and updates the relevant records in Salesforce, ensuring that agents always have access to the most current information.</li>
+<li>CamundaJobWorker: Not all process steps can be handled by simple connectors like the RestConnector. Some steps are more complex and require custom logic to be executed. To manage these, we developed the CamundaJobWorker service, which contains handlers for these complex process steps. This service allows us to extend Camunda’s capabilities and handle sophisticated workflow requirements efficiently.</li>
+<li>BPM app (React): Certain processes require input from users, particularly agents working within Salesforce. To facilitate this, we built the BPM app, which includes a set of forms necessary for running specific processes. This application ensures that agents can interact with and influence the workflow directly from their workspace, maintaining the user experience they are accustomed to.</li>
+</ul>
+<p><img src="../images/camunda_infrastructure.png" alt="A schematic overview of the camunda infrastructure" title="A schematic overview of the camunda infrastructure"></p>
+<p>As of September 2024, we have successfully implemented the basic infrastructure needed for Camunda integration, and three customer-related processes have been migrated from Salesforce to Camunda, with several more in progress.
+It's important to highlight that the migration process involved a comprehensive analysis of the existing process, including the removal of legacy components, identification of common errors, and targeted optimization efforts. As a result, we achieved a substantial reduction in errors. Specifically, the Flow_Renewal process, which previously had a 2% failure rate, now experiences only a 0.62% dropout rate post-migration, reflecting a 69% decrease in errors.</p>
+<h2>Future plans</h2>
+<p>By the end of the year, we aim to migrate up to 10 processes to Camunda, further reducing our reliance on Salesforce for process orchestration. In parallel, we plan to enhance our infrastructure applications—CamundaGateway, CamundaSync, CamundaJobWorker, and the BPM frontend app - to improve their performance, scalability, and ease of use. These enhancements will ensure that our systems remain robust and efficient as we expand our use of Camunda across more of Vandebron's operations.
+Moving forward, We will continue to leverage Camunda's capabilities to automate and optimize more processes, ultimately driving greater efficiencies and innovations across Vandebron.</p>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/camunda-rising.png"
+        />
+    </item>
+      <item>
+        <title><![CDATA[Cassandra, it’s not you, it’s us]]></title>
+        <link>https://vandebron.tech/blog/cassandra-its-not-you-its-us</link>
+        <pubDate>2024-02-16T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/cassandra-its-not-you-its-us</guid>
+        <description>
+        <![CDATA[Our Journey to find the perfect data storage solution for us]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<h1>Cassandra, it’s not you, it’s us</h1>
+<p>I want you to know that you are probably an amazing product that has so much to offer to the world. However, it sadly just isn’t working out for us anymore.</p>
+<p>We've encountered challenges such as escalating costs, inconsistent write and read performances, and setup misalignments that have constrained our growth. Of course, this is not entirely your fault, we set you up to fail with our infrastructure and use cases.</p>
+<p>I hope we can part on good terms, with mutual respect and appreciation for the time we shared.<br>
+I wish you all the happiness, success, and fulfilment in the world, and I hope you find a company that complements your life in the way you deserve.</p>
+<p>Thank you for understanding, and I truly wish you the best.</p>
+<p>Yours truly, Vandebron</p>
+<h2>Our Data Storage Prince Charming</h2>
+<p><img src="../images/data-prince-charming.jpg" alt="data-prince-charming.jpg" title="Data Prince"></p>
+<p>A list of some of the qualities we are looking for:</p>
+<ul>
+<li>Kindness and compassion.</li>
+<li>High availability.</li>
+<li>Low Maintenance.</li>
+<li>Ability to store large volumes of data (currently around 10TB), though not everything has to be queried fast.</li>
+<li>Capable of ingesting real-time energy usage data (every 15 minutes per customer, possibly higher frequency in the future).</li>
+<li>Ideally, we can use our current tech stack as much as possible (flyway migrations, roundtrip tests, spark).</li>
+<li>Ideally, use as few different database technologies as possible.</li>
+<li>It does not need to be horizontally scalable, due to moving from 1 central data storage to a separate data storage per service.</li>
+</ul>
+<p>With enough work, time and commitment, Cassandra could have fulfilled most of these requirements. However, love is a two-way street, and we didn't put in the time and effort to make it work.</p>
+<h2>Speed Dating Round</h2>
+<p>Some potential suitors we considered for replacing Cassandra:</p>
+<h4>ScyllaDB</h4>
+<p>ScyllaDB is very similar to Cassandra. It should have better performance but still have (almost) all the same functionality as Cassandra.</p>
+<h4>PostgreSQL</h4>
+<p>PostgreSQL is a relational database. We already use it extensively in our services.</p>
+<h4>Cockroach</h4>
+<p>It is similar to PostgreSQL but with some limitations: <a href="https://www.cockroachlabs.com/docs/stable/known-limitations.html">Known Limitations in CockroachDB v23.2</a></p>
+<p>It is horizontally scalable, which is an advantage over PostgreSQL when it comes to high availability and fault tolerance. We are also currently using it in some of our services.</p>
+<h4>Timescale</h4>
+<p>Timescale is a PostgreSQL extension that uses the same query layer, but a different storage layer, to have efficient time series-related features.</p>
+<p>It can also distribute data, but this is still in early access and is not recommended.</p>
+<h4>Yugabyte</h4>
+<p>Yugabyte is a PostgreSQL extension to make PostgreSQL into a distributed database.</p>
+<h2>Comparisons</h2>
+<p>To determine the most suitable match, we did some quick performance tests. One where we inserted 2 million + weather data records as fast as possible via recurring inserts, to see how easy it would be to migrate over to. And another test to determine general query speed.</p>
+<h3>Write Speed Results</h3>
+<p><img src="../images/insert-perf-database.jpg" alt="insert-perf-database.jpg" title="Insert Graph"></p>
+<p>Note that the test results are not 100% fair, because Timescale and Postgres don’t have to distribute the data over multiple nodes (though Timescale does have 2 replicas), and Cassandra already contained a lot of data (though with some testing timescale didn’t seem to become slower when it already had more data). For Yugabyte and Cockroach, we gave up after 1 hour. Also, the tests were done with the existing setup for Cassandra.</p>
+<h3>Query Speed Results</h3>
+<p><img src="../images/query-perf-database.jpg" alt="query-perf-database.jpg" title="Query Graph"></p>
+<p>We also did some tests to query aggregated data from streaming data.</p>
+<ul>
+<li>For this, we copied over 2.6M rows to each database.</li>
+<li>For this data we need to aggregate (sum) some values per 15-minute time block).</li>
+<li>For Cassandra/Scylla, this is done via spark.</li>
+<li>For timescale use buckets based on timestamps.</li>
+<li>For Postgres by grouping on floor(extract(epoch from timestamp) / 60 / 15)</li>
+</ul>
+<h2>Our Happily Ever After</h2>
+<p>Timescale emerged as the clear winner here, not just for its performance in the above tests, but also for its seamless integration with our existing PostgreSQL setup. This compatibility allows us to maintain our current libraries and reduce code complexity, making Timescale an ideal choice for our time series data. At the same time, we continue to rely on Postgres for our other needs.</p>
+<p>Cassandra, you won’t be missed.</p>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/heart-breaking.jpg"
+        />
+    </item>
+      <item>
+        <title><![CDATA[Creating a Self-Service Data Model]]></title>
+        <link>https://vandebron.tech/blog/creating_a_self-service_data_model</link>
+        <pubDate>2024-02-07T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/creating_a_self-service_data_model</guid>
+        <description>
+        <![CDATA[How we migrated to a modern data stack to enable self-servicing across the business]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<p>The title of this article could have also been &quot;<em>Getting Rid of an Unmanageable Legacy Data Model</em>&quot;, but after a year-long migration project the current title does more justice to the progress made.</p>
+<h4>Compiled Legacy as a Data Model</h4>
+<p>Our former data model was a series of parallel custom python jobs all covering every step of the <em>Extract-Transform-Load</em> (ETL) process from sources into report. Specific transformation got performed a numerous amount of times in multiple different jobs, daily. This made us prone to bugs, slow on development and maxing out on compute.</p>
+<p>The situation became so pressing that keeping alive simple reporting to the business became a daily burden on the Data Analytics team, limiting resources for advanced analytics and leveraging data sources for competitive insights.</p>
+<p>We concluded the old set-up to be outdated and looked around for current best practices concerning data infrastructure. Trying not to reinvent the wheel and staying away from designing custom solutions that had bitten us in the past, we decided to adopt a combination of <em>Snowflake</em>, <em>dbt</em> and <em>Lightdash</em> to start forming a new data landscape.</p>
+<p>This revamping of the set-up gave us the opportunity to start over, using the power of <em>dbt</em> to create a modular data model where you could leverage different stages of data, while creating shared definitions, a single source of truth and documentation.</p>
+<h4>What We Came Up With?</h4>
+<p>We went for a pretty classic <em>dbt</em> data model design, introducing 5 layers of data: staging, entity, intermediate, mart and api. Each layer serving a specific purpose.</p>
+<h5>Staging</h5>
+<p>With all data coming in from different sources, this is where we ensure the data all adheres to the same conventions and formatting. This introduces a nice developer experience for the next layers, by introducing consistency across different sources. It also serves as the go to place for advanced or deep dive analysis that do not get answered by the downstream layers, which could potentially spark data modelling developments.</p>
+<h5>Entity</h5>
+<p>After uniforming the data, we create entities that form the building blocks of the downstream layers and analyses of our business analysts. We built entities along the core aspects of our product, capturing shared definitions in data and bringing together relevant features using the <em>One-Big-Table</em> (OBT) principle. We try to refrain from long queries or extensive use of CTE's, resulting in simplistic models. These models serve our business analysts by reducing the complexity of their queries with all joins and filters taken care of, denormalizing the database structure. This has shifted the place where ad-hoc BI requests are fulfilled from the central data team to the domain business teams, applying principles of a data mesh.</p>
+<h5>Intermediate</h5>
+<p>With some models rising in complexity and computation, we use the intermediate layer to split this complexity and computation across multiple models. These intermediate models are rarely queried because they serve no reporting or analytical purpose. Think of incremental date spine explosions or highly complex business logic broken down into multiple models.</p>
+<h5>Mart</h5>
+<p>This is the main layer where we provide self-service to less technical employees within the organization, creating ready-made tables. We aggregate along date spines and dimensions to create readable models. It is where we leverage <em>Lightdash</em> metrics to create dynamic tables to provide business teams with a certain amount of freedom in terms of the granularity and dimensions they want to report on in their dashboarding. The use of entities as building blocks has aligned reporting across domain business teams, creating a single and centralized source of truth and relieving the data team from explaining distinctions. So while the dimensions can be tweaked for specific use cases, the definitions of the metrics are set in code.</p>
+<h5>API</h5>
+<p>With some dependencies outside of the data model, we use an API layer on top of our mart to record exposures towards different services and provide views which explicitly contain only the necessary datapoints.</p>
+<p><img src="/images/schematic_data_layers.jpg" alt="A schematic overview of the data model structure" title="A schematic overview of the data model structure"></p>
+<h4>The Process</h4>
+<p>We decided to take advantage of the chaos created by the old situation: no real single source of truth gave us the opportunity to create a truth. Investigating business teams' needs, we created data definitions in entities. We kept a pragmatic approach to these definitions, being flexible towards business teams' specific needs but also limiting the allowed complexity or number of exceptions. The new data model should answer everyone's questions, but should also be understood by everyone.</p>
+<p>We forced ourselves to have descriptions for all data from the entity layer onwards, because only defining and describing the entities in code is not enough. We leveraged the embedded business analysts' knowledge to form the descriptions, noting that the best description is the one the user understands (because they wrote it).</p>
+<p>With the ready-made marts in place, we decided to give away most of the dashboarding responsibility to the business teams. The embedded analysts are very apt at defining and designing their relevant insights into dashboards. The central data team only took ownership of company wide dashboards and provided support on the dashboarding where necessary.</p>
+<p>After the adoption of the new stack, we noticed that the more technical embedded analysts were very interested in learning a new tool and language. So, we started a data model group and onboarded multiple embedded business analysts as data model developers. This has massively increased the speed of development of the data model. Primarily, because of specific business domain knowledge not needed to be transferred to the developers in the central data team first, but the knowledge holders developed models themselves. The central data team took on a different role: providing infrastructural support, improving on efficiency, monitoring costs and creating a vision and strategy for organic but structured growth.</p>
+<p><img src="/images/schematic_data_product.jpg" alt="A schematic overview of the final self-servicing data model product" title="A schematic overview of the final self-servicing data model product"></p>
+<h4>What Did We Learn?</h4>
+<p>Few key takeaways:</p>
+<ul>
+<li>Some business teams have more requirements in terms of definitions than other teams, so if other teams allow, be pragmatic and just go for the stricter requirements.</li>
+<li>Enabling self-service analysis means giving away control, take this into account in your data descriptions. They should be clear and concise.</li>
+<li>Educate users on the designed structure of the data model, explain what layer serves which purpose and what questions can be answered how and where.</li>
+<li>Create clear communication and support channels for the business to kickstart the adoption, you are not the only one learning a new tool.</li>
+<li>Data is not only for the data team, so encourage those passionate and enthusiastic analysts to co-create! (Just keep an eye on the project.)</li>
+</ul>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/self_service.jpg"
+        />
+    </item>
+      <item>
+        <title><![CDATA[Authenticate Snowflake via Keycloak]]></title>
+        <link>https://vandebron.tech/blog/authenticate-snowflake-rest-api-using-keycloak</link>
+        <pubDate>2023-12-19T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/authenticate-snowflake-rest-api-using-keycloak</guid>
+        <description>
+        <![CDATA[How to use Keycloak to authenticate against Snowflake rest api]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<h1>Authenticate Snowflake rest api via Keycloak</h1>
+<p>Here in Vandebron  we use Keycloak as our identity and access management (IAM) solution and Snowflake as our data warehousing platform.
+Keycloak is a powerful and extensible solution for managing user identities and access control, making it a popular choice for organizations seeking a comprehensive and open-source IAM platform.
+Snowflake is designed to handle and analyze large volumes of data with speed and efficiency. It is known for its scalability, flexibility, and ease of use in managing and analyzing diverse and massive datasets.</p>
+<h2>Accessing Snowflake data via Rest API</h2>
+<p>There are several ways to access data in Snowflake one of these are the Snowflake rest api, they are a comprehensive set of REST APIs for managing and interacting with various aspects of the Snowflake Data Cloud, including account management, data loading, querying, and more.
+These REST APIs allow developers to programmatically perform tasks such as executing SQL queries, managing virtual warehouses, and administering user roles. They are designed to enable automation and integration with other applications and services.</p>
+<h2>Why via Rest Api?</h2>
+<p>The Snowflake SQL API is a REST API that you can use to access and update data in a Snowflake database. You can use this API to develop custom applications and integrations that can perform most of the queries you need. More info here: <a href="https://docs.snowflake.com/en/developer-guide/sql-api/index">Snowflake rest api</a></p>
+<p>We decided to connect our microservices to snowflake via rest api mainly because we consider this mechanism the best way to decouple database processing with backend processing in fact the queries issued via the endpoint are processed inside Snowflake ecosystem asynchronously.</p>
+<p>The service can poll snowflake to monitor the request until it is completed. See <a href="https://docs.snowflake.com/en/developer-guide/sql-api/handling-responses">Sql api response</a> .</p>
+<p>Using api communication has other very good benefits:</p>
+<ul>
+<li>No additional library dependency</li>
+<li>No Additional spark connectors</li>
+<li>Since there is no way to run snowflake on a local machine unit test a snowflake connection would have been very hard ( impossible ). With Rest api communication we can unit test snowflake api client using contract test. ( one way contract test is better than nothing )</li>
+</ul>
+<h2>Snowflake Authentication</h2>
+<p>Snowflake provides a convenient way to authenticate to it using “any” OAuth authentication server. Our authentication server is Keycloak so in the following sections you will learn how to integrate Keycloak with Snowflake.
+Resources to this topic can be found here <a href="https://docs.snowflake.com/en/user-guide/oauth-ext-overview">auth-ext-overview </a>  and here: <a href="https://docs.snowflake.com/en/user-guide/oauth-ext-custom">oauth-ext-custom</a></p>
+<h2>Keycloak side</h2>
+<p>You need to configure your client to return in the JWT access token the following claims:</p>
+<pre><code class="language-json">{
+    &quot;aud&quot;: &quot;&lt;audience_url&gt;&quot;,
+    &quot;iat&quot;: 1576705500,
+    &quot;exp&quot;: 1576709100,
+    &quot;iss&quot;: &quot;&lt;issuer_url&gt;&quot;,
+    &quot;scope&quot;: [
+        &quot;session:role-any&quot;
+    ]
+}
+</code></pre>
+<p>most of them are returned by default. Aud claims is the only one you should add
+To add <code>aud</code> claim you can add a new mapper to your client with type Audience see image:</p>
+<p><img src="../images/keycloak_aud.png" alt="keycloak_aud.png" title="Keycloak aud mapper"></p>
+<p><strong>Note</strong>: You need to add a custom audience with the value <strong>equal</strong> to the login_name attribute value in snowflake. The audience value will be used to look up to the right user in snowflake integration</p>
+<p>Then you need to add the snowflake scope to your scope list: session:role-any
+Finally you can check that your token is correct:</p>
+<pre><code class="language-json">{
+    .....
+    &quot;iss&quot;: &quot;https://test.vdbinfra.nl/auth/realms/vandebron&quot;,
+    &quot;scope&quot;: &quot;session:role-any&quot;,
+    &quot;aud&quot;: &quot;energy-trading-test&quot;,
+    ....
+}
+</code></pre>
+<p>The <code>aud</code> must contain only the snowflake login_name. For instance, a token such as the following will not work (multiple audiences):&quot;aud&quot;: [     &quot;batterypack-services-test&quot;,     &quot;account&quot;   ],</p>
+<h2>Snowflake side</h2>
+<p>How to find keycloak public key: <a href="https://stackoverflow.com/a/57457227">stackoverflow</a>
+Required: <code>ACCOUNTADMIN</code> rights in Snowflake.
+Example integration command:</p>
+<pre><code class="language-sql">create or replace security integration external_oauth_keycloak_test
+type = external_oauth
+enabled = true
+external_oauth_type = custom
+external_oauth_issuer = 'https://test.vdbinfra.nl/auth/realms/vandebron'
+external_oauth_rsa_public_key = '&lt;public_key&gt;'
+external_oauth_audience_list = ('energy-trading-test')
+external_oauth_scope_mapping_attribute = 'scope'
+external_oauth_token_user_mapping_claim = 'aud'
+external_oauth_any_role_mode = 'ENABLE'
+external_oauth_scope_delimiter = ' '
+external_oauth_snowflake_user_mapping_attribute = 'login_name';
+</code></pre>
+<p>Note: the external_oauth_scope_delimiter setting must be enabled separately by Snowflake support.
+Next, you need to set the login name for the user you want associate with the integration:</p>
+<p><img src="../images/snowflake_auth_conf.png" alt="snowflake_auth_conf.png" title="Snowflake auth configuration"></p>
+<h3>Example</h3>
+<p>Let’s authenticate with keycloak as we do normally:</p>
+<pre><code class="language-curl">curl --location --request POST 'https://keycloak.test-backend.vdbinfra.nl/auth/realms/vandebron/protocol/openid-connect/token/' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id=energy-trading' \
+--data-urlencode 'client_secret=&lt;secret&gt;'
+</code></pre>
+<p>Now you should get the token. Optional: van verify the token directly in snowflake with SQL:</p>
+<pre><code class="language-sql">SELECT SYSTEM$VERIFY_EXTERNAL_OAUTH_TOKEN( '&lt;token&gt;' )
+</code></pre>
+<p>Use it in the snowflake statement endpoint. For example:</p>
+<pre><code class="language-curl">curl --location --request POST 'https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements?async=true' \
+--header 'Authorization: Bearer &lt;yourtoken&gt; \
+--header 'Content-Type: application/json' \
+--data-raw '{
+&quot;statement&quot;: &quot;select \&quot;data\&quot; as prediction, to_number(\&quot;lats\&quot;, 10, 4) as lats, to_number(\&quot;lons\&quot;, 10, 4) as lons, \&quot;scaledValueOfFirstFixedSurface\&quot; as scaled_value_of_first_fixed_surface, to_timestamp_tz( concat(\&quot;dataDate\&quot;, lpad(\&quot;dataTime\&quot;, 4, 0)) || '\''+0'\'', '\''yyyymmddhh24mi+tzh'\'') as model_datetime, to_timestamp_tz( concat(\&quot;validityDate\&quot;, lpad(\&quot;validityTime\&quot;, 4, 0)) || '\''+0'\'', '\''yyyymmddhh24mi+tzh'\'') as predicted_datetime, insert_date_snowflake, current_timestamp()::timestamp_tz(9) as insert_date_staging from raw.icon_eu.alhfl_s;&quot;
+}'
+</code></pre>
+<p>NB: It is important to use the proper snowflake base url. In my case I am using https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/ where &lt;my_snowflake_identifier&gt; is my account identifier which was authorised during configuration phase the snowflake user the token is referring to in the clientId claim.
+You should get a response such as:</p>
+<pre><code class="language-json">{
+    &quot;code&quot;: &quot;333334&quot;,
+    &quot;message&quot;: &quot;Asynchronous execution in progress. Use provided query id to perform query monitoring and management.&quot;,
+    &quot;statementHandle&quot;: &quot;01aafc80-3201-abed-0001-4a0e00e52816&quot;,
+    &quot;statementStatusUrl&quot;: &quot;/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816&quot;
+}
+</code></pre>
+<p>Now you can follow the async operation to the following get endpoint:</p>
+<pre><code class="language-http">https://&lt;my_snowflake_identifier&gt;.eu-central-1.snowflakecomputing.com/api/v2/statements/01aafc80-3201-abed-0001-4a0e00e52816
+</code></pre>
+<p>It will return 202 if the processing is still ongoing. It will return 200 and the actual result when processing ends.</p>
+<p>Happy coding!</p>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/snowflake_keycloak.jpg"
+        />
+    </item>
+      <item>
+        <title><![CDATA[Sustainable Tech-Hardware - Introducing the 'flexMac']]></title>
+        <link>https://vandebron.tech/blog/sustainable-tech-hardware</link>
+        <pubDate>2023-07-03T00:00:00.000Z</pubDate>
+        <guid isPermaLink="false">https://vandebron.tech/blog/sustainable-tech-hardware</guid>
+        <description>
+        <![CDATA[Enhanced security, sustainability, and regained speed at Customer Contact revitalizing our old iMacs.]]>
+        </description>
+        <content:encoded>
+        <![CDATA[<p>In our sustainable journey at Vandebron, we are not only striving to revolutionize the renewable energy sector, but we are also rethinking how we interact with technology ourselves. As a part of this initiative, we have been looking at how to reduce our digital footprint. One of our most recent projects involves transforming our ageing fleet of iMacs into revitalized, lightweight machines.</p>
+<p>We proudly introduce the 'flexMac'.</p>
+<h3>Regained speed, sustainability and enhanced security</h3>
+<p>Our customer contact department, the core of our operation, was equipped with older iMacs running on slower HDD drives. While replacing these machines with newer models might have been the easier route, it didn't align with our commitment to sustainability.</p>
+<p>Instead, we decided to be creative and look for ways to upcycle our older iMacs. Our choice of tool? Google's ChromeOS Flex. As the slogan suggests, <a href="https://www.linkedin.com/feed/update/urn:li:activity:7066377989831233536/">‘don’t bin it, just flex it’</a> we figured this could very well meet our wishes. By installing this onto our iMacs, we have given birth to our new line of workstations, naming them 'flexMacs'.</p>
+<p><a href="https://chromeenterprise.google/os/chromeosflex/">ChromeOS Flex</a> is a free, open-source operating system by Google that breathes <a href="https://cloud.google.com/blog/products/chrome-enterprise/chromeos-flex-ready-to-scale-to-pcs-and-macs">new life into older PCs and Macs</a>. It's lightweight, fast, and ideal for the web-centric applications and services our customer contact department uses every day. Once ChromeOS Flex was installed, the transformation was remarkable. The old machines metamorphosed from very slow to production-ready again in a breath, adept at handling all our workflows at the Customer Contact department.</p>
+<p>These workflows at Customer Contact are fully web-based. It enables us multichannel support, integration capabilities, and data-driven insights. These help our support agents to provide personalized and efficient service across various communication channels. By using these technologies and insights, we optimize our customer service strategies, leading (hopefully) to higher customer satisfaction.</p>
+<p>Another important benefit of this transformation was an added layer of security. ChromeOS Flex allows our users to log in using their Google identity, ensuring a personalized and secure workspace for every team member. This means each user experiences a secure, tailored environment, whilst bringing an additional level of security and control to our IT operations.</p>
+<h3>The importance of circularity</h3>
+<p>Besides the operational benefits, the broader environmental impact of this initiative is important to us. By extending the life of our technology, we contribute directly to reducing e-waste, one of <a href="https://www.europarl.europa.eu/news/en/headlines/society/20201208STO93325/e-waste-in-the-eu-facts-and-figures-infographic">the fastest-growing waste streams in the EU</a>. As a company, Vandebron is not only promoting sustainable innovations but striving to actively embody them. Our 'flexMacs project is a testament to this commitment.</p>
+<p>Our 'flexMacs' project demonstrates how we can repurpose and upgrade older hardware, which according to Emerce is a <a href="https://www.emerce.nl/achtergrond/circulaire-hardware-is-hot-dit-is-waarom">hot thing to do</a>. We hope this blogpost inspires you to consider similar sustainability initiatives. By choosing to upgrade rather than replace, we extend the life of existing hardware and contribute to a reduction in e-waste.</p>
+<p>Stay tuned for more updates from our tech-driven sustainability journey.</p>
+]]>
+        </content:encoded>
+        <media:content
+            url="https://vandebron.tech/images/circular.jpeg"
+        />
+    </item>
       <item>
         <title><![CDATA[So, back to the monolith it is then?]]></title>
         <link>https://vandebron.tech/blog/back-to-the-monolith</link>
@@ -40,13 +437,13 @@ The blog post went viral, prompting some software industry celebrities to
 <iframe width="372" height="208" src="https://www.youtube.com/embed/RC_FHNRI8Lg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="float: right; padding: 5px;"></iframe> <b>Don't underestimate the power of a single CPU in 2023</b>. To judge whether a process is unreasonably slow or not, I tend to think of the fact that already in the 1990s, screens showed 65K pixels at any given time. Back then, multiple arithmetic calculations (additions, subtractions) could be performed for each pixel, fifty times per second. Nowadays, your screen probably displays more than 5 Million pixels at once. So, if the amount of datapoints you are dealing with in the order of millions, you should generally be able to process them in a matter of seconds on a single machine. If you can't, you may be doing something <i>very</i> inefficient.
 </li>
 <li><strong>Software engineering is hard</strong>. Mistakes are made all the time, everywhere. Even at the big 4 tech companies. Kudos to Amazon 👏 for openly sharing the mistake they made so that we may all learn.
-In the next section we will share one of our own experiences, not entirely different from the Amazon example.</li>
+In the next section I will share one of our own experiences, not entirely different from the Amazon example.</li>
 </ol>
 <h3>The 90% cost reduction case at Vandebron</h3>
 <h4>Microservices or just distributed computing?</h4>
-<p>Considering that all the functionality used in the Amazon case all belongs to the same <em>domain</em>, it's arguably not even
-a case against improper use of microservices, but instead an example of misuse of <em>distributed computing</em>. <br/>
-At Vandebron we've had a similar experience, which I will share below.</p>
+<p>Considering that all the functionality used in the Amazon case belongs to the same <em>domain</em>, it arguably does not even serve as
+a case against improper use of microservices, but instead a case against misuse <em>distributed computing</em>. <br/>
+Let's look into an example of misuse of distributed computing at Vandebron now.</p>
 <h4>Predicting the production of electricity</h4>
 <p>For utility companies, accurately predicting both electricity consumption and production is crucial.
 Failing to do so can result in blackouts or overproduction, both of which are <a href="https://vandebron.nl/blog/hoe-houdt-onze-technologie-het-energienet-in-balans">very costly</a>.
