@@ -2,21 +2,21 @@
 title: Vandebron The Video Game A Hackathon Journey into the Energy Transition
 description: Our Journey to find the perfect data storage solution for us
 createdAt: 2025-01-21
-coverImage: images/heart-breaking.jpg
+coverImage: images/game-start-screen.png
 tags: [godot, energy transition, gaming]
 author: Dick Visser & Tomás Phelan
 ---
 
 # Vandebron The Video Game: A Hackathon Journey into the Energy Transition
 
+During a recent hackathon, we set out to gamify one of the most pressing challenges of our time: the transition to green energy. 
+What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way 
+(very debatable if it is fun or well-balanced, was a hackathon after all)
+
 <video controls width="640" height="360">
   <source src="../images/game-start.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-
-During a recent hackathon, we set out to gamify one of the most pressing challenges of our time: the transition to green energy. 
-What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way 
-(very debatable if it is fun or well-balanced, was a hackathon after all)
 
 Let’s dive into the vision, mechanics, and what we hope players take away from this experience.
 
