@@ -555,7 +555,7 @@ module.exports = {
 /***/ "B6s+":
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Vandebron The Video Game A Hackathon Journey into the Energy Transition\n| description: Our Journey to find the perfect data storage solution for us");
+throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: 'Vandebron The Video Game: A Hackathon Journey into the Energy Transition'\n| description: A journey into the energy transition through the lens of a video game");
 
 /***/ }),
 
