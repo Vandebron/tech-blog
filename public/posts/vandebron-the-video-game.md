@@ -1,6 +1,6 @@
 ---
-title: Vandebron The Video Game A Hackathon Journey into the Energy Transition
-description: Our Journey to find the perfect data storage solution for us
+title: 'Vandebron The Video Game: A Hackathon Journey into the Energy Transition'
+description: A journey into the energy transition through the lens of a video game
 createdAt: 2025-01-21
 coverImage: images/game-start-screen.png
 tags: [godot, energy transition, gaming]
@@ -9,9 +9,10 @@ author: Dick Visser & Tomás Phelan
 
 # Vandebron The Video Game: A Hackathon Journey into the Energy Transition
 
-During a recent hackathon, we set out to gamify one of the most pressing challenges of our time: the transition to green energy. 
-What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way 
-(very debatable if it is fun or well-balanced, was a hackathon after all)
+During a recent hackathon, we set out to gamify one of the most pressing challenges of our time: the transition to green energy.
+A problem our team, VPP [Virtual Power Plant], deal with on a daily basis.
+What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way, 
+though debatable if it is fun or well-balanced, was a hackathon after all.
 
 <video controls width="640" height="360">
   <source src="../images/game-start.mp4" type="video/mp4">
@@ -22,11 +23,10 @@ Let’s dive into the vision, mechanics, and what we hope players take away from
 
 ### Vision: Educate Through Play
 Our goal was to create more than just a game. We envisioned a tool that serves as an onboarding experience, 
-for both new colleagues and also customers to the energy transition concepts in an engaging way through play.
+not just for our colleagues, but also anyone interested in the energy transition.
 
 To realize this vision we chose to go with Godot as our game engine of choice. 
-It is a free and open-source game engine that is easy to use and has a fast-growing community of passionate developers. 
-It is a fantastic tool that allowed us to quickly prototype and iterate on our game mechanics.
+An open-source game engine that is a super fun and fantastic tool that allowed us to quickly prototype and iterate on our game mechanics.
 
 ### The Core Gameplay Loop: Keeping the Grid Balanced
 In this game, your primary goal is to maintain the energy grid within the "goldilocks zone" not too much power, not too little. The longer you can achieve this, the better!
