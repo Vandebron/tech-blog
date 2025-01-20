@@ -9,6 +9,11 @@ author: Dick Visser & Tomás Phelan
 
 # Vandebron The Video Game: A Hackathon Journey into the Energy Transition
 
+<video controls width="640" height="360">
+  <source src="../images/game-start.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 During a recent hackathon, we set out to gamify one of the most pressing challenges of our time: the transition to green energy. 
 What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way 
 (very debatable if it is fun or well-balanced, was a hackathon after all)
