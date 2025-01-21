@@ -1149,13 +1149,13 @@ module.exports = require("react-syntax-highlighter");
 /***/ (function(module, exports) {
 
 module.exports = {
-          srcSet: "/_next/static/images/game-start-screen-1200-b2ce6761d359c1464733bc15df33e05d.png"+" 1200w"+","+"/_next/static/images/game-start-screen-800-ed2043bcbd5181951ecec844e6d3019b.png"+" 800w"+","+"/_next/static/images/game-start-screen-400-8a71d91f5710da45f6818b3939093d36.png"+" 400w",
-          images:[ {path: "/_next/static/images/game-start-screen-1200-b2ce6761d359c1464733bc15df33e05d.png",width: 1200,height: 762},{path: "/_next/static/images/game-start-screen-800-ed2043bcbd5181951ecec844e6d3019b.png",width: 800,height: 508},{path: "/_next/static/images/game-start-screen-400-8a71d91f5710da45f6818b3939093d36.png",width: 400,height: 254}],
-          src: "/_next/static/images/game-start-screen-1200-b2ce6761d359c1464733bc15df33e05d.png",
-          toString:function(){return "/_next/static/images/game-start-screen-1200-b2ce6761d359c1464733bc15df33e05d.png"},
+          srcSet: "/_next/static/images/game-start-screen-1200-b6c611cc2f1ce07e03558d57da82f929.png"+" 1200w"+","+"/_next/static/images/game-start-screen-800-4cc1ed594925708c8ff0bee1af323847.png"+" 800w"+","+"/_next/static/images/game-start-screen-400-b9d079b8c22305240626f9405f0d8ea9.png"+" 400w",
+          images:[ {path: "/_next/static/images/game-start-screen-1200-b6c611cc2f1ce07e03558d57da82f929.png",width: 1200,height: 664},{path: "/_next/static/images/game-start-screen-800-4cc1ed594925708c8ff0bee1af323847.png",width: 800,height: 443},{path: "/_next/static/images/game-start-screen-400-b9d079b8c22305240626f9405f0d8ea9.png",width: 400,height: 221}],
+          src: "/_next/static/images/game-start-screen-1200-b6c611cc2f1ce07e03558d57da82f929.png",
+          toString:function(){return "/_next/static/images/game-start-screen-1200-b6c611cc2f1ce07e03558d57da82f929.png"},
           
           width: 1200,
-          height: 762
+          height: 664
         }
 
 /***/ }),
