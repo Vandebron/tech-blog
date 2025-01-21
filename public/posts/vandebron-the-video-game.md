@@ -9,12 +9,12 @@ author: Dick Visser & Tomás Phelan
 
 # Vandebron The Video Game: A Hackathon Journey into the Energy Transition
 
-During a recent hackathon, we set out to gamify one of the most pressing challenges of our time: the transition to green energy.
+During the last couple of hackathons, we set out to gamify one of the most pressing challenges of our time, the transition to green energy.
 A problem our team, VPP [Virtual Power Plant], deal with on a daily basis.
 What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way, 
-though debatable if it is fun or well-balanced, was a hackathon after all.
+though debatable if it is fun or well-balanced, was a hackathon project after all.
 
-<video controls width="640" height="360">
+<video autoplay muted loop controls width="640" height="360">
   <source src="../images/game-start.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -26,7 +26,7 @@ Our goal was to create more than just a game. We envisioned a tool that serves a
 not just for our colleagues, but also anyone interested in the energy transition.
 
 To realize this vision we chose to go with Godot as our game engine of choice. 
-An open-source game engine that is a super fun and fantastic tool that allowed us to quickly prototype and iterate on our game mechanics.
+An open-source game engine that is a super fun and fantastic tool that allowed us to quickly prototype and iterate on our ideas and feedback.
 
 ### The Core Gameplay Loop: Keeping the Grid Balanced
 In this game, your primary goal is to maintain the energy grid within the "goldilocks zone" not too much power, not too little. The longer you can achieve this, the better!
