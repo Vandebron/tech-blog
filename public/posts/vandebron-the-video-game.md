@@ -1,5 +1,5 @@
 ---
-title: 'Vandebron The Video Game: A Hackathon Journey into the Energy Transition'
+title: 'Grid City: A Hackathon Journey into the Energy Transition by Vandebron'
 description: A journey into the energy transition through the lens of a video game
 createdAt: 2025-01-21
 coverImage: images/game-start-screen.png
@@ -7,7 +7,7 @@ tags: [godot, energy transition, gaming]
 author: Dick Visser & Tomás Phelan
 ---
 
-# Vandebron The Video Game: A Hackathon Journey into the Energy Transition
+# Grid City: A Hackathon Journey into the Energy Transition by Vandebron
 
 During the last couple of hackathons, we set out to gamify one of the most pressing challenges of our time, the transition to green energy.
 A problem our team, VPP [Virtual Power Plant], deals with on a daily basis.
@@ -44,9 +44,14 @@ Players experience the dual challenge of meeting growing energy demands and avoi
 
 ### Final Thoughts
 
-While we did meet most of these goals, we definitely see room for improvement. For instance, the city building aspect of the game does not exactly match what we want to teach the player. A Virtual Power Plant mainly balances the grid through smart curtailment. It doesn't involve building new renewables. So we considered removing the building mechanic from the game, but we were already to deep into development.
+While we did meet most of these goals, we definitely see room for improvement. 
+For instance, the city building aspect of the game does not exactly match what we want to teach the player. A Virtual Power Plant mainly balances the grid through smart curtailment. 
+It doesn't involve building new renewables. So we considered removing the building mechanic from the game, but we were already to deep into development.
 
-To work around this design issue, we toyed with the idea of having a coal plant in the game, amongst others. The goal was to shut down the coal plant before it fully pollutes the planet. After shutdown, players face the challenge of balancing the grid reliably using just renewable energy. Unfortunately, we ran out of time before we could fine-tune this part of the game.
+To work around this design issue, we toyed with the idea of having a coal plant in the game, amongst others. 
+The goal was to shut down the coal plant before it fully pollutes the planet. 
+After shutdown, players face the challenge of balancing the grid reliably using just renewable energy. 
+Unfortunately, we ran out of time before we could fine-tune this part of the game.
 
 <video autoplay muted loop controls width="640" height="360">
   <source src="../images/coal-plant-prototype.mp4" type="video/mp4">
@@ -55,7 +60,8 @@ To work around this design issue, we toyed with the idea of having a coal plant 
 
 *Here's an early prototype of the coal plant that didn't make it in to the game.*
 
-At some point, though, you have to wrap it up the hackathon. So we polished what we had and declared the game "done". Whether you’re a gamer, an energy enthusiast, or someone entirely new to the topic, we hope this game sparks your interest in the energy transition :).
+At some point, though, you have to wrap up the hackathon. So we polished what we had and declared the game "done". 
+Whether you’re a gamer, an energy enthusiast, or someone entirely new to the topic, we hope this game sparks your interest in the energy transition :)
 
 You can play the game right from your browser [here](https://djvisser.itch.io/grid-city)!
 If you want to take a look at the (hackathon-quality) code, check out our [public repo](https://github.com/Vandebron/vandebron_game).
