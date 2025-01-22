@@ -14,7 +14,7 @@ A problem our team, VPP [Virtual Power Plant], deals with on a daily basis.
 What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way, 
 though debatable if it is fun or well-balanced. It was a hackathon project after all.
 
-<video autoplay muted playsInline style="max-width: 100%; height: auto;" src="../images/game-start-h264_v2.mp4" type="video/mp4"></video>
+<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/game-start-h264_v2.mp4" type="video/mp4"></video>
 
 Let’s dive into the vision, mechanics, and what we hope players take away from this experience.
 
@@ -50,7 +50,7 @@ The goal was to shut down the coal plant before it fully pollutes the planet.
 After shutdown, players face the challenge of balancing the grid reliably using just renewable energy. 
 Unfortunately, we ran out of time before we could fine-tune this part of the game.
 
-<video playsInLine autoplay muted loop controls style="max-width: 100%; height: auto;">
+<video playsInline autoPlay muted loop controls style="max-width: 100%; height: auto;">
   <source src="../images/coal-plant-prototype.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
