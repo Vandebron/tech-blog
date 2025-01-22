@@ -14,11 +14,10 @@ A problem our team, VPP [Virtual Power Plant], deals with on a daily basis.
 What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way, 
 though debatable if it is fun or well-balanced. It was a hackathon project after all.
 
-<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/game-start-h264_v2.mp4" type="video/mp4"></video>
-sddsf
-<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/gameplay_c.mp4" type="video/mp4"></video>
-sdfdsf
-<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/gameplay-un.mp4" type="video/mp4"></video>
+<video playsInline autoPlay muted loop style="max-width: 100%; height: auto;">
+  <source src="../images/full-gameplay.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 Let’s dive into the vision, mechanics, and what we hope players take away from this experience.
 
@@ -43,6 +42,11 @@ The longer you can maintain this balance, the better!
 What does success look like in the game? Maintaining the grid with 100% green power for as long as possible, via strategically managing energy production and curtailment to ensure sustainability.
 Players experience the dual challenge of meeting growing energy demands and avoiding excess production, a dilemma central to real-world energy grids.
 
+<video playsInline autoPlay muted loop controls style="max-width: 100%; height: auto;">
+  <source src="../images/full-gameplay.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ### Final Thoughts
 
 While we did meet most of these goals, we definitely see room for improvement. 
@@ -54,25 +58,10 @@ The goal was to shut down the coal plant before it fully pollutes the planet.
 After shutdown, players face the challenge of balancing the grid reliably using just renewable energy. 
 Unfortunately, we ran out of time before we could fine-tune this part of the game.
 
-
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
-</iframe>
-
-space
-
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="../images/coal-plant-prototype.mp4">
-</iframe>
-
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="../images/gameplay_c.mp4">
-</iframe>
-
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="../images/gameplay-un.mp4">
-</iframe>
-
+<video playsInline autoPlay muted loop controls style="max-width: 100%; height: auto;">
+  <source src="../images/coalplant-gameplay.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 *Here's an early prototype of the coal plant that didn't make it in to the game.*
 

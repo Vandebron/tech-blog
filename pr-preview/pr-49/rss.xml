@@ -29,11 +29,10 @@
 A problem our team, VPP [Virtual Power Plant], deals with on a daily basis.
 What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way,
 though debatable if it is fun or well-balanced. It was a hackathon project after all.</p>
-<p><video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/game-start-h264_v2.mp4" type="video/mp4"></video>
-sddsf
-<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/gameplay_c.mp4" type="video/mp4"></video>
-sdfdsf
-<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/gameplay-un.mp4" type="video/mp4"></video></p>
+<video playsInline autoPlay muted loop style="max-width: 100%; height: auto;">
+  <source src="../images/full-gameplay.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 <p>Let’s dive into the vision, mechanics, and what we hope players take away from this experience.</p>
 <h3>Vision: Educate Through Play</h3>
 <p>Our goal was to create more than just a game. We envisioned a tool that serves as an onboarding experience,
@@ -53,6 +52,10 @@ The longer you can maintain this balance, the better!</p>
 </ul>
 <p>What does success look like in the game? Maintaining the grid with 100% green power for as long as possible, via strategically managing energy production and curtailment to ensure sustainability.
 Players experience the dual challenge of meeting growing energy demands and avoiding excess production, a dilemma central to real-world energy grids.</p>
+<video playsInline autoPlay muted loop controls style="max-width: 100%; height: auto;">
+  <source src="../images/full-gameplay.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 <h3>Final Thoughts</h3>
 <p>While we did meet most of these goals, we definitely see room for improvement.
 For instance, the city building aspect of the game does not exactly match what we want to teach the player. A Virtual Power Plant mainly balances the grid through smart curtailment.
@@ -61,19 +64,10 @@ It doesn't involve building new renewables. So we considered removing the buildi
 The goal was to shut down the coal plant before it fully pollutes the planet.
 After shutdown, players face the challenge of balancing the grid reliably using just renewable energy.
 Unfortunately, we ran out of time before we could fine-tune this part of the game.</p>
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
-</iframe>
-<p>space</p>
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="../images/coal-plant-prototype.mp4">
-</iframe>
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="../images/gameplay_c.mp4">
-</iframe>
-<iframe width="420" height="315" mute=1 after autoplay=1
-src="../images/gameplay-un.mp4">
-</iframe>
+<video playsInline autoPlay muted loop controls style="max-width: 100%; height: auto;">
+  <source src="../images/coalplant-gameplay.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 <p><em>Here's an early prototype of the coal plant that didn't make it in to the game.</em></p>
 <p>At some point, though, you have to wrap up the hackathon. So we polished what we had and declared the game &quot;done&quot;.
 Whether you’re a gamer, an energy enthusiast, or someone entirely new to the topic, we hope this game sparks your interest in the energy transition :)</p>

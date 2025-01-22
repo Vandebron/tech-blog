@@ -202,13 +202,6 @@ module.exports = __webpack_require__("KTQB");
 
 /***/ }),
 
-/***/ "4Dmq":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
-
-/***/ }),
-
 /***/ "4Swk":
 /***/ (function(module, exports) {
 
@@ -497,13 +490,6 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 module.exports = _objectWithoutPropertiesLoose, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ "8Yw8":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
 
 /***/ }),
 
@@ -1203,13 +1189,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "TuDu":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
-
-/***/ }),
-
 /***/ "Ue1o":
 /***/ (function(module, exports) {
 
@@ -1271,7 +1250,7 @@ var map = {
 	"./images/camunda-rising.png": "LXhf",
 	"./images/camunda_infrastructure.png": "RfEr",
 	"./images/circular.jpeg": "rqUu",
-	"./images/coal-plant-prototype.mp4": "p7HW",
+	"./images/coalplant-gameplay.mp4": "gpl+",
 	"./images/cypress-component-design-technique-for-react-applications.png": "4U7M",
 	"./images/dagster-architecture.png": "8I5C",
 	"./images/dagster-cicd.png": "2AaV",
@@ -1280,12 +1259,8 @@ var map = {
 	"./images/flex-onlogic-factor-201.jpg": "AP1D",
 	"./images/flex-wallpaper.webp": "0vGS",
 	"./images/fueling-the-energy-transition-with-spark-part-1.jpg": "KMSp",
-	"./images/game-start-h264.mp4": "4Dmq",
-	"./images/game-start-h264_v2.mp4": "pqqp",
-	"./images/game-start-h265.mp4": "TuDu",
+	"./images/full-gameplay.mp4": "fKkG",
 	"./images/game-start-screen.png": "SUAh",
-	"./images/gameplay-un.mp4": "qOaz",
-	"./images/gameplay_c.mp4": "8Yw8",
 	"./images/greentech-hackathon/hero-hack-planet.jpg": "KXPv",
 	"./images/greentech-hackathon/hero-top-dutch-solar-racing.jpg": "wCft",
 	"./images/greentech-hackathon/hero.jpg": "PzKR",
@@ -1544,6 +1519,13 @@ throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an
 
 /***/ }),
 
+/***/ "fKkG":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+
+/***/ }),
+
 /***/ "fTQd":
 /***/ (function(module, exports) {
 
@@ -1562,6 +1544,13 @@ module.exports = require("react-dom");
 /***/ (function(module, exports) {
 
 throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Fueling the Energy Transition With Spark - Part 1\n| description: Our main backend language is Scala, and by using Spark we build distributed parallel algorithms to fuel the Energy Transition. But why is Spark the best choice for that job?");
+
+/***/ }),
+
+/***/ "gpl+":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
 
 /***/ }),
 
@@ -5565,13 +5554,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "p7HW":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
-
-/***/ }),
-
 /***/ "pVnL":
 /***/ (function(module, exports) {
 
@@ -5590,20 +5572,6 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 module.exports = _extends, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ "pqqp":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
-
-/***/ }),
-
-/***/ "qOaz":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
 
 /***/ }),
 
