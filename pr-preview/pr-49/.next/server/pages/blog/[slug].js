@@ -500,6 +500,13 @@ module.exports = _objectWithoutPropertiesLoose, module.exports.__esModule = true
 
 /***/ }),
 
+/***/ "8Yw8":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+
+/***/ }),
+
 /***/ "8rh+":
 /***/ (function(module, exports) {
 
@@ -1277,6 +1284,8 @@ var map = {
 	"./images/game-start-h264_v2.mp4": "pqqp",
 	"./images/game-start-h265.mp4": "TuDu",
 	"./images/game-start-screen.png": "SUAh",
+	"./images/gameplay-un.mp4": "qOaz",
+	"./images/gameplay_c.mp4": "8Yw8",
 	"./images/greentech-hackathon/hero-hack-planet.jpg": "KXPv",
 	"./images/greentech-hackathon/hero-top-dutch-solar-racing.jpg": "wCft",
 	"./images/greentech-hackathon/hero.jpg": "PzKR",
@@ -5585,6 +5594,13 @@ module.exports = _extends, module.exports.__esModule = true, module.exports["def
 /***/ }),
 
 /***/ "pqqp":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+
+/***/ }),
+
+/***/ "qOaz":
 /***/ (function(module, exports) {
 
 throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
