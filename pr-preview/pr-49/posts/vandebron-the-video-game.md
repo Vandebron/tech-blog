@@ -51,7 +51,7 @@ After shutdown, players face the challenge of balancing the grid reliably using 
 Unfortunately, we ran out of time before we could fine-tune this part of the game.
 
 <video playsInline autoPlay muted loop controls style="max-width: 100%; height: auto;">
-  <source src="../images/coal-plant-prototype.mp4" type="video/mp4">
+  <source src="https://www.youtube.com/watch?v=-2k1rcRzsLA" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
