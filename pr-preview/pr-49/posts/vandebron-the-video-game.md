@@ -50,10 +50,16 @@ The goal was to shut down the coal plant before it fully pollutes the planet.
 After shutdown, players face the challenge of balancing the grid reliably using just renewable energy. 
 Unfortunately, we ran out of time before we could fine-tune this part of the game.
 
-<video playsInline autoPlay muted loop controls style="max-width: 100%; height: auto;">
-  <source src="https://www.youtube.com/watch?v=-2k1rcRzsLA" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+<iframe width="420" height="315" mute=1 after autoplay=1
+src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+</iframe>
+
+space
+
+<iframe width="420" height="315" mute=1 after autoplay=1
+src="../images/coal-plant-prototype.mp4">
+</iframe>
 
 *Here's an early prototype of the coal plant that didn't make it in to the game.*
 
