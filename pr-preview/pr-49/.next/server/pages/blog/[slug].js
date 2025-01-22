@@ -1274,6 +1274,7 @@ var map = {
 	"./images/flex-wallpaper.webp": "0vGS",
 	"./images/fueling-the-energy-transition-with-spark-part-1.jpg": "KMSp",
 	"./images/game-start-h264.mp4": "4Dmq",
+	"./images/game-start-h264_v2.mp4": "pqqp",
 	"./images/game-start-h265.mp4": "TuDu",
 	"./images/game-start-screen.png": "SUAh",
 	"./images/greentech-hackathon/hero-hack-planet.jpg": "KXPv",
@@ -5580,6 +5581,13 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 module.exports = _extends, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "pqqp":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
 
 /***/ }),
 
