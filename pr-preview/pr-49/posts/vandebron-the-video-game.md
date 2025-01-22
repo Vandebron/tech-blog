@@ -14,7 +14,7 @@ A problem our team, VPP [Virtual Power Plant], deals with on a daily basis.
 What emerged was an interactive game designed to educate players about the complexities of energy grid management in a fun and manageable way, 
 though debatable if it is fun or well-balanced. It was a hackathon project after all.
 
-<video autoplay muted playsinline style="max-width: 100%; height: auto;" src="../images/game-start-h265.mp4" type="video/mp4"></video>
+<video autoplay muted playsInline style="max-width: 100%; height: auto;" src="../images/game-start-h265.mp4" type="video/mp4"></video>
 
 Let’s dive into the vision, mechanics, and what we hope players take away from this experience.
 
