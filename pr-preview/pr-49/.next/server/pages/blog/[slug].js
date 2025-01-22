@@ -1290,6 +1290,7 @@ var map = {
 	"./images/remix-migration-vegan-pizza-shop.png": "9WPj",
 	"./images/schematic_data_layers.jpg": "mHzK",
 	"./images/schematic_data_product.jpg": "z13h",
+	"./images/seasons.mp4": "aHbr",
 	"./images/self_service.jpg": "cHyl",
 	"./images/snowflake_auth_conf.png": "YPit",
 	"./images/snowflake_keycloak.jpg": "OtCv",
@@ -1428,6 +1429,13 @@ module.exports = {
           width: 1200,
           height: 900
         }
+
+/***/ }),
+
+/***/ "aHbr":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
 
 /***/ }),
 
