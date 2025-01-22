@@ -18,7 +18,7 @@ though debatable if it is fun or well-balanced. It was a hackathon project after
 sddsf
 <video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/gameplay_c.mp4" type="video/mp4"></video>
 sdfdsf
-<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/gameplay_un.mp4" type="video/mp4"></video>
+<video autoPlay muted playsInline style="max-width: 100%; height: auto;" src="../images/gameplay-un.mp4" type="video/mp4"></video>
 
 Let’s dive into the vision, mechanics, and what we hope players take away from this experience.
 
@@ -67,6 +67,10 @@ src="../images/coal-plant-prototype.mp4">
 
 <iframe width="420" height="315" mute=1 after autoplay=1
 src="../images/gameplay_c.mp4">
+</iframe>
+
+<iframe width="420" height="315" mute=1 after autoplay=1
+src="../images/gameplay-un.mp4">
 </iframe>
 
 
