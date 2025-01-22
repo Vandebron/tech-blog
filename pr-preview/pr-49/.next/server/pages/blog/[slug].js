@@ -202,6 +202,13 @@ module.exports = __webpack_require__("KTQB");
 
 /***/ }),
 
+/***/ "4Dmq":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+
+/***/ }),
+
 /***/ "4Swk":
 /***/ (function(module, exports) {
 
@@ -911,13 +918,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "Ke2f":
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
-
-/***/ }),
-
 /***/ "L1kZ":
 /***/ (function(module, exports) {
 
@@ -1196,6 +1196,13 @@ module.exports = {
 
 /***/ }),
 
+/***/ "TuDu":
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '\u0000' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+
+/***/ }),
+
 /***/ "Ue1o":
 /***/ (function(module, exports) {
 
@@ -1266,8 +1273,9 @@ var map = {
 	"./images/flex-onlogic-factor-201.jpg": "AP1D",
 	"./images/flex-wallpaper.webp": "0vGS",
 	"./images/fueling-the-energy-transition-with-spark-part-1.jpg": "KMSp",
+	"./images/game-start-h264.mp4": "4Dmq",
+	"./images/game-start-h265.mp4": "TuDu",
 	"./images/game-start-screen.png": "SUAh",
-	"./images/game-start.mp4": "Ke2f",
 	"./images/greentech-hackathon/hero-hack-planet.jpg": "KXPv",
 	"./images/greentech-hackathon/hero-top-dutch-solar-racing.jpg": "wCft",
 	"./images/greentech-hackathon/hero.jpg": "PzKR",

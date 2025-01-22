@@ -15,7 +15,8 @@ What emerged was an interactive game designed to educate players about the compl
 though debatable if it is fun or well-balanced. It was a hackathon project after all.
 
 <video autoplay muted loop playsinline controls style="max-width: 100%; height: auto;">
-  <source src="../images/game-start.mp4" type="video/mp4">
+  <source src="../images/game-start-h265.mp4" type="video/mp4; codecs=hevc">
+  <source src="../images/game-start-h264.mp4" type="video/mp4; codecs=avc1">
   Your browser does not support the video tag.
 </video>
 
