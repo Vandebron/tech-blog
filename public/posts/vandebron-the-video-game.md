@@ -1,7 +1,7 @@
 ---
 title: 'Grid City: A Hackathon Journey into the Energy Transition by Vandebron'
 description: A journey into the energy transition through the lens of a video game
-createdAt: 2025-01-23
+createdAt: 2025-01-27
 coverImage: images/game-start-screen.png
 tags: [godot, energy transition, gaming]
 author: Dick Visser & Tomás Phelan
