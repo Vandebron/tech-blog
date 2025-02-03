@@ -51,8 +51,6 @@ export default function Markdown({children}) {
 
                 code: ({node, inline, className, children, ...props}) => {
                     const match = /language-(\w+)/.exec(className || '')
-                    console.log('Markdown - inline=', inline);
-                    console.log('Markdown - children=', children);
                     return !inline && match ? (
                         <SyntaxHighlighter style={okaidia} language={match[1]} PreTag="div"
                                            children={String(children).replace(/\n$/, '')} {...props} />
