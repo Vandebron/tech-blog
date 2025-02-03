@@ -51,6 +51,8 @@ export default function Markdown({children}) {
 
                 code: ({node, inline, className, children, ...props}) => {
                     const match = /language-(\w+)/.exec(className || '')
+                    console.log('Markdown - inline=', inline);
+                    console.log('Markdown - children=', children);
                     return !inline && match ? (
                         <SyntaxHighlighter style={okaidia} language={match[1]} PreTag="div"
                                            children={String(children).replace(/\n$/, '')} {...props} />
@@ -66,20 +68,25 @@ export default function Markdown({children}) {
                     )
                 },
                 img: ({src, alt, ...props}) => (<img src={src} alt={alt} style={{width: "100%"}} {...props}/>),
-                table: ({children}) => (<Table tableStyle='solid-borders'
-                                               style={{
-                                                   'borderCollapse': 'collapse',
-                                                   'marginBottom': '5%',
-                                                   'marginLeft': '5%',
-                                                   'marginRight': '5%',
-                                                   'fontSize': '18px'
-                                               }}
-                                               align='center'>{children}</Table>),
+                table: ({children, className}) => {
+                    return (
+                        <Table tableStyle='solid-borders' className={className}
+                            style={{
+                                'borderCollapse': 'collapse',
+                                'marginBottom': '5%',
+                                'marginLeft': '5%',
+                                'marginRight': '5%',
+                                'fontSize': '18px'
+                            }}
+                            align='center'>{children}
+                        </Table>
+                    );
+                },
                 thead: ({children}) => (<Table.Thead style={{'color': 'black'}}>{children}</Table.Thead>),
                 tbody: ({children}) => (<Table.Tbody>{children}</Table.Tbody>),
-                tr: ({children}) => (<Table.Row style={{'borderBottom': '1px solid #000'}}>{children}</Table.Row>),
-                td: ({children}) => (<Table.Cell>{children}</Table.Cell>),
-                th: ({children}) => (<Table.Cell>{children}</Table.Cell>),
+                tr: ({children, style}) => (<Table.Row style={{'borderBottom': '1px solid #000'}}>{children}</Table.Row>),
+                td: ({children, style}) => (<Table.Cell style={style}>{children}</Table.Cell>),
+                th: ({children, style}) => (<Table.Cell style={style}>{children}</Table.Cell>),
 
             }}
         />
