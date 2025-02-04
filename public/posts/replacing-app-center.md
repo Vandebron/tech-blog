@@ -8,7 +8,7 @@ author: John Fisher & Arnav Mundkur
 ---
 
 ## Why?
-This seems like a lot of work... Why not go with an off-the-shelf solution from something like 
+Test. This seems like a lot of work... Why not go with an off-the-shelf solution from something like 
 
 ## Some notes before we get started
 - We actually use this workflow to build two apps, one of which can be white-labeled, so we have an additional `app` input which makes things a bit trickier. This is why we have the `env-variable-prep-android.sh` which normalizes the variable names used for secrets so those secrets and build file names, etc. can be easily used. If you just have a single app you probably don't need this script.
