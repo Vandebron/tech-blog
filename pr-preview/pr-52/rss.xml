@@ -89,7 +89,7 @@ If you want to take a look at the (hackathon-quality) code, check out our <a hre
         </description>
         <content:encoded>
         <![CDATA[<h2>Why?</h2>
-<p>This seems like a lot of work... Why not go with an off-the-shelf solution from something like</p>
+<p>Test. This seems like a lot of work... Why not go with an off-the-shelf solution from something like</p>
 <h2>Some notes before we get started</h2>
 <ul>
 <li>We actually use this workflow to build two apps, one of which can be white-labeled, so we have an additional <code>app</code> input which makes things a bit trickier. This is why we have the <code>env-variable-prep-android.sh</code> which normalizes the variable names used for secrets so those secrets and build file names, etc. can be easily used. If you just have a single app you probably don't need this script.</li>

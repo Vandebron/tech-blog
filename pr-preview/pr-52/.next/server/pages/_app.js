@@ -1567,7 +1567,7 @@ let detectDomainLocale;
 
 if (false) {}
 
-const basePath = "/pr-preview/pr-51" || false;
+const basePath = "/pr-preview/pr-52" || false;
 
 function buildCancellationError() {
   return Object.assign(new Error('Route Cancelled'), {
