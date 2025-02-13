@@ -80,9 +80,9 @@ export default function Markdown({children}) {
                         </Table>
                     );
                 },
-                thead: ({children}) => (<Table.Thead style={{'color': 'black'}}>{children}</Table.Thead>),
-                tbody: ({children}) => (<Table.Tbody>{children}</Table.Tbody>),
-                tr: ({children, style}) => (<Table.Row style={{'borderBottom': '1px solid #000'}}>{children}</Table.Row>),
+                thead: ({children, style}) => (<Table.Thead style={{'color': 'black', ...style}}>{children}</Table.Thead>),
+                tbody: ({children, style}) => (<Table.Tbody style={style}>{children}</Table.Tbody>),
+                tr: ({children, style}) => (<Table.Row style={{'borderBottom': '1px solid #000', ...style}}>{children}</Table.Row>),
                 td: ({children, style}) => (<Table.Cell style={style}>{children}</Table.Cell>),
                 th: ({children, style}) => (<Table.Cell style={style}>{children}</Table.Cell>),
 
