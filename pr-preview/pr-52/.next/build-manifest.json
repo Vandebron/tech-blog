@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/qwxqI8GXBp47iJCAjCgn2/_buildManifest.js",
-    "static/qwxqI8GXBp47iJCAjCgn2/_ssgManifest.js"
+    "static/3UkaZtkW_KGTVc6T6EAgO/_buildManifest.js",
+    "static/3UkaZtkW_KGTVc6T6EAgO/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -28,7 +28,7 @@
       "static/chunks/645636b0.a83a6a4548b93404854d.js",
       "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
       "static/css/192d0af53f9e4ab48cc3.css",
-      "static/chunks/pages/_app-a23a3b1de5525ec4a428.js"
+      "static/chunks/pages/_app-a433616a2559ec73ed0e.js"
     ],
     "/_error": [
       "static/chunks/webpack-0b9cc56c94819e8023ea.js",
@@ -44,7 +44,7 @@
       "static/chunks/main-419ac17f185f95278b96.js",
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
       "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.4d759b6b54ec323189db.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.a8a84e1e3bcf1ee7526e.js",
       "static/chunks/pages/about-2cf6cb0673d6904a8e88.js"
     ],
     "/blog/[slug]": [
@@ -54,7 +54,7 @@
       "static/chunks/main-419ac17f185f95278b96.js",
       "static/chunks/7b9503d2.4af90216c47085b5c8e9.js",
       "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.4d759b6b54ec323189db.js",
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.a8a84e1e3bcf1ee7526e.js",
       "static/chunks/pages/blog/[slug]-3fa11fb8931c3ce2a9d9.js"
     ],
     "/greentech-hackathon": [
@@ -66,8 +66,8 @@
       "static/css/7335de542e4b4f02a25b.css",
       "static/chunks/d637bb0c.ddce25b62cf34b951439.js",
       "static/chunks/226daff62b2d4bc1e9a7210a7f6000a544319a74.fbdd4d016a5c47ddc9db.js",
-      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.4d759b6b54ec323189db.js",
-      "static/chunks/pages/greentech-hackathon-72954875744f01885b77.js"
+      "static/chunks/1c49f5f00355f650bee3d37484f094be037a30fa.a8a84e1e3bcf1ee7526e.js",
+      "static/chunks/pages/greentech-hackathon-6096de150b4824002c72.js"
     ]
   },
   "ampFirstPages": []
