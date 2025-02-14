@@ -601,15 +601,15 @@ More than likely these won't work the first time. Time to go back and adjust. No
 - It regularly took over 50 minutes for our mobile app to build in App Center. Part of that could have very likely be improved by adjusting App Center configurations & how we store and bundle app assets but after migrating our builds to GitHub Actions our app build times are now down to 22 minutes - More than twice as fast!
 - All the rest of the software at Vandebron (backend services in Scala and Python and frontend applications in Typescript + React) is built using GitHub Actions. This move brings mobile apps in line with all other software. This move to GHA for mobile builds has forced several of our mobile devs to get our hands dirty in GHA which is great because we can now play a role in the larger CICD discussions.
 - We have full control over our CICD pipeline for mobile builds. In the future we can integrate more Fastlane commands to further automate the release process.
-- We did a full ADR (shown below) which initiated the work here.
+- We did a full ADR (shown below) which initiated the work here. Links referenced in image are in Appendix below.
   ![replace-app-center-adr](../images/replacing-app-center-adr.png)
 
 
 ## Appendix
 
-
+#### Mapbox Integration
 <pre style="font-size: 0.8rem; display: flex;">
-  <code class="language-yaml">
+  <code class="language-bash">
   # file: .github/workflows/mobile-apps-build-android.yaml and .github/workflows/mobile-apps-build-ios.yaml (optional mapbox)
   - name: Create Mapbox .netrc file (my-first-app only)
     if: ${{ inputs.app == 'my-first-app' }}
@@ -635,3 +635,11 @@ More than likely these won't work the first time. Time to go back and adjust. No
   chmod 0600 ~/.netrc
   </code>
 </pre>
+
+#### ADR Links
+- [GHA (Billing)](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)
+- [Bitrise](https://bitrise.io/)
+- [CodeMagic](https://codemagic.io/)
+- [YouTube video showing GHA setup for Android](https://www.youtube.com/watch?v=_uRbEyBa9q0)
+- [Medium article showing GHA setup for Android](https://medium.com/scaleuptech/how-to-make-react-native-builds-with-github-actions-8d0203801eff)
+- [Article discussing how build uploads can be done](https://www.obytes.com/blog/react-native-ci-cd-github-action)
