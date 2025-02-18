@@ -24,3 +24,7 @@ body > div {
   line-height: 1.5rem;
   margin: 0.5rem;
 }
+
+td.expanded-table-cell div {
+  width: 100%;
+}

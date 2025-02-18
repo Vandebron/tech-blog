@@ -72,9 +72,8 @@ export default function Markdown({children}) {
                             style={{
                                 'borderCollapse': 'collapse',
                                 'marginBottom': '5%',
-                                'marginLeft': '5%',
-                                'marginRight': '5%',
-                                'fontSize': '18px'
+                                'fontSize': '18px',
+                                'border': 'none'
                             }}
                             align='center'>{children}
                         </Table>
@@ -82,8 +81,8 @@ export default function Markdown({children}) {
                 },
                 thead: ({children, style}) => (<Table.Thead style={{'color': 'black', ...style}}>{children}</Table.Thead>),
                 tbody: ({children, style}) => (<Table.Tbody style={style}>{children}</Table.Tbody>),
-                tr: ({children, style}) => (<Table.Row style={{'borderBottom': '1px solid #000', ...style}}>{children}</Table.Row>),
-                td: ({children, style}) => (<Table.Cell style={style}>{children}</Table.Cell>),
+                tr: ({children, style}) => (<Table.Row style={{...style}}>{children}</Table.Row>),
+                td: ({children, style, ...rest}) => (<Table.Cell {...rest} style={style}>{children}</Table.Cell>),
                 th: ({children, style}) => (<Table.Cell style={style}>{children}</Table.Cell>),
 
             }}
