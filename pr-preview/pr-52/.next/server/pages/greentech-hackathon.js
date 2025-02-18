@@ -313,9 +313,8 @@ function Markdown({
           style: {
             'borderCollapse': 'collapse',
             'marginBottom': '5%',
-            'marginLeft': '5%',
-            'marginRight': '5%',
-            'fontSize': '18px'
+            'fontSize': '18px',
+            'border': 'none'
           },
           align: "center"
         }, children);
@@ -338,16 +337,19 @@ function Markdown({
         children,
         style
       }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Row, {
-        style: _objectSpread({
-          'borderBottom': '1px solid #000'
-        }, style)
+        style: _objectSpread({}, style)
       }, children),
-      td: ({
-        children,
-        style
-      }) => __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Cell, {
-        style: style
-      }, children),
+      td: (_ref4) => {
+        let {
+          children,
+          style
+        } = _ref4,
+            rest = _objectWithoutProperties(_ref4, ["children", "style"]);
+
+        return __jsx(_vandebron_windmolen__WEBPACK_IMPORTED_MODULE_2__["Table"].Cell, _extends({}, rest, {
+          style: style
+        }), children);
+      },
       th: ({
         children,
         style

@@ -7,7 +7,7 @@ tags: [reactnative, App Aenter, GHA]
 author: John Fisher & Arnav Mundkur
 ---
 
-## Why?
+## Why GHA?
 This seems like a lot of work... Why not go with an off-the-shelf solution from something like Bitrise or Codemagic? Fair question but not the main point of this post. To look into our reasoning check out the [Benefits](#benefits) section!
 
 ## Some notes before we get started
@@ -162,8 +162,8 @@ Add the files below. Nothing in this setup should effect App Center but it is go
         </td>
       </tr>
       <tr>
-        <td colspan="100%;">
-          <pre style="font-size: 0.8rem; display: flex; max-width: 40vw;">
+        <td colSpan="100%;" style="width:100%" className="expanded-table-cell">
+          <pre style="font-size: 0.8rem; display: flex;">
             <code class="language-bash">
   # file: env-file-prep.sh
   #!/usr/bin/env bash
@@ -205,14 +205,14 @@ Add the files below. Nothing in this setup should effect App Center but it is go
           </pre>
         </td>
         <td>
-          <pre style="font-size: 0.8rem; display: flex; max-width: 40vw;">
+          <pre style="display: flex; justify-content: center;">
   N/A for iOS
           </pre>
         </td>
       </tr>
       <tr>
         <td>
-          <pre>
+          <pre style="display: flex; justify-content: center;">
   N/A for Android
           </pre>
         </td>
@@ -595,6 +595,9 @@ More than likely these won't work the first time. Time to go back and adjust. No
 <ul>
   <li>App Center gives you the ability to write `appcenter-pre-build.sh` and `appcenter-post-build.sh` scripts. The `env-file-prep.sh` is basically that same thing, just without the context of appcenter.</li>
   <li>One of our apps is using MapBox which needs a `.netrc` in the root directory. If you need something similar, you can add a step to your action by adding the code shown in the the "optional mapbox" part + the `./my-first-app/prep-mapbox.sh` in the [Appendix](#appendix).</li>
+  <li>After our work on this was done (and only as I'm writing this article) we realized we can use the `sparse-checkout` option from `actions/checkout` to only check out the needed files. This should speed up our workflow runtime even more!</li>
+  <li>It may be helpful for you to add the build and/or version number onto the artifact. We haven't done that but it's something we're interested in adding for the future.</li>
+  <li>Troubleshooting certificates for iOS was a HUGE pain in the butt. I don't have any good advice here other than to realize (and communicate with your POs) that this part may take a while.</li>
 </ul>
 
 ## Benefits
