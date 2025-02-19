@@ -5643,7 +5643,7 @@ module.exports = {
 /***/ "qkn8":
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Finding a Replacement for App Center\n| description: App Center is closing up shop on March 31st, 2025 so what's the plan for building mobile apps at Vandebron?");
+throw new Error("Module parse failed: Assigning to rvalue (1:2)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> ---\n| title: Replacing App Center with GitHub Actions\n| description: App Center is closing up shop on March 31st, 2025. So what's the plan for building mobile apps at Vandebron?");
 
 /***/ }),
 
