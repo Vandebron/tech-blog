@@ -1,9 +1,9 @@
 ---
-title: Finding a Replacement for App Center
-description: App Center is closing up shop on March 31st, 2025 so what's the plan for building mobile apps at Vandebron?
+title: Replacing App Center with GitHub Actions
+description: App Center is closing up shop on March 31st, 2025. So what's the plan for building mobile apps at Vandebron?
 createdAt: 2025-01-25
 coverImage: images/replacing-app-center-building-a-phone.jpg
-tags: [reactnative, App Aenter, GHA]
+tags: [React Native, App Center, GHA, GitHub Actions]
 author: John Fisher & Arnav Mundkur
 ---
 
@@ -12,11 +12,11 @@ This seems like a lot of work... Why not go with an off-the-shelf solution from 
 
 ## Some notes before we get started
 - We use this workflow to build two apps, one of which can be white-labeled, so we have additional `app` and `white-label-release` inputs which makes things a bit trickier. You might not need that so feel free to trim stuff down and make it your own! But for us, we why we have the `env-variable-prep-android.sh` which normalizes the variable names used for secrets so those secrets and build file names, etc. can be easily used. If you just have a single app you probably don't need this script.
-- The code below is only for the build process. Though the ADR considered how this would affect future decisions about artifact upload automation and rolling out releases for internal testing, nothing about that is automated here.
+- The code below is only for the build process. Though the Architecture Decision Record (ADR) considered how this would affect future decisions about artifact upload automation and rolling out releases for internal testing, nothing about that is automated here.
 
 ## Implementation
 #### Part 1 - Basic Setup
-Add the files below. Nothing in this setup should effect App Center but it is good to check in your changes to a branch and test those against the regular App Center build flow.
+Add the files below. Nothing in this setup should effect App Center but it is good to check in your changes to a branch and test those against the regular App Center build flow. The main point of these steps is to just get a basic action, with inputs, set up and running. The `env-variable-prep-android.sh` and `env-variable-prep-ios.sh` files created variables based off the input parameters passed in so they can be used in a reusable and consistent manner later on. The `env-file-prep.sh` file is responsible for creating a `.env` file with values from whichever environment you're using. Though it's nice to add the `Fastlane` and `Gymfile` files, those won't be used until Step 4 when the rest of the pipeline is fleshed out.
 
   <table>
     <thead style="position: sticky; top: 0;">
@@ -332,7 +332,7 @@ WARNING: GitHub Actions doesn't let you run a `workflow_dispatch` action until i
     </div>
 
 #### Part 4 - Implement the Full Workflow for iOS and Android
-Adjust the files below. This is where you may end up needing to modify things that affect your App Center build. Try to keep them to a mimimum so you can still use App Center for builds should anything here not work as expected.
+Adjust the files below. This is where you may end up needing to modify things that affect your App Center build. Try to keep them to a mimimum so you can still use App Center for builds should anything not work as expected. [Fastlane](https://fastlane.tools/) is a tool that helps with automating build and release processes for mobile apps. You can think of it as a toolbox of easy-to-use wrapper functions around `gradle` for Android, and `xcodebuild` for iOS.
 
   <table>
     <thead style="position: sticky; top: 0;">
@@ -602,7 +602,7 @@ More than likely these won't work the first time. Time to go back and adjust. No
 
 ## Benefits
 - It regularly took over 50 minutes for our mobile app to build in App Center. Part of that could have very likely be improved by adjusting App Center configurations & how we store and bundle app assets but after migrating our builds to GitHub Actions our app build times are now down to 22 minutes - More than twice as fast!
-- All the rest of the software at Vandebron (backend services in Scala and Python and frontend applications in Typescript + React) is built using GitHub Actions. This move brings mobile apps in line with all other software. This move to GHA for mobile builds has forced several of our mobile devs to get our hands dirty in GHA which is great because we can now play a role in the larger CICD discussions.
+- All the rest of the software at Vandebron (backend services in Scala and Python and frontend applications in Typescript + React) is built using GitHub Actions. This move brings mobile apps in line with all other software. This move to GHA for mobile builds has led to several of our mobile devs getting our hands dirty in GHA, which is great because we can now play a role in the larger CICD discussions.
 - We have full control over our CICD pipeline for mobile builds. In the future we can integrate more Fastlane commands to further automate the release process.
 - We did a full ADR (shown below) which initiated the work here. Links referenced in image are in Appendix below.
   ![replace-app-center-adr](../images/replacing-app-center-adr.png)
