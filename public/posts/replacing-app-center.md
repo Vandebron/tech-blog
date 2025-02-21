@@ -13,6 +13,7 @@ This seems like a lot of work... Why not go with an off-the-shelf solution from 
 ## Some notes before we get started
 - We use this workflow to build two apps, one of which can be white-labeled, so we have additional `app` and `white-label-release` inputs which makes things a bit trickier. You might not need that so feel free to trim stuff down and make it your own! But for us, we why we have the `env-variable-prep-android.sh` which normalizes the variable names used for secrets so those secrets and build file names, etc. can be easily used. If you just have a single app you probably don't need this script.
 - The code below is only for the build process. Though the Architecture Decision Record (ADR) considered how this would affect future decisions about artifact upload automation and rolling out releases for internal testing, nothing about that is automated here.
+- There's a lot of code here. We removed version numbers to make sure we're not giving out too much information. If you see something like `@vx.x.x`, you'll have to fill those in with the versions that are needed for your app/pipeline.
 
 ## Implementation
 #### Part 1 - Basic Setup
@@ -63,7 +64,7 @@ Add the files below. Nothing in this setup should effect App Center but it is go
       environment: ${{ inputs.environment }}
       steps:
         - name: Checkout ${{ github.repository }}
-          uses: actions/checkout@v4.2.2
+          uses: actions/checkout@vx.x.x
         - name: Echo Input
           env:
             APP: ${{ inputs.app }}
@@ -112,7 +113,7 @@ Add the files below. Nothing in this setup should effect App Center but it is go
       environment: ${{ inputs.environment }}
       steps:
         - name: Checkout ${{ github.repository }}
-          uses: actions/checkout@v4.2.2
+          uses: actions/checkout@vx.x.x
         - name: Echo Input
           env:
             APP: ${{ inputs.app }}
@@ -379,7 +380,7 @@ Adjust the files below. This is where you may end up needing to modify things th
       environment: ${{ inputs.environment }}
       steps:
         - name: Checkout ${{ github.repository }}
-          uses: actions/checkout@v4.2.2
+          uses: actions/checkout@vx.x.x
         - name: Prep Env Variables
           id: prep-env-variables
           working-directory: mobile
@@ -405,25 +406,25 @@ Adjust the files below. This is where you may end up needing to modify things th
           run: corepack enable
         - name: Setup NodeJS
           id: setup-node
-          uses: actions/setup-node@v4.2.0
+          uses: actions/setup-node@vx.x.x
           with:
             node-version: 18.x
             registry-url: https://registry.npmjs.org
             cache: 'yarn'
             cache-dependency-path: mobile/${{ inputs.app }}/yarn.lock
         - name: Setup Java
-          uses: actions/setup-java@v4.7.0
+          uses: actions/setup-java@vx.x.x
           with:
             distribution: 'temurin'
             java-version: '20'
             cache: 'gradle'
         - name: Setup Android SDK  # sadly no caching capabilities here
-          uses: android-actions/setup-android@v3.2.2
+          uses: android-actions/setup-android@vx.x.x
           with:
             log-accepted-android-sdk-licenses: false
             packages: 'tools'   # Default is 'tools platform-tools but we don't need platform-tools for packaging'
         - name: Set up ruby env # Fastlane is a "Ruby gem"
-          uses: ruby/setup-ruby@v1
+          uses: ruby/setup-ruby@vx
           with:
             ruby-version: '3.3.0' # Changing this to 3.3 will give you "Your Ruby version is 3.3.5, but your Gemfile specified 3.3.0"
             bundler-cache: true
@@ -450,7 +451,7 @@ Adjust the files below. This is where you may end up needing to modify things th
             FASTLANE_ANDROID_FLAVOR: ${{ steps.prep-env-variables.outputs.fastlane-android-flavor }}
         # Upload
         - name: Upload application
-          uses: actions/upload-artifact@v4
+          uses: actions/upload-artifact@vx
           with:
             name: ${{steps.prep-env-variables.outputs.artifact-name}}
             path: "mobile/${{ inputs.app }}/android/app/build/outputs/bundle/${{ steps.prep-env-variables.outputs.fastlane-android-flavor }}Release/app-${{ steps.prep-env-variables.outputs.fastlane-android-flavor }}-release.aab"
@@ -494,7 +495,7 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@vx.x.x
       - name: Prep Env Variables
         id: prep-env-variables
         working-directory: mobile
@@ -516,28 +517,28 @@ jobs:
           ENVIRONMENT: ${{inputs.environment}}
         run: bash ./env-file-prep.sh
       - name: Import Build Certificate from Secrets
-        uses: apple-actions/import-codesign-certs@v3
+        uses: apple-actions/import-codesign-certs@vx
         with:
           p12-file-base64: ${{ steps.prep-env-variables.outputs.ios-build-certificate-p12 }}
           p12-password: ${{ steps.prep-env-variables.outputs.ios-build-certificate-p12-password }}
       - name: Import Mobile Provisioning Profile
-        uses: nickwph/apple-provisioning-profile-action@v1.0.0
+        uses: nickwph/apple-provisioning-profile-action@vx.x.x
         with:
           profile-base64: ${{ steps.prep-env-variables.outputs.ios-mobile-provisioning-profile }}
       - name: Setup NodeJS
         id: setup-node
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@vx.x.x
         with:
           node-version: 20.x
       # Mapbox v10 ships with bitcode on XCode 16 which is not allowed by the App Store
       # https://github.com/mapbox/mapbox-maps-ios/issues/2233
       # Once this issue is fixed we can upgrade to 16
       - name: Install XCode
-        uses: maxim-lobanov/setup-xcode@v1
+        uses: maxim-lobanov/setup-xcode@vx.x.x
         with:
           xcode-version: 15.4
       - name: Install Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@vx.x.x
         with:
           ruby-version: 3.3.0
       - name: Install Bundler
@@ -551,7 +552,7 @@ jobs:
         run: bundle install
         working-directory: mobile/${{ inputs.app }}
       - name: Cache CocoaPods dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@vx
         env:
           FILES_GLOB: mobile/${{ inputs.app }}/ios/Podfile.lock
         with:
@@ -573,7 +574,7 @@ jobs:
         working-directory: mobile/${{ inputs.app }}
        # Upload
       - name: Upload application
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@vx
         with:
           name: ${{steps.prep-env-variables.outputs.ios-scheme}}
           path: "mobile/${{ inputs.app }}/ios/build/${{ steps.prep-env-variables.outputs.ios-scheme }}.ipa"
@@ -587,7 +588,7 @@ jobs:
     </tbody>
   </table>
 
-#### Troubleshooting
+#### Part 5 - Troubleshooting
 More than likely these won't work the first time. Time to go back and adjust. Note that since the workflow is now in the main branch you can test your workflow changes on a feature branch. Just select your feature branch in the "Branch" dropdown shown above.
 
 ## Other Things to Note
