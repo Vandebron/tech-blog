@@ -1,7 +1,7 @@
 ---
 title: Replacing App Center with GitHub Actions
 description: App Center is closing up shop on March 31st, 2025. So what's the plan for building mobile apps at Vandebron?
-createdAt: 2025-01-25
+createdAt: 2025-02-21
 coverImage: images/replacing-app-center-building-a-phone.jpg
 tags: [React Native, App Center, GHA, GitHub Actions]
 author: John Fisher & Arnav Mundkur
