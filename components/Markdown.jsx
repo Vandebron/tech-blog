@@ -66,14 +66,15 @@ export default function Markdown({children}) {
                     )
                 },
                 img: ({src, alt, ...props}) => (<img src={src} alt={alt} style={{width: "100%"}} {...props}/>),
-                table: ({children, className}) => {
+                table: ({children, className, style}) => {
                     return (
                         <Table tableStyle='solid-borders' className={className}
                             style={{
                                 'borderCollapse': 'collapse',
                                 'marginBottom': '5%',
                                 'fontSize': '18px',
-                                'border': 'none'
+                                'border': 'none',
+                                ...style
                             }}
                             align='center'>{children}
                         </Table>
