@@ -5,6 +5,10 @@ import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
+const getNodeHeadingId = (node) => {
+    return node?.children[0]?.value?.toLowerCase().replace(/\s+/g, '-');
+}
+
 export default function Markdown({children}) {
     return (
         <ReactMarkdown
@@ -15,8 +19,9 @@ export default function Markdown({children}) {
                 h1: ({children}) => {
                     return <H1>{children}</H1>;
                 },
-                h2: ({children}) => {
-                    return <H2>{children}</H2>;
+                h2: ({children, node}) => {
+                    const id = getNodeHeadingId(node);
+                    return <H2 id={id}>{children}</H2>;
                 },
                 h3: ({children}) => {
                     return <H3>{children}</H3>;

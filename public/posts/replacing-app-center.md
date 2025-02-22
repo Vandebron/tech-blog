@@ -530,7 +530,7 @@ More than likely these won't work the first time. Time to go back and adjust. No
 
 <ul>
   <li>App Center gives you the ability to write `appcenter-pre-build.sh` and `appcenter-post-build.sh` scripts. The `env-file-prep.sh` is basically that same thing, just without the context of appcenter.</li>
-  <li>One of our apps is using MapBox which needs a `.netrc` in the root directory. If you need something similar, you can add a step to your action by adding the code shown in the the "optional mapbox" part + the `./my-first-app/prep-mapbox.sh` in the [Appendix](#appendix).</li>
+  <li>One of our apps is using MapBox which needs a `.netrc` in the root directory. If you need something similar, you can add a step to your action by adding the code shown in the the "optional mapbox" part + the `./my-first-app/prep-mapbox.sh` in the Appendix section below.</li>
   <li>After our work on this was done (and only as I'm writing this article) we realized we can use the `sparse-checkout` option from `actions/checkout` to only check out the needed files. This should speed up our workflow runtime even more!</li>
   <li>It may be helpful for you to add the build and/or version number onto the artifact. We haven't done that but it's something we're interested in adding for the future.</li>
   <li>Troubleshooting certificates for iOS was a HUGE pain in the butt. I don't have any good advice here other than to realize (and communicate with your POs) that this part may take a while.</li>
