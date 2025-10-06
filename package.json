@@ -12,28 +12,38 @@
     "generate-rss": "node ./generate-rss.mjs"
   },
   "dependencies": {
-    "@vandebron/windmolen": "^15.28.1-alpha.1",
-    "bootstrap": "^4.6.0",
-    "gray-matter": "^4.0.2",
-    "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-optipng": "^8.0.0",
-    "imagemin-pngquant": "^9.0.1",
-    "markdown-it": "^13.0.1",
-    "next": "^10.0.1",
-    "next-transpile-modules": "^4.1.0",
-    "react": "16.8",
-    "react-bootstrap": "^1.4.3",
-    "react-dom": "16.8",
-    "react-markdown": "^6.0.3",
-    "react-syntax-highlighter": "^13.5.3",
-    "rehype-raw": "^5.1.0",
-    "remark-gfm": "^1.0.0",
-    "responsive-loader": "^2.1.1",
-    "sharp": "^0.32.0"
+    "@types/react": "16.14.8",
+    "@types/react-autosuggest": "10.1.11",
+    "@types/react-datepicker": "7.0.0",
+    "@vandebron/windmolen": "15.28.2",
+    "bootstrap": "4.6.1",
+    "gray-matter": "4.0.3",
+    "imagemin-mozjpeg": "9.0.0",
+    "imagemin-optipng": "8.0.0",
+    "imagemin-pngquant": "9.0.2",
+    "markdown-it": "13.0.1",
+    "next": "10.2.3",
+    "next-transpile-modules": "4.1.0",
+    "react": "16.9.0",
+    "react-bootstrap": "1.6.6",
+    "react-dom": "16.9.0",
+    "react-markdown": "6.0.3",
+    "react-syntax-highlighter": "13.5.3",
+    "rehype-raw": "5.1.0",
+    "remark-gfm": "1.0.0",
+    "responsive-loader": "2.3.0",
+    "sharp": "0.34.4"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0",
-    "next-compose-plugins": "^2.2.0",
-    "next-optimized-images": "^2.6.2"
+    "gh-pages": "3.2.3",
+    "next-compose-plugins": "2.2.1",
+    "next-optimized-images": "2.6.2"
+  },
+  "packageManager": "yarn@4.10.2",
+  "resolutions": {
+    "@types/react-autosuggest": "9.3.13",
+    "@types/react-datepicker": "2.9.2",
+    "popper.js": "1.16.1",
+    "webpack": "4.3.0"
   }
 }
